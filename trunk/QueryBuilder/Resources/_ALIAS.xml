@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SUN_SCHEMA>
+	<row alias="ICAS" origin="CA"/>
+	<row alias="ICAP" origin="CA"/>
+	<row alias="ICA1" origin="CA"/>
+	<row alias="ICA2" origin="CA"/>
+	<row alias="ICA3" origin="CA"/>
+	<row alias="ICA4" origin="CA"/>
+	<row alias="ICA5" origin="CA"/>
+	<row alias="ICA6" origin="CA"/>
+	<row alias="ICA7" origin="CA"/>
+	<row alias="ICA8" origin="CA"/>
+	<row alias="ICA9" origin="CA"/>
+</SUN_SCHEMA>

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrInvalidCellValue" xml:space="preserve">
+    <value>Invalid cell value: "{0}"</value>
+  </data>
+  <data name="ErrNotConnected" xml:space="preserve">
+    <value>There is no open file.</value>
+  </data>
+  <data name="ErrInvalidColumn" xml:space="preserve">
+    <value>Invalid column index: "{0}"</value>
+  </data>
+  <data name="ErrInvalidRow" xml:space="preserve">
+    <value>Invalid row index: "{0}"</value>
+  </data>
+  <data name="ErrInvalidValue" xml:space="preserve">
+    <value>Invalid value for parameter "{0}": {1} is not on the range {2} - {3}</value>
+  </data>
+  <data name="ErrInvalidValue2" xml:space="preserve">
+    <value>Invalid value for parameter "{0}": {1} There are no elements in the list.</value>
+  </data>
+  <data name="ErrDataSetNotFound" xml:space="preserve">
+    <value>The named range "{1}" on the Excel template refers to DataTable "{0}" which is not defined. Verify that you added the dataset with FlexCelReport.AddTable method.</value>
+  </data>
+  <data name="ErrDataSetNotFoundInConfig" xml:space="preserve">
+    <value>The config sheet, cell "{1}", on the Excel template refers to DataTable "{0}" which is not defined. Verify that you added the dataset with FlexCelReport.AddTable method.</value>
+  </data>
+  <data name="ErrDataSetNotFoundInExpression" xml:space="preserve">
+    <value>The expression "{1}" on the Excel template refers to DataTable "{0}" which is not defined. Verify that the cell with the expression is inside a "__{0}__" or similar named range.</value>
+  </data>
+  <data name="ErrInvalidSheet" xml:space="preserve">
+    <value>Sheet does not exist: "{0}"</value>
+  </data>
+  <data name="ErrFormulaTooLong" xml:space="preserve">
+    <value>Formula too long: "{0}"'</value>
+  </data>
+  <data name="ErrNotAString" xml:space="preserve">
+    <value>String expected on formula: "{0}"</value>
+  </data>
+  <data name="ErrUnterminatedString" xml:space="preserve">
+    <value>Unterminated string on formula: "{0}"</value>
+  </data>
+  <data name="ErrUnexpectedId" xml:space="preserve">
+    <value>Unexpected Identifier: "{0}" on formula "{1}"</value>
+  </data>
+  <data name="ErrUnexpectedChar" xml:space="preserve">
+    <value>Unexpected character "{0}" at pos {1} on formula: "{2}"</value>
+  </data>
+  <data name="ErrMissingParen" xml:space="preserve">
+    <value>Missing closing parentheses on formula: "{0}"</value>
+  </data>
+  <data name="ErrInvalidNumberOfParams" xml:space="preserve">
+    <value>Invalid number of parameters to function "{0}": Expected between {1} and {2} parameters and found {3}</value>
+  </data>
+  <data name="ErrUnexpectedEof" xml:space="preserve">
+    <value>Unexpected end of formula: "{0}"</value>
+  </data>
+  <data name="ErrFormulaStart" xml:space="preserve">
+    <value>Formula must start with "=" or "{{=": "{0}"'</value>
+  </data>
+  <data name="ErrFormulaInvalid" xml:space="preserve">
+    <value>Formula can't be evaluated: "{0}"</value>
+  </data>
+  <data name="ErrInternal" xml:space="preserve">
+    <value>FlexCel: Internal Error.</value>
+  </data>
+  <data name="ErrFunctionNotFound" xml:space="preserve">
+    <value>Function not found: "{0}" on formula "{1}"</value>
+  </data>
+  <data name="ErrCircularReference" xml:space="preserve">
+    <value>The formula in cell "{0}" has a circular reference to itself.</value>
+  </data>
+  <data name="ErrInvalidRef" xml:space="preserve">
+    <value>Invalid Cell: "{0}"</value>
+  </data>
+  <data name="ErrMissingEOT" xml:space="preserve">
+    <value>Missing Closing Tag on formula: "{0}"</value>
+  </data>
+  <data name="ErrMissingArgs" xml:space="preserve">
+    <value>Missing Arguments on function "{0}" </value>
+  </data>
+  <data name="ErrTooMuchArgs" xml:space="preserve">
+    <value>Too much arguments on function: "{0}"</value>
+  </data>
+  <data name="ErrReadAfterEOF" xml:space="preserve">
+    <value>Trying to read after the last record of the table.</value>
+  </data>
+  <data name="ErrReadBeforeBOF" xml:space="preserve">
+    <value>Trying to read before the first record of the table.</value>
+  </data>
+  <data name="ErrIntersectingRanges" xml:space="preserve">
+    <value>Ranges "{0}" and "{1}" intersect.</value>
+  </data>
+  <data name="ErrUndefinedFunction" xml:space="preserve">
+    <value>Function with index {0} is not defined. Verify your localized copy of FunctionNames.resx</value>
+  </data>
+  <data name="ErrInvalidFormat" xml:space="preserve">
+    <value>Format "{0}" is not defined on the config sheet.</value>
+  </data>
+  <data name="ErrColumNotFound" xml:space="preserve">
+    <value>Column "{0}" does not exist on table "{1}"</value>
+  </data>
+  <data name="ErrPropertyNotFound" xml:space="preserve">
+    <value>Report Variable "{0}" is not defined.</value>
+  </data>
+  <data name="ErrMemberNotFound" xml:space="preserve">
+    <value>Dataset "{0}" does not have a corresponding field.</value>
+  </data>
+  <data name="ErrDataSetNotInRange" xml:space="preserve">
+    <value>Dataset "{0}" is not inside any named range on the worksheet.</value>
+  </data>
+  <data name="ErrInvalidImage" xml:space="preserve">
+    <value>Image is invalid.</value>
+  </data>
+  <data name="ErrUndefinedId" xml:space="preserve">
+    <value>Identifier "{0}" is not defined. Verify your localized copy of {1}</value>
+  </data>
+  <data name="ErrOnIncludeReport" xml:space="preserve">
+    <value>Error while processing &lt;#include&gt; report "{0}": {1}</value>
+  </data>
+  <data name="ErrCantFindNamedRange" xml:space="preserve">
+    <value>Can't find named range "{0}"</value>
+  </data>
+  <data name="ErrTooManyNestedIncludes" xml:space="preserve">
+    <value>Too many nested &lt;#includes&gt;. Probably a file is including itself: "{0}"</value>
+  </data>
+  <data name="ErrUnknownRangeType" xml:space="preserve">
+    <value>Invalid range type on include: "{1}". It must be "__", "_", "II_" or "I_".</value>
+  </data>
+  <data name="ErrInvalidRange" xml:space="preserve">
+    <value>Invalid range: "{0}". A valid range is for example A1:A2</value>
+  </data>
+  <data name="ErrInvalidRangeRef" xml:space="preserve">
+    <value>The name defining band "{0}" has a negative number of rows or columns. Verify it has absolute references ($A$1:$B$2) intead of relative ($A$1:B2).</value>
+  </data>
+  <data name="ErrNotSupportedOnTrial" xml:space="preserve">
+    <value>Opening a file without properties is not supported on the non commercial version of FlexCel.</value>
+  </data>
+  <data name="ErrUndefinedUserFunction" xml:space="preserve">
+    <value>User defined function "{0}" is null. Verify that on the code "SetUserFunction({0}, functionImp)", functionImp is not null.</value>
+  </data>
+  <data name="ErrCantChangeRecalcMode" xml:space="preserve">
+    <value>Property "RecalcMode" can only be changed before opening any file.</value>
+  </data>
+  <data name="ErrWorkbookNull" xml:space="preserve">
+    <value>"Workbook" parameter cannot be null for this method.</value>
+  </data>
+  <data name="CustomPageSize" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="TxtSeries" xml:space="preserve">
+    <value>Series</value>
+  </data>
+  <data name="ErrCompression" xml:space="preserve">
+    <value>Error with the compression engine</value>
+  </data>
+  <data name="ErrInvalidRelationshipNullValues" xml:space="preserve">
+    <value>Invalid relationship on cell "{0}" on the config sheet. You must specify both tables and fields related.</value>
+  </data>
+  <data name="ErrInvalidRelationship2Tables" xml:space="preserve">
+    <value>Invalid relationship on cell "{0}" on the config sheet. "{1}" needs to specify 2 and only 2 tables for the relationship.</value>
+  </data>
+  <data name="ErrInvalidRelationshipFields" xml:space="preserve">
+    <value>Invalid relationship on cell "{0}" on the config sheet. "{1}" is not a valid field ralationship definition.</value>
+  </data>
+  <data name="ErrInvalidRelationshipDatasetNull" xml:space="preserve">
+    <value>Invalid relationship on cell "{0}" on the config sheet. Table "{1}" does not belong to a Dataset.</value>
+  </data>
+  <data name="ErrInvalidManualRelationshipDatasetNull" xml:space="preserve">
+    <value>Table "{0}" does not exist.</value>
+  </data>
+  <data name="ErrInvalidManualRelationshipFieldCount" xml:space="preserve">
+    <value>Field count of master and detail key field must be the same.</value>
+  </data>
+  <data name="ErrInvalidRelationship2Fields" xml:space="preserve">
+    <value>Invalid relationship on cell "{0}" on the config sheet. Field relation "{1}" must relate 2 and only 2 fields.</value>
+  </data>
+  <data name="ErrInvalidSql2Params" xml:space="preserve">
+    <value>Direct SQL calls on the config sheet should have 2 parameters (Connection and SQL string). "{0}" is not a valid parameter list.</value>
+  </data>
+  <data name="ErrInvalidSplit2Params" xml:space="preserve">
+    <value>SPLIT calls on the config sheet should have 2 parameters (Table and row count). "{0}" is not a valid parameter list.</value>
+  </data>
+  <data name="ErrInvalidSplitCount" xml:space="preserve">
+    <value>Second Parameter on SPLIT calls must be a number bigger than 0 specifying the row count that you want to use to split the dataset. "{0}" is not a valid parameter.</value>
+  </data>
+  <data name="ErrInvalidTop2Params" xml:space="preserve">
+    <value>TOP calls on the config sheet should have 2 parameters (Table and row count). "{0}" is not a valid parameter list.</value>
+  </data>
+  <data name="ErrInvalidTopCount" xml:space="preserve">
+    <value>Second Parameter on TOP calls must be a number bigger than 0 specifying the maximum row count that you want in the dataset. "{0}" is not a valid parameter.</value>
+  </data>
+  <data name="ErrInvalidNRows1Param" xml:space="preserve">
+    <value>COLUMN calls on the config sheet should have 1 parameter (Table name). "{0}" is not a valid parameter list.</value>
+  </data>
+  <data name="ErrInvalidNRowsCount" xml:space="preserve">
+    <value>Parameter on ROWS calls must be a number equal or bigger than 0 specifying the row count that you want in the dataset. "{0}" is not a valid parameter.</value>
+  </data>
+  <data name="ErrInvalidSqlAdapterNotFound" xml:space="preserve">
+    <value>The adapter "{0}" mentioned on a DIRECT SQL call cannot be found. Verify that you called FlexCelReport.AddConnection();</value>
+  </data>
+  <data name="ErrInvalidSqlAdapterNoSelect" xml:space="preserve">
+    <value>The adapter "{0}" has not Insert Command defined. Edit the adapter and add any SQL command to it.;</value>
+  </data>
+  <data name="ErrDataSetNull" xml:space="preserve">
+    <value>DataSet should not be null.</value>
+  </data>
+  <data name="ErrAdapterNull" xml:space="preserve">
+    <value>Adapter should not be null.</value>
+  </data>
+  <data name="ErrInvalidSqlParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on DIRECT SQL: "{0}".</value>
+  </data>
+  <data name="ErrInvalidSplitParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on SPLIT command: "{0}".</value>
+  </data>
+  <data name="ErrInvalidTopParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on TOP command: "{0}".</value>
+  </data>
+  <data name="ErrInvalidNRowsParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on ROWS command: "{0}".</value>
+  </data>
+  <data name="ErrInvalidColumnsParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on COLUMNS command: "{0}".</value>
+  </data>
+  <data name="ErrInvalidUserTableParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on USER TABLE command: "{0}".</value>
+  </data>
+  <data name="ErrInvalidFilterParen" xml:space="preserve">
+    <value>There is a missing closing parenthesis on Filter: "{0}".</value>
+  </data>
+  <data name="ErrOnConfigTables" xml:space="preserve">
+    <value>Error reading configuration sheet on row {0}: "{1}".</value>
+  </data>
+  <data name="ErrInvalidDistinctParams" xml:space="preserve">
+    <value>DISTINCT filter needs a list of fields as parameters.</value>
+  </data>
+  <data name="ErrInvalidSqlString" xml:space="preserve">
+    <value>The SQL "{0}" is invalid. For security reasons, it cannot include special characters such as ";" and it must start with "SELECT"</value>
+  </data>
+  <data name="ErrInvalidSqlParams" xml:space="preserve">
+    <value>SQL parameter cannot be NULL</value>
+  </data>
+  <data name="ErrSqlParameterNotFound" xml:space="preserve">
+    <value>Sql parameter "{0}" not found. To add an SQL parameter to a report, use FlexCelReport.AddSqlParameter().</value>
+  </data>
+  <data name="ErrEofReached" xml:space="preserve">
+    <value>End of stream reached with {0} bytes left to read</value>
+  </data>
+  <data name="ErrArrayNotSquared" xml:space="preserve">
+    <value>Error on formula "{0}" Arrays must have the same number of columns on each row.</value>
+  </data>
+  <data name="ErrInvalidCols" xml:space="preserve">
+    <value>Invalid array column length: "{0}" Columns on an array must be between 1 and {1}.</value>
+  </data>
+  <data name="ErrInvalidRows" xml:space="preserve">
+    <value>Invalid array row length: "{0}" Rows on an array must be between 1 and {1}.</value>
+  </data>
+  <data name="ErrInvalidErrorCode" xml:space="preserve">
+    <value>Invalid error code: "{0}".</value>
+  </data>
+  <data name="ErrEmptyFolder" xml:space="preserve">
+    <value>The folder "{0}" does not contain any file of type "{1}".</value>
+  </data>
+  <data name="ErrTiffEncoderNotFound" xml:space="preserve">
+    <value>Cannot find the Tiff encoder.</value>
+  </data>
+  <data name="ErrInvalidImageFormat" xml:space="preserve">
+    <value>Invalid image format.</value>
+  </data>
+  <data name="ErrInvalidHtmlParam" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for the &lt;#HTML&gt; tag: The allowed values are: "&lt;#HTML({1})&gt;" y "&lt;#HTML({2})&gt;"</value>
+  </data>
+  <data name="ErrInvalidRowColParameters" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for the &lt;#ROW HEIGHT&gt; or &lt;#COLUMN WIDTH&gt; tags: The allowed values are: "{1}", "{2}", "{3}" or a number indicating the row height or column width.</value>
+  </data>
+  <data name="ErrInvalidRowColParameters2" xml:space="preserve">
+    <value>The value "{0}" is not a valid second parameter for the &lt;#ROW HEIGHT&gt; or &lt;#COLUMN WIDTH&gt; tags: It must be a number indicating the adjustment percent.</value>
+  </data>
+  <data name="ErrInvalidRowColParameters3" xml:space="preserve">
+    <value>The value "{0}" is not a valid third parameter for the &lt;#ROW HEIGHT&gt; or &lt;#COLUMN WIDTH&gt; tags: It must be a number indicating the absolute adjustment.</value>
+  </data>
+  <data name="ErrInvalidRowColParameters4" xml:space="preserve">
+    <value>The value "{0}" is not a valid fourth or fifth parameter for the &lt;#ROW HEIGHT&gt; or &lt;#COLUMN WIDTH&gt; tags: It must be "{1}", "{2}" or a number indicating the maximum or minimun width or height of the column or row.</value>
+  </data>
+  <data name="ErrInvalidRefTag" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for the &lt;#REF&gt; tag: When &lt;#REF&gt; is called with one or three paremeters, the first parameter should be a valid named range or a report expression that contains a formula with a reference.</value>
+  </data>
+  <data name="ErrInvalidRefTag2" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for the &lt;#REF&gt; tag: When &lt;#REF&gt; is called with two parameters, they should be numbers with the relative offsets from the current cell.</value>
+  </data>
+  <data name="ErrInvalidRefTag3" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for the &lt;#REF&gt; tag: When &lt;#REF&gt; is called with three parameters, the second and third parameter should be "{1}" or "{2}".</value>
+  </data>
+  <data name="ErrInvalidGlobalAutofit" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter on &lt;#AUTOFIT SETTINGS&gt; tag: it must be "{1}" or "{2}".</value>
+  </data>
+  <data name="ErrInvalidGlobalAdjustment" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter on &lt;#AUTOFIT SETTINGS&gt; tag: it must be a number specifying the adjustment. (use 100 for default)".</value>
+  </data>
+  <data name="ErrInvalidGlobalAdjustmentFixed" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter on &lt;#AUTOFIT SETTINGS&gt; tag: it must be a number specifying the adjustment. (use 0 for default)".</value>
+  </data>
+  <data name="ErrInvalidAutoFitMerged" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter on &lt;#AUTOFIT SETTINGS&gt; tag: it must be "{1}", "{2}", "{3}" or "{4}".</value>
+  </data>
+  <data name="ErrSplitNeedsOneAndOnlyOneDetail" xml:space="preserve">
+    <value>The table "{0}" was created with a SPLIT tag, and so it needs to have a direct detail named "{1}". Note that there can be only one detail, and it should be a direct child.</value>
+  </data>
+  <data name="ErrSplitNeedsOnlyOneMaster" xml:space="preserve">
+    <value>The table "{0}" has more than one SPLIT assigned ("{1}" and "{2}"). There can only be one SPLIT tag per table.</value>
+  </data>
+  <data name="ErrUserTableEventNotAssigned" xml:space="preserve">
+    <value>The template has USER TABLE tags, but the report doesn't have an UserTable event assigned.</value>
+  </data>
+  <data name="ErrTableDoesNotSupportFilter" xml:space="preserve">
+    <value>The table "{0}" does not support filtering on the config sheet.</value>
+  </data>
+  <data name="ErrTableDoesNotSupportTag" xml:space="preserve">
+    <value>The table "{0}" cannot be used with the tag "{1}" on the config sheet.</value>
+  </data>
+  <data name="ErrTableDoesNotSupportMasterDetail" xml:space="preserve">
+    <value>The table "{0}" cannot be used in a master-detail relationship.</value>
+  </data>
+  <data name="ErrTableDoesNotSupportLookup" xml:space="preserve">
+    <value>The table "{0}" cannot be used as source in a Lookup tag.</value>
+  </data>
+  <data name="TxtDefaultTimeAMString" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="TxtDefaultTimePMString" xml:space="preserve">
+    <value>PM</value>
+  </data>
+  <data name="ErrInvalidEncodingForMIME" xml:space="preserve">
+    <value>Encoding "{0}" cannot be used to create a MIME file. Please use UTF-8, ASCII or any other compatible encoding.</value>
+  </data>
+  <data name="ErrBeginExportNotCalled" xml:space="preserve">
+    <value>Before exporting a sheet you need to call BeginExport.</value>
+  </data>
+  <data name="ErrNoDuplicatedPreprocess" xml:space="preserve">
+    <value>A "preprocess" tag cannot be nested.</value>
+  </data>
+  <data name="ErrInvalidDefinedGlobal" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter on &lt;#DEFINED&gt; tag: it must be "{1}" or "{2}".</value>
+  </data>
+  <data name="ErrInvalidRowColDelete" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter on &lt;#DELETE ROW/COL&gt; tag: it must be "{1}" or "{2}".</value>
+  </data>
+  <data name="ErrNeedsUnmanaged" xml:space="preserve">
+    <value>This operation requires UNMANAGED permissions, but FlexCel has been compiled with the "FULLYMANAGED" variable enabled. In order to execute this command, recompile FlexCel without defining FULLYMANAGED.</value>
+  </data>
+  <data name="ErrInvalidApplyTag" xml:space="preserve">
+    <value>The name "{0}" in the format definition "{1}" (config sheet) is not valid. It should be a valid format identifier, like "Border" or "Font".</value>
+  </data>
+  <data name="ErrAtCell" xml:space="preserve">
+    <value>Error in cell {0}: "{1}"</value>
+  </data>
+  <data name="CellError" xml:space="preserve">
+    <value>ERROR: {0}</value>
+  </data>
+  <data name="ErrInvalidIncludeStatic" xml:space="preserve">
+    <value>ERROR: Parameter "{0}" is invalid in an include. Must be "{1}" or "{2}"</value>
+  </data>
+  <data name="ErrInvalidIncludeRowCol" xml:space="preserve">
+    <value>ERROR: Parameter "{0}" is invalid in an include. Must be "{1}", "{2} or {3}"</value>
+  </data>
+  <data name="ErrInvalidAutoPageBreaksPercent" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for tag &lt;#AUTO PAGE BREAKS&gt;: It must be a number between 0 and 100 indicating the minimum percent of the page that must be used in order to add an automatic page break.</value>
+  </data>
+  <data name="ErrInvalidAutoPageBreaksPageScale" xml:space="preserve">
+    <value>The value "{0}" is not a valid parameter for tag &lt;#AUTO PAGE BREAKS&gt;: It must be a number between 50 and 100 indicating the percent of the page that will be used as real size when calculating the page breaks.</value>
+  </data>
+  <data name="ErrInvalidImgPosParameter" xml:space="preserve">
+    <value>Parameter "{0}" es invalid for tag &lt;#IMGPOS&gt;: Must be empty, "{1}", "{2}" or "{3}".</value>
+  </data>
+  <data name="ErrInvalidImgFitParameter" xml:space="preserve">
+    <value>Parameter "{0}" es invalid for tag &lt;#IMGFIT&gt;: Must be empty or "{1}".</value>
+  </data>
+  <data name="ErrDuplicatedLinkedFile" xml:space="preserve">
+    <value>Cannot add ExcelFile "{0}" to the Workspace, because the workspace already contains a reference to it. ExcelFile references in a workspace must be unique.</value>
+  </data>
+  <data name="ErrInvalidAggParameter" xml:space="preserve">
+    <value>First parameter for tag &lt;#Aggregate&gt; is invalid. It is "{0}" and should be "Max", "Min", "Sum" or "Avg".</value>
+  </data>
+  <data name="ErrFilterMustReturnABooleanValue" xml:space="preserve">
+    <value>Filter "{0}" in tag &lt;#Aggregate&gt; is invalid. It must return a boolean value.</value>
+  </data>
+  <data name="ErrFontNotFound" xml:space="preserve">
+    <value>Can't find font "{0}". We will use font "{1}" as a substitute font.</value>
+  </data>
+  <data name="ErrGlyphNotFound" xml:space="preserve">
+    <value>Font "{0}" doesn't contain character "{1}" ("{2}") so it will display as an empty square. Try to use other font to get the real character, or set a suitable "FallbackFont".</value>
+  </data>
+  <data name="ErrUsedFallbackFont" xml:space="preserve">
+    <value>Font "{0}" has been replaced by "{1}" in the characters it doesn't contain.</value>
+  </data>
+  <data name="ErrFauxBoldOrItalic" xml:space="preserve">
+    <value>Font "{0}" doesn't contain an specific font definiton for {1}. FlexCel will try to fake {1}, but it will not look as good as a dedicated font, and it will not work with fonts embedded.</value>
+  </data>
+  <data name="ErrInvalidEmptyName" xml:space="preserve">
+    <value>The name cannot be empty.</value>
+  </data>
+  <data name="ErrNameTooLong" xml:space="preserve">
+    <value>The name cannot have more than {0} characters.</value>
+  </data>
+  <data name="ErrStyleDoesntExists" xml:space="preserve">
+    <value>Style "{0}" doesn't exist.</value>
+  </data>
+  <data name="ErrStyleAlreadyExists" xml:space="preserve">
+    <value>Named style "{0}" already exists.</value>
+  </data>
+  <data name="ErrCantRenameBuiltInStyle" xml:space="preserve">
+    <value>Style "{0}" is a built-in style and can't be renamed.</value>
+  </data>
+  <data name="ErrCantDeleteBuiltInStyle" xml:space="preserve">
+    <value>Style "{0}" is a built-in style and can't be deleted.</value>
+  </data>
+  <data name="ErrCantAddStyleFormats" xml:space="preserve">
+    <value>Style formats cannot be added with AddFormat. If you want to create a style, use SetStyle instead. If you want to format a cell, set TFlxFormat.IsStyle = false  and TFlxFormat.Parent = "This Style" before calling AddFormat.</value>
+  </data>
+  <data name="ErrCantMixCellAndStyleFormats" xml:space="preserve">
+    <value>You can't replace a style format by a cell format or viceversa. When changing XF formats, you need to replace them with formats of the same type.</value>
+  </data>
+  <data name="ErrInvalidColorType" xml:space="preserve">
+    <value>Cannot read property "{0}". The class contains a color of type "{1}" and the property "{0}" is only valid when ColorType is of kind "{2}".</value>
+  </data>
+  <data name="ErrInvalidColorValue" xml:space="preserve">
+    <value>The value "{1}" is invalid for TExcelColor.{0}. It must be between "{2}" and "{3}".</value>
+  </data>
+  <data name="ErrInvalidColorEnum" xml:space="preserve">
+    <value>The value is invalid for TExcelColor.{0}. It must be a member of the enumeration, and not be "None".</value>
+  </data>
+  <data name="ErrStringConstantInFormulaTooLong" xml:space="preserve">
+    <value>String constant "{0} in formula "{1}" is too long. (max 255 chars)</value>
+  </data>
+  <data name="ErrNoBorderColorSet" xml:space="preserve">
+    <value>A cell in this file has a border style defined, but not a border color. This would make Excel crash when loading this file. If you are setting a border style with TFlxBorders.Style, make sure you set a border color too with TFlxBorders.Color.</value>
+  </data>
+  <data name="ErrCreatingImage" xml:space="preserve">
+    <value>Error trying to create an empty image of dimensions {0} x {1} and PixelFormat "{2}". Probably out of memory.</value>
+  </data>
+  <data name="ErrCantUseThemeColorsInsideATheme" xml:space="preserve">
+    <value>You can't use a themed color to define a theme color.</value>
+  </data>
+  <data name="ErrFontNotSupported" xml:space="preserve">
+    <value>The requested font ("{0}" size="{1}" style="{2}") cannot be created. Error is: "{3}"</value>
+  </data>
+  <data name="ErrNullParameter" xml:space="preserve">
+    <value>The parameter "{0}" cannot be null.</value>
+  </data>
+  <data name="ErrNullOrEmptyParameter" xml:space="preserve">
+    <value>The parameter "{0}" cannot be null or empty.</value>
+  </data>
+  <data name="ErrRangeNameAlreadyExists" xml:space="preserve">
+    <value>The range name "{0}" already exists.</value>
+  </data>
+  <data name="ErrInvalidName" xml:space="preserve">
+    <value>The range name "{0}" contains invalid characters. It must contain only letters, numbers and spaces and must begin with a letter. It can't be a valid cell reference either.</value>
+  </data>
+  <data name="ErrInvalidEnum" xml:space="preserve">
+    <value>Enum is not defined.</value>
+  </data>
+  <data name="ErrInvalidLinQDetail" xml:space="preserve">
+    <value>Error in detail table "{0}" Can't find the master.</value>
+  </data>
+  <data name="ErrInvalidSortString" xml:space="preserve">
+    <value>Error in table "{0}". Expression "{1}" is not a valid sort string.</value>
+  </data>
+  <data name="ErrEmptyKeyNames" xml:space="preserve">
+    <value>"Lookup" tag key names can't be empty.</value>
+  </data>
+  <data name="ErrValuesAndKeysMismatch" xml:space="preserve">
+    <value>Error in Lookup tag. Key values and key names must have the same number of elements.</value>
+  </data>
+  <data name="ErrDatasetDoesntSupportWhere" xml:space="preserve">
+    <value>Table "{0}" doesn't support filters. To support them it must implement a "Where(string)" method.</value>
+  </data>
+  <data name="ErrInvalidReportRowCount" xml:space="preserve">
+    <value>The count of records in a table is different from the actual number of records on it. This means that someone else has inserted or deleted records while this report was running. To avoid this issue, make sure you run the report with isolation level = SNAPSHOT.</value>
+  </data>
+  <data name="ErrInvalidFilterDateTime" xml:space="preserve">
+    <value>Format on date "{0}" in filter "{1}" is invalid. Format must be "{2}".</value>
+  </data>
+</root>

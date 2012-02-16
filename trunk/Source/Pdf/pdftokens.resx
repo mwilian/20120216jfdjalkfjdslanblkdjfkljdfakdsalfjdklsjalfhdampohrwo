@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="0 DON'T Translate this file.">
+		<value xml:space="preserve">Resources on this file are not localizable</value>
+	</data>
+	<data name="AuthorName">
+		<value xml:space="preserve">/Author</value>
+	</data>
+	<data name="BaseFontName">
+		<value xml:space="preserve">/BaseFont</value>
+	</data>
+	<data name="BitsPerComponentName">
+		<value xml:space="preserve">/BitsPerComponent</value>
+	</data>
+	<data name="Bold">
+		<value xml:space="preserve">,Bold</value>
+	</data>
+	<data name="BoldItalic">
+		<value xml:space="preserve">,BoldItalic</value>
+	</data>
+	<data name="CallObj">
+		<value xml:space="preserve">{0} 0 R</value>
+	</data>
+	<data name="CatalogName">
+		<value xml:space="preserve">/Catalog</value>
+	</data>
+	<data name="CIDFontType2Name">
+		<value xml:space="preserve">/CIDFontType2</value>
+	</data>
+	<data name="CIDSystemInfo">
+		<value xml:space="preserve">/CIDSystemInfo &lt;&lt;/Supplement 0 /Ordering (Identity) /Registry (Adobe) &gt;&gt;</value>
+	</data>
+	<data name="CIDToGIDMap">
+		<value xml:space="preserve">/CIDToGIDMap /Identity</value>
+	</data>
+	<data name="CloseArray">
+		<value xml:space="preserve">]</value>
+	</data>
+	<data name="CloseString">
+		<value xml:space="preserve">)</value>
+	</data>
+	<data name="ColorSpaceName">
+		<value xml:space="preserve">/ColorSpace</value>
+	</data>
+	<data name="CommandBeginText">
+		<value xml:space="preserve">BT</value>
+	</data>
+	<data name="CommandClipPath">
+		<value xml:space="preserve">W n</value>
+	</data>
+	<data name="CommandClipPathEvenOddRule">
+		<value xml:space="preserve">W* n</value>
+	</data>
+	<data name="CommandClosePath">
+		<value xml:space="preserve">h</value>
+	</data>
+	<data name="CommandDo">
+		<value xml:space="preserve">Do</value>
+	</data>
+	<data name="Commandscn">
+		<value xml:space="preserve">scn</value>
+	</data>
+	<data name="Commandgs">
+		<value xml:space="preserve">gs</value>
+	</data>
+	<data name="CommandEndText">
+		<value xml:space="preserve">ET</value>
+	</data>
+	<data name="CommandFillPath">
+		<value xml:space="preserve">f</value>
+	</data>
+	<data name="CommandFillAndStroke">
+		<value xml:space="preserve">b</value>
+	</data>
+	<data name="CommandFont">
+		<value xml:space="preserve">Tf</value>
+	</data>
+	<data name="CommandLineTo">
+		<value xml:space="preserve">l</value>
+	</data>
+	<data name="CommandBezier">
+		<value xml:space="preserve">c</value>
+	</data>
+	<data name="CommandLineToAndStroke">
+		<value xml:space="preserve">l S</value>
+	</data>
+	<data name="CommandLineWidth">
+		<value xml:space="preserve">w</value>
+	</data>
+	<data name="CommandSetLineStyle">
+		<value xml:space="preserve">d</value>
+	</data>
+	<data name="CommandMove">
+		<value xml:space="preserve">m</value>
+	</data>
+	<data name="CommandRectangle">
+		<value xml:space="preserve">re</value>
+	</data>
+	<data name="CommandSetBrushColor">
+		<value xml:space="preserve">rg</value>
+	</data>
+	<data name="CommandSetPenColor">
+		<value xml:space="preserve">RG</value>
+	</data>
+	<data name="CommandStroke">
+		<value xml:space="preserve">S</value>
+	</data>
+	<data name="CommandTextMove">
+		<value xml:space="preserve">Td</value>
+	</data>
+	<data name="CommandTextWrite">
+		<value xml:space="preserve">Tj</value>
+	</data>
+	<data name="CommandTextRendering">
+		<value xml:space="preserve">Tr</value>
+	</data>
+	<data name="CommandTextKerningWrite">
+		<value xml:space="preserve">TJ</value>
+	</data>
+	<data name="ContentsName">
+		<value xml:space="preserve">/Contents</value>
+	</data>
+	<data name="CountName">
+		<value xml:space="preserve">/Count</value>
+	</data>
+	<data name="FirstName">
+		<value xml:space="preserve">/First</value>
+	</data>
+	<data name="LastName">
+		<value xml:space="preserve">/Last</value>
+	</data>
+	<data name="CreationDateName">
+		<value xml:space="preserve">/CreationDate</value>
+	</data>
+	<data name="CreatorName">
+		<value xml:space="preserve">/Creator</value>
+	</data>
+	<data name="DCTDecodeName">
+		<value xml:space="preserve">/DCTDecode</value>
+	</data>
+	<data name="DescendantFontsName">
+		<value xml:space="preserve">/DescendantFonts</value>
+	</data>
+	<data name="DeviceRGBName">
+		<value xml:space="preserve">/DeviceRGB</value>
+	</data>
+	<data name="EncodingName">
+		<value xml:space="preserve">/Encoding</value>
+	</data>
+	<data name="EndDictionary">
+		<value xml:space="preserve">&gt;&gt;</value>
+	</data>
+	<data name="EndObj">
+		<value xml:space="preserve">endobj</value>
+	</data>
+	<data name="EndStream">
+		<value xml:space="preserve">endstream</value>
+	</data>
+	<data name="Eof">
+		<value xml:space="preserve">%%EOF</value>
+	</data>
+	<data name="EscapeString">
+		<value xml:space="preserve">\</value>
+	</data>
+	<data name="FilterName">
+		<value xml:space="preserve">/Filter</value>
+	</data>
+	<data name="SubFilterName">
+		<value xml:space="preserve">/SubFilter</value>
+	</data>
+	<data name="FirstCharName">
+		<value xml:space="preserve">/FirstChar</value>
+	</data>
+	<data name="FlateDecodeName">
+		<value xml:space="preserve">/FlateDecode</value>
+	</data>
+	<data name="FontName">
+		<value xml:space="preserve">/Font</value>
+	</data>
+	<data name="FontPrefix">
+		<value xml:space="preserve">/F</value>
+	</data>
+	<data name="Header14">
+		<value xml:space="preserve">%PDF-1.4</value>
+	</data>
+	<data name="Header16">
+		<value xml:space="preserve">%PDF-1.6</value>
+	</data>
+	<data name="HeaderComment">
+		<value xml:space="preserve">%àáèéìíòóùù. FlexCel generated file.</value>
+	</data>
+	<data name="HeightName">
+		<value xml:space="preserve">/Height</value>
+	</data>
+	<data name="IdentityHName">
+		<value xml:space="preserve">/Identity-H</value>
+	</data>
+	<data name="ImageName">
+		<value xml:space="preserve">/Image</value>
+	</data>
+	<data name="FormName">
+		<value xml:space="preserve">/Form</value>
+	</data>
+	<data name="ImgPrefix">
+		<value xml:space="preserve">/Img</value>
+	</data>
+	<data name="PatternPrefix">
+		<value xml:space="preserve">/P</value>
+	</data>
+	<data name="GradientPrefix">
+		<value xml:space="preserve">/G</value>
+	</data>
+	<data name="GStatePrefix">
+		<value xml:space="preserve">/GS</value>
+	</data>
+	<data name="InfoName">
+		<value xml:space="preserve">/Info</value>
+	</data>
+	<data name="Italic">
+		<value xml:space="preserve">,Italic</value>
+	</data>
+	<data name="KeywordsName">
+		<value xml:space="preserve">/Keywords</value>
+	</data>
+	<data name="KidsName">
+		<value xml:space="preserve">/Kids</value>
+	</data>
+	<data name="LastCharName">
+		<value xml:space="preserve">/LastChar</value>
+	</data>
+	<data name="LengthName">
+		<value xml:space="preserve">/Length</value>
+	</data>
+	<data name="Length1Name">
+		<value xml:space="preserve">/Length1</value>
+	</data>
+	<data name="NullText">
+		<value xml:space="preserve">null</value>
+	</data>
+	<data name="Obj">
+		<value xml:space="preserve">{0} 0 obj</value>
+	</data>
+	<data name="OpenArray">
+		<value xml:space="preserve">[</value>
+	</data>
+	<data name="OpenString">
+		<value xml:space="preserve">(</value>
+	</data>
+	<data name="PageName">
+		<value xml:space="preserve">/Page</value>
+	</data>
+	<data name="PagesName">
+		<value xml:space="preserve">/Pages</value>
+	</data>
+	<data name="ParentName">
+		<value xml:space="preserve">/Parent</value>
+	</data>
+	<data name="Producer">
+		<value xml:space="preserve">FlexCel Studio for the .NET Framework v.</value>
+	</data>
+	<data name="ProducerName">
+		<value xml:space="preserve">/Producer</value>
+	</data>
+	<data name="PsBold">
+		<value xml:space="preserve">-Bold</value>
+	</data>
+	<data name="PsBoldOblique">
+		<value xml:space="preserve">-BoldOblique</value>
+	</data>
+	<data name="PsOblique">
+		<value xml:space="preserve">-Oblique</value>
+	</data>
+	<data name="ResourcesName">
+		<value xml:space="preserve">/Resources</value>
+	</data>
+	<data name="RootName">
+		<value xml:space="preserve">/Root</value>
+	</data>
+	<data name="SizeName">
+		<value xml:space="preserve">/Size</value>
+	</data>
+	<data name="StartDictionary">
+		<value xml:space="preserve">&lt;&lt;</value>
+	</data>
+	<data name="StartXRef">
+		<value xml:space="preserve">startxref</value>
+	</data>
+	<data name="Stream">
+		<value xml:space="preserve">stream</value>
+	</data>
+	<data name="SubjectName">
+		<value xml:space="preserve">/Subject</value>
+	</data>
+	<data name="SubtypeName">
+		<value xml:space="preserve">/Subtype</value>
+	</data>
+	<data name="TitleName">
+		<value xml:space="preserve">/Title</value>
+	</data>
+	<data name="Trailer">
+		<value xml:space="preserve">trailer</value>
+	</data>
+	<data name="TrueTypeName">
+		<value xml:space="preserve">/TrueType</value>
+	</data>
+	<data name="Type0Name">
+		<value xml:space="preserve">/Type0</value>
+	</data>
+	<data name="TypeName">
+		<value xml:space="preserve">/Type</value>
+	</data>
+	<data name="WidthName">
+		<value xml:space="preserve">/Width</value>
+	</data>
+	<data name="WidthsName">
+		<value xml:space="preserve">/Widths</value>
+	</data>
+	<data name="WName">
+		<value xml:space="preserve">/W</value>
+	</data>
+	<data name="DWName">
+		<value xml:space="preserve">/DW</value>
+	</data>
+	<data name="WinAnsiEncodingName">
+		<value xml:space="preserve">/WinAnsiEncoding</value>
+	</data>
+	<data name="XObjectName">
+		<value xml:space="preserve">/XObject</value>
+	</data>
+	<data name="PatternName">
+		<value xml:space="preserve">/Pattern</value>
+	</data>
+	<data name="ExtGStateName">
+		<value xml:space="preserve">/ExtGState</value>
+	</data>
+	<data name="XRef">
+		<value xml:space="preserve">xref</value>
+	</data>
+	<data name="MediaBoxName">
+		<value>/MediaBox</value>
+	</data>
+	<data name="FontDescriptorName">
+		<value>/FontDescriptor</value>
+	</data>
+	<data name="FontNameName">
+		<value>/FontName</value>
+	</data>
+	<data name="FontBBoxName">
+		<value>/FontBBox</value>
+	</data>
+	<data name="FlagsName">
+		<value>/Flags</value>
+	</data>
+	<data name="FontAscentName">
+		<value>/Ascent</value>
+	</data>
+	<data name="FontDescentName">
+		<value>/Descent</value>
+	</data>
+	<data name="ItalicAngleName">
+		<value>/ItalicAngle</value>
+	</data>
+	<data name="StemVName">
+		<value>/StemV</value>
+	</data>
+	<data name="CapHeightName">
+		<value>/CapHeight</value>
+	</data>
+	<data name="FontFile2Name">
+		<value>/FontFile2</value>
+	</data>
+	<data name="Type1Name">
+		<value>/Type1</value>
+	</data>
+	<data name="PsCourier">
+		<value>Courier</value>
+	</data>
+	<data name="PsHelvetica">
+		<value>Helvetica</value>
+	</data>
+	<data name="PsTimes">
+		<value>Times</value>
+	</data>
+	<data name="PsRoman">
+		<value>-Roman</value>
+	</data>
+	<data name="StArial">
+		<value>Arial</value>
+	</data>
+	<data name="StCourier">
+		<value>Courier</value>
+	</data>
+	<data name="StTimesNewRoman">
+		<value>TimesNewRoman</value>
+	</data>
+	<data name="StCourierNew">
+		<value>CourierNew</value>
+	</data>
+	<data name="StMicrosoftSansSerif">
+		<value>MicrosoftSansSerif</value>
+	</data>
+	<data name="StMicrosoftSerif">
+		<value>MicrosoftSerif</value>
+	</data>
+	<data name="StSymbolFonts">
+		<value>;Symbol;</value>
+	</data>
+	<data name="StFixedFonts">
+		<value>;COURIER;COURIERNEW;LUCIDACONSOLE;LUCIDASANS;LUCIDASANSTYPEWRITER;OCRAEXTENDED;</value>
+	</data>
+	<data name="StSerifFonts">
+		<value>;BODONIMT;BODONIMTBLACK;BODONIMTBLACKITALIC;BODONIMTBOLD;BODONIMTBOLDITALIC;BODONIMTCONDENSED;BODONIMTCONDENSEDBOLD;BODONIMTCONDENSEDBOLDITALIC;BODONIMTCONDENSEDITALIC;BODONIMTITALIC;BOOKANTIQUA;BOOKANTIQUABOLD;BOOKANTIQUABOLDITALIC;BOOKANTIQUAITALIC;BOOKMANOLDSTYLE;BOOKMANOLDSTYLEBOLD;BOOKMANOLDSTYLEBOLDITALIC;BOOKMANOLDSTYLEITALIC;CALISTOMT;CALISTOMTBOLD;CALISTOMTBOLDITALIC;CALISTOMTITALIC;CASTELLAR;CENTURYSCHOOLBOOK;CENTURYSCHOOLBOOKBOLD;CENTURYSCHOOLBOOKBOLDITALIC;CENTURYSCHOOLBOOKITALIC;ELEPHANT;ELEPHANTITALIC;ENGRAVERSMT;GARAMOND;GARAMONDBOLD;GARAMONDITALIC;GEORGIA;GEORGIABOLD;GEORGIABOLDITALIC;GEORGIAITALIC;GLOUCESTERMTEXTRACONDENSED;GOUDYOLDSTYLE;GOUDYOLDSTYLEBOLD;GOUDYOLDSTYLEITALIC;GOUDYSTOUT;KARTIKA;PALATINOLINOTYPE;PALATINOLINOTYPEBOLD;PALATINOLINOTYPEBOLDITALIC;PALATINOLINOTYPEITALIC;PERPETUA;PERPETUABOLD;PERPETUABOLDITALIC;PERPETUAITALIC;PERPETUATITLINGMTBOLD;PERPETUATITLINGMTLIGHT;ROCKWELL;ROCKWELLBOLD;ROCKWELLBOLDITALIC;ROCKWELLCONDENSED;ROCKWELLCONDENSEDBOLD;ROCKWELLEXTRABOLD;ROCKWELLITALIC;SYLFAEN;TIMESNEWROMAN;TIMESNEWROMANBOLD;TIMESNEWROMANBOLDITALIC;TIMESNEWROMANITALIC;
+		</value>
+	</data>
+	<data name="PsSymbol">
+		<value>Symbol</value>
+	</data>
+	<data name="PsItalic">
+		<value>-Italic</value>
+	</data>
+	<data name="PsBoldItalic">
+		<value>-BoldItalic</value>
+	</data>
+  <data name="DeviceGrayName">
+    <value>/DeviceGray</value>
+  </data>
+  <data name="MatteName">
+    <value>/Matte</value>
+  </data>
+  <data name="PredictorName">
+		<value>/Predictor</value>
+	</data>
+	<data name="IndexedName">
+		<value>/Indexed</value>
+	</data>
+	<data name="ColorsName">
+		<value>/Colors</value>
+	</data>
+	<data name="ColumnsName">
+		<value>/Columns</value>
+	</data>
+	<data name="DecodeParmsName">
+		<value>/DecodeParms</value>
+	</data>
+	<data name="MaskName">
+		<value>/Mask</value>
+	</data>
+	<data name="SMaskName">
+		<value>/SMask</value>
+	</data>
+	<data name="ImageMaskName">
+		<value>/ImageMask</value>
+	</data>
+	<data name="FontFolder">
+		<value>Fonts</value>
+	</data>
+	<data name="UpDir">
+		<value>..</value>
+	</data>
+	<data name="LinuxFontFolder">
+		<value>/usr/X11R6/lib/X11/fonts/truetype</value>
+	</data>
+  <data name="TTFExtension">
+    <value>*.ttf</value>
+  </data>
+  <data name="TTCExtension">
+    <value>*.ttc</value>
+  </data>
+  <data name="FamilyItalic">
+		<value>ITALIC</value>
+	</data>
+	<data name="FamilyOblique">
+		<value>OBLIQUE</value>
+	</data>
+	<data name="FamilyBold">
+		<value>BOLD</value>
+	</data>
+	<data name="ToUnicodeName">
+		<value>/ToUnicode</value>
+	</data>
+	<data name="ToUnicodeData">
+		<value>/CIDInit /ProcSet findresource begin
+12 dict begin
+begincmap
+/CIDSystemInfo
+&lt;&lt; /Registry (Adobe)
+/Ordering (UCS)
+/Supplement 0
+&gt;&gt; def
+/CMapName /Adobe-Identity-UCS def
+/CMapType 2 def
+1 begincodespacerange
+&lt;0000&gt; &lt;FFFF&gt;
+endcodespacerange
+</value>
+	</data>
+	<data name="ToUnicodeData2">
+		<value>endcmap
+CMapName currentdict /CMap defineresource pop
+end 
+end</value>
+	</data>
+	<data name="beginbfchar">
+		<value>beginbfchar</value>
+	</data>
+	<data name="endbfchar">
+		<value>endbfchar</value>
+	</data>
+	<data name="beginbfrange">
+		<value>beginbfrange</value>
+	</data>
+	<data name="endbfrange">
+		<value>endbfrange</value>
+	</data>
+	<data name="AnnotsName">
+		<value>/Annots</value>
+	</data>
+	<data name="AnnotName">
+		<value>/Annot</value>
+	</data>
+	<data name="LinkName">
+		<value>/Link</value>
+	</data>
+	<data name="RectName">
+		<value>/Rect</value>
+	</data>
+	<data name="AName">
+		<value>/A</value>
+	</data>
+	<data name="MName">
+		<value>/M</value>
+	</data>
+	<data name="BorderName">
+		<value>/Border</value>
+	</data>
+	<data name="Border0">
+		<value>[0 0 0]</value>
+	</data>
+	<data name="LinkData">
+		<value>/Type /Action /S /URI /URI {0}</value>
+	</data>
+	<data name="NameName">
+		<value>/Name</value>
+	</data>
+	<data name="TextName">
+		<value>/Text</value>
+	</data>
+	<data name="CAName">
+		<value>/CA</value>
+	</data>
+	<data name="ICName">
+		<value>/IC</value>
+	</data>
+	<data name="BSName">
+		<value>/BS</value>
+	</data>
+	<data name="PatternTypeName">
+		<value>/PatternType</value>
+	</data>
+	<data name="PaintTypeName">
+		<value>/PaintType</value>
+	</data>
+	<data name="TilingTypeName">
+		<value>/TilingType</value>
+	</data>
+	<data name="XStepName">
+		<value>/XStep</value>
+	</data>
+	<data name="YStepName">
+		<value>/YStep</value>
+	</data>
+	<data name="BBoxName">
+		<value>/BBox</value>
+	</data>
+	<data name="PatternColorSpacePrefix">
+		<value>/CsPAT</value>
+	</data>
+		<data name="CommandSetAlphaBrush">
+		<value xml:space="preserve">/ca</value>
+	</data>
+		<data name="CommandSetAlphaPen">
+		<value xml:space="preserve">/CA</value>
+	</data>
+		<data name="None">
+		<value xml:space="preserve">Not expected</value>
+	</data>
+		<data name="MatrixName">
+		<value xml:space="preserve">/Matrix</value>
+	</data>
+		<data name="ShadingName">
+		<value xml:space="preserve">/Shading</value>
+	</data>
+		<data name="ShadingTypeName">
+		<value xml:space="preserve">/ShadingType</value>
+	</data>
+		<data name="CoordsName">
+		<value xml:space="preserve">/Coords</value>
+	</data>
+		<data name="FunctionName">
+		<value xml:space="preserve">/Function</value>
+	</data>
+		<data name="FunctionTypeName">
+		<value xml:space="preserve">/FunctionType</value>
+	</data>
+		<data name="RangeName">
+		<value xml:space="preserve">/Range</value>
+	</data>
+		<data name="DomainName">
+		<value xml:space="preserve">/Domain</value>
+	</data>
+		<data name="C0Name">
+		<value xml:space="preserve">/C0</value>
+	</data>
+		<data name="C1Name">
+		<value xml:space="preserve">/C1</value>
+	</data>
+		<data name="NName">
+		<value xml:space="preserve">/N</value>
+	</data>
+		<data name="Commandcs">
+		<value xml:space="preserve">cs</value>
+	</data>
+		<data name="ExtendName">
+		<value xml:space="preserve">/Extend</value>
+	</data>
+		<data name="FunctionsName">
+		<value xml:space="preserve">/Functions</value>
+	</data>
+		<data name="BoundsName">
+		<value xml:space="preserve">/Bounds</value>
+	</data>
+		<data name="EncodeName">
+		<value xml:space="preserve">/Encode</value>
+	</data>
+		<data name="AlphaName">
+		<value xml:space="preserve">/Alpha</value>
+	</data>
+		<data name="GName">
+		<value xml:space="preserve">/G</value>
+	</data>
+		<data name="SName">
+		<value xml:space="preserve">/S</value>
+	</data>
+		<data name="GroupName">
+		<value xml:space="preserve">/Group</value>
+	</data>
+		<data name="TransparencyName">
+		<value xml:space="preserve">/Transparency</value>
+	</data>
+	<data name="OutlinesName">
+		<value xml:space="preserve">/Outlines</value>
+	</data>
+	<data name="PrevName">
+		<value xml:space="preserve">/Prev</value>
+	</data>
+	<data name="NextName">
+		<value xml:space="preserve">/Next</value>
+	</data>
+	<data name="CName">
+		<value xml:space="preserve">/C</value>
+	</data>
+	<data name="FName">
+		<value xml:space="preserve">/F</value>
+	</data>
+	<data name="PageModeName">
+		<value xml:space="preserve">/PageMode</value>
+	</data>
+	<data name="UseOutlinesName">
+		<value xml:space="preserve">/UseOutlines</value>
+	</data>
+	<data name="UseThumbsName">
+		<value xml:space="preserve">/UseThumbs</value>
+	</data>
+	<data name="FullScreenName">
+		<value xml:space="preserve">/FullScreen</value>
+	</data>
+	<data name="DestName">
+		<value xml:space="preserve">/Dest</value>
+	</data>
+	<data name="FitName">
+		<value xml:space="preserve">/Fit</value>
+	</data>
+	<data name="FitHName">
+		<value xml:space="preserve">/FitH</value>
+	</data>
+	<data name="FitVName">
+		<value xml:space="preserve">/FitV</value>
+	</data>
+	<data name="XYZName">
+		<value xml:space="preserve">/XYZ</value>
+	</data>
+	<data name="TrueText">
+		<value xml:space="preserve">true</value>
+	</data>
+	<data name="FalseText">
+		<value xml:space="preserve">false</value>
+	</data>
+	<data name="AcroFormName">
+		<value xml:space="preserve">/AcroForm</value>
+	</data>
+	<data name="FieldsName">
+		<value xml:space="preserve">/Fields</value>
+	</data>
+	<data name="SigFlagsName">
+		<value xml:space="preserve">/SigFlags</value>
+	</data>
+	<data name="WidgetName">
+		<value xml:space="preserve">/Widget</value>
+	</data>
+	<data name="SigName">
+		<value xml:space="preserve">/Sig</value>
+	</data>
+	<data name="VName">
+		<value xml:space="preserve">/V</value>
+	</data>
+	<data name="PName">
+		<value xml:space="preserve">/P</value>
+	</data>
+	<data name="FName">
+		<value xml:space="preserve">/F</value>
+	</data>
+  <data name="FTName">
+    <value xml:space="preserve">/FT</value>
+  </data>
+  <data name="TName">
+    <value xml:space="preserve">/T</value>
+  </data>
+  <data name="FfName">
+		<value xml:space="preserve">/Ff</value>
+	</data>
+	<data name="LocationName">
+		<value xml:space="preserve">/Location</value>
+	</data>
+	<data name="ReasonName">
+		<value xml:space="preserve">/Reason</value>
+	</data>
+	<data name="ContactInfoName">
+		<value xml:space="preserve">/ContactInfo</value>
+	</data>
+  <data name="APName">
+    <value xml:space="preserve">/AP</value>
+  </data>
+  <data name="ByteRangeName">
+    <value xml:space="preserve">/ByteRange</value>
+  </data>
+  <data name="Adobe_PPKLiteName">
+    <value xml:space="preserve">/Adobe.PPKLite</value>
+  </data>
+  <data name="adbe_pkcs7_detachedName">
+    <value xml:space="preserve">/adbe.pkcs7.detached</value>
+  </data>
+  <data name="ReferenceName">
+    <value xml:space="preserve">/Reference</value>
+  </data>
+  <data name="TransformMethodName">
+    <value xml:space="preserve">/TransformMethod</value>
+  </data>
+  <data name="TransformParamsName">
+    <value xml:space="preserve">/TransformParams</value>
+  </data>
+  <data name="DocMDPName">
+    <value xml:space="preserve">/DocMDP</value>
+  </data>
+  <data name="FieldMDPName">
+    <value xml:space="preserve">/FieldMDP</value>
+  </data>
+  <data name="MD5Name">
+    <value xml:space="preserve">/MD5</value>
+  </data>
+  <data name="SigRefName">
+    <value xml:space="preserve">/SigRef</value>
+  </data>
+  <data name="V1_2Name">
+    <value xml:space="preserve">/1.2</value>
+  </data>
+  <data name="DigestMethodName">
+    <value xml:space="preserve">/DigestMethod</value>
+  </data>
+  <data name="PermsName">
+    <value xml:space="preserve">/Perms</value>
+  </data>
+  <data name="DigestValueName">
+    <value xml:space="preserve">/DigestValue</value>
+  </data>
+  <data name="DigestLocationName">
+    <value xml:space="preserve">/DigestLocation</value>
+  </data>
+  <data name="IDName">
+    <value xml:space="preserve">/ID</value>
+  </data>
+  <data name="FormTypeName">
+    <value xml:space="preserve">/FormType</value>
+  </data>
+  <data name="ImageCName">
+    <value xml:space="preserve">/ImageC</value>
+  </data>
+  <data name="ImageIName">
+    <value xml:space="preserve">/ImageI</value>
+  </data>
+  <data name="ImageBName">
+    <value xml:space="preserve">/ImageB</value>
+  </data>
+  <data name="ProcSetName">
+    <value xml:space="preserve">/ProcSet</value>
+  </data>
+  <data name="PDFName">
+    <value xml:space="preserve">/PDF</value>
+  </data>
+  <data name="FRMName">
+    <value xml:space="preserve">/FRM</value>
+  </data>
+  <data name="n0Name">
+    <value xml:space="preserve">/n0</value>
+  </data>
+  <data name="n2Name">
+    <value xml:space="preserve">/n2</value>
+  </data>
+  <data name="BitsPerSampleName">
+    <value xml:space="preserve">/BitsPerSample</value>
+  </data>
+</root>

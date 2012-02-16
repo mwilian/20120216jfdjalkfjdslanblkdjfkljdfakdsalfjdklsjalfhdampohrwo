@@ -1,0 +1,589 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DA0CC5E8-6935-4FF9-9618-B66BA7ADA019}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>FlexCelCF</AssemblyName>
+    <AssemblyOriginatorKeyFile>flexcel.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <OutputFileFolder>\Program Files\FlexCelCF</OutputFileFolder>
+    <RootNamespace>FlexCel</RootNamespace>
+    <StartupObject>
+    </StartupObject>
+    <FormFactorID>
+    </FormFactorID>
+    <OSVersion>4.20</OSVersion>
+    <SignAssembly>true</SignAssembly>
+    <NativePlatformName>Pocket PC 2003</NativePlatformName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PlatformID>3C41C503-53EF-4c2a-8DD4-A8217CAD115E</PlatformID>
+    <PlatformFamilyName>PocketPC</PlatformFamilyName>
+    <DeployDirSuffix>$(AssemblyName)</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>0</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;DEBUG;COMPACTFRAMEWORK;FRAMEWORK20;FRAMEWORK30</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>0</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;COMPACTFRAMEWORK;FRAMEWORK20;FRAMEWORK30</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>MSCorLib</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Source\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\ConditionalFormats.cs">
+      <Link>Core\ConditionalFormats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\ExcelAdapter.cs">
+      <Link>Core\ExcelAdapter.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\ExcelChart.cs">
+      <Link>Core\ExcelChart.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\MD5.cs">
+      <Link>Core\MD5.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UAutoshapes.cs">
+      <Link>Core\UAutoshapes.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UColorSpaces.cs">
+      <Link>Core\UColorSpaces.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UCompactFramework.cs">
+      <Link>Core\UCompactFramework.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UCompress20.cs">
+      <Link>Core\UCompress20.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UConvertTextToInternal.cs">
+      <Link>Core\UConvertTextToInternal.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UCoreClasses.cs">
+      <Link>Core\UCoreClasses.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UCoreConstants.cs">
+      <Link>Core\UCoreConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UCoreEnums.cs">
+      <Link>Core\UCoreEnums.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UCoreInterfaces.cs">
+      <Link>Core\UCoreInterfaces.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UDocumentProperties.cs">
+      <Link>Core\UDocumentProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UDrawingColors.cs">
+      <Link>Core\UDrawingColors.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UDrawingML.cs">
+      <Link>Core\UDrawingML.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UDrawingRichText.cs">
+      <Link>UDrawingRichText.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UDrawingSupport.cs">
+      <Link>Core\UDrawingSupport.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UExcelColors.cs">
+      <Link>Core\UExcelColors.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UExcelFont.cs">
+      <Link>Core\UExcelFont.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UExcelMetrics.cs">
+      <Link>Core\UExcelMetrics.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UExpressions.cs">
+      <Link>Core\UExpressions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFlexCelHtml.cs">
+      <Link>Core\UFlexCelHtml.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFlexCelTrace.cs">
+      <Link>Core\UFlexCelTrace.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFlxFormats.cs">
+      <Link>Core\UFlxFormats.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFlxMessages.cs">
+      <Link>Core\UFlxMessages.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFlxNumberFormat.cs">
+      <Link>Core\UFlxNumberFormat.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFlxStack.cs">
+      <Link>Core\UFlxStack.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFormulaTokens.cs">
+      <Link>Core\UFormulaTokens.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UFunctionCache.cs">
+      <Link>Core\UFunctionCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UMiscClasses.cs">
+      <Link>Core\UMiscClasses.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UProtect.cs">
+      <Link>Core\UProtect.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UShapeDef.cs">
+      <Link>Core\UShapeDef.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UStreamHelper.cs">
+      <Link>Core\UStreamHelper.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UThemes.cs">
+      <Link>Core\UThemes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UUInt32List.cs">
+      <Link>Core\UUInt32List.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UVirtualCells.cs">
+      <Link>Core\UVirtualCells.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UWildcardMatching.cs">
+      <Link>Core\UWildcardMatching.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UXlsBaseEncodeFormula.cs">
+      <Link>Core\UXlsBaseEncodeFormula.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UXlsFormulaFunctions.cs">
+      <Link>Core\UXlsFormulaFunctions.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\UXlsFormulaMessages.cs">
+      <Link>Core\UXlsFormulaMessages.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Core\zUnitTesting.cs">
+      <Link>Core\zUnitTesting.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\FlexCelReport.cs">
+      <Link>Report\FlexCelReport.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UFlexCelBands.cs">
+      <Link>Report\UFlexCelBands.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UFlexCelDataSource.cs">
+      <Link>Report\UFlexCelDataSource.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UFlexCelReportAux.cs">
+      <Link>Report\UFlexCelReportAux.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UFlexCelReportConsts.cs">
+      <Link>Report\UFlexCelReportConsts.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UReportCollections.cs">
+      <Link>Report\UReportCollections.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\URPNCondition.cs">
+      <Link>Report\URPNCondition.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UStringDataSets.cs">
+      <Link>Report\UStringDataSets.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UUserDefined.cs">
+      <Link>Report\UUserDefined.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UVirtualAdoNetDataTable.cs">
+      <Link>Report\UVirtualAdoNetDataTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UVirtualDataTable.cs">
+      <Link>Report\UVirtualDataTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Report\UVirtualDataTableSpecial.cs">
+      <Link>Report\UVirtualDataTableSpecial.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\Report\zUnitTesting.cs">
+      <Link>Report\zUnitTesting.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\CalcPack.cs">
+      <Link>XlsAdapter\CalcPack.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UCalc.cs">
+      <Link>XlsAdapter\UCalc.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UConvertBIFF8ToInternal.cs">
+      <Link>XlsAdapter\UConvertBIFF8ToInternal.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UConvertInternalToBIFF8.cs">
+      <Link>XlsAdapter\UConvertInternalToBIFF8.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UConvertInternalToText.cs">
+      <Link>XlsAdapter\UConvertInternalToText.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UEscherGraphToBSE.cs">
+      <Link>XlsAdapter\UEscherGraphToBSE.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UEscherLists.cs">
+      <Link>XlsAdapter\UEscherLists.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UEscherOtherRecords.cs">
+      <Link>XlsAdapter\UEscherOtherRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UEscherRecords.cs">
+      <Link>XlsAdapter\UEscherRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UExcelRecords.cs">
+      <Link>XlsAdapter\UExcelRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UHeaderImages.cs">
+      <Link>XlsAdapter\UHeaderImages.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UOle2Impl.cs">
+      <Link>XlsAdapter\UOle2Impl.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UOle2Properties.cs">
+      <Link>XlsAdapter\UOle2Properties.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UPxlExport.cs">
+      <Link>XlsAdapter\UPxlExport.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UPxlRecordLoader.cs">
+      <Link>XlsAdapter\UPxlRecordLoader.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\URecordLoader.cs">
+      <Link>XlsAdapter\URecordLoader.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\USearchAndReplace.cs">
+      <Link>XlsAdapter\USearchAndReplace.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\USheetNameList.cs">
+      <Link>XlsAdapter\USheetNameList.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\USortRange.cs">
+      <Link>XlsAdapter\USortRange.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\USST.cs">
+      <Link>XlsAdapter\USST.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UTextDelim.cs">
+      <Link>XlsAdapter\UTextDelim.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UTokenManipulator.cs">
+      <Link>XlsAdapter\UTokenManipulator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsAdapter.cs">
+      <Link>XlsAdapter\UXlsAdapter.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsBaseClientData.cs">
+      <Link>XlsAdapter\UXlsBaseClientData.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsBaseRecordLists.cs">
+      <Link>XlsAdapter\UXlsBaseRecordLists.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsBaseRecords.cs">
+      <Link>XlsAdapter\UXlsBaseRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsBaseSection.cs">
+      <Link>XlsAdapter\UXlsBaseSection.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsCellRecords.cs">
+      <Link>XlsAdapter\UXlsCellRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsChartInterface.cs">
+      <Link>XlsAdapter\UXlsChartInterface.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsChartRecords.cs">
+      <Link>XlsAdapter\UXlsChartRecords.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsClientData.cs">
+      <Link>XlsAdapter\UXlsClientData.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsColInfo.cs">
+      <Link>XlsAdapter\UXlsColInfo.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsCondFmt.cs">
+      <Link>XlsAdapter\UXlsCondFmt.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsEscher.cs">
+      <Link>XlsAdapter\UXlsEscher.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsFormula.cs">
+      <Link>XlsAdapter\UXlsFormula.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsHyperLink.cs">
+      <Link>XlsAdapter\UXlsHyperLink.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsNotes.cs">
+      <Link>XlsAdapter\UXlsNotes.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsOtherRecords.cs">
+      <Link>XlsAdapter\UXlsOtherRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsPageBreaks.cs">
+      <Link>XlsAdapter\UXlsPageBreaks.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsPalette.cs">
+      <Link>XlsAdapter\UXlsPalette.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsPivotTableRecords.cs">
+      <Link>XlsAdapter\UXlsPivotTableRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsProtect.cs">
+      <Link>XlsAdapter\UXlsProtect.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsProtectRecords.cs">
+      <Link>XlsAdapter\UXlsProtectRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsProtectStandard.cs">
+      <Link>XlsAdapter\UXlsProtectStandard.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsProtectXOR.cs">
+      <Link>XlsAdapter\UXlsProtectXOR.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsRangeRecords.cs">
+      <Link>XlsAdapter\UXlsRangeRecords.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsRecordLoader.cs">
+      <Link>XlsAdapter\UXlsRecordLoader.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsReferences.cs">
+      <Link>XlsAdapter\UXlsReferences.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsRowColEntries.cs">
+      <Link>XlsAdapter\UXlsRowColEntries.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsSelection.cs">
+      <Link>XlsAdapter\UXlsSelection.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsSheet.cs">
+      <Link>XlsAdapter\UXlsSheet.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsStrings.cs">
+      <Link>XlsAdapter\UXlsStrings.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsWmf.cs">
+      <Link>XlsAdapter\UXlsWmf.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsWorkbookGlobals.cs">
+      <Link>XlsAdapter\UXlsWorkbookGlobals.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsXF.cs">
+      <Link>XlsAdapter\UXlsXF.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\UXlsxRecordsNotImplemented.cs">
+      <Link>XlsAdapter\UXlsxRecordsNotImplemented.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\XlsConsts.cs">
+      <Link>XlsAdapter\XlsConsts.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\XlsMessages.cs">
+      <Link>XlsAdapter\XlsMessages.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\..\Source\XlsAdapter\zUnitTesting.cs">
+      <Link>XlsAdapter\zUnitTesting.cs</Link>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CFHelpers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlexCelCFAssemblyInfo.cs" />
+    <EmbeddedResource Include="..\..\Source\Core\flxmsg.es.resx">
+      <Link>Core\flxmsg.es.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Core\flxmsg.resx">
+      <Link>Core\flxmsg.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Core\formulamsg.resx">
+      <Link>Core\formulamsg.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Core\FunctionNames.resx">
+      <Link>Core\FunctionNames.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Report\ConfigTagNames.resx">
+      <Link>Report\ConfigTagNames.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Report\FlexCelReport.resx">
+      <Link>Report\FlexCelReport.resx</Link>
+      <DependentUpon>FlexCelReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Report\TagNames.resx">
+      <Link>Report\TagNames.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\Report\TagTokens.resx">
+      <Link>Report\TagTokens.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\XlsAdapter\xlsmsg.resx">
+      <Link>XlsAdapter\xlsmsg.resx</Link>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\XlsAdapter\EmptyWorkbook.xls">
+      <Link>XlsAdapter\EmptyWorkbook.xls</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\XlsAdapter\EmptyWorkbook2007.xls">
+      <Link>XlsAdapter\EmptyWorkbook2007.xls</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Source\XlsAdapter\EmptyWorkbook2010.xls">
+      <Link>XlsAdapter\EmptyWorkbook2010.xls</Link>
+    </EmbeddedResource>
+    <None Include="flexcel.snk" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v3.5'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+</Project>
