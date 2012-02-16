@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E9E2E82C-1A8A-4004-B783-52A518FC4F7C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -31,17 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dllCore, Version=5.5.0.0, Culture=neutral, PublicKeyToken=c3782b1aa0057be1, processorArchitecture=MSIL">
+    <Reference Include="FlexCel, Version=5.6.2.0, Culture=neutral, PublicKeyToken=715fffa4490770b0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\dllCore.dll</HintPath>
+      <HintPath>..\DLL\FlexCel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />

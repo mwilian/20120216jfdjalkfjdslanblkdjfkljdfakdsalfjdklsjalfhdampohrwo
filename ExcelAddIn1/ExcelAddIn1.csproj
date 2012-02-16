@@ -27,7 +27,8 @@
     <AssemblyName>ExcelAddIn1</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>TestKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <!--
@@ -199,7 +200,6 @@
     <None Include="Resources\comment.png" />
     <None Include="Resources\blance.png" />
     <None Include="Resources\analysis.png" />
-    <None Include="TestKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BUS\BUS.csproj">
