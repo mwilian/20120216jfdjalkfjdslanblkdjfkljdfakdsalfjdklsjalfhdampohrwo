@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ROOT>
+  <ITEM Code="English" Value="eng.xml"/>
+  <ITEM Code="Vietnam" Value="vni.xml"/>
+  <ITEM Code="China" Value="cin.xml"/>
+</ROOT>

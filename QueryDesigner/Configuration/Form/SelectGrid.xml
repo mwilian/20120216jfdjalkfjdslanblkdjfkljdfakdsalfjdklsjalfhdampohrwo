@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ROOT>  
+  <ITEM ID="RadGrid1" LanguageCode="DTB" Type="RadGrid" Index="0"/>
+  <ITEM ID="RadGrid1" LanguageCode="QD_ID" Type="RadGrid" Index="1"/>
+  <ITEM ID="RadGrid1" LanguageCode="DESCRIPTION" Type="RadGrid" Index="2"/>
+  <ITEM ID="RadGrid1" LanguageCode="SELECT" Type="RadGrid" Index="3"/>
+</ROOT>

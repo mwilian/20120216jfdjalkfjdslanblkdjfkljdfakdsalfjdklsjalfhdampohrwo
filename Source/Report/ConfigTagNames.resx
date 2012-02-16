@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<data name="SQL">
+		<value>SQL</value>
+		<comment>1</comment>
+	</data>
+	<data name="RELATIONSHIP">
+		<value>RELATIONSHIP</value>
+		<comment>0</comment>
+	</data>
+	<data name="DISTINCT">
+		<value>DISTINCT</value>
+		<comment>0</comment>
+	</data>
+	<data name="PSQL">
+		<value>(Connection; Select * from Table where field = value)</value>
+	</data>
+	<data name="PRELATIONSHIP">
+		<value>(Master-&gt;Detail)</value>
+	</data>
+	<data name="PDISTINCT">
+		<value>(field1; field2)</value>
+	</data>
+	<data name="SQLPARAM">
+		<value>@</value>
+	</data>
+	<data name="PSQLPARAM">
+		<value></value>
+	</data>
+	<data name="SPLIT">
+		<value>SPLIT</value>
+	</data>
+	<data name="PSPLIT">
+		<value>(SourceTable; Number of records)</value>
+	</data>
+	<data name="TOP">
+		<value>TOP</value>
+	</data>
+	<data name="PTOP">
+		<value>(SourceTable; Number of records)</value>
+	</data>
+	<data name="USERTABLE">
+		<value>USER TABLE</value>
+	</data>
+	<data name="PUSERTABLE">
+		<value>(User Text)</value>
+	</data>
+	<data name="Format.ADD">
+		<value>+</value>
+	</data>
+	<data name="Format.DELETE">
+		<value>-</value>
+	</data>
+	<data name="Format.ALL">
+		<value>ALL</value>
+	</data>
+	<data name="Format.BORDER">
+		<value>BORDER</value>
+	</data>
+	<data name="Format.BORDERLEFT">
+		<value>BORDER.LEFT</value>
+	</data>
+	<data name="Format.BORDERRIGHT">
+		<value>BORDER.RIGHT</value>
+	</data>
+	<data name="Format.BORDERTOP">
+		<value>BORDER.TOP</value>
+	</data>
+	<data name="Format.BORDERBOTTOM">
+		<value>BORDER.BOTTOM</value>
+	</data>
+	<data name="Format.BORDEREXTERIOR">
+		<value>BORDER.EXTERIOR</value>
+	</data>
+	<data name="Format.FONT">
+		<value>FONT</value>
+	</data>
+	<data name="Format.FONTFAMILY">
+		<value>FONT.FAMILY</value>
+	</data>
+	<data name="Format.FONTSIZE">
+		<value>FONT.SIZE</value>
+	</data>
+	<data name="Format.FONTCOLOR">
+		<value>FONT.COLOR</value>
+	</data>
+	<data name="Format.FONTSTYLE">
+		<value>FONT.STYLE</value>
+	</data>
+	<data name="Format.FONTUNDERLINE">
+		<value>FONT.UNDERLINE</value>
+	</data>
+	<data name="Format.NUMERICFORMAT">
+		<value>NUMERICFORMAT</value>
+	</data>
+	<data name="Format.BACKGROUND">
+		<value>BACKGROUND</value>
+	</data>
+	<data name="Format.BACKGROUNDPATTERN">
+		<value>BACKGROUND.PATTERN</value>
+	</data>
+	<data name="Format.BACKGROUNDCOLOR">
+		<value>BACKGROUND.COLOR</value>
+	</data>
+	<data name="Format.TEXTALIGN">
+		<value>TEXTALIGN</value>
+	</data>
+	<data name="Format.TEXTALIGNHORIZ">
+		<value>TEXTALIGN.HORIZ</value>
+	</data>
+	<data name="Format.TEXTALIGNVERT">
+		<value>TEXTALIGN.VERT</value>
+	</data>
+	<data name="Format.LOCKED">
+		<value>LOCKED</value>
+	</data>
+	<data name="Format.HIDDEN">
+		<value>HIDDEN</value>
+	</data>
+	<data name="Format.TEXTWRAP">
+		<value>TEXTWRAP</value>
+	</data>
+	<data name="Format.SHRINKTOFIT">
+		<value>SHRINKTOFIT</value>
+	</data>
+	<data name="Format.ROTATION">
+		<value>ROTATION</value>
+	</data>
+	<data name="Format.TEXTINDENT">
+		<value>TEXTINDENT</value>
+	</data>
+  <data name="NROWS">
+    <value>ROWS</value>
+  </data>
+  <data name="PNROWS">
+    <value>(Number of records)</value>
+  </data>
+  <data name="COLUMNS">
+    <value>COLUMNS</value>
+  </data>
+  <data name="PCOLUMNS">
+    <value>(Name of table)</value>
+  </data>
+
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader></root>

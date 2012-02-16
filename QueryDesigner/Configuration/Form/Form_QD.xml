@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ROOT>
+  <ITEM ID="mMain" LanguageCode="Change Theme" Type="RadMenu" Index="miTheme"/>
+  <ITEM ID="mMain" LanguageCode="Connection" Type="RadMenu" Index="btnConnect"/> 
+  <ITEM ID="lblDatabase" LanguageCode="Database" Type="RadLabel" Index=""/>
+  <ITEM ID="lblDescription" LanguageCode="Description" Type="RadLabel" Index=""/>
+  <ITEM ID="lblInquiryCode" LanguageCode="Inquiry Code" Type="RadLabel" Index=""/>
+  <ITEM ID="lblOwner" LanguageCode="Owner" Type="RadLabel" Index=""/>
+  <ITEM ID="lblQueryDataSource" LanguageCode="Query Data Source" Type="RadLabel" Index=""/>
+  <ITEM ID="lblGroup" LanguageCode="Group" Type="RadLabel" Index=""/>
+  <ITEM ID="tsMain" LanguageCode="General" Type="RadTabStrip" Index="tabItemGeneral"/>
+  <ITEM ID="tsMain" LanguageCode="Query Designer" Type="RadTabStrip" Index="tabItemQD"/>
+  <ITEM ID="tsMain" LanguageCode="Inquiry Result" Type="RadTabStrip" Index="tabItemPreview"/>
+  <ITEM ID="tsMain" LanguageCode="SQL Text" Type="RadTabStrip" Index="tabItemSQLText"/>
+  <ITEM ID="tsMain" LanguageCode="Preview Report" Type="RadTabStrip" Index="tabReportViewer"/>
+  <ITEM ID="btnTemplate" LanguageCode="Open Template" Type="Button" Index=""/>
+  <ITEM ID="dgvFilter" LanguageCode="Description" Type="RadGrid" Index="Description"/>
+  <ITEM ID="dgvFilter" LanguageCode="Filter From" Type="RadGrid" Index="FilterFrom"/>
+  <ITEM ID="dgvFilter" LanguageCode="Filter To" Type="RadGrid" Index="FilterTo"/>
+  <ITEM ID="dgvSelectNodes" LanguageCode="Sort" Type="RadGrid" Index="Sort"/>
+  <ITEM ID="dgvSelectNodes" LanguageCode="My Family" Type="RadGrid" Index="MyFamily"/>
+  <ITEM ID="dgvSelectNodes" LanguageCode="Description" Type="RadGrid" Index="Description"/>
+  <ITEM ID="dgvSelectNodes" LanguageCode="Agregate" Type="RadGrid" Index="Agregate"/>  
+</ROOT>

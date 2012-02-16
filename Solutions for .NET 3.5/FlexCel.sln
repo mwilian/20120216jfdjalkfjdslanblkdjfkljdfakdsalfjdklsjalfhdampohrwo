@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexCel", "FlexCel.csproj", "{00861DFC-9DDB-4671-9209-E6AE0FB402AD}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexCelWinforms", "FlexCelWinforms.csproj", "{2B4DC165-412B-4867-A645-77F4C5F083E0}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexCelASPNET", "FlexCelASPNET.csproj", "{BA03940E-0710-49DC-827A-3C04C1ED835A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00861DFC-9DDB-4671-9209-E6AE0FB402AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00861DFC-9DDB-4671-9209-E6AE0FB402AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00861DFC-9DDB-4671-9209-E6AE0FB402AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00861DFC-9DDB-4671-9209-E6AE0FB402AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B4DC165-412B-4867-A645-77F4C5F083E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B4DC165-412B-4867-A645-77F4C5F083E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B4DC165-412B-4867-A645-77F4C5F083E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B4DC165-412B-4867-A645-77F4C5F083E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA03940E-0710-49DC-827A-3C04C1ED835A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA03940E-0710-49DC-827A-3C04C1ED835A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA03940E-0710-49DC-827A-3C04C1ED835A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA03940E-0710-49DC-827A-3C04C1ED835A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

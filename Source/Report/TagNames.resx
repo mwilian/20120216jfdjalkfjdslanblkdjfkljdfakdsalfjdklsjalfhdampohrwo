@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<data name="DELETEROW">
+		<value>DELETE ROW</value>
+		<comment>0</comment>
+	</data>
+	<data name="DELETERANGE">
+		<value>DELETE RANGE</value>
+		<comment>1</comment>
+	</data>
+	<data name="DELETECOLUMN">
+		<value>DELETE COLUMN</value>
+		<comment>0</comment>
+	</data>
+	<data name="FORMATCELL">
+		<value>FORMAT CELL</value>
+		<comment>1</comment>
+	</data>
+	<data name="FORMATROW">
+		<value>FORMAT ROW</value>
+		<comment>1</comment>
+	</data>
+	<data name="FORMATCOLUMN">
+		<value>FORMAT COLUMN</value>
+		<comment>1</comment>
+	</data>
+	<data name="FORMATRANGE">
+		<value>FORMAT RANGE</value>
+		<comment>2</comment>
+	</data>
+	<data name="INCLUDE">
+		<value>INCLUDE</value>
+		<comment>3</comment>
+	</data>
+	<data name="HPAGEBREAK">
+		<value>PAGE BREAK</value>
+		<comment>0</comment>
+	</data>
+	<data name="VPAGEBREAK">
+		<value>COLUMN PAGE BREAK</value>
+		<comment>0</comment>
+	</data>
+	<data name="CONFIG">
+		<value>CONFIG</value>
+		<comment>0</comment>
+	</data>
+	<data name="DELETESHEET">
+		<value>DELETE SHEET</value>
+		<comment>0</comment>
+	</data>
+	<data name="COMMENT">
+		<value>//</value>
+		<comment>1</comment>
+	</data>
+	<data name="STRIF">
+		<value>IF</value>
+		<comment>3</comment>
+	</data>
+	<data name="STREQUAL">
+		<value>=</value>
+		<comment>1</comment>
+	</data>
+	<data name="EVALUATE">
+		<value>EVALUATE</value>
+		<comment>1</comment>
+	</data>
+	<data name="IMGSIZE">
+		<value>IMGSIZE</value>
+		<comment>2</comment>
+	</data>
+	<data name="IMGPOS">
+		<value>IMGPOS</value>
+		<comment>2</comment>
+	</data>
+	<data name="IMGFIT">
+		<value>IMGFIT</value>
+		<comment>2</comment>
+	</data>
+		<data name="IMGDELETE">
+		<value>IMGDELETE</value>
+		<comment>2</comment>
+	</data>
+
+	<data name="LOOKUP">
+		<value>LOOKUP</value>
+		<comment>4</comment>
+	</data>
+	<data name="ARRAY">
+		<value>ARRAY</value>
+		<comment>n</comment>
+	</data>
+	<data name="REGEX">
+		<value>REGEX</value>
+		<comment>n</comment>
+	</data>
+	<data name="MERGERANGE">
+		<value>MERGE RANGE</value>
+		<comment>3</comment>
+	</data>
+	<data name="FORMULA">
+		<value>FORMULA</value>
+		<comment>0</comment>
+	</data>
+	<data name="REF">
+		<value>REF</value>
+		<comment>n</comment>
+	</data>
+	<data name="COLUMNWIDTH">
+		<value>COLUMN WIDTH</value>
+		<comment>1</comment>
+	</data>
+	<data name="ROWHEIGHT">
+		<value>ROW HEIGHT</value>
+		<comment>1</comment>
+	</data>
+	<data name="AUTOFITSETTINGS">
+		<value>AUTOFIT SETTINGS</value>
+		<comment>1</comment>
+	</data>
+	<data name="HTML">
+		<value>HTML</value>
+		<comment>1</comment>
+	</data>
+  <data name="DEFINED">
+    <value>DEFINED</value>
+    <comment>1</comment>
+  </data>
+  <data name="DEFINEDFORMAT">
+    <value>DEFINED FORMAT</value>
+    <comment>1</comment>
+  </data>
+  <data name="PREPROCESS">
+		<value>PREPROCESS</value>
+		<comment>1</comment>
+	</data>
+	<data name="ERRORSINRESULTFILE">
+		<value>ERRORSINRESULTFILE</value>
+	</data>
+  <data name="DEBUG">
+    <value>DEBUG</value>
+  </data>
+  <data name="AUTOPAGEBREAKS">
+    <value>AUTO PAGE BREAKS</value>
+  </data>
+  <data name="AGGREGATE">
+    <value>AGGREGATE</value>
+  </data>
+  <data name="LIST">
+    <value>LIST</value>
+  </data>
+  <data name="DBVALUE">
+    <value>DBVALUE</value>
+  </data>
+  <data name ="FLEXCELCOUNT">
+    <value>__FLEXCELCOUNT</value>
+  </data>
+  
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader></root>

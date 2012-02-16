@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ROOT>
+  <ITEM ID="lblLanguage" LanguageCode="Language" Type="Label" Index=""/>
+  <ITEM ID="lblDatabase" LanguageCode="Database" Type="Label" Index=""/>
+  <ITEM ID="lblDescription" LanguageCode="Description" Type="Label" Index=""/>
+  <ITEM ID="lblInquiryCode" LanguageCode="Inquiry Code" Type="Label" Index=""/>
+  <ITEM ID="lblOwner" LanguageCode="Owner" Type="Label" Index=""/>
+  <ITEM ID="lblQueryDataSource" LanguageCode="Query Data Source" Type="Label" Index=""/>
+  <ITEM ID="lblGroup" LanguageCode="Group" Type="Label" Index=""/>
+  <ITEM ID="RadTabStrip1" LanguageCode="General" Type="RadTabStrip" Index="0"/>
+  <ITEM ID="RadTabStrip1" LanguageCode="Query Designer" Type="RadTabStrip" Index="1"/>
+  <ITEM ID="RadTabStrip1" LanguageCode="Preview Report" Type="RadTabStrip" Index="2"/>
+  <ITEM ID="RadGrid1" LanguageCode="Filter To" Type="RadGrid" Index="3"/>
+  <ITEM ID="RadGrid1" LanguageCode="Filter From" Type="RadGrid" Index="2"/>
+  <ITEM ID="RadGrid1" LanguageCode="Description" Type="RadGrid" Index="1"/>
+  <ITEM ID="RadGrid2" LanguageCode="Sort" Type="RadGrid" Index="1"/>
+  <ITEM ID="RadGrid2" LanguageCode="My Family" Type="RadGrid" Index="3"/>
+  <ITEM ID="RadGrid2" LanguageCode="Description" Type="RadGrid" Index="4"/>
+  <ITEM ID="RadGrid2" LanguageCode="Agregate" Type="RadGrid" Index="6"/>
+  <ITEM ID="lb_thongbao" LanguageCode="Successful" Type="Label" Index=""/>
+  <ITEM ID="lb_err_dtb" LanguageCode="Missing Database" Type="Label" Index=""/>
+  <ITEM ID="lb_err_code" LanguageCode="Missing Inquiry Code" Type="Label" Index=""/>
+  <ITEM ID="lb_err_dsr" LanguageCode="Missing Description" Type="Label" Index=""/>
+  <ITEM ID="lb_err_own" LanguageCode="Missing Owner" Type="Label" Index=""/>
+  <ITEM ID="lb_err_datasource" LanguageCode="Missing Query Data Source" Type="Label" Index=""/>
+  <ITEM ID="lb_err_nhom" LanguageCode="Missing Group" Type="Label" Index=""/>
+</ROOT>

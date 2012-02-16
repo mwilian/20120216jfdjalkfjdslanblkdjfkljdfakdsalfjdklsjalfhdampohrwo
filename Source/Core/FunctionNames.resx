@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<data name="DONT Translate this file.">
+		<value>If you do, formulas will behave different depending on your target language</value>
+	</data>
+	<data name="COUNT">
+		<value>COUNT</value>
+	</data>
+	<data name="IF">
+		<value>IF</value>
+	</data>
+	<data name="ISNA">
+		<value>ISNA</value>
+	</data>
+	<data name="ISERROR">
+		<value>ISERROR</value>
+	</data>
+	<data name="SUM">
+		<value>SUM</value>
+	</data>
+	<data name="AVERAGE">
+		<value>AVERAGE</value>
+	</data>
+	<data name="MIN">
+		<value>MIN</value>
+	</data>
+	<data name="MAX">
+		<value>MAX</value>
+	</data>
+	<data name="ROW">
+		<value>ROW</value>
+	</data>
+	<data name="COLUMN">
+		<value>COLUMN</value>
+	</data>
+	<data name="NA">
+		<value>NA</value>
+	</data>
+	<data name="NPV">
+		<value>NPV</value>
+	</data>
+	<data name="STDEV">
+		<value>STDEV</value>
+	</data>
+	<data name="DOLLAR">
+		<value>DOLLAR</value>
+	</data>
+	<data name="FIXED">
+		<value>FIXED</value>
+	</data>
+	<data name="SIN">
+		<value>SIN</value>
+	</data>
+	<data name="COS">
+		<value>COS</value>
+	</data>
+	<data name="TAN">
+		<value>TAN</value>
+	</data>
+	<data name="ATAN">
+		<value>ATAN</value>
+	</data>
+	<data name="PI">
+		<value>PI</value>
+	</data>
+	<data name="SQRT">
+		<value>SQRT</value>
+	</data>
+	<data name="EXP">
+		<value>EXP</value>
+	</data>
+	<data name="LN">
+		<value>LN</value>
+	</data>
+	<data name="LOG10">
+		<value>LOG10</value>
+	</data>
+	<data name="ABS">
+		<value>ABS</value>
+	</data>
+	<data name="INT">
+		<value>INT</value>
+	</data>
+	<data name="SIGN">
+		<value>SIGN</value>
+	</data>
+	<data name="ROUND">
+		<value>ROUND</value>
+	</data>
+	<data name="LOOKUP">
+		<value>LOOKUP</value>
+	</data>
+	<data name="INDEX">
+		<value>INDEX</value>
+	</data>
+	<data name="REPT">
+		<value>REPT</value>
+	</data>
+	<data name="MID">
+		<value>MID</value>
+	</data>
+	<data name="LEN">
+		<value>LEN</value>
+	</data>
+	<data name="VALUE">
+		<value>VALUE</value>
+	</data>
+	<data name="TRUE">
+		<value>TRUE</value>
+	</data>
+	<data name="FALSE">
+		<value>FALSE</value>
+	</data>
+	<data name="AND">
+		<value>AND</value>
+	</data>
+	<data name="OR">
+		<value>OR</value>
+	</data>
+	<data name="NOT">
+		<value>NOT</value>
+	</data>
+	<data name="MOD">
+		<value>MOD</value>
+	</data>
+	<data name="DCOUNT">
+		<value>DCOUNT</value>
+	</data>
+	<data name="DSUM">
+		<value>DSUM</value>
+	</data>
+	<data name="DAVERAGE">
+		<value>DAVERAGE</value>
+	</data>
+	<data name="DMIN">
+		<value>DMIN</value>
+	</data>
+	<data name="DMAX">
+		<value>DMAX</value>
+	</data>
+	<data name="DSTDEV">
+		<value>DSTDEV</value>
+	</data>
+	<data name="VAR">
+		<value>VAR</value>
+	</data>
+	<data name="DVAR">
+		<value>DVAR</value>
+	</data>
+	<data name="TEXT">
+		<value>TEXT</value>
+	</data>
+	<data name="LINEST">
+		<value>LINEST</value>
+	</data>
+	<data name="TREND">
+		<value>TREND</value>
+	</data>
+	<data name="LOGEST">
+		<value>LOGEST</value>
+	</data>
+	<data name="GROWTH">
+		<value>GROWTH</value>
+	</data>
+	<data name="GOTO">
+		<value>GOTO</value>
+	</data>
+	<data name="HALT">
+		<value>HALT</value>
+	</data>
+	<data name="RETURN">
+		<value>RETURN</value>
+	</data>
+	<data name="PV">
+		<value>PV</value>
+	</data>
+	<data name="FV">
+		<value>FV</value>
+	</data>
+	<data name="NPER">
+		<value>NPER</value>
+	</data>
+	<data name="PMT">
+		<value>PMT</value>
+	</data>
+	<data name="RATE">
+		<value>RATE</value>
+	</data>
+	<data name="MIRR">
+		<value>MIRR</value>
+	</data>
+	<data name="IRR">
+		<value>IRR</value>
+	</data>
+	<data name="RAND">
+		<value>RAND</value>
+	</data>
+	<data name="MATCH">
+		<value>MATCH</value>
+	</data>
+	<data name="DATE">
+		<value>DATE</value>
+	</data>
+	<data name="TIME">
+		<value>TIME</value>
+	</data>
+	<data name="DAY">
+		<value>DAY</value>
+	</data>
+	<data name="MONTH">
+		<value>MONTH</value>
+	</data>
+	<data name="YEAR">
+		<value>YEAR</value>
+	</data>
+	<data name="WEEKDAY">
+		<value>WEEKDAY</value>
+	</data>
+	<data name="HOUR">
+		<value>HOUR</value>
+	</data>
+	<data name="MINUTE">
+		<value>MINUTE</value>
+	</data>
+	<data name="SECOND">
+		<value>SECOND</value>
+	</data>
+	<data name="NOW">
+		<value>NOW</value>
+	</data>
+	<data name="AREAS">
+		<value>AREAS</value>
+	</data>
+	<data name="ROWS">
+		<value>ROWS</value>
+	</data>
+	<data name="COLUMNS">
+		<value>COLUMNS</value>
+	</data>
+	<data name="OFFSET">
+		<value>OFFSET</value>
+	</data>
+	<data name="ABSREF">
+		<value>ABSREF</value>
+	</data>
+	<data name="RELREF">
+		<value>RELREF</value>
+	</data>
+	<data name="ARGUMENT">
+		<value>ARGUMENT</value>
+	</data>
+	<data name="SEARCH">
+		<value>SEARCH</value>
+	</data>
+	<data name="TRANSPOSE">
+		<value>TRANSPOSE</value>
+	</data>
+	<data name="ERROR">
+		<value>ERROR</value>
+	</data>
+	<data name="STEP">
+		<value>STEP</value>
+	</data>
+	<data name="TYPE">
+		<value>TYPE</value>
+	</data>
+	<data name="ECHO">
+		<value>ECHO</value>
+	</data>
+	<data name="SET.NAME">
+		<value>SET.NAME</value>
+	</data>
+	<data name="CALLER">
+		<value>CALLER</value>
+	</data>
+	<data name="DEREF">
+		<value>DEREF</value>
+	</data>
+	<data name="WINDOWS">
+		<value>WINDOWS</value>
+	</data>
+	<data name="SERIES">
+		<value>SERIES</value>
+	</data>
+	<data name="DOCUMENTS">
+		<value>DOCUMENTS</value>
+	</data>
+	<data name="ACTIVE.CELL">
+		<value>ACTIVE.CELL</value>
+	</data>
+	<data name="SELECTION">
+		<value>SELECTION</value>
+	</data>
+	<data name="RESULT">
+		<value>RESULT</value>
+	</data>
+	<data name="ATAN2">
+		<value>ATAN2</value>
+	</data>
+	<data name="ASIN">
+		<value>ASIN</value>
+	</data>
+	<data name="ACOS">
+		<value>ACOS</value>
+	</data>
+	<data name="CHOOSE">
+		<value>CHOOSE</value>
+	</data>
+	<data name="HLOOKUP">
+		<value>HLOOKUP</value>
+	</data>
+	<data name="VLOOKUP">
+		<value>VLOOKUP</value>
+	</data>
+	<data name="LINKS">
+		<value>LINKS</value>
+	</data>
+	<data name="INPUT">
+		<value>INPUT</value>
+	</data>
+	<data name="ISREF">
+		<value>ISREF</value>
+	</data>
+	<data name="GET.FORMULA">
+		<value>GET.FORMULA</value>
+	</data>
+	<data name="GET.NAME">
+		<value>GET.NAME</value>
+	</data>
+	<data name="SET.VALUE2">
+		<value>SET.VALUE2</value>
+	</data>
+	<data name="LOG">
+		<value>LOG</value>
+	</data>
+	<data name="EXEC">
+		<value>EXEC</value>
+	</data>
+	<data name="CHAR">
+		<value>CHAR</value>
+	</data>
+	<data name="LOWER">
+		<value>LOWER</value>
+	</data>
+	<data name="UPPER">
+		<value>UPPER</value>
+	</data>
+	<data name="PROPER">
+		<value>PROPER</value>
+	</data>
+	<data name="LEFT">
+		<value>LEFT</value>
+	</data>
+	<data name="RIGHT">
+		<value>RIGHT</value>
+	</data>
+	<data name="EXACT">
+		<value>EXACT</value>
+	</data>
+	<data name="TRIM">
+		<value>TRIM</value>
+	</data>
+	<data name="REPLACE">
+		<value>REPLACE</value>
+	</data>
+	<data name="SUBSTITUTE">
+		<value>SUBSTITUTE</value>
+	</data>
+	<data name="CODE">
+		<value>CODE</value>
+	</data>
+	<data name="NAMES">
+		<value>NAMES</value>
+	</data>
+	<data name="DIRECTORY">
+		<value>DIRECTORY</value>
+	</data>
+	<data name="FIND">
+		<value>FIND</value>
+	</data>
+	<data name="CELL">
+		<value>CELL</value>
+	</data>
+	<data name="ISERR">
+		<value>ISERR</value>
+	</data>
+	<data name="ISTEXT">
+		<value>ISTEXT</value>
+	</data>
+	<data name="ISNUMBER">
+		<value>ISNUMBER</value>
+	</data>
+	<data name="ISBLANK">
+		<value>ISBLANK</value>
+	</data>
+	<data name="T">
+		<value>T</value>
+	</data>
+	<data name="N">
+		<value>N</value>
+	</data>
+	<data name="FOPEN">
+		<value>FOPEN</value>
+	</data>
+	<data name="FCLOSE">
+		<value>FCLOSE</value>
+	</data>
+	<data name="FSIZE">
+		<value>FSIZE</value>
+	</data>
+	<data name="FREADLN">
+		<value>FREADLN</value>
+	</data>
+	<data name="FREAD">
+		<value>FREAD</value>
+	</data>
+	<data name="FWRITELN">
+		<value>FWRITELN</value>
+	</data>
+	<data name="FWRITE">
+		<value>FWRITE</value>
+	</data>
+	<data name="FPOS">
+		<value>FPOS</value>
+	</data>
+	<data name="DATEVALUE">
+		<value>DATEVALUE</value>
+	</data>
+	<data name="TIMEVALUE">
+		<value>TIMEVALUE</value>
+	</data>
+	<data name="SLN">
+		<value>SLN</value>
+	</data>
+	<data name="SYD">
+		<value>SYD</value>
+	</data>
+	<data name="DDB">
+		<value>DDB</value>
+	</data>
+	<data name="GET.DEF">
+		<value>GET.DEF</value>
+	</data>
+	<data name="REFTEXT">
+		<value>REFTEXT</value>
+	</data>
+	<data name="TEXTREF">
+		<value>TEXTREF</value>
+	</data>
+	<data name="INDIRECT">
+		<value>INDIRECT</value>
+	</data>
+	<data name="REGISTER">
+		<value>REGISTER</value>
+	</data>
+	<data name="CALL">
+		<value>CALL</value>
+	</data>
+	<data name="ADD.BAR">
+		<value>ADD.BAR</value>
+	</data>
+	<data name="ADD.MENU">
+		<value>ADD.MENU</value>
+	</data>
+	<data name="ADD.COMMAND">
+		<value>ADD.COMMAND</value>
+	</data>
+	<data name="ENABLE.COMMAND">
+		<value>ENABLE.COMMAND</value>
+	</data>
+	<data name="CHECK.COMMAND">
+		<value>CHECK.COMMAND</value>
+	</data>
+	<data name="RENAME.COMMAND">
+		<value>RENAME.COMMAND</value>
+	</data>
+	<data name="SHOW.BAR">
+		<value>SHOW.BAR</value>
+	</data>
+	<data name="DELETE.MENU">
+		<value>DELETE.MENU</value>
+	</data>
+	<data name="DELETE.COMMAND">
+		<value>DELETE.COMMAND</value>
+	</data>
+	<data name="GET.CHART.ITEM">
+		<value>GET.CHART.ITEM</value>
+	</data>
+	<data name="DIALOG.BOX">
+		<value>DIALOG.BOX</value>
+	</data>
+	<data name="CLEAN">
+		<value>CLEAN</value>
+	</data>
+	<data name="MDETERM">
+		<value>MDETERM</value>
+	</data>
+	<data name="MINVERSE">
+		<value>MINVERSE</value>
+	</data>
+	<data name="MMULT">
+		<value>MMULT</value>
+	</data>
+	<data name="FILES">
+		<value>FILES</value>
+	</data>
+	<data name="IPMT">
+		<value>IPMT</value>
+	</data>
+	<data name="PPMT">
+		<value>PPMT</value>
+	</data>
+	<data name="COUNTA">
+		<value>COUNTA</value>
+	</data>
+	<data name="CANCEL.KEY">
+		<value>CANCEL.KEY</value>
+	</data>
+	<data name="FOR">
+		<value>FOR</value>
+	</data>
+	<data name="WHILE">
+		<value>WHILE</value>
+	</data>
+	<data name="BREAK">
+		<value>BREAK</value>
+	</data>
+	<data name="NEXT">
+		<value>NEXT</value>
+	</data>
+	<data name="INITIATE">
+		<value>INITIATE</value>
+	</data>
+	<data name="REQUEST">
+		<value>REQUEST</value>
+	</data>
+	<data name="POKE">
+		<value>POKE</value>
+	</data>
+	<data name="EXECUTE">
+		<value>EXECUTE</value>
+	</data>
+	<data name="TERMINATE">
+		<value>TERMINATE</value>
+	</data>
+	<data name="RESTART">
+		<value>RESTART</value>
+	</data>
+	<data name="HELP">
+		<value>HELP</value>
+	</data>
+	<data name="GET.BAR">
+		<value>GET.BAR</value>
+	</data>
+	<data name="PRODUCT">
+		<value>PRODUCT</value>
+	</data>
+	<data name="FACT">
+		<value>FACT</value>
+	</data>
+	<data name="GET.CELL">
+		<value>GET.CELL</value>
+	</data>
+	<data name="GET.WORKSPACE">
+		<value>GET.WORKSPACE</value>
+	</data>
+	<data name="GET.WINDOW">
+		<value>GET.WINDOW</value>
+	</data>
+	<data name="GET.DOCUMENT">
+		<value>GET.DOCUMENT</value>
+	</data>
+	<data name="DPRODUCT">
+		<value>DPRODUCT</value>
+	</data>
+	<data name="ISNONTEXT">
+		<value>ISNONTEXT</value>
+	</data>
+	<data name="GET.NOTE">
+		<value>GET.NOTE</value>
+	</data>
+	<data name="NOTE">
+		<value>NOTE</value>
+	</data>
+	<data name="STDEVP">
+		<value>STDEVP</value>
+	</data>
+	<data name="VARP">
+		<value>VARP</value>
+	</data>
+	<data name="DSTDEVP">
+		<value>DSTDEVP</value>
+	</data>
+	<data name="DVARP">
+		<value>DVARP</value>
+	</data>
+	<data name="TRUNC">
+		<value>TRUNC</value>
+	</data>
+	<data name="ISLOGICAL">
+		<value>ISLOGICAL</value>
+	</data>
+	<data name="DCOUNTA">
+		<value>DCOUNTA</value>
+	</data>
+	<data name="DELETE.BAR">
+		<value>DELETE.BAR</value>
+	</data>
+	<data name="UNREGISTER">
+		<value>UNREGISTER</value>
+	</data>
+	<data name="202">
+		<value>202</value>
+	</data>
+	<data name="203">
+		<value>203</value>
+	</data>
+	<data name="USDOLLAR">
+		<value>USDOLLAR</value>
+	</data>
+	<data name="FINDB">
+		<value>FINDB</value>
+	</data>
+	<data name="SEARCHB">
+		<value>SEARCHB</value>
+	</data>
+	<data name="REPLACEB">
+		<value>REPLACEB</value>
+	</data>
+	<data name="LEFTB">
+		<value>LEFTB</value>
+	</data>
+	<data name="RIGHTB">
+		<value>RIGHTB</value>
+	</data>
+	<data name="MIDB">
+		<value>MIDB</value>
+	</data>
+	<data name="LENB">
+		<value>LENB</value>
+	</data>
+	<data name="ROUNDUP">
+		<value>ROUNDUP</value>
+	</data>
+	<data name="ROUNDDOWN">
+		<value>ROUNDDOWN</value>
+	</data>
+	<data name="ASC">
+		<value>ASC</value>
+	</data>
+	<data name="DBSC">
+		<value>DBSC</value>
+	</data>
+	<data name="RANK">
+		<value>RANK</value>
+	</data>
+	<data name="217">
+		<value>217</value>
+	</data>
+	<data name="218">
+		<value>218</value>
+	</data>
+	<data name="ADDRESS">
+		<value>ADDRESS</value>
+	</data>
+	<data name="DAYS360">
+		<value>DAYS360</value>
+	</data>
+	<data name="TODAY">
+		<value>TODAY</value>
+	</data>
+	<data name="VDB">
+		<value>VDB</value>
+	</data>
+	<data name="ELSE">
+		<value>ELSE</value>
+	</data>
+	<data name="ELSE.IF">
+		<value>ELSE.IF</value>
+	</data>
+	<data name="END.IF">
+		<value>END.IF</value>
+	</data>
+	<data name="FOR.CELL">
+		<value>FOR.CELL</value>
+	</data>
+	<data name="MEDIAN">
+		<value>MEDIAN</value>
+	</data>
+	<data name="SUMPRODUCT">
+		<value>SUMPRODUCT</value>
+	</data>
+	<data name="SINH">
+		<value>SINH</value>
+	</data>
+	<data name="COSH">
+		<value>COSH</value>
+	</data>
+	<data name="TANH">
+		<value>TANH</value>
+	</data>
+	<data name="ASINH">
+		<value>ASINH</value>
+	</data>
+	<data name="ACOSH">
+		<value>ACOSH</value>
+	</data>
+	<data name="ATANH">
+		<value>ATANH</value>
+	</data>
+	<data name="DGET">
+		<value>DGET</value>
+	</data>
+	<data name="CREATE.OBJECT">
+		<value>CREATE.OBJECT</value>
+	</data>
+	<data name="VOLATILE">
+		<value>VOLATILE</value>
+	</data>
+	<data name="LAST.ERROR">
+		<value>LAST.ERROR</value>
+	</data>
+	<data name="CUSTOM.UNDO">
+		<value>CUSTOM.UNDO</value>
+	</data>
+	<data name="CUSTOM.REPEAT">
+		<value>CUSTOM.REPEAT</value>
+	</data>
+	<data name="FORMULA.CONVERT">
+		<value>FORMULA.CONVERT</value>
+	</data>
+	<data name="GET.LINK.INFO">
+		<value>GET.LINK.INFO</value>
+	</data>
+	<data name="TEXT.BOX">
+		<value>TEXT.BOX</value>
+	</data>
+	<data name="INFO">
+		<value>INFO</value>
+	</data>
+	<data name="GROUP">
+		<value>GROUP</value>
+	</data>
+	<data name="GET.OBJECT">
+		<value>GET.OBJECT</value>
+	</data>
+	<data name="DB">
+		<value>DB</value>
+	</data>
+	<data name="PAUSE">
+		<value>PAUSE</value>
+	</data>
+	<data name="249">
+		<value>249</value>
+	</data>
+	<data name="250">
+		<value>250</value>
+	</data>
+	<data name="RESUME">
+		<value>RESUME</value>
+	</data>
+	<data name="FREQUENCY">
+		<value>FREQUENCY</value>
+	</data>
+	<data name="ADD.TOOLBAR">
+		<value>ADD.TOOLBAR</value>
+	</data>
+	<data name="DELETE.TOOLBAR">
+		<value>DELETE.TOOLBAR</value>
+	</data>
+	<data name="EXTERN.CALL">
+		<value>EXTERN.CALL</value>
+	</data>
+	<data name="RESET.TOOLBAR">
+		<value>RESET.TOOLBAR</value>
+	</data>
+	<data name="EVALUATE">
+		<value>EVALUATE</value>
+	</data>
+	<data name="GET.TOOLBAR">
+		<value>GET.TOOLBAR</value>
+	</data>
+	<data name="GET.TOOL">
+		<value>GET.TOOL</value>
+	</data>
+	<data name="SPELLING.CHECK">
+		<value>SPELLING.CHECK</value>
+	</data>
+	<data name="ERROR.TYPE">
+		<value>ERROR.TYPE</value>
+	</data>
+	<data name="APP.TITLE">
+		<value>APP.TITLE</value>
+	</data>
+	<data name="WINDOW.TITLE">
+		<value>WINDOW.TITLE</value>
+	</data>
+	<data name="SAVE.TOOLBAR">
+		<value>SAVE.TOOLBAR</value>
+	</data>
+	<data name="ENABLE.TOOL">
+		<value>ENABLE.TOOL</value>
+	</data>
+	<data name="PRESS.TOOL">
+		<value>PRESS.TOOL</value>
+	</data>
+	<data name="REGISTER.ID">
+		<value>REGISTER.ID</value>
+	</data>
+	<data name="GET.WORKBOOK">
+		<value>GET.WORKBOOK</value>
+	</data>
+	<data name="AVEDEV">
+		<value>AVEDEV</value>
+	</data>
+	<data name="BETADIST">
+		<value>BETADIST</value>
+	</data>
+	<data name="GAMMALN">
+		<value>GAMMALN</value>
+	</data>
+	<data name="BETAINV">
+		<value>BETAINV</value>
+	</data>
+	<data name="BINOMDIST">
+		<value>BINOMDIST</value>
+	</data>
+	<data name="CHIDIST">
+		<value>CHIDIST</value>
+	</data>
+	<data name="CHIINV">
+		<value>CHIINV</value>
+	</data>
+	<data name="COMBIN">
+		<value>COMBIN</value>
+	</data>
+	<data name="CONFIDENCE">
+		<value>CONFIDENCE</value>
+	</data>
+	<data name="CRITBINOM">
+		<value>CRITBINOM</value>
+	</data>
+	<data name="EVEN">
+		<value>EVEN</value>
+	</data>
+	<data name="EXPONDIST">
+		<value>EXPONDIST</value>
+	</data>
+	<data name="FDIST">
+		<value>FDIST</value>
+	</data>
+	<data name="FINV">
+		<value>FINV</value>
+	</data>
+	<data name="FISHER">
+		<value>FISHER</value>
+	</data>
+	<data name="FISHERINV">
+		<value>FISHERINV</value>
+	</data>
+	<data name="FLOOR">
+		<value>FLOOR</value>
+	</data>
+	<data name="GAMMADIST">
+		<value>GAMMADIST</value>
+	</data>
+	<data name="GAMMAINV">
+		<value>GAMMAINV</value>
+	</data>
+	<data name="CEILING">
+		<value>CEILING</value>
+	</data>
+	<data name="HYPGEOMDIST">
+		<value>HYPGEOMDIST</value>
+	</data>
+	<data name="LOGNORMDIST">
+		<value>LOGNORMDIST</value>
+	</data>
+	<data name="LOGINV">
+		<value>LOGINV</value>
+	</data>
+	<data name="NEGBINOMDIST">
+		<value>NEGBINOMDIST</value>
+	</data>
+	<data name="NORMDIST">
+		<value>NORMDIST</value>
+	</data>
+	<data name="NORMSDIST">
+		<value>NORMSDIST</value>
+	</data>
+	<data name="NORMINV">
+		<value>NORMINV</value>
+	</data>
+	<data name="NORMSINV">
+		<value>NORMSINV</value>
+	</data>
+	<data name="STANDARDIZE">
+		<value>STANDARDIZE</value>
+	</data>
+	<data name="ODD">
+		<value>ODD</value>
+	</data>
+	<data name="PERMUT">
+		<value>PERMUT</value>
+	</data>
+	<data name="POISSON">
+		<value>POISSON</value>
+	</data>
+	<data name="TDIST">
+		<value>TDIST</value>
+	</data>
+	<data name="WEIBULL">
+		<value>WEIBULL</value>
+	</data>
+	<data name="SUMXMY2">
+		<value>SUMXMY2</value>
+	</data>
+	<data name="SUMX2MY2">
+		<value>SUMX2MY2</value>
+	</data>
+	<data name="SUMX2PY2">
+		<value>SUMX2PY2</value>
+	</data>
+	<data name="CHITEST">
+		<value>CHITEST</value>
+	</data>
+	<data name="CORREL">
+		<value>CORREL</value>
+	</data>
+	<data name="COVAR">
+		<value>COVAR</value>
+	</data>
+	<data name="FORECAST">
+		<value>FORECAST</value>
+	</data>
+	<data name="FTEST">
+		<value>FTEST</value>
+	</data>
+	<data name="INTERCEPT">
+		<value>INTERCEPT</value>
+	</data>
+	<data name="PEARSON">
+		<value>PEARSON</value>
+	</data>
+	<data name="RSQ">
+		<value>RSQ</value>
+	</data>
+	<data name="STEYX">
+		<value>STEYX</value>
+	</data>
+	<data name="SLOPE">
+		<value>SLOPE</value>
+	</data>
+	<data name="TTEST">
+		<value>TTEST</value>
+	</data>
+	<data name="PROB">
+		<value>PROB</value>
+	</data>
+	<data name="DEVSQ">
+		<value>DEVSQ</value>
+	</data>
+	<data name="GEOMEAN">
+		<value>GEOMEAN</value>
+	</data>
+	<data name="HARMEAN">
+		<value>HARMEAN</value>
+	</data>
+	<data name="SUMSQ">
+		<value>SUMSQ</value>
+	</data>
+	<data name="KURT">
+		<value>KURT</value>
+	</data>
+	<data name="SKEW">
+		<value>SKEW</value>
+	</data>
+	<data name="ZTEST">
+		<value>ZTEST</value>
+	</data>
+	<data name="LARGE">
+		<value>LARGE</value>
+	</data>
+	<data name="SMALL">
+		<value>SMALL</value>
+	</data>
+	<data name="QUARTILE">
+		<value>QUARTILE</value>
+	</data>
+	<data name="PERCENTILE">
+		<value>PERCENTILE</value>
+	</data>
+	<data name="PERCENTRANK">
+		<value>PERCENTRANK</value>
+	</data>
+	<data name="MODE">
+		<value>MODE</value>
+	</data>
+	<data name="TRIMMEAN">
+		<value>TRIMMEAN</value>
+	</data>
+	<data name="TINV">
+		<value>TINV</value>
+	</data>
+	<data name="333">
+		<value>333</value>
+	</data>
+	<data name="MOVIE.COMMAND">
+		<value>MOVIE.COMMAND</value>
+	</data>
+	<data name="GET.MOVIE">
+		<value>GET.MOVIE</value>
+	</data>
+	<data name="CONCATENATE">
+		<value>CONCATENATE</value>
+	</data>
+	<data name="POWER">
+		<value>POWER</value>
+	</data>
+	<data name="PIVOT.ADD.DATA">
+		<value>PIVOT.ADD.DATA</value>
+	</data>
+	<data name="GET.PIVOT.TABLE">
+		<value>GET.PIVOT.TABLE</value>
+	</data>
+	<data name="GET.PIVOT.FIELD">
+		<value>GET.PIVOT.FIELD</value>
+	</data>
+	<data name="GET.PIVOT.ITEM">
+		<value>GET.PIVOT.ITEM</value>
+	</data>
+	<data name="RADIANS">
+		<value>RADIANS</value>
+	</data>
+	<data name="DEGREES">
+		<value>DEGREES</value>
+	</data>
+	<data name="SUBTOTAL">
+		<value>SUBTOTAL</value>
+	</data>
+	<data name="SUMIF">
+		<value>SUMIF</value>
+	</data>
+	<data name="COUNTIF">
+		<value>COUNTIF</value>
+	</data>
+	<data name="COUNTBLANK">
+		<value>COUNTBLANK</value>
+	</data>
+	<data name="SCENARIO.GET">
+		<value>SCENARIO.GET</value>
+	</data>
+	<data name="OPTIONS.LISTS.GET">
+		<value>OPTIONS.LISTS.GET</value>
+	</data>
+	<data name="ISPMT">
+		<value>ISPMT</value>
+	</data>
+	<data name="DATEDIF">
+		<value>DATEDIF</value>
+	</data>
+	<data name="DATESTRING">
+		<value>DATESTRING</value>
+	</data>
+	<data name="NUMBERSTRING">
+		<value>NUMBERSTRING</value>
+	</data>
+	<data name="ROMAN">
+		<value>ROMAN</value>
+	</data>
+	<data name="OPEN.DIALOG">
+		<value>OPEN.DIALOG</value>
+	</data>
+	<data name="SAVE.DIALOG">
+		<value>SAVE.DIALOG</value>
+	</data>
+	<data name="VIEW.GET">
+		<value>VIEW.GET</value>
+	</data>
+	<data name="GETPIVOTDATA">
+		<value>GETPIVOTDATA</value>
+	</data>
+	<data name="HYPERLINK">
+		<value>HYPERLINK</value>
+	</data>
+	<data name="PHONETIC">
+		<value>PHONETIC</value>
+	</data>
+	<data name="AVERAGEA">
+		<value>AVERAGEA</value>
+	</data>
+	<data name="MAXA">
+		<value>MAXA</value>
+	</data>
+	<data name="MINA">
+		<value>MINA</value>
+	</data>
+	<data name="STDEVPA">
+		<value>STDEVPA</value>
+	</data>
+	<data name="VARPA">
+		<value>VARPA</value>
+	</data>
+	<data name="STDEVA">
+		<value>STDEVA</value>
+	</data>
+	<data name="VARA">
+		<value>VARA</value>
+	</data>
+	<data name="BAHTTEXT">
+		<value>BAHTTEXT</value>
+	</data>
+	<data name="THAIDAYOFWEEK">
+		<value>THAIDAYOFWEEK</value>
+	</data>
+	<data name="THAIDIGIT">
+		<value>THAIDIGIT</value>
+	</data>
+	<data name="THAIMONTHOFYEAR">
+		<value>THAIMONTHOFYEAR</value>
+	</data>
+	<data name="THAINUMSOUND">
+		<value>THAINUMSOUND</value>
+	</data>
+	<data name="THAINUMSTRING">
+		<value>THAINUMSTRING</value>
+	</data>
+	<data name="THAISTRINGLENGTH">
+		<value>THAISTRINGLENGTH</value>
+	</data>
+	<data name="ISTHAIDIGIT">
+		<value>ISTHAIDIGIT</value>
+	</data>
+	<data name="ROUNDBAHTDOWN">
+		<value>ROUNDBAHTDOWN</value>
+	</data>
+	<data name="ROUNDBAHTUP">
+		<value>ROUNDBAHTUP</value>
+	</data>
+	<data name="THAIYEAR">
+		<value>THAIYEAR</value>
+	</data>
+	<data name="RTD">
+		<value>RTD</value>
+	</data>
+	<data name="ISHYPERLINK">
+		<value>ISHYPERLINK</value>
+	</data>
+	<data name="USER.DEFINED">
+		<value>USER.DEFINED</value>
+	</data>
+  <data name="IFERROR">
+    <value>IFERROR</value>
+  </data>
+  <data name="COUNTIFS">
+    <value>COUNTIFS</value>
+  </data>
+  <data name="SUMIFS">
+    <value>SUMIFS</value>
+  </data>
+  <data name="AVERAGEIF">
+    <value>AVERAGEIF</value>
+  </data>
+  <data name="AVERAGEIFS">
+    <value>AVERAGEIFS</value>
+  </data>
+  <data name="CEILING.PRECISE">
+    <value>CEILING.PRECISE</value>
+  </data>
+  <data name="FLOOR.PRECISE">
+    <value>FLOOR.PRECISE</value>
+  </data>
+  <data name="ISO.CEILING">
+    <value>ISO.CEILING</value>
+  </data>
+  <data name="AGGREGATE">
+    <value>AGGREGATE</value>
+  </data>
+  <data name="PERCENTILE.EXC">
+    <value>PERCENTILE.EXC</value>
+  </data>
+  <data name="QUARTILE.EXC">
+    <value>QUARTILE.EXC</value>
+  </data>
+  <data name ="BETA.DIST">
+    <value>BETA.DIST</value>
+  </data>
+  <data name ="BETA.INV">
+    <value>BETA.INV</value>
+  </data>
+  <data name ="BINOM.DIST">
+    <value>BINOM.DIST</value>
+  </data>
+  <data name ="BINOM.INV">
+    <value>BINOM.INV</value>
+  </data>
+  <data name ="CHISQ.DIST.RT">
+    <value>CHISQ.DIST.RT</value>
+  </data>
+  <data name ="CHISQ.INV.RT">
+    <value>CHISQ.INV.RT</value>
+  </data>
+  <data name ="CHISQ.TEST">
+    <value>CHISQ.TEST</value>
+  </data>
+  <data name ="CONFIDENCE.NORM">
+    <value>CONFIDENCE.NORM</value>
+  </data>
+  <data name ="COVARIANCE.P">
+    <value>COVARIANCE.P</value>
+  </data>
+  <data name ="EXPON.DIST">
+    <value>EXPON.DIST</value>
+  </data>
+  <data name ="F.DIST.RT">
+    <value>F.DIST.RT</value>
+  </data>
+  <data name ="F.INV.RT">
+    <value>F.INV.RT</value>
+  </data>
+  <data name ="F.TEST">
+    <value>F.TEST</value>
+  </data>
+  <data name ="GAMMA.DIST">
+    <value>GAMMA.DIST</value>
+  </data>
+  <data name ="GAMMA.INV">
+    <value>GAMMA.INV</value>
+  </data>
+  <data name ="HYPGEOM.DIST">
+    <value>HYPGEOM.DIST</value>
+  </data>
+  <data name ="LOGNORM.DIST">
+    <value>LOGNORM.DIST</value>
+  </data>
+  <data name ="LOGNORM.INV">
+    <value>LOGNORM.INV</value>
+  </data>
+  <data name ="MODE.SNGL">
+    <value>MODE.SNGL</value>
+  </data>
+  <data name ="NEGBINOM.DIST">
+    <value>NEGBINOM.DIST</value>
+  </data>
+  <data name ="NORM.DIST">
+    <value>NORM.DIST</value>
+  </data>
+  <data name ="NORM.INV">
+    <value>NORM.INV</value>
+  </data>
+  <data name ="NORM.S.DIST">
+    <value>NORM.S.DIST</value>
+  </data>
+  <data name ="NORM.S.INV">
+    <value>NORM.S.INV</value>
+  </data>
+  <data name ="PERCENTILE.INC">
+    <value>PERCENTILE.INC</value>
+  </data>
+  <data name ="PERCENTRANK.INC">
+    <value>PERCENTRANK.INC</value>
+  </data>
+  <data name ="POISSON.DIST">
+    <value>POISSON.DIST</value>
+  </data>
+  <data name ="QUARTILE.INC">
+    <value>QUARTILE.INC</value>
+  </data>
+  <data name ="RANK.EQ">
+    <value>RANK.EQ</value>
+  </data>
+  <data name ="STDEV.P">
+    <value>STDEV.P</value>
+  </data>
+  <data name ="STDEV.S">
+    <value>STDEV.S</value>
+  </data>
+  <data name ="T.DIST.2T">
+    <value>T.DIST.2T</value>
+  </data>
+  <data name ="T.DIST.RT">
+    <value>T.DIST.RT</value>
+  </data>
+  <data name ="T.INV.2T">
+    <value>T.INV.2T</value>
+  </data>
+  <data name ="T.TEST">
+    <value>T.TEST</value>
+  </data>
+  <data name ="VAR.P">
+    <value>VAR.P</value>
+  </data>
+  <data name ="VAR.S">
+    <value>VAR.S</value>
+  </data>
+  <data name ="WEIBULL.DIST">
+    <value>WEIBULL.DIST</value>
+  </data>
+  <data name ="Z.TEST">
+    <value>Z.TEST</value>
+  </data>
+
+
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader></root>

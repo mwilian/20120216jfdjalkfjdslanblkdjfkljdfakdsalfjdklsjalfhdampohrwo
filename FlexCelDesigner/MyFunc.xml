@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ROOT>
+	<ITEM Code="AGGREGATE" Value="aggregate(;)"/>
+	<ITEM Code="ARRAY" Value="array()"/>
+	<ITEM Code="COLUMN PAGE BREAK" Value="column page break"/>
+	<ITEM Code="DELETE COLUMN" Value="delete column"/>
+	<ITEM Code="DELETE ROW" Value="delete row"/>
+	<ITEM Code="IF" Value="if(;;)"/>
+	<ITEM Code="LIST" Value="list()"/>
+	<ITEM Code="LOOKUP" Value="lookup(;;;)"/>
+	<ITEM Code="NUM2ROMAN" Value="NUM2ROMAN(1)"/>
+	<ITEM Code="NUM2STR" Value="NUM2STR(1000000;###,##0.##)"/>
+	<ITEM Code="PA" Value="PA(19000101)"/>
+	<ITEM Code="PAGE BREAK" Value="page break"/>
+	<ITEM Code="PE" Value="PE(19000101)"/>
+	<ITEM Code="PERIOD2STR" Value="PERIOD2STR(1900001)"/>
+	<ITEM Code="PH" Value="PH(19000101)"/>
+	<ITEM Code="Read En" Value="Read_En(0000)"/>
+	<ITEM Code="Read VN" Value="Read_VN(0000)"/>
+	<ITEM Code="STR2NUM" Value="STR2NUM(1000.0)"/>
+	<ITEM Code="SUNDATE2DATE" Value="SUNDATE2DATE(19000101)"/>
+	<ITEM Code="YA" Value="YA(19000101)"/>
+	<ITEM Code="YE" Value="YE(19000101)"/>
+	<ITEM Code="YH" Value="YH(19000101)"/>
+	<ITEM Code="YK" Value="YK(19000101)"/>
+  <ITEM Code="DBEGIN" Value="DBEGIN(19000101)"/>
+  <ITEM Code="DEND" Value="DEND(19000101)"/>
+</ROOT>
