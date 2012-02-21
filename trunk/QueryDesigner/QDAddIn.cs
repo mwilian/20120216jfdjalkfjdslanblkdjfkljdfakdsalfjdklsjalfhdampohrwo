@@ -178,6 +178,7 @@ namespace QueryDesigner
             {
                 txtDB.Text = address;
                 lbDBDesc.Text = value;
+                UpdateDatabase(true);
                 //_sqlBuilder.Database = address;
                 //_sqlBuilder.DatabaseV = value;
                 //_sqlBuilder.DatabaseP = "{P}";
@@ -186,6 +187,7 @@ namespace QueryDesigner
             {
                 txtLedger.Text = address;
                 lbLedgerDesc.Text = value;
+                UpdateLedger(true);
                 //_sqlBuilder.Ledger = address;
                 //_sqlBuilder.LedgerV = value;
                 //_sqlBuilder.LedgerP = "{P}";
@@ -194,6 +196,7 @@ namespace QueryDesigner
             {
                 txtFilterFrom.Text = address;
                 lbValueFrom.Text = value;
+                UpdateFilterFrom(true);
                 //if (dgvFilter.CurrentRow != null)
                 //{
                 //    QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
@@ -206,6 +209,7 @@ namespace QueryDesigner
             {
                 txtFilterTo.Text = address;
                 lbValueTo.Text = value;
+                UpdateFilterTo(true);
                 //if (dgvFilter.CurrentRow != null)
                 //{
                 //    QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
@@ -476,201 +480,41 @@ namespace QueryDesigner
 
         private void txtFilterFrom_TextChanged(object sender, EventArgs e)
         {
-            Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
-            Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
-            string address = "";
-            string value = "";
-            try
-            {
-                address = txtFilterFrom.Text;
-                foreach (Excel._Worksheet isheet in wbook.Sheets)
-                {
-                    try
-                    {
-                        value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
-
-                        //_sqlBuilder.ParaValueList[i - 1] = value;
-                        break;
-
-                    }
-                    catch
-                    {
-                    }
-                }
-                lbValueFrom.Text = value;
-
-            }
-            catch
-            {
-
-                lbValueFrom.Text = "_";
-            }
-            if (dgvFilter.CurrentRow != null)
-            {
-                QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
-                if (value != "" && address != "")
-                {
-                    //filter.FilterFrom = address;
-                    //filter.ValueFrom = value;
-                    filter.FilterFromP = "{P}";
-                    txtFilterFrom.ForeColor = Color.BlueViolet;
-                }
-                else
-                {
-                    //filter.FilterFrom = txtFilterFrom.Text;
-                    //filter.ValueFrom = txtFilterFrom.Text;
-                    filter.FilterFromP = "";
-                    txtFilterFrom.ForeColor = Color.Black;
-                }
-                //dgvFilter.CurrentRow.InvalidateRow();
-            }
+            //Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
+            //UpdateFilterFrom(false);
         }
+
+       
 
         private void txtFilterTo_TextChanged(object sender, EventArgs e)
         {
-            Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
-            Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
-            string address = "";
-            string value = "";
-            try
-            {
-                address = txtFilterTo.Text;
-                foreach (Excel._Worksheet isheet in wbook.Sheets)
-                {
-                    try
-                    {
-                        value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
-
-                        //_sqlBuilder.ParaValueList[i - 1] = value;
-                        break;
-
-                    }
-                    catch
-                    {
-                    }
-                }
-                lbValueTo.Text = value;
-
-            }
-            catch
-            {
-
-                lbValueTo.Text = "_";
-            }
-            if (dgvFilter.CurrentRow != null)
-            {
-                QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
-                if (value != "" && address != "")
-                {
-                    //filter.FilterTo = address;
-                    //filter.ValueTo = value;
-                    filter.FilterToP = "{P}";
-                    txtFilterTo.ForeColor = Color.BlueViolet;
-                }
-                else
-                {
-                    //filter.FilterTo = txtFilterTo.Text;
-                    //filter.ValueTo = txtFilterTo.Text;
-                    filter.FilterToP = "";
-                    txtFilterTo.ForeColor = Color.Black;
-                }
-                //dgvFilter.CurrentRow.InvalidateRow();
-            }
+            //Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
+            //UpdateFilterTo(false);
         }
+
+
 
         private void txtLedger_TextChanged(object sender, EventArgs e)
         {
-            Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
-            string address = "";
-            string value = "";
-            try
-            {
-                value = sheet.get_Range(txtLedger.Text, Type.Missing).get_Value(Type.Missing).ToString();
-                address = txtLedger.Text;
-                lbLedgerDesc.Text = value;
-                txtLedger.ForeColor = Color.BlueViolet;
-            }
-            catch
-            {
-                txtLedger.ForeColor = Color.Black;
-                lbLedgerDesc.Text = address;
-            }
-
-            if (value != "" && address != "")
-            {
-                _sqlBuilder.Ledger = address;
-                _sqlBuilder.LedgerV = value;
-                _sqlBuilder.LedgerP = "{P}";
-            }
-            else
-            {
-                _sqlBuilder.Ledger = txtLedger.Text;
-                _sqlBuilder.LedgerV = txtLedger.Text;
-                _sqlBuilder.LedgerP = "";
-            }
+            //Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
+            //UpdateLedger();
 
 
         }
+
+
 
         private void txtDB_TextChanged(object sender, EventArgs e)
         {
-            Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
-            Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
-            string address = "";
-            string value = "";
-            try
+            //Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
+            //UpdateDatabase();
+            if (lbDBDesc.Text == "" || lbDBDesc.Text == "_")
             {
-                address = txtDB.Text;
-                foreach (Excel._Worksheet isheet in wbook.Sheets)
-                {
-                    try
-                    {
-                        value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
-
-                        //_sqlBuilder.ParaValueList[i - 1] = value;
-                        break;
-
-                    }
-                    catch
-                    {
-                    }
-                }
-                lbDBDesc.Text = value;
-
-            }
-            catch
-            {
-                lbDBDesc.Text = "_";
-            }
-
-            if (value != "" && address != "")
-            {
-                _sqlBuilder.Database = address;
-                _sqlBuilder.DatabaseV = value;
-                _sqlBuilder.DatabaseP = "{P}";
-                txtDB.ForeColor = Color.BlueViolet;
-            }
-            else
-            {
-                txtDB.ForeColor = Color.Black;
-                DBInfoList tmp = DBInfoList.GetDBInfoList();
-                lbDBDesc.Text = "_";
-                foreach (QueryBuilder.DBInfo x in tmp)
-                {
-                    if (x.Code == txtDB.Text.Trim())
-                    {
-                        lbDBDesc.Text = x.Description;
-
-                        break;
-                    }
-                }
                 _sqlBuilder.Database = txtDB.Text;
-                _sqlBuilder.DatabaseV = txtDB.Text;
-                _sqlBuilder.DatabaseP = "";
-
             }
-
         }
+
+
 
         private void btTest_Click(object sender, EventArgs e)
         {
@@ -1066,19 +910,266 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
 
         }
 
+        private void lbDBDesc_TextChanged(object sender, EventArgs e)
+        {
+            //_sqlBuilder.Database = lbDBDesc.Text;
+        }
 
+        public void UpdateFilterFrom(bool flag)
+        {
+            //Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
+            string address = "";
+            string value = "";
+            //try
+            //{
+            address = txtFilterFrom.Text;
+            value = lbValueFrom.Text;
+            //    //foreach (Excel._Worksheet isheet in wbook.Sheets)
+            //    //{
+            //    //    try
+            //    //    {
+            //    //        value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
 
+            //    //        //_sqlBuilder.ParaValueList[i - 1] = value;
+            //    //        break;
 
+            //    //    }
+            //    //    catch
+            //    //    {
+            //    //    }
+            //    //}
 
+            //    //lbValueFrom.Text = value;
 
+            //}
+            //catch
+            //{
 
+            //    lbValueFrom.Text = "_";
+            //}
 
+            if (dgvFilter.CurrentRow != null)
+            {
+                QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                if (flag)
+                {
 
+                    if (value != "" && address != "")
+                    {
+                        //filter.FilterFrom = address;
+                        filter.ValueFrom = value;
+                        filter.FilterFromP = "{P}";
+                        txtFilterFrom.ForeColor = Color.BlueViolet;
+                    }
+                    else
+                    {
+                        //filter.FilterFrom = txtFilterFrom.Text;
+                        filter.ValueFrom = filter.FilterFrom;
+                        filter.FilterFromP = "";
+                        txtFilterFrom.ForeColor = Color.Black;
+                    }
+                    //dgvFilter.CurrentRow.InvalidateRow();
+                }
+                else
+                {
+                    filter.ValueFrom = txtFilterFrom.Text;
+                    filter.FilterFromP = "";
+                    txtFilterFrom.ForeColor = Color.Black;
+                }
+            }
 
+        }
+        public void UpdateFilterTo(bool flag)
+        {
+            //Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
+            string address = "";
+            string value = "";
+            //try
+            //{
+            address = txtFilterTo.Text;
+            value = lbValueTo.Text;
+            //    foreach (Excel._Worksheet isheet in wbook.Sheets)
+            //    {
+            //        try
+            //        {
+            //            value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
 
+            //            //_sqlBuilder.ParaValueList[i - 1] = value;
+            //            break;
 
+            //        }
+            //        catch
+            //        {
+            //        }
+            //    }
+            //    lbValueTo.Text = value;
 
+            //}
+            //catch
+            //{
 
+            //    lbValueTo.Text = "_";
+            //}
+            if (dgvFilter.CurrentRow != null)
+            {
+                QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                if (flag)
+                {
+
+                    if (value != "" && address != "")
+                    {
+                        //filter.FilterTo = address;
+                        filter.ValueTo = value;
+                        filter.FilterToP = "{P}";
+                        txtFilterTo.ForeColor = Color.BlueViolet;
+                    }
+                    else
+                    {
+                        //filter.FilterTo = txtFilterTo.Text;
+                        filter.ValueTo = filter.FilterTo;
+                        filter.FilterToP = "";
+                        txtFilterTo.ForeColor = Color.Black;
+                    }
+                }
+                else
+                {
+                    filter.ValueTo = txtFilterTo.Text;
+                    filter.FilterToP = "";
+                    txtFilterTo.ForeColor = Color.Black;
+                }
+                //dgvFilter.CurrentRow.InvalidateRow();
+            }
+        }
+        private void UpdateLedger(bool flag)
+        {
+            string address = "";
+            string value = "";
+            //try
+            //{
+            value = lbLedgerDesc.Text;
+            address = txtLedger.Text;
+            //    lbLedgerDesc.Text = value;
+            //    txtLedger.ForeColor = Color.BlueViolet;
+            //}
+            //catch
+            //{
+            //    txtLedger.ForeColor = Color.Black;
+            //    lbLedgerDesc.Text = address;
+            //}
+
+            if (flag)
+            {
+                if (value != "" && address != "")
+                {
+                    _sqlBuilder.Ledger = address;
+                    _sqlBuilder.LedgerV = value;
+                    _sqlBuilder.LedgerP = "{P}";
+                    txtLedger.ForeColor = Color.BlueViolet;
+                }
+                else
+                {
+                    _sqlBuilder.Ledger = txtLedger.Text;
+                    _sqlBuilder.LedgerV = txtLedger.Text;
+                    _sqlBuilder.LedgerP = "";
+                    txtLedger.ForeColor = Color.Black;
+                }
+            }
+            else
+            {
+                _sqlBuilder.Ledger = txtLedger.Text;
+                _sqlBuilder.LedgerV = txtLedger.Text;
+                _sqlBuilder.LedgerP = "";
+                txtLedger.ForeColor = Color.Black;
+            }
+        }
+        public void UpdateDatabase(bool flag)
+        {
+            //Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
+            string address = "";
+            string value = "";
+            //try
+            //{
+            address = txtDB.Text;
+            value = lbValueTo.Text;
+            //    foreach (Excel._Worksheet isheet in wbook.Sheets)
+            //    {
+            //        try
+            //        {
+            //            value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
+
+            //            //_sqlBuilder.ParaValueList[i - 1] = value;
+            //            break;
+
+            //        }
+            //        catch
+            //        {
+            //        }
+            //    }
+            //    lbDBDesc.Text = value;
+
+            //}
+            //catch
+            //{
+            //    lbDBDesc.Text = "_";
+            //}
+            if (flag)
+            {
+                if (value != "" && address != "")
+                {
+                    _sqlBuilder.Database = address;
+                    _sqlBuilder.DatabaseV = value;
+                    _sqlBuilder.DatabaseP = "{P}";
+                    txtDB.ForeColor = Color.BlueViolet;
+                }
+                else
+                {
+                    txtDB.ForeColor = Color.Black;
+                    DBInfoList tmp = DBInfoList.GetDBInfoList();
+                    lbDBDesc.Text = "_";
+                    foreach (QueryBuilder.DBInfo x in tmp)
+                    {
+                        if (x.Code == txtDB.Text.Trim())
+                        {
+                            lbDBDesc.Text = x.Description;
+
+                            break;
+                        }
+                    }
+                    _sqlBuilder.Database = txtDB.Text;
+                    _sqlBuilder.DatabaseV = txtDB.Text;
+                    _sqlBuilder.DatabaseP = "";
+
+                }
+            }
+            else
+            {
+                txtDB.ForeColor = Color.Black;
+                DBInfoList tmp = DBInfoList.GetDBInfoList();
+                lbDBDesc.Text = "_";
+                foreach (QueryBuilder.DBInfo x in tmp)
+                {
+                    if (x.Code == txtDB.Text.Trim())
+                    {
+                        lbDBDesc.Text = x.Description;
+
+                        break;
+                    }
+                }
+                _sqlBuilder.Database = txtDB.Text;
+                _sqlBuilder.DatabaseV = txtDB.Text;
+                _sqlBuilder.DatabaseP = "";
+            }
+        }
+
+        private void txtFilterFrom_Validated(object sender, EventArgs e)
+        {
+            UpdateFilterFrom(false);
+        }
+
+        private void txtFilterTo_Validated(object sender, EventArgs e)
+        {
+            UpdateFilterTo(false);
+        }
 
     }
 }

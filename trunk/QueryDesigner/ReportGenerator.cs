@@ -225,6 +225,7 @@ namespace QueryDesigner
                 string formular = tmp.Text;
                 object[] para = new object[parameters.Length - 1];
                 TXls3DRange DescCell = new TXls3DRange();
+                int SheetIndex = 0;
                 for (int i = 1; i < parameters.Length; i++)
                 {
                     if (i == 1)
@@ -243,6 +244,7 @@ namespace QueryDesigner
                         if (SourceCell.IsOneCell)
                         {
                             string value = "";
+                            SheetIndex = arguments.Xls.ActiveSheet = SourceCell.Sheet1;
                             if (!TryGetString(arguments.Xls, parameters[i], out value, out Err))
                                 return Err;
                             sqlBuilder.ParaValueList[i - 1] = value;
@@ -259,21 +261,30 @@ namespace QueryDesigner
                 Parsing.Formular2SQLBuilder(formular, ref sqlBuilder);
                 string query = sqlBuilder.BuildSQLEx("");
                 CoreCommonControl control = new CoreCommonControl();
-                object result = sqlBuilder.BuildObject(query, ReportGenerator.__connectString);
+                BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+                string sErr = "";
+                DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref sErr);
+                string keyconn = schInf.DEFAULT_CONN;
+                string connectstring = Form_QD._config.GetConnection(ref keyconn, "AP");
+                sqlBuilder.ConnID = keyconn;
+                sqlBuilder.StrConnectDes = connectstring;
+
+                object result = sqlBuilder.BuildObject(query, connectstring);
                 //formular = sqlBuilder.BuildTTformula();
                 arguments.Xls.SetComment(DescCell.Top, DescCell.Left, formular);
-                TPoint x = new TPoint(DescCell.Top, DescCell.Left);
-                if (result != DBNull.Value)
-                {
-                    clsListValueTT_XLB_EB.Values.Add(x, result);
-                    //arguments.Xls.SetCellValue(DescCell.Top, DescCell.Left, result.ToString());
-                }
+                arguments.Xls.SetCellValue(DescCell.Top, DescCell.Left, result);
+                //TPoint x = new TPoint(DescCell.Top, DescCell.Left);
+                //if (result != DBNull.Value)
+                //{
+                //    clsListValueTT_XLB_EB.Values.Add(x, result);
+                //    //arguments.Xls.SetCellValue(DescCell.Top, DescCell.Left, result.ToString());
+                //}
 
-                else
-                {
-                    result = 0;
-                    clsListValueTT_XLB_EB.Values.Add(x, result);
-                }
+                //else
+                //{
+                //    result = 0;
+                //    clsListValueTT_XLB_EB.Values.Add(x, result);
+                //}
                 return result;
             }
 
@@ -825,7 +836,8 @@ namespace QueryDesigner
             {
                 XlsFile xlsTemp = new XlsFile(_pathTemplate + "-.template" + ReportGenerator.Ext);
                 xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 10, 2, _qdCode, 0);
-                xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 17, 2, "FilterPara", 0);
+                xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
+                xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
 
                 xlsTemp.Save(_pathTemplate + _qdCode + ".template" + ReportGenerator.Ext, _format);
             }
