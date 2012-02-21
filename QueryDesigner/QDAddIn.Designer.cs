@@ -114,6 +114,7 @@
             this.lbDBDesc.Size = new System.Drawing.Size(13, 13);
             this.lbDBDesc.TabIndex = 30;
             this.lbDBDesc.Text = "_";
+            this.lbDBDesc.TextChanged += new System.EventHandler(this.lbDBDesc_TextChanged);
             this.lbDBDesc.Enter += new System.EventHandler(this.radPanel1_Enter);
             // 
             // label5
@@ -268,12 +269,13 @@
             // 
             // txtFilterFrom
             // 
-            this.txtFilterFrom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.filtersBindingSource, "ValueFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtFilterFrom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.filtersBindingSource, "FilterFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtFilterFrom.Location = new System.Drawing.Point(425, 5);
             this.txtFilterFrom.Name = "txtFilterFrom";
             this.txtFilterFrom.Size = new System.Drawing.Size(162, 20);
             this.txtFilterFrom.TabIndex = 38;
             this.txtFilterFrom.TextChanged += new System.EventHandler(this.txtFilterFrom_TextChanged);
+            this.txtFilterFrom.Validated += new System.EventHandler(this.txtFilterFrom_Validated);
             this.txtFilterFrom.Enter += new System.EventHandler(this.txtFilterFrom_Enter);
             // 
             // filtersBindingSource
@@ -283,12 +285,13 @@
             // 
             // txtFilterTo
             // 
-            this.txtFilterTo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.filtersBindingSource, "ValueTo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtFilterTo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.filtersBindingSource, "FilterTo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtFilterTo.Location = new System.Drawing.Point(425, 30);
             this.txtFilterTo.Name = "txtFilterTo";
             this.txtFilterTo.Size = new System.Drawing.Size(162, 20);
             this.txtFilterTo.TabIndex = 39;
             this.txtFilterTo.TextChanged += new System.EventHandler(this.txtFilterTo_TextChanged);
+            this.txtFilterTo.Validated += new System.EventHandler(this.txtFilterTo_Validated);
             this.txtFilterTo.Enter += new System.EventHandler(this.txtFilterTo_Enter);
             // 
             // panel1
@@ -409,16 +412,18 @@
             // 
             // valueFromDataGridViewTextBoxColumn
             // 
-            this.valueFromDataGridViewTextBoxColumn.DataPropertyName = "ValueFrom";
+            this.valueFromDataGridViewTextBoxColumn.DataPropertyName = "FilterFrom";
             this.valueFromDataGridViewTextBoxColumn.HeaderText = "From";
             this.valueFromDataGridViewTextBoxColumn.Name = "valueFromDataGridViewTextBoxColumn";
+            this.valueFromDataGridViewTextBoxColumn.ReadOnly = true;
             this.valueFromDataGridViewTextBoxColumn.Width = 200;
             // 
             // valueToDataGridViewTextBoxColumn
             // 
-            this.valueToDataGridViewTextBoxColumn.DataPropertyName = "ValueTo";
+            this.valueToDataGridViewTextBoxColumn.DataPropertyName = "FilterTo";
             this.valueToDataGridViewTextBoxColumn.HeaderText = "To";
             this.valueToDataGridViewTextBoxColumn.Name = "valueToDataGridViewTextBoxColumn";
+            this.valueToDataGridViewTextBoxColumn.ReadOnly = true;
             this.valueToDataGridViewTextBoxColumn.Width = 200;
             // 
             // splitContainer2

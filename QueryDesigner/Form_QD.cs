@@ -1051,11 +1051,12 @@ namespace QueryDesigner
             string str1 = null;
             try
             {
-                FileStream rd = new FileStream(path + qdid + ".template" + ext, FileMode.Open, FileAccess.Read, System.IO.FileShare.ReadWrite);
-                str1 = MyHash.Hash(rd, "MD5");
-                rd.Close();
+                using (FileStream rd = new FileStream(path + qdid + ".template" + ext, FileMode.Open, FileAccess.Read, System.IO.FileShare.ReadWrite))
+                {
+                    str1 = MyHash.Hash(rd, "MD5");
+                }
             }
-            catch { return false; }
+            catch { return true; }
 
             if (str1.Equals(_hashTmp))
             {
@@ -1636,7 +1637,17 @@ namespace QueryDesigner
 
         private void txtdatasource_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                _sqlBuilder.Database = _dtb;
+                BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
+                twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
+                BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
+                DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, txtdatasource.Text, ref sErr);
+                string key = inf.DEFAULT_CONN;
+                _strConnectDes = Form_QD._config.GetConnection(ref key, "AP");
+            }
+            catch (Exception ex) { lb_Err.Text = ex.Message; }
         }
 
         private void btnTransferIn_Click(object sender, EventArgs e)
@@ -2033,7 +2044,16 @@ namespace QueryDesigner
             try
             {
                 xls = new XlsFile();
-                xls.Open(__templatePath + "\\NODATA.xls");
+                if (File.Exists(__templatePath + "\\NODATA.xls"))
+                    xls.Open(__templatePath + "\\NODATA.xls");
+                else
+                {
+                    if (File.Exists(_appPath + "\\NODATA.xls"))
+                    {
+                        File.Copy(_appPath + "\\NODATA.xls", __templatePath + "\\NODATA.xls");
+                        xls.Open(__templatePath + "\\NODATA.xls");
+                    }
+                }
 
                 _rpGen.Name = txtdesr.Text;
                 if (CheckChange(_xlsFile, __templatePath, txtqd_id.Text))
@@ -2710,7 +2730,7 @@ namespace QueryDesigner
                 e.Cancel = true;
             }
 
-          
+
 
 
         }
@@ -3086,17 +3106,17 @@ namespace QueryDesigner
 
         private void txtdatasource_Validated(object sender, EventArgs e)
         {
-            try
-            {
-                _sqlBuilder.Database = _dtb;
-                BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
-                twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
-                BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
-                DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, txtdatasource.Text, ref sErr);
-                string key = inf.DEFAULT_CONN;
-                _strConnectDes = Form_QD._config.GetConnection(ref key, "AP");
-            }
-            catch (Exception ex) { lb_Err.Text = ex.Message; }
+            //try
+            //{
+            //    _sqlBuilder.Database = _dtb;
+            //    BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
+            //    twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
+            //    BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
+            //    DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, txtdatasource.Text, ref sErr);
+            //    string key = inf.DEFAULT_CONN;
+            //    _strConnectDes = Form_QD._config.GetConnection(ref key, "AP");
+            //}
+            //catch (Exception ex) { lb_Err.Text = ex.Message; }
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
