@@ -473,7 +473,7 @@ namespace QueryDesigner
             }
             dgvFilter.Invalidate();
             dgvSelectNodes.Invalidate();
-            ValidateLicense();
+            //ValidateLicense();
             //TopMost = false;
             if (sErr != "")
                 lb_Err.Text = sErr;
