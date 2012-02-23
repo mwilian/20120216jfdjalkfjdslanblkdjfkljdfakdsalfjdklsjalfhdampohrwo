@@ -519,8 +519,10 @@ namespace QueryDesigner
         private void btTest_Click(object sender, EventArgs e)
         {
             string query = _sqlBuilder.BuildSQLEx("");
-            MessageBox.Show(query);
-            //Clipboard.SetData("System.String", query);
+
+            frmMsg frm = new frmMsg();
+            frm.SetMsg(query);
+            frm.ShowDialog();
         }
 
 
