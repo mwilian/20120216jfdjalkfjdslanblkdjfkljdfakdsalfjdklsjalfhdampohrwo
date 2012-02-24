@@ -156,7 +156,7 @@ namespace OfficeAddin
             this.QDCommandBar.Controls.Add(this.btnAnalysis);
             this.QDCommandBar.Description = "Tavicosoft Addin";
             this.QDCommandBar.SupportedApps = AddinExpress.MSO.ADXOfficeHostApp.ohaExcel;
-            this.QDCommandBar.UpdateCounter = 12;
+            this.QDCommandBar.UpdateCounter = 14;
             // 
             // btnSetting
             // 
