@@ -125,6 +125,7 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.cboLanguage = new System.Windows.Forms.ToolStripComboBox();
+            this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTheme = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOperator = new System.Windows.Forms.ToolStripMenuItem();
             this.operatorDefinitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -956,6 +957,7 @@
             this.btnSystem,
             this.btnLicense,
             this.cboLanguage,
+            this.taskToolStripMenuItem,
             this.btnTheme,
             this.btnOperator,
             this.importToolStripMenuItem,
@@ -1007,6 +1009,12 @@
             resources.GetString("cboLanguage.Items1"),
             resources.GetString("cboLanguage.Items2")});
             this.cboLanguage.Name = "cboLanguage";
+            // 
+            // taskToolStripMenuItem
+            // 
+            this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
+            resources.ApplyResources(this.taskToolStripMenuItem, "taskToolStripMenuItem");
+            this.taskToolStripMenuItem.Click += new System.EventHandler(this.taskToolStripMenuItem_Click);
             // 
             // btnTheme
             // 
@@ -1339,6 +1347,7 @@
             this.dgvPreview.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvPreview.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.dgvPreview.DoubleClick += new System.EventHandler(this.dgvPreview_DoubleClick);
+            this.dgvPreview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvPreview_KeyUp);
             // 
             // contextMenuStrip1
             // 
@@ -1717,6 +1726,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
 
     }
 }

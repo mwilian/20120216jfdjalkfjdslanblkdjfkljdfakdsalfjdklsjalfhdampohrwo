@@ -322,6 +322,31 @@ namespace QueryDesigner
                         }
 
                     }
+                    else
+                    {
+                        if (dgvResult.RootTable.Columns.Contains(_sqlBuilder.SelectedNodes[j].Description))
+                        {
+                            switch (_sqlBuilder.SelectedNodes[j].Agregate)
+                            {
+                                case "SUM":
+                                    dgvResult.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Sum;
+                                    break;
+                                case "COUNT":
+                                    dgvResult.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Count;
+                                    break;
+                                case "AVG":
+                                    dgvResult.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Average;
+                                    break;
+                                case "MAX":
+                                    dgvResult.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Max;
+                                    break;
+                                case "MIN":
+                                    dgvResult.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Min;
+                                    break;
+                            }
+
+                        }
+                    }
                 }
             }
             for (int i = 0; i < dgvResult.RootTable.Columns.Count; i++)
@@ -566,7 +591,7 @@ namespace QueryDesigner
 
                     int vitri = -1;
                     for (int i = 0; i < _sqlBuilder.SelectedNodes.Count; i++)
-                        if (_sqlBuilder.SelectedNodes[i].MyCode == nodeCode)
+                        if (_sqlBuilder.SelectedNodes[i].MyCode == nodeCode || _sqlBuilder.SelectedNodes[i].Description == nodeCode)
                         {
                             vitri = i;
                         }

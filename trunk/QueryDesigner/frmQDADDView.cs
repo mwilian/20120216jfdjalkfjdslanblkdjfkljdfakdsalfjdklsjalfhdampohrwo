@@ -26,9 +26,11 @@ namespace QueryDesigner
             get { return _code; }
             set { _code = value == null ? "" : value.Trim(); }
         }
-        public frmQDADDView()
+        string _db = "";
+        public frmQDADDView(string db)
         {
             InitializeComponent();
+            _db = db;
         }
 
         private void dgvLookup_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -60,7 +62,7 @@ namespace QueryDesigner
         {
             string sErr = "";
             BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
-            DataTable dt = ctr.GetAll(Form_QD._dtb, ref sErr);
+            DataTable dt = ctr.GetAll(_db, ref sErr);
             if (_conn_ID != "")
                 dt.DefaultView.RowFilter = "DEFAULT_CONN='" + _conn_ID + "'";
             dt.Columns["SCHEMA_ID"].ColumnName = "Code";

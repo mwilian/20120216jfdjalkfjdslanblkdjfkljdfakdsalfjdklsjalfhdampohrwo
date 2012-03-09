@@ -130,6 +130,20 @@ namespace QueryDesigner.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _1331104457_gnome_session_reboot {
+            get {
+                object obj = ResourceManager.GetObject("1331104457_gnome-session-reboot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _1331113101_addressbook {
+            get {
+                object obj = ResourceManager.GetObject("1331113101_addressbook", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap app_32x32 {
             get {
                 object obj = ResourceManager.GetObject("app-32x32", resourceCulture);

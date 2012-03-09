@@ -54,6 +54,17 @@ namespace QueryDesigner
                 }
 
             }
+            else if (_type == "TASK")
+            {
+                BUS.LIST_TASKControl control = new BUS.LIST_TASKControl();
+                dt = control.ToTransferInStruct();
+                dt.TableName = "Table";
+                foreach (DataColumn col in dt.Columns)
+                {
+                    col.DataType = typeof(string);
+                }
+
+            }
             BUS.CommonControl commonCtr = new BUS.CommonControl();
 
             try
@@ -72,6 +83,7 @@ namespace QueryDesigner
             string sErr = "";
             BUS.LIST_QDControl control = new BUS.LIST_QDControl();
             BUS.LIST_QD_SCHEMAControl controlADD = new BUS.LIST_QD_SCHEMAControl();
+            BUS.LIST_TASKControl controlTASK = new BUS.LIST_TASKControl();
             try
             {
                 foreach (DataRow row in dt.Rows)
@@ -82,6 +94,8 @@ namespace QueryDesigner
                             control.TransferIn(row, ref sErr);
                         else if (_type == "QDADD")
                             sErr = controlADD.TransferIn(row);
+                        else if (_type == "TASK")
+                            sErr = controlTASK.TransferIn(row);
                     }
                 }
                 Close();

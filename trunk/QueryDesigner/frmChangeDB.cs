@@ -37,7 +37,7 @@ namespace QueryDesigner
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            Form_QD._dtb = txtdatabase.Text;
+            Form_QD.DB = txtdatabase.Text;
             if (_user != "TVC" && checkBox1.Checked)
             {
                 BUS.PODControl podCtr = new PODControl();
