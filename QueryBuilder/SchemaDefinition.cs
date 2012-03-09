@@ -34,6 +34,7 @@ namespace QueryBuilder
             {
                 return _lookup;
             }
+            set { _lookup = value; }
         }
         //  Property Description
         public string Description
@@ -272,10 +273,11 @@ namespace QueryBuilder
         ///  </summary>
         ///  <returns></returns>
         ///  <remarks></remarks>
-        public static Dictionary<string, string> GetUsableCodeList(string dtb)
+        public static Dictionary<string, string> GetUsableCodeList(string dtb, ref Dictionary<string, string> dcLookup)
         {
             if (_list == null)
             {
+                dcLookup = new Dictionary<string, string>();
                 _list = new Dictionary<string, string>();
                 StringReader stream = null;
                 XmlTextReader reader = null;
@@ -286,6 +288,7 @@ namespace QueryBuilder
                     reader = new XmlTextReader(stream);
                     string table = string.Empty;
                     string Description = string.Empty;
+                    string lookup = string.Empty;
 
                     while (reader.Read())
                     {
@@ -293,7 +296,9 @@ namespace QueryBuilder
                         {
                             table = reader.GetAttribute("table");
                             Description = reader.GetAttribute("Description");
+                            lookup = reader.GetAttribute("lookup");
                             _list.Add(table, Description);
+                            dcLookup.Add(table, lookup);
                         }
                     }
 
@@ -321,10 +326,15 @@ namespace QueryBuilder
         public static BindingList<TableItem> GetTableList(string dtb)
         {
             BindingList<TableItem> bl = new System.ComponentModel.BindingList<TableItem>();
-
-            foreach (KeyValuePair<string, string> item in GetUsableCodeList(dtb))
+            Dictionary<string, string> dcLookup = null;
+            foreach (KeyValuePair<string, string> item in GetUsableCodeList(dtb, ref dcLookup))
             {
                 TableItem ti = new TableItem(item.Key, item.Value);
+                string lookup = "";
+                if (dcLookup.TryGetValue(item.Key, out lookup))
+                {
+                    ti.Lookup = lookup;
+                }
                 bl.Add(ti);
             }
             return bl;
@@ -580,6 +590,7 @@ namespace QueryBuilder
                     ele.SetAttribute("table", row["SCHEMA_ID"].ToString());
                     ele.SetAttribute("Description", row["DESCRIPTN"].ToString());
                     ele.SetAttribute("module", row["SCHEMA_ID"].ToString());
+                    ele.SetAttribute("lookup", row["LOOK_UP"].ToString());
                     docele.AppendChild(ele);
                 }
             }

@@ -47,7 +47,7 @@ namespace QueryDesigner
         private void LoadDataGrid(Janus.Windows.GridEX.GridEX dgv, DBInfoList dBInfoList)
         {
             dgv.DataSource = dBInfoList;
-           //dgv.AutoSizeColumns();
+            //dgv.AutoSizeColumns();
             string path = Form_QD.__documentDirectory + "\\Layout\\" + dgv.SettingsKey + ".gxl";
             if (File.Exists(path))
             {
@@ -72,7 +72,7 @@ namespace QueryDesigner
         private void btnReresh_Click(object sender, EventArgs e)
         {            //dgvFilter.MasterGridViewTemplate.AutoGenerateColumns = false;
 
-            dgvDTBView.DataSource =  DBInfoList.GetDBInfoList();
+            dgvDTBView.DataSource = DBInfoList.GetDBInfoList();
             // //dgvDTBView.AutoSizeColumns();
             //dgvFilter.RetrieveStructure();
             SaveLayout(dgvDTBView);
@@ -89,7 +89,7 @@ namespace QueryDesigner
 
         private void dgvFilter_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void dgvFilter_KeyUp(object sender, KeyEventArgs e)
@@ -108,14 +108,9 @@ namespace QueryDesigner
         private void SaveLayout(Janus.Windows.GridEX.GridEX dgv)
         {
             string path = Form_QD.__documentDirectory + "\\Layout\\" + dgv.SettingsKey + ".gxl";
-            try
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
             {
-                FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
                 dgv.SaveLayoutFile(fs);
-                fs.Close();
-            }
-            catch (Exception ex)
-            {
             }
         }
 

@@ -71,6 +71,8 @@
             this.tabField = new System.Windows.Forms.TabPage();
             this.dgvField = new Janus.Windows.GridEX.GridEX();
             this.bsField = new System.Windows.Forms.BindingSource(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dgvAddRow = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.panelControl.SuspendLayout();
             this.panelTab.SuspendLayout();
@@ -81,6 +83,7 @@
             this.tabField.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvField)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsField)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ddlQD
@@ -481,6 +484,7 @@
             this.dgvField.AllowDelete = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvField.AllowDrop = true;
             this.dgvField.ColumnAutoSizeMode = Janus.Windows.GridEX.ColumnAutoSizeMode.DisplayedCellsAndHeader;
+            this.dgvField.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvField.DataSource = this.bsField;
             dgvField_DesignTimeLayout.LayoutString = resources.GetString("dgvField_DesignTimeLayout.LayoutString");
             this.dgvField.DesignTimeLayout = dgvField_DesignTimeLayout;
@@ -495,6 +499,20 @@
             this.dgvField.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvField_MouseDown);
             this.dgvField.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvField_DragEnter);
             this.dgvField.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvField_DragDrop);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dgvAddRow});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 26);
+            // 
+            // dgvAddRow
+            // 
+            this.dgvAddRow.Name = "dgvAddRow";
+            this.dgvAddRow.Size = new System.Drawing.Size(117, 22);
+            this.dgvAddRow.Text = "Add Row";
+            this.dgvAddRow.Click += new System.EventHandler(this.dgvAddRow_Click);
             // 
             // frmQDADD
             // 
@@ -522,6 +540,7 @@
             this.tabField.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvField)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsField)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,5 +587,7 @@
         private System.Windows.Forms.TextBox txtConectEx;
         private System.Windows.Forms.ToolStripLabel lbErr;
         private System.Windows.Forms.Button btnXML;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dgvAddRow;
     }
 }

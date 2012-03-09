@@ -52,6 +52,20 @@ namespace QueryDesigner
         string _database = "";
         string _pathTemplate = string.Empty;
         string _pathReport = string.Empty;
+        static QDConfig _config = new QDConfig();
+
+        public static QDConfig Config
+        {
+            get { return _config; }
+            set { _config = value; }
+        }
+        Dictionary<string, object> _valueList = new Dictionary<string, object>();
+
+        public Dictionary<string, object> ValueList
+        {
+            get { return _valueList; }
+            set { _valueList = value; }
+        }
         ExcelFile _xlsFile = null;
 
         public ExcelFile XlsFile
@@ -68,12 +82,12 @@ namespace QueryDesigner
             get { return _name; }
             set { _name = value; }
         }
-        static QueryBuilder.SQLBuilder _sqlBuilder = new QueryBuilder.SQLBuilder(QueryBuilder.processingMode.Details);
+        QueryBuilder.SQLBuilder _sqlBuilder = new QueryBuilder.SQLBuilder(QueryBuilder.processingMode.Details);
 
-        public static QueryBuilder.SQLBuilder SqlBuilder
+        public QueryBuilder.SQLBuilder SqlBuilder
         {
-            get { return ReportGenerator._sqlBuilder; }
-            set { ReportGenerator._sqlBuilder = value; }
+            get { return _sqlBuilder; }
+            set { _sqlBuilder = value; }
         }
 
         private DataTable CreateFilterTable(QueryBuilder.SQLBuilder sqlBuilder)
@@ -265,7 +279,7 @@ namespace QueryDesigner
                 string sErr = "";
                 DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref sErr);
                 string keyconn = schInf.DEFAULT_CONN;
-                string connectstring = Form_QD._config.GetConnection(ref keyconn, "AP");
+                string connectstring = Form_QD.Config.GetConnection(ref keyconn, "AP");
                 sqlBuilder.ConnID = keyconn;
                 sqlBuilder.StrConnectDes = connectstring;
 
@@ -794,11 +808,11 @@ namespace QueryDesigner
                         CoreCommonControl commo = new CoreCommonControl();
                         string[] arrF = formular.Split(';');
 
-                        if (arrF.Length >= 2 && arrF[1] == "A" && ReportGenerator.SqlBuilder.Table == sqlBuilder.Table)
-                            foreach (Filter x in ReportGenerator.SqlBuilder.Filters)
+                        if (arrF.Length >= 2 && arrF[1] == "A" && _sqlBuilder.Table == sqlBuilder.Table)
+                            foreach (Filter x in _sqlBuilder.Filters)
                                 sqlBuilder.Filters.Add(x);
                         else if (arrF.Length >= 2 && arrF[1] == "S")
-                            foreach (Filter x in ReportGenerator.SqlBuilder.Filters)
+                            foreach (Filter x in _sqlBuilder.Filters)
                                 foreach (Filter y in sqlBuilder.Filters)
                                 {
                                     if (x.Node.MyCode == y.Node.MyCode)
@@ -814,7 +828,7 @@ namespace QueryDesigner
 
                         DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref _sErr);
                         string keyconn = schInf.DEFAULT_CONN;
-                        string connectstring = Form_QD._config.GetConnection(ref keyconn, "AP");
+                        string connectstring = _config.GetConnection(ref keyconn, "AP");
                         sqlBuilder.ConnID = keyconn;
                         sqlBuilder.StrConnectDes = connectstring;
                         dt = sqlBuilder.BuildDataTable("");
@@ -975,10 +989,16 @@ namespace QueryDesigner
 
         private void AddReportVariable(FlexCelReport flexcelreport)
         {
-            flexcelreport.SetValue("Date", DateTime.Now.ToShortDateString());
             flexcelreport.SetValue("QDName", _name);
             flexcelreport.SetValue("QDCode", _qdCode);
             flexcelreport.SetValue("DB", _database);
+            if (_valueList.Count > 0)
+            {
+                foreach (KeyValuePair<string, object> it in _valueList)
+                {
+                    flexcelreport.SetValue(it.Key, it.Value);
+                }
+            }
         }
         public MemoryStream ExportPDF(string path)
         {

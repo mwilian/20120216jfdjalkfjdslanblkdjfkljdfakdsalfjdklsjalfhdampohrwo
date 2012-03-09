@@ -15,12 +15,12 @@ using System.IO;
 
 namespace QueryDesigner
 {
-    public partial class Form_View : Form
+    public partial class frmTaskView : Form
     {
         public String themname = "";
         public String database = "";
         private String sErr = "";
-        public LIST_QDInfo qdinfo = new LIST_QDInfo();
+        public object returnValue = null;
 
         private bool flag;
         string THEME = "Breeze";
@@ -38,7 +38,7 @@ namespace QueryDesigner
         //    _user = user;
         //    //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
         //}
-        public Form_View(string aDatabase, string user)
+        public frmTaskView(string aDatabase, string user)
         {
             database = aDatabase;
             _user = user;
@@ -49,7 +49,7 @@ namespace QueryDesigner
         {
             try
             {
-                string path = Form_QD.__documentDirectory + "\\Layout\\QDViewLayout.xml";
+                string path = Form_QD.__documentDirectory + "\\Layout\\TaskViewLayout.xml";
                 if (File.Exists(path))
                 {
                     using (Stream sr = new FileStream(path, FileMode.OpenOrCreate))
@@ -62,9 +62,9 @@ namespace QueryDesigner
                     }
 
                 }
-                else if (File.Exists(Form_QD.__documentDirectory + "\\Layout\\QDViewLayoutDefault.xml"))
+                else if (File.Exists(Form_QD.__documentDirectory + "\\Layout\\TaskViewLayoutDefault.xml"))
                 {
-                    using (Stream sr = new FileStream(Form_QD.__documentDirectory + "\\Layout\\QDViewLayoutDefault.xml", FileMode.OpenOrCreate))
+                    using (Stream sr = new FileStream(Form_QD.__documentDirectory + "\\Layout\\TaskViewLayoutDefault.xml", FileMode.OpenOrCreate))
                     {
                         try
                         {
@@ -86,7 +86,7 @@ namespace QueryDesigner
         { }
         protected void SaveLayout()
         {
-            string path = Form_QD.__documentDirectory + "\\Layout\\QDViewLayout.xml";
+            string path = Form_QD.__documentDirectory + "\\Layout\\TaskViewLayout.xml";
             if (File.Exists(path))
                 File.Delete(path);
             using (Stream sr = new FileStream(path, FileMode.OpenOrCreate))
@@ -100,7 +100,7 @@ namespace QueryDesigner
         }
         protected void ResetLayout()
         {
-            string path = Form_QD.__documentDirectory + "\\Layout\\QDViewLayoutDefault.xml";
+            string path = Form_QD.__documentDirectory + "\\Layout\\TaskViewLayoutDefault.xml";
             using (Stream sr = new FileStream(path, FileMode.OpenOrCreate))
             {
 
@@ -113,13 +113,14 @@ namespace QueryDesigner
                     catch { }
 
                 }
+                else dgvQDView.RetrieveStructure();
             }
             SaveLayout();
         }
         protected void InitLayout()
         {
             dgvQDView.RetrieveStructure();
-            string path = Form_QD.__documentDirectory + "\\Layout\\QDViewLayoutDefault.xml";
+            string path = Form_QD.__documentDirectory + "\\Layout\\TaskViewLayoutDefault.xml";
             using (Stream sr = new FileStream(path, FileMode.OpenOrCreate))
             {
                 try
@@ -153,8 +154,8 @@ namespace QueryDesigner
             }
             flag = true;
 
-            LIST_QDControl pdControl = new LIST_QDControl();
-            DataTable dt = pdControl.GetAll_LIST_QD_USER(database, _user, ref sErr);
+            LIST_TASKControl pdControl = new LIST_TASKControl();
+            DataTable dt = pdControl.GetAll(database, ref sErr);
             //dgvFilter.MasterGridViewTemplate.AutoGenerateColumns = false;            
             LoadDataGrid(dt);
             LoadLayout();
@@ -173,11 +174,12 @@ namespace QueryDesigner
         {
             if (dgvQDView.CurrentRow != null && dgvQDView.CurrentRow.RowIndex >= 0)
             {
-                String qd_id = dgvQDView.CurrentRow.Cells["QD_ID"].Value.ToString();
-                String dtb = dgvQDView.CurrentRow.Cells["DTB"].Value.ToString();
-                LIST_QDControl ctr = new LIST_QDControl();
+                String code = dgvQDView.CurrentRow.Cells["Code"].Value.ToString();
+                String lookup = dgvQDView.CurrentRow.Cells["Lookup"].Value.ToString();
+                String description = dgvQDView.CurrentRow.Cells["Description"].Value.ToString();
 
-                qdinfo = ctr.Get_LIST_QD(dtb, qd_id, ref sErr);
+
+                returnValue = new object[] { code, lookup, description };
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -185,8 +187,8 @@ namespace QueryDesigner
 
         private void btnReresh_Click(object sender, EventArgs e)
         {
-            LIST_QDControl pdControl = new LIST_QDControl();
-            DataTable dt = pdControl.GetAll_LIST_QD_USER(database, _user, ref sErr);
+            LIST_TASKControl pdControl = new LIST_TASKControl();
+            DataTable dt = pdControl.GetAll(database, ref sErr);
             //dgvFilter.MasterGridViewTemplate.AutoGenerateColumns = false;
             dgvQDView.DataSource = dt;
             //dgvQDView.AutoSizeColumns();

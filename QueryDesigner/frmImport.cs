@@ -26,9 +26,10 @@ namespace QueryDesigner
             set { _dtb = value; }
         }
         string _sErr = "";
-        public frmImport()
+        public frmImport(string db)
         {
             InitializeComponent();
+            _dtb = db;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -363,7 +364,7 @@ namespace QueryDesigner
         {
             BUS.IMPORT_SCHEMAControl ctr = new BUS.IMPORT_SCHEMAControl();
             string sErr = "";
-            DataTable dt = ctr.GetAll(Form_QD._dtb, ref sErr);
+            DataTable dt = ctr.GetAll(_dtb, ref sErr);
             BUS.LIST_DAControl daCtr = new LIST_DAControl();
             DataTable dtPermision = daCtr.GetPermission(Form_QD._user, ref sErr);
             for (int i = dt.Rows.Count - 1; i >= 0; i--)
@@ -476,7 +477,7 @@ namespace QueryDesigner
             DTO.IMPORT_SCHEMAInfo importInf = new DTO.IMPORT_SCHEMAInfo(row);
 
             string key = importInf.DEFAULT_CONN;
-            _importCtr.StrConn = Form_QD._config.GetConnection(ref key, "AP");
+            _importCtr.StrConn = Form_QD.Config.GetConnection(ref key, "AP");
 
             //StringReader sb = new StringReader(row["FIELD_TEXT"].ToString());
             byte[] byteArray = Encoding.ASCII.GetBytes(row["FIELD_TEXT"].ToString());

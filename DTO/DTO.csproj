@@ -59,6 +59,7 @@
     <Compile Include="License.cs" />
     <Compile Include="LIST_DAInfo.cs" />
     <Compile Include="LIST_DAOGInfo.cs" />
+    <Compile Include="LIST_EMAILInfo.cs" />
     <Compile Include="LIST_GADGETInfo.cs" />
     <Compile Include="LIST_QDDInfo.cs">
       <SubType>Code</SubType>
@@ -70,6 +71,7 @@
     <Compile Include="LIST_QD_SCHEMAInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LIST_TASKInfo.cs" />
     <Compile Include="PODInfo.cs" />
     <Compile Include="POGInfo.cs" />
     <Compile Include="POPInfo.cs" />

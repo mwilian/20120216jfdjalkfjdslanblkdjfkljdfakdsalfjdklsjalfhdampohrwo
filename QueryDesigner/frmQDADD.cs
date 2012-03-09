@@ -13,13 +13,15 @@ namespace QueryDesigner
 {
     public partial class frmQDADD : Form
     {
+        string _db = "";
         DataSet _data = new DataSet("Schema");
         string _processStatus = "";
         string _code = "";
         public QDConfig _config = null;
-        public frmQDADD()
+        public frmQDADD(string db)
         {
             InitializeComponent();
+            _db = db;
         }
 
         private void frmQDADD_Load(object sender, EventArgs e)
@@ -46,6 +48,8 @@ namespace QueryDesigner
             if (val)
                 tmp = Janus.Windows.GridEX.InheritableBoolean.True;
             dgvField.AllowEdit = dgvField.AllowDelete = dgvField.AllowAddNew = tmp;
+            if (val) dgvField.ContextMenuStrip = contextMenuStrip1;
+            else dgvField.ContextMenuStrip = null;
             dgvFrom.AllowEdit = dgvFrom.AllowDelete = dgvFrom.AllowAddNew = tmp;
             ddlQD.Enabled = val;
         }
@@ -82,7 +86,7 @@ namespace QueryDesigner
         }
         private DTO.LIST_QD_SCHEMAInfo GetDataFromForm(DTO.LIST_QD_SCHEMAInfo inf)
         {
-            inf.CONN_ID = Form_QD._dtb;
+            inf.CONN_ID = _db;
             inf.DEFAULT_CONN = ddlQD.Text;
             inf.DESCRIPTN = txtDescription.Text;
             inf.LOOK_UP = txtLookup.Text;
@@ -240,16 +244,16 @@ namespace QueryDesigner
         private void btnRelation_Click(object sender, EventArgs e)
         {
             string sErr = "";
-            frmQDADDView frmview = new frmQDADDView();
-            
+            frmQDADDView frmview = new frmQDADDView(_db);
+
             frmview.Conn_ID = ddlQD.Text;
-            
+
             if (frmview.ShowDialog() == DialogResult.OK && frmview.ReturnCode != "")
             {
                 frmRelation frm = new frmRelation();
                 frm.DTOriginal = _data.Tables["field"];
                 BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
-                DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, frmview.ReturnCode, ref sErr);
+                DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(_db, frmview.ReturnCode, ref sErr);
                 if (inf.SCHEMA_ID != "")
                 {
                     try
@@ -327,14 +331,14 @@ namespace QueryDesigner
         {
             string sErr = "";
             _processStatus = "V";
-            frmQDADDView frm = new frmQDADDView();
-            //frm.Connect = Form_QD._dtb;
+            frmQDADDView frm = new frmQDADDView(_db);
+            //frm.Connect = _db;
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 if (frm.ReturnCode != "")
                 {
                     BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
-                    DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, frm.ReturnCode, ref sErr);
+                    DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(_db, frm.ReturnCode, ref sErr);
                     SetDataToForm(inf);
                 }
             }
@@ -350,7 +354,7 @@ namespace QueryDesigner
         private void btnEdit_Click(object sender, EventArgs e)
         {
             BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
-            if (ctr.IsExist(Form_QD._dtb, txtCode.Text))
+            if (ctr.IsExist(_db, txtCode.Text))
             {
                 EnableForm(true);
                 //ddlQD.Enabled = false;
@@ -367,7 +371,7 @@ namespace QueryDesigner
 
             if (_processStatus == "C")
             {
-                if (!ctr.IsExist(Form_QD._dtb, txtCode.Text))
+                if (!ctr.IsExist(_db, txtCode.Text))
                     ctr.Add(GetDataFromForm(inf), ref sErr);
                 else
                     sErr = txtCode.Text.Trim() + " is exist!";
@@ -387,11 +391,11 @@ namespace QueryDesigner
         private void btnDelete_Click(object sender, EventArgs e)
         {
             BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
-            if (ctr.IsExist(Form_QD._dtb, txtCode.Text))
+            if (ctr.IsExist(_db, txtCode.Text))
             {
                 if (MessageBox.Show("Do you want to delete " + txtCode.Text + " schema?", "Message", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    string sErr = ctr.Delete(Form_QD._dtb, txtCode.Text);
+                    string sErr = ctr.Delete(_db, txtCode.Text);
                     RefreshForm("");
                     EnableForm(false);
                 }
@@ -401,7 +405,7 @@ namespace QueryDesigner
         private void btnCopy_Click(object sender, EventArgs e)
         {
             BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
-            if (ctr.IsExist(Form_QD._dtb, txtCode.Text))
+            if (ctr.IsExist(_db, txtCode.Text))
             {
                 EnableForm(true);
                 txtCode.Focus();
@@ -420,8 +424,8 @@ namespace QueryDesigner
 
         private void btnTransferOut_Click(object sender, EventArgs e)
         {
-            FrmTransferOut frm = new FrmTransferOut("QDADD");
-            frm.DTB = Form_QD._dtb;
+            FrmTransferOut frm = new FrmTransferOut(_db, "QDADD");
+            //frm.DTB = _db;
             frm.ShowDialog();
             //BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
             ////if (ctr.IsExist(ddlQD.Text, txtCode.Text))
@@ -585,6 +589,11 @@ namespace QueryDesigner
                         }
                     }
             }
+        }
+
+        private void dgvAddRow_Click(object sender, EventArgs e)
+        {
+            _data.Tables["field"].Rows.InsertAt(_data.Tables["field"].NewRow(), dgvField.CurrentRow.RowIndex);
         }
 
 

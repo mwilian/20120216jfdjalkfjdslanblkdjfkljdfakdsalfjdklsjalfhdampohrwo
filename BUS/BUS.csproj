@@ -74,6 +74,7 @@
     <Compile Include="IMPORT_SCHEMAControl.cs" />
     <Compile Include="LIST_DAControl.cs" />
     <Compile Include="LIST_DAOGControl.cs" />
+    <Compile Include="LIST_EMAILControl.cs" />
     <Compile Include="LIST_GADGETControl.cs" />
     <Compile Include="LIST_QDControl.cs">
       <SubType>Code</SubType>
@@ -85,6 +86,7 @@
     <Compile Include="LIST_QD_SCHEMAControl.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LIST_TASKControl.cs" />
     <Compile Include="PODControl.cs" />
     <Compile Include="POGControl.cs" />
     <Compile Include="POPControl.cs" />

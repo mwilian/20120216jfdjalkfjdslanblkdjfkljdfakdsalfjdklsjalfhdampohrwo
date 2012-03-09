@@ -61,6 +61,7 @@
     <Compile Include="IMPORT_SCHEMADataAccess.cs" />
     <Compile Include="LIST_DADataAccess.cs" />
     <Compile Include="LIST_DAOGDataAccess.cs" />
+    <Compile Include="LIST_EMAILDataAccess.cs" />
     <Compile Include="LIST_GADGETDataAccess.cs" />
     <Compile Include="LIST_QDDataAccess.cs">
       <SubType>Code</SubType>
@@ -72,6 +73,7 @@
     <Compile Include="LIST_QD_SCHEMADataAccess.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LIST_TASKDataAccess.cs" />
     <Compile Include="PODDataAccess.cs" />
     <Compile Include="POGDataAccess.cs" />
     <Compile Include="POPDataAccess.cs" />

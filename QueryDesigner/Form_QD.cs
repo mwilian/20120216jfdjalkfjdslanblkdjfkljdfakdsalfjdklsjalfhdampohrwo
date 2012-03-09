@@ -40,7 +40,13 @@ namespace QueryDesigner
         const int _hImportDef = 11;
         const int _hImport = 12;
         #endregion IDHandle
-        public static QDConfig _config = new QDConfig();
+        static QDConfig _config = new QDConfig();
+
+        public static QDConfig Config
+        {
+            get { return Form_QD._config; }
+            set { Form_QD._config = value; }
+        }
         ReportGenerator _rpGen = null;
         clsChartProperty _propertyChart = new clsChartProperty();
         private SQLBuilder _sqlBuilder = new SQLBuilder(processingMode.Details);
@@ -68,7 +74,19 @@ namespace QueryDesigner
         string _processStatus = "";
         bool flagOpen = true;
         TreeNode _currentNode = null;
-        public static string _dtb;
+        static string _dtb;
+        public static string DB
+        {
+            get { return _dtb; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value) && _dtb != value)
+                {
+                    _dtb = value;
+                    CmdManager.Db = value;
+                }
+            }
+        }
         public static string _user;
         //public static string _connDes;
         string _pass;
@@ -101,7 +119,7 @@ namespace QueryDesigner
                 if (conID == "ZZZ")
                     conID = "";
                 string dtb = agrs[1];
-                _dtb = dtb;
+                DB = dtb;
 
                 _user = agrs[2];
                 _pass = agrs[3];
@@ -118,13 +136,13 @@ namespace QueryDesigner
                     DTO.PODInfo podInf = podCtr.Get(_user, ref sErr);
                     if (podInf.DB_DEFAULT != "")
                     {
-                        Form_QD._dtb = podInf.DB_DEFAULT;
+                        DB = podInf.DB_DEFAULT;
 
 
                     }
                     else
                     {
-                        Form_QD._dtb = dtb;
+                        DB = dtb;
                     }
                 }
                 //string permis = agrs[5];
@@ -158,13 +176,13 @@ namespace QueryDesigner
                 {
                     _user = frm.User;
                     _pass = frm.Pass;
-                    _dtb = frm.DB;
-                    if (_dtb != "")
-                    {
-                        Form_QD._dtb = _dtb;
-                        //txtdatabase.ReadOnly = true;
-                        //bt_database.Enabled = false;
-                    }
+                    DB = frm.DB;
+                    //if (DB != "")
+                    //{
+                    //    DB = DB;
+                    //    //txtdatabase.ReadOnly = true;
+                    //    //bt_database.Enabled = false;
+                    //}
                     flagOpen = true;
                 }
                 else
@@ -183,7 +201,7 @@ namespace QueryDesigner
                 ////ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
 
             }
-            _sqlBuilder.Database = _dtb;
+            _sqlBuilder.Database = DB;
         }
 
         //void SqlBuilder_Change()
@@ -201,7 +219,7 @@ namespace QueryDesigner
             BUS.PODControl podCtr = new PODControl();
             PODInfo podInf = podCtr.Get(user, ref sErr);
             BUS.POPControl popCtr = new POPControl();
-            POPInfo popInf = popCtr.Get(podInf.ROLE_ID, _dtb, ref sErr);
+            POPInfo popInf = popCtr.Get(podInf.ROLE_ID, DB, ref sErr);
             if (popInf.ROLE_ID == "")
                 popInf = popCtr.Get(podInf.ROLE_ID, "", ref sErr);
             popInf.PERMISSION = popInf.PERMISSION.Replace(" ", popInf.DEFAULT_VALUE);
@@ -387,6 +405,13 @@ namespace QueryDesigner
                 nodeAgregate.DataSource = dtcom;
                 nodeAgregate.DisplayMember = "Code";
                 nodeAgregate.ValueMember = "Code";
+
+                ReportGenerator.Config = _config;
+                CmdManager.Db = DB;
+                CmdManager.AppConnect = _strConnect;
+                CmdManager.RepConnect = _strConnectDes;
+                CmdManager.ReptPath = __reportPath;
+                CmdManager.TempPath = __templatePath;
             }
             catch (Exception ex)
             {
@@ -427,6 +452,7 @@ namespace QueryDesigner
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            tsMain.TabPages.Remove(tabItemSQLText);
             webGadget.AllowNavigation = wbChart.AllowNavigation = true;
             dgvFilter.AutoGenerateColumns = false;
             dgvSelectNodes.AutoGenerateColumns = false;
@@ -473,12 +499,12 @@ namespace QueryDesigner
             }
             dgvFilter.Invalidate();
             dgvSelectNodes.Invalidate();
-            //ValidateLicense();
+            ValidateLicense();
             //TopMost = false;
             if (sErr != "")
                 lb_Err.Text = sErr;
             splitContainer3.SplitterDistance = 1124;
-            Text = "Query Desinger for WinForm - " + _user + "@" + _dtb;
+            Text = "Query Desinger for WinForm - " + _user + "@" + DB;
             //frmLoading frm = new frmLoading();
 
             //frm.Show();
@@ -563,7 +589,7 @@ namespace QueryDesigner
             //txtdatabase.Focus();
             tabItemGeneral.Select();
             tsMain.Enabled = true;
-            _sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text.Trim(), Form_QD._dtb.Trim(), txtdatasource.Text.Trim());
+            _sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text.Trim(), DB.Trim(), txtdatasource.Text.Trim());
             nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
             filterBindingSource.DataSource = _sqlBuilder.Filters;
             _propertyChart.ReadProperty(info.FOOTER_TEXT);
@@ -579,7 +605,7 @@ namespace QueryDesigner
             a.BringToFront();
             if (a.ShowDialog(this) == DialogResult.OK)
             {
-                Form_QD._dtb = a.Code_DTB;
+                DB = a.Code_DTB;
                 //txt_database.Text = a.Description_DTB;
             }
         }
@@ -587,7 +613,7 @@ namespace QueryDesigner
         private void bt_datasource_Click(object sender, EventArgs e)
         {
             Form_TableView a = new Form_TableView();
-            a.Code_DTB = _dtb;
+            a.Code_DTB = DB;
             a.themname = THEME;
             a.BringToFront();
             if (a.ShowDialog(this) == DialogResult.OK)
@@ -613,8 +639,8 @@ namespace QueryDesigner
             txtdesr.Text = "";
             txtowner.Text = _user;
             txtANAL_Q2.Text = "";
-            //if (_dtb != null)
-            //    Form_QD._dtb = _dtb;
+            //if (DB != null)
+            //    DB = DB;
             txtdatasource.Text = "";
             txt_sql.Text = "";
             lb_Err.Text = "";
@@ -687,7 +713,7 @@ namespace QueryDesigner
         {
             ResetForm();
             EnableForm();
-            Form_QD._dtb = _dtb;
+            DB = DB;
             tsMain.SelectedTab = tabItemGeneral;
             if (owner != "")
             {
@@ -772,7 +798,7 @@ namespace QueryDesigner
         {
             bool flag = false;
             String err = "";
-            if (Form_QD._dtb == "")
+            if (DB == "")
             {
                 err = err + "- Database required !!!\n";
                 flag = true;
@@ -807,7 +833,7 @@ namespace QueryDesigner
         {
             bool flag = false;
             String err = "";
-            if (Form_QD._dtb == "")
+            if (DB == "")
             {
                 err = err + "- Database required !!!\n";
                 flag = true;
@@ -843,11 +869,11 @@ namespace QueryDesigner
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            if (Form_QD._dtb != "")
+            if (DB != "")
             {
-                Form_View a = new Form_View(Form_QD._dtb, _user);
+                Form_View a = new Form_View(DB, _user);
                 a.themname = THEME;
-                a.database = Form_QD._dtb;
+                a.database = DB;
                 a.BringToFront();
                 if (a.ShowDialog() == DialogResult.OK)
                 {
@@ -863,7 +889,7 @@ namespace QueryDesigner
         {
             if (qdinfo.QD_ID != "")
             {
-                Form_QD._dtb = qdinfo.DTB.Trim();
+                DB = qdinfo.DTB.Trim();
                 txtqd_id.Text = qdinfo.QD_ID.Trim();
                 txtdesr.Text = qdinfo.DESCRIPTN.Trim();
                 txtowner.Text = qdinfo.OWNER.Trim();
@@ -884,7 +910,7 @@ namespace QueryDesigner
             //  radTabStrip1.SelectedTab = tabItemGeneral;
             BUS.LIST_QDControl ctr = new LIST_QDControl();
 
-            if (ctr.IsExist(Form_QD._dtb, txtqd_id.Text))
+            if (ctr.IsExist(DB, txtqd_id.Text))
             {
                 EnableForm();
                 txtqd_id.Enabled = false;
@@ -902,7 +928,7 @@ namespace QueryDesigner
                 qdInfo.ANAL_Q0 = txtdatasource.Text;
                 qdInfo.ANAL_Q1 = txtANAL_Q1.Text;
                 qdInfo.DESCRIPTN = txtdesr.Text;
-                qdInfo.DTB = Form_QD._dtb;
+                qdInfo.DTB = DB;
                 qdInfo.OWNER = txtowner.Text;
                 qdInfo.QD_ID = txtqd_id.Text.Trim();
                 qdInfo.ANAL_Q2 = txtANAL_Q2.Text;
@@ -911,7 +937,7 @@ namespace QueryDesigner
                 //qdInfo.
                 //      qdInfo.SQL_TEXT = _sqlBuilder.BuildSQL();
                 qdInfo.SQL_TEXT = txt_sql.Text;
-                if (_processStatus == "C" && !qdControl.IsExist(Form_QD._dtb, qdInfo.QD_ID))
+                if (_processStatus == "C" && !qdControl.IsExist(DB, qdInfo.QD_ID))
                     qdControl.Add_LIST_QD(qdInfo, ref sErr);
                 else if (_processStatus == "A")
                     qdControl.Update_LIST_QD(qdInfo);
@@ -1027,7 +1053,7 @@ namespace QueryDesigner
             {
                 //string ext = "";
 
-                string filename = __reportPath + txtqd_id.Text + ReportGenerator.Ext;
+                string filename = __reportPath + txtdesr.Text + ReportGenerator.Ext;
                 rpGen.Name = txtdesr.Text;
                 if (CheckChange(_xlsFile, __templatePath, txtqd_id.Text))
                     _xlsFile = rpGen.CreateReport();
@@ -1213,12 +1239,12 @@ namespace QueryDesigner
             if (txtqd_id.Text != "")
             {
 
-                if (qdcontrol.IsExist(Form_QD._dtb.Trim(), txtqd_id.Text.Trim()))
+                if (qdcontrol.IsExist(DB.Trim(), txtqd_id.Text.Trim()))
                 {
                     if (MessageBox.Show("Do you want to delete this QD?", "Delete Message", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        sErr = qdcontrol.Delete_LIST_QD(Form_QD._dtb.Trim(), txtqd_id.Text.Trim());
-                        qddcontrol.Delete_LIST_QDD_By_QD_ID(txtqd_id.Text.Trim(), Form_QD._dtb.Trim(), ref sErr);
+                        sErr = qdcontrol.Delete_LIST_QD(DB.Trim(), txtqd_id.Text.Trim());
+                        qddcontrol.Delete_LIST_QDD_By_QD_ID(txtqd_id.Text.Trim(), DB.Trim(), ref sErr);
 
                         _processStatus = "";
                     }
@@ -1639,11 +1665,11 @@ namespace QueryDesigner
         {
             try
             {
-                _sqlBuilder.Database = _dtb;
+                _sqlBuilder.Database = DB;
                 BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
                 twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
                 BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
-                DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, txtdatasource.Text, ref sErr);
+                DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(DB, txtdatasource.Text, ref sErr);
                 string key = inf.DEFAULT_CONN;
                 _strConnectDes = Form_QD._config.GetConnection(ref key, "AP");
             }
@@ -1658,7 +1684,7 @@ namespace QueryDesigner
 
         private void btnTransferOut_Click(object sender, EventArgs e)
         {
-            FrmTransferOut frm = new FrmTransferOut("QD");
+            FrmTransferOut frm = new FrmTransferOut(DB, "QD");
             //frm.DTB = txt_database.Text;
             frm.QD_CODE = txtqd_id.Text;
             frm.ShowDialog();
@@ -1884,7 +1910,7 @@ namespace QueryDesigner
                 {
                     //dgvSelectNodes.CellBeginEdit += new GridViewCellCancelEventHandler(dgvSelectNodes_CellBeginEdit);
 
-                    _sqlBuilder.Database = Form_QD._dtb.Trim();
+                    _sqlBuilder.Database = DB.Trim();
                     if (txtdatasource.Text.Trim() != "" && (txtdatasource.Text.ToString().Trim() != _sqlBuilder.Table.Trim() || twSchema.Nodes.Count == 0))
                     {
                         if (txtdatasource.Text.ToString().Trim() != _sqlBuilder.Table.Trim())
@@ -1899,7 +1925,7 @@ namespace QueryDesigner
                     //twSchema.Enabled = false;
                     //dgvFilter.Enabled = false;
                     //dgvSelectNodes.Enabled = false;
-                    //_sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text, Form_QD._dtb, txtdatasource.Text);
+                    //_sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text, DB, txtdatasource.Text);
                     //LoadSQLBuilderFromDataBase();
                     //}
                     _sqlBuilder.Table = txtdatasource.Text.Trim();
@@ -1912,7 +1938,7 @@ namespace QueryDesigner
                     //twSchema.Enabled = false;
                     //dgvFilter.Enabled = false;
                     //dgvSelectNodes.Enabled = false;
-                    //_sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text, Form_QD._dtb, txtdatasource.Text);
+                    //_sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text, DB, txtdatasource.Text);
                     //LoadSQLBuilderFromDataBase();
                     //}
                     //_sqlBuilder.Filters.Clear();
@@ -1991,6 +2017,31 @@ namespace QueryDesigner
                                     break;
                             }
 
+                        }
+                        else
+                        {
+                            if (dgvPreview.RootTable.Columns.Contains(_sqlBuilder.SelectedNodes[j].Description))
+                            {
+                                switch (_sqlBuilder.SelectedNodes[j].Agregate)
+                                {
+                                    case "SUM":
+                                        dgvPreview.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Sum;
+                                        break;
+                                    case "COUNT":
+                                        dgvPreview.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Count;
+                                        break;
+                                    case "AVG":
+                                        dgvPreview.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Average;
+                                        break;
+                                    case "MAX":
+                                        dgvPreview.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Max;
+                                        break;
+                                    case "MIN":
+                                        dgvPreview.RootTable.Columns[_sqlBuilder.SelectedNodes[j].Description].AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Min;
+                                        break;
+                                }
+
+                            }
                         }
                     }
                 }
@@ -2623,7 +2674,7 @@ namespace QueryDesigner
 
         private void txtCommand_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Form_QD._dtb != "")
+            if (DB != "")
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -2631,7 +2682,7 @@ namespace QueryDesigner
                     {
                         try
                         {
-                            frmQDADD frm = new frmQDADD();
+                            frmQDADD frm = new frmQDADD(DB);
                             frm._config = _config;
                             frm.Show();
                         }
@@ -3037,15 +3088,15 @@ namespace QueryDesigner
         private void importDefinitionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmImportDefinition frm = new frmImportDefinition();
-            frm.DTB = _dtb;
+            frm.DTB = DB;
             frm._config = _config;
             frm.Show(this);
         }
 
         private void importToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmImport frm = new frmImport();
-            frm.DTB = _dtb;
+            frmImport frm = new frmImport(DB);
+            frm.DTB = DB;
             frm.Show(this);
         }
 
@@ -3062,7 +3113,7 @@ namespace QueryDesigner
         private void txtdatabase_Validated(object sender, EventArgs e)
         {
             BUS.DBAControl dbaCtr = new DBAControl();
-            DTO.DBAInfo dbaInf = dbaCtr.Get(Form_QD._dtb, ref sErr);
+            DTO.DBAInfo dbaInf = dbaCtr.Get(DB, ref sErr);
             //txt_database.Text = dbaInf.DESCRIPTION;
             ResetForm();
         }
@@ -3070,7 +3121,7 @@ namespace QueryDesigner
         private void txtqd_id_Validated(object sender, EventArgs e)
         {
             BUS.LIST_QDControl ctr = new LIST_QDControl();
-            DTO.LIST_QDInfo inf = ctr.Get_LIST_QD(Form_QD._dtb, txtqd_id.Text, ref sErr);
+            DTO.LIST_QDInfo inf = ctr.Get_LIST_QD(DB, txtqd_id.Text, ref sErr);
             if (inf.QD_ID != "")
             {
                 LoadQD(inf);
@@ -3080,17 +3131,17 @@ namespace QueryDesigner
 
         private void changeDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmChangeDB frm = new frmChangeDB(_dtb);
+            frmChangeDB frm = new frmChangeDB(DB);
             frm.User = _user;
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                //if (Form_QD._dtb != frm.)
+                //if (DB != frm.)
                 //{
-                //    Form_QD._dtb = Form_QD._dtb;
+                //    DB = DB;
                 //txtdatabase.Focus();
                 ResetForm();
-                _sqlBuilder.Database = _dtb;
-                Text = "Query Desinger for WinForm - " + _user + "@" + _dtb;
+                _sqlBuilder.Database = DB;
+                Text = "Query Desinger for WinForm - " + _user + "@" + DB;
                 //}
             }
         }
@@ -3108,11 +3159,11 @@ namespace QueryDesigner
         {
             //try
             //{
-            //    _sqlBuilder.Database = _dtb;
+            //    _sqlBuilder.Database = DB;
             //    BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
             //    twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
             //    BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
-            //    DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(Form_QD._dtb, txtdatasource.Text, ref sErr);
+            //    DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(DB, txtdatasource.Text, ref sErr);
             //    string key = inf.DEFAULT_CONN;
             //    _strConnectDes = Form_QD._config.GetConnection(ref key, "AP");
             //}
@@ -3128,6 +3179,23 @@ namespace QueryDesigner
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void taskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTask frm = new frmTask(DB, _user);
+            frm.Show();
+        }
+
+        private void dgvPreview_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+            {
+                if (dgvPreview.Row >= 0)
+                {
+                    Clipboard.SetDataObject(dgvPreview.GetRow(dgvPreview.Row).Cells[dgvPreview.Col].Value.ToString());
+                }
+            }
         }
 
 

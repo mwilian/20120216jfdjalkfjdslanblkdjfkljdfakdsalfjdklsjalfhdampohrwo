@@ -128,12 +128,31 @@
     <Compile Include="Class1.cs" />
     <Compile Include="clsChartProperty.cs" />
     <Compile Include="clsListValueTT_XLB_EB.cs" />
+    <Compile Include="CmdManager.cs" />
     <Compile Include="Configuration\clsConfigurarion.cs" />
     <Compile Include="Configuration\clsControlsInForm.cs" />
     <Compile Include="Configuration\ConfigDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConfigDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmail.Designer.cs">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaskView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaskView.Designer.cs">
+      <DependentUpon>frmTaskView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTask.Designer.cs">
+      <DependentUpon>frmTask.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDBDef.cs">
       <SubType>Form</SubType>
@@ -331,6 +350,12 @@
     <Compile Include="FrmSubField.Designer.cs">
       <DependentUpon>FrmSubField.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTestMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestMail.Designer.cs">
+      <DependentUpon>frmTestMail.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTransferIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,6 +496,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmEmail.resx">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaskView.resx">
+      <DependentUpon>frmTaskView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTask.resx">
+      <DependentUpon>frmTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDBDef.resx">
       <DependentUpon>frmDBDef.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -621,6 +657,9 @@
       <DependentUpon>FrmSubField.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTestMail.resx">
+      <DependentUpon>frmTestMail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTransferIn.resx">
       <DependentUpon>FrmTransferIn.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -709,6 +748,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Sendmail.cs" />
     <Compile Include="TreeViewLoader.cs" />
     <Compile Include="ReportGenerator.cs" />
     <Compile Include="XmlEncoder.cs" />
@@ -905,6 +945,8 @@
     <Content Include="Resources\1300327616_ParameterReview.png" />
     <None Include="Resources\1328261867_filter_add.png" />
     <None Include="Resources\1328262186_database_table.png" />
+    <None Include="Resources\1331104457_gnome-session-reboot.png" />
+    <None Include="Resources\1331113101_addressbook.png" />
     <Content Include="Resources\lightbox_loading.gif" />
     <None Include="-.template.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
