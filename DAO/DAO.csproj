@@ -77,6 +77,7 @@
     <Compile Include="PODDataAccess.cs" />
     <Compile Include="POGDataAccess.cs" />
     <Compile Include="POPDataAccess.cs" />
+    <Compile Include="POSDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

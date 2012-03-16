@@ -21,12 +21,14 @@ namespace QueryDesigner
         private String sErr = "";
         public String Code_DTB = "";
         public String Description_DTB = "";
+        string _user = "";
 
         private bool flag;
         string THEME = "Breeze";
-        public Form_TableView()
+        public Form_TableView(string db, string user)
         {
             InitializeComponent();
+            Code_DTB = db; _user = user;
             //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
         }
 
@@ -51,7 +53,7 @@ namespace QueryDesigner
             }
             flag = true;
             //dgvTableView.MasterGridViewTemplate.AutoGenerateColumns = false;
-            LoadDataGrid(dgvTableView, SchemaDefinition.GetTableList(Code_DTB));
+            LoadDataGrid(dgvTableView, SchemaDefinition.GetTableList(Code_DTB, _user));
             flag = false;
             //dgvFilter.CurrentRow = null;
 
@@ -92,7 +94,7 @@ namespace QueryDesigner
         private void btnReresh_Click(object sender, EventArgs e)
         {
             //dgvTableView.MasterGridViewTemplate.AutoGenerateColumns = false;
-            dgvTableView.DataSource = SchemaDefinition.GetTableList(Code_DTB);
+            dgvTableView.DataSource = SchemaDefinition.GetTableList(Code_DTB, _user);
             //dgvTableView.AutoSizeColumns();
             SaveLayout(dgvTableView);
             flag = false;
@@ -111,7 +113,7 @@ namespace QueryDesigner
 
         private void dgvTableView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void dgvTableView_KeyUp(object sender, KeyEventArgs e)

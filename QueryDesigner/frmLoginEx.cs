@@ -9,7 +9,7 @@ using DTO;
 
 namespace QueryDesigner
 {
-    public partial class frmLogin : Form
+    public partial class frmLoginEx : Form
     {
         string _sErr = string.Empty;
         string _user = "";
@@ -26,7 +26,7 @@ namespace QueryDesigner
             get { return _pass; }
             set { _pass = value; }
         }
-        public frmLogin()
+        public frmLoginEx()
         {
             InitializeComponent();
         }
@@ -61,17 +61,17 @@ namespace QueryDesigner
 
                     if (inf.PASS == pass)
                     {
-                        BUS.POSControl posCtr = new BUS.POSControl();
-                        if (!posCtr.IsExist(inf.USER_ID))
-                        {
-                            DialogResult = DialogResult.OK;
-                            _DB = inf.DB_DEFAULT;
+                        //BUS.POSControl posCtr = new BUS.POSControl();
+                        //if (!posCtr.IsExist(inf.USER_ID))
+                        //{
+                        DialogResult = DialogResult.OK;
+                        _DB = inf.DB_DEFAULT;
 
-                            DTO.POSInfo infPOS = new POSInfo(inf.USER_ID, _DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
-                            posCtr.InsertUpdate(infPOS);
-                            Close();
-                        }
-                        else { lbErr.Text = "Existing users in the system"; }
+                        //DTO.POSInfo infPOS = new POSInfo(inf.USER_ID, _DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+                        //posCtr.InsertUpdate(infPOS);
+                        Close();
+                        //}
+                        //else { lbErr.Text = "Existing users in the system"; }
                     }
                     else
                         lbErr.Text = "Password wrong!";

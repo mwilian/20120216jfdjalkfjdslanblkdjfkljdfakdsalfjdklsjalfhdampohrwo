@@ -4,37 +4,36 @@ using System.Text;
 using DTO;
 using System.Data;
 using System.Data.SqlClient;
+using QueryBuilder;
 
 namespace DAO
 {
 	/// <summary> 
 	///Author: nnamthach@gmail.com 
 	/// <summary>
-    public class LIST_DADataAccess : Connection
+    public class CorePODDataAccess : CoreConnection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_DA_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_DA_update]";
-        private string _strSPDeleteName = "dbo.[LIST_DA_delete]";
-        private string _strSPGetName = "dbo.[procLIST_DA_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_DA_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_DA_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_DA_isexist]";
-        private string _strTableName = "[LIST_DA]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_DA_gettransferout]";
-        private string _strSPGetPermissionName = "LIST_DAGPermission";
-        string _strSPGetPermissionByRoleName = "LIST_DAGPermissionByRole";
+        private string _strSPInsertName = "dbo.[procPOD_add]";
+        private string _strSPUpdateName = "dbo.[procPOD_update]";
+        private string _strSPDeleteName = "dbo.[procPOD_delete]";
+        private string _strSPGetName = "dbo.[procPOD_get]";
+        private string _strSPGetAllName = "dbo.[procPOD_getall]";
+		private string _strSPGetPages = "dbo.[procPOD_getpaged]";
+		private string _strSPIsExist = "dbo.[procPOD_isexist]";
+        private string _strTableName = "[SSINSTAL]";
+		private string _strSPGetTransferOutName = "dbo.[procPOD_gettransferout]";
 		#endregion Local Variable
 		
 		#region Method
-        public LIST_DAInfo Get(
-        String DAG_ID,
+        public CorePODInfo Get(
+        String USER_ID,
 		ref string sErr)
         {
-			LIST_DAInfo objEntr = new LIST_DAInfo();
+			CorePODInfo objEntr = new CorePODInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+            AddParameter(CorePODInfo.Field.USER_ID.ToString(), USER_ID);
             
             DataTable list = new DataTable();
             try
@@ -48,18 +47,23 @@ namespace DAO
             disconnect();  
             
             if (list.Rows.Count > 0)
-                objEntr = (LIST_DAInfo)GetDataFromDataRow(list, 0);
+                objEntr = (CorePODInfo)GetDataFromDataRow(list, 0);
             //if (dr != null) list = CBO.FillCollection(dr, ref list);
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return objEntr;
         }
 
         protected override object GetDataFromDataRow(DataTable dt, int i)
         {
-            LIST_DAInfo result = new LIST_DAInfo();
-            result.DAG_ID = (dt.Rows[i][LIST_DAInfo.Field.DAG_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.DAG_ID.ToString()]));
-            result.NAME = (dt.Rows[i][LIST_DAInfo.Field.NAME.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.NAME.ToString()]));
-            result.EI = (dt.Rows[i][LIST_DAInfo.Field.EI.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.EI.ToString()]));
+            CorePODInfo result = new CorePODInfo();
+            result.USER_ID = (dt.Rows[i][CorePODInfo.Field.USER_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.USER_ID.ToString()]));
+            result.TB = (dt.Rows[i][CorePODInfo.Field.TB.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.TB.ToString()]));
+            result.USER_ID1 = (dt.Rows[i][CorePODInfo.Field.USER_ID1.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.USER_ID1.ToString()]));
+            result.USER_NAME = (dt.Rows[i][CorePODInfo.Field.USER_NAME.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.USER_NAME.ToString()]));
+            result.DB_DEFAULT = (dt.Rows[i][CorePODInfo.Field.DB_DEFAULT.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.DB_DEFAULT.ToString()]));
+            result.LANGUAGE = (dt.Rows[i][CorePODInfo.Field.LANGUAGE.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.LANGUAGE.ToString()]));
+            result.ROLE_ID = (dt.Rows[i][CorePODInfo.Field.ROLE_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.ROLE_ID.ToString()]));
+            result.PASS = (dt.Rows[i][CorePODInfo.Field.PASS.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CorePODInfo.Field.PASS.ToString()]));
            
             return result;
         }
@@ -81,7 +85,7 @@ namespace DAO
             disconnect();
 
 
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
 		/// <summary>
@@ -90,14 +94,19 @@ namespace DAO
         /// Return -1: Erro
         /// </summary>
         /// <param name="tableName"></param>
-        public Int32 Add(LIST_DAInfo objEntr, ref string sErr)
+        public Int32 Add(CorePODInfo objEntr, ref string sErr)
         {
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
-            AddParameter(LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
+            AddParameter(CorePODInfo.Field.USER_ID.ToString(), objEntr.USER_ID);
+            AddParameter(CorePODInfo.Field.TB.ToString(), objEntr.TB);
+            AddParameter(CorePODInfo.Field.USER_ID1.ToString(), objEntr.USER_ID1);
+            AddParameter(CorePODInfo.Field.USER_NAME.ToString(), objEntr.USER_NAME);
+            AddParameter(CorePODInfo.Field.DB_DEFAULT.ToString(), objEntr.DB_DEFAULT);
+            AddParameter(CorePODInfo.Field.LANGUAGE.ToString(), objEntr.LANGUAGE);
+            AddParameter(CorePODInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(CorePODInfo.Field.PASS.ToString(), objEntr.PASS);
           
             try
             {
@@ -113,18 +122,23 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
 			
             return ret;
         }
 
-        public string Update(LIST_DAInfo objEntr)
+        public string Update(CorePODInfo objEntr)
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
-            AddParameter(LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
+            AddParameter(CorePODInfo.Field.USER_ID.ToString(), objEntr.USER_ID);
+            AddParameter(CorePODInfo.Field.TB.ToString(), objEntr.TB);
+            AddParameter(CorePODInfo.Field.USER_ID1.ToString(), objEntr.USER_ID1);
+            AddParameter(CorePODInfo.Field.USER_NAME.ToString(), objEntr.USER_NAME);
+            AddParameter(CorePODInfo.Field.DB_DEFAULT.ToString(), objEntr.DB_DEFAULT);
+            AddParameter(CorePODInfo.Field.LANGUAGE.ToString(), objEntr.LANGUAGE);
+            AddParameter(CorePODInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(CorePODInfo.Field.PASS.ToString(), objEntr.PASS);
                
             string sErr = "";
             try
@@ -136,17 +150,17 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return sErr;
         }
 
         public string Delete(
-        String DAG_ID
+        String USER_ID
 		)
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+            AddParameter(CorePODInfo.Field.USER_ID.ToString(), USER_ID);
               
             string sErr = "";
             try
@@ -158,11 +172,11 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return sErr;
         }   
 		
-		public DataTableCollection Get_Page(LIST_DAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
+		public DataTableCollection Get_Page(CorePODInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
         {
 			string whereClause = CreateWhereClause(obj);
             DataTableCollection dtList = null;
@@ -183,17 +197,17 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return dtList;
         }
         
         public Boolean IsExist(
-        String DAG_ID
+        String USER_ID
 		)
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+            AddParameter(CorePODInfo.Field.USER_ID.ToString(), USER_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -206,20 +220,20 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             if(list.Rows.Count==1)
 				return true;
             return false;
         }
 		
-		private string CreateWhereClause(LIST_DAInfo obj)
+		private string CreateWhereClause(CorePODInfo obj)
         {
             String result = "";
 
             return result;
         }
         
-        public DataTable Search(string columnName, string columnValue, string condition, string tableName, ref string sErr)
+        public DataTable Search(string columnName, string columnValue, string condition, ref string sErr)
         {
             string query = "select * from " + _strTableName + " where " + columnName + " " + condition + " " + columnValue;
             DataTable list = new DataTable();
@@ -234,7 +248,7 @@ namespace DAO
             }
             disconnect();
             //if (dr != null) list = CBO.FillCollection(dr, ref list);
-            //    if (sErr != "") ErrorLog.SetLog(sErr);
+            //    if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
 		public DataTable GetTransferOut(string dtb, object from, object to, ref string sErr)
@@ -256,52 +270,10 @@ namespace DAO
             disconnect();
 
 
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
 		#endregion Method
-
-
-        public DataTable GetPermission(string user, ref string sErr)
-        {
-            connect();
-            InitSPCommand(_strSPGetPermissionName);
-            AddParameter("USER_ID", user);           
-            DataTable list = new DataTable();
-            try
-            {
-                list = executeSelectSP();
-            }
-            catch (Exception ex)
-            {
-                sErr = ex.Message;
-            }
-            disconnect();
-
-
-            if (sErr != "") ErrorLog.SetLog(sErr);
-            return list;
-        }
-        public DataTable GetPermissionByRole(string role, ref string sErr)
-        {
-
-            connect();
-            InitSPCommand(_strSPGetPermissionByRoleName);
-            AddParameter("ROLE_ID", role);
-            DataTable list = new DataTable();
-            try
-            {
-                list = executeSelectSP();
-            }
-            catch (Exception ex)
-            {
-                sErr = ex.Message;
-            }
-            disconnect();
-
-
-            if (sErr != "") ErrorLog.SetLog(sErr);
-            return list;
-        }
+     
     }
 }

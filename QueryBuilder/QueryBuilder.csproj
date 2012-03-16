@@ -81,6 +81,12 @@
     <Compile Include="Core\CoreQDD_FILTERControl.cs" />
     <Compile Include="Core\CoreQDD_FILTERDataAccess.cs" />
     <Compile Include="Core\CoreQDD_FILTERInfo.cs" />
+    <Compile Include="Core\CoreDAControl.cs" />
+    <Compile Include="Core\CoreDADataAccess.cs" />
+    <Compile Include="Core\CoreDAInfo.cs" />
+    <Compile Include="Core\CorePODControl.cs" />
+    <Compile Include="Core\CorePODDataAccess.cs" />
+    <Compile Include="Core\CorePODInfo.cs" />
     <Compile Include="DBInfo.cs" />
     <Compile Include="DBInfoList.cs" />
     <Compile Include="Delegation.cs" />

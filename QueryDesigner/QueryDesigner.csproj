@@ -136,11 +136,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConfigDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmLoginEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginEx.designer.cs">
+      <DependentUpon>frmLoginEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEmail.Designer.cs">
       <DependentUpon>frmEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOS.Designer.cs">
+      <DependentUpon>frmPOS.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTaskView.cs">
       <SubType>Form</SubType>
@@ -496,8 +508,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmLoginEx.resx">
+      <DependentUpon>frmLoginEx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmail.resx">
       <DependentUpon>frmEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOS.resx">
+      <DependentUpon>frmPOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaskView.resx">
       <DependentUpon>frmTaskView.cs</DependentUpon>

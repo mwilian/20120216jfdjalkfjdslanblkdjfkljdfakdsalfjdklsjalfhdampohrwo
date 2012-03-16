@@ -18,10 +18,12 @@ namespace QueryDesigner
         string _processStatus = "";
         string _code = "";
         public QDConfig _config = null;
-        public frmQDADD(string db)
+        string _user = "";
+        public frmQDADD(string db, string user)
         {
             InitializeComponent();
             _db = db;
+            _user = user;
         }
 
         private void frmQDADD_Load(object sender, EventArgs e)
@@ -37,6 +39,7 @@ namespace QueryDesigner
             txtLookup.Text = str;
             _data.Tables["field"].Rows.Clear();
             _data.Tables["fromcode"].Rows.Clear();
+            Group.Text = str;
 
         }
         private void EnableForm(bool val)
@@ -52,11 +55,12 @@ namespace QueryDesigner
             else dgvField.ContextMenuStrip = null;
             dgvFrom.AllowEdit = dgvFrom.AllowDelete = dgvFrom.AllowAddNew = tmp;
             ddlQD.Enabled = val;
+            Group.Enabled = val;
         }
         private void SetDataToForm(DTO.LIST_QD_SCHEMAInfo inf)
         {
             RefreshForm("");
-
+            Group.Text = inf.DAG;
             ddlQD.Text = inf.DEFAULT_CONN;
             txtDescription.Text = inf.DESCRIPTN;
             txtLookup.Text = inf.LOOK_UP;
@@ -98,7 +102,7 @@ namespace QueryDesigner
             //inf.FIELD_TEXT = GetFieldCode(_data.Tables["field"]);
             inf.SCHEMA_ID = txtCode.Text;
             inf.SCHEMA_STATUS = ckbUse.Checked ? "Y" : "N";
-
+            inf.DAG = Group.Text;
             return inf;
         }
         private void InitConnection()
@@ -244,7 +248,7 @@ namespace QueryDesigner
         private void btnRelation_Click(object sender, EventArgs e)
         {
             string sErr = "";
-            frmQDADDView frmview = new frmQDADDView(_db);
+            frmQDADDView frmview = new frmQDADDView(_db, _user);
 
             frmview.Conn_ID = ddlQD.Text;
 
@@ -331,7 +335,7 @@ namespace QueryDesigner
         {
             string sErr = "";
             _processStatus = "V";
-            frmQDADDView frm = new frmQDADDView(_db);
+            frmQDADDView frm = new frmQDADDView(_db, _user);
             //frm.Connect = _db;
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -425,6 +429,7 @@ namespace QueryDesigner
         private void btnTransferOut_Click(object sender, EventArgs e)
         {
             FrmTransferOut frm = new FrmTransferOut(_db, "QDADD");
+            frm.QD_CODE = txtCode.Text;
             //frm.DTB = _db;
             frm.ShowDialog();
             //BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
@@ -594,6 +599,15 @@ namespace QueryDesigner
         private void dgvAddRow_Click(object sender, EventArgs e)
         {
             _data.Tables["field"].Rows.InsertAt(_data.Tables["field"].NewRow(), dgvField.CurrentRow.RowIndex);
+        }
+
+        private void btnQD_Click(object sender, EventArgs e)
+        {
+            frmDAView frm = new frmDAView();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Group.Text = frm.Code;
+            }
         }
 
 

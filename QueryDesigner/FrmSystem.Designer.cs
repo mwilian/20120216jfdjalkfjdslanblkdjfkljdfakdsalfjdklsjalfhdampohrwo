@@ -38,13 +38,6 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConnect = new System.Windows.Forms.TabPage();
             this.dgvList = new System.Windows.Forms.DataGridView();
-            this.DEFAULT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.KEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CONTENT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContentEx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TEST = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.BUILD = new System.Windows.Forms.DataGridViewButtonColumn();
             this.iTEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingConfig = new System.Windows.Forms.BindingSource(this.components);
             this.qDConfig = new QueryDesigner.QDConfig();
@@ -74,10 +67,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ddlAP = new System.Windows.Forms.ComboBox();
             this.dTBBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ddlQD = new System.Windows.Forms.ComboBox();
-            this.txtTMP = new System.Windows.Forms.TextBox();
             this.APITEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ddlQD = new System.Windows.Forms.ComboBox();
             this.QDITEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtTMP = new System.Windows.Forms.TextBox();
+            this.DEFAULT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.KEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CONTENT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContentEx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TEST = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.BUILD = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabConnect.SuspendLayout();
@@ -173,63 +173,6 @@
             this.dgvList.TabIndex = 0;
             this.dgvList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellValueChanged);
             this.dgvList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellClick);
-            // 
-            // DEFAULT
-            // 
-            this.DEFAULT.DataPropertyName = "DEFAULT";
-            this.DEFAULT.HeaderText = "Default";
-            this.DEFAULT.Name = "DEFAULT";
-            this.DEFAULT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DEFAULT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DEFAULT.Width = 50;
-            // 
-            // KEY
-            // 
-            this.KEY.DataPropertyName = "KEY";
-            this.KEY.HeaderText = "Key";
-            this.KEY.Name = "KEY";
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "TYPE";
-            this.Type.HeaderText = "Type";
-            this.Type.Items.AddRange(new object[] {
-            "QD",
-            "AP"});
-            this.Type.Name = "Type";
-            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // CONTENT
-            // 
-            this.CONTENT.DataPropertyName = "CONTENT";
-            this.CONTENT.HeaderText = "CONTENT";
-            this.CONTENT.Name = "CONTENT";
-            this.CONTENT.ReadOnly = true;
-            this.CONTENT.Visible = false;
-            // 
-            // ContentEx
-            // 
-            this.ContentEx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ContentEx.DataPropertyName = "CONTENTEX";
-            this.ContentEx.HeaderText = "Connect String";
-            this.ContentEx.Name = "ContentEx";
-            // 
-            // TEST
-            // 
-            this.TEST.DataPropertyName = "TEST";
-            this.TEST.HeaderText = "Test";
-            this.TEST.Name = "TEST";
-            this.TEST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TEST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // BUILD
-            // 
-            this.BUILD.DataPropertyName = "BUTTON";
-            this.BUILD.HeaderText = "Build";
-            this.BUILD.Name = "BUILD";
-            this.BUILD.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BUILD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // iTEMBindingSource
             // 
@@ -514,6 +457,12 @@
             this.dTBBindingSource.DataMember = "DTB";
             this.dTBBindingSource.DataSource = this.bindingConfig;
             // 
+            // APITEMBindingSource
+            // 
+            this.APITEMBindingSource.DataMember = "ITEM";
+            this.APITEMBindingSource.DataSource = this.bindingConfig;
+            this.APITEMBindingSource.Filter = "TYPE=\'AP\'";
+            // 
             // ddlQD
             // 
             this.ddlQD.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dTBBindingSource, "QD", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -529,6 +478,12 @@
             this.ddlQD.TabIndex = 5;
             this.ddlQD.ValueMember = "KEY";
             // 
+            // QDITEMBindingSource
+            // 
+            this.QDITEMBindingSource.DataMember = "ITEM";
+            this.QDITEMBindingSource.DataSource = this.bindingConfig;
+            this.QDITEMBindingSource.Filter = "TYPE=\'QD\'";
+            // 
             // txtTMP
             // 
             this.txtTMP.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.dIRBindingSource, "TMP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -538,17 +493,63 @@
             this.txtTMP.Size = new System.Drawing.Size(352, 20);
             this.txtTMP.TabIndex = 3;
             // 
-            // APITEMBindingSource
+            // DEFAULT
             // 
-            this.APITEMBindingSource.DataMember = "ITEM";
-            this.APITEMBindingSource.DataSource = this.bindingConfig;
-            this.APITEMBindingSource.Filter = "TYPE=\'AP\'";
+            this.DEFAULT.DataPropertyName = "DEFAULT";
+            this.DEFAULT.HeaderText = "Default";
+            this.DEFAULT.Name = "DEFAULT";
+            this.DEFAULT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DEFAULT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DEFAULT.Width = 50;
             // 
-            // QDITEMBindingSource
+            // KEY
             // 
-            this.QDITEMBindingSource.DataMember = "ITEM";
-            this.QDITEMBindingSource.DataSource = this.bindingConfig;
-            this.QDITEMBindingSource.Filter = "TYPE=\'QD\'";
+            this.KEY.DataPropertyName = "KEY";
+            this.KEY.HeaderText = "Key";
+            this.KEY.Name = "KEY";
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "TYPE";
+            this.Type.HeaderText = "Type";
+            this.Type.Items.AddRange(new object[] {
+            "QD",
+            "AP"});
+            this.Type.Name = "Type";
+            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CONTENT
+            // 
+            this.CONTENT.DataPropertyName = "CONTENT";
+            this.CONTENT.HeaderText = "CONTENT";
+            this.CONTENT.Name = "CONTENT";
+            this.CONTENT.ReadOnly = true;
+            this.CONTENT.Visible = false;
+            // 
+            // ContentEx
+            // 
+            this.ContentEx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ContentEx.DataPropertyName = "CONTENTEX";
+            this.ContentEx.HeaderText = "Connect String";
+            this.ContentEx.Name = "ContentEx";
+            this.ContentEx.ReadOnly = true;
+            // 
+            // TEST
+            // 
+            this.TEST.DataPropertyName = "TEST";
+            this.TEST.HeaderText = "Test";
+            this.TEST.Name = "TEST";
+            this.TEST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TEST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // BUILD
+            // 
+            this.BUILD.DataPropertyName = "BUTTON";
+            this.BUILD.HeaderText = "Build";
+            this.BUILD.Name = "BUILD";
+            this.BUILD.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BUILD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FrmSystem
             // 
@@ -627,6 +628,8 @@
         private System.Windows.Forms.BindingSource dIRBindingSource;
         private System.Windows.Forms.TextBox txtForce;
         private System.Windows.Forms.TextBox txtBack;
+        private System.Windows.Forms.BindingSource APITEMBindingSource;
+        private System.Windows.Forms.BindingSource QDITEMBindingSource;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DEFAULT;
         private System.Windows.Forms.DataGridViewTextBoxColumn KEY;
         private System.Windows.Forms.DataGridViewComboBoxColumn Type;
@@ -634,7 +637,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ContentEx;
         private System.Windows.Forms.DataGridViewLinkColumn TEST;
         private System.Windows.Forms.DataGridViewButtonColumn BUILD;
-        private System.Windows.Forms.BindingSource APITEMBindingSource;
-        private System.Windows.Forms.BindingSource QDITEMBindingSource;
     }
 }

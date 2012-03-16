@@ -18,7 +18,7 @@ namespace QueryDesigner
         string _padMode = "PKCS7";
         string _opMode = "CBC";
         string _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
-        string _pathLicense = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
+        //string _pathLicense = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
         public FrmLicense()
         {
             InitializeComponent();
@@ -27,10 +27,13 @@ namespace QueryDesigner
         private void FrmLicense_Load(object sender, EventArgs e)
         {
             lbErr.Text = "";
-            if (File.Exists(_pathLicense.Replace("file:\\", "")))
+            BUS.CommonControl ctr = new BUS.CommonControl();
+            object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
+
+            if (data != null)// if (File.Exists(_pathLicense.Replace("file:\\", "")))
             {
-                StreamReader reader = new StreamReader(_pathLicense.Replace("file:\\", ""));
-                string result = reader.ReadLine();
+                //StreamReader reader = new StreamReader(_pathLicense.Replace("file:\\", ""));
+                string result = data.ToString();
                 string kq = RC2.DecryptString(result, _key, _iv, _padMode, _opMode);
                 string[] tmp = kq.Split(';');
                 DTO.License license = new DTO.License();
@@ -42,7 +45,7 @@ namespace QueryDesigner
                 license.Key = tmp[5];
                 license.SerialCPU = tmp[6];
                 SetDataToForm(license);
-                reader.Close();
+                //reader.Close();
             }
         }
 
@@ -59,11 +62,14 @@ namespace QueryDesigner
             string add = license.Modules.Substring(1, 1);
             string web = license.Modules.Substring(2, 1);
             string qdadd = license.Modules.Substring(3, 1);
-
+            string task = "";
+            if (license.Modules.Length > 4)
+                task = license.Modules.Substring(4, 1);
             ckbQD.Checked = qd == "Y" ? true : false;
             ckbAddin.Checked = add == "Y" ? true : false;
             ckbWeb.Checked = web == "Y" ? true : false;
             ckbQDADD.Checked = qdadd == "Y" ? true : false;
+            ckbTask.Checked = task == "Y" ? true : false;
             DateTime date = new DateTime(year, month, day);
             dtExpiryDate.Value = date;
         }
@@ -86,10 +92,18 @@ namespace QueryDesigner
                             license.Key + ";" +
                             license.SerialCPU;
 
-                StreamWriter writerStream = new StreamWriter(_pathLicense.Replace("file:\\", ""));
+
+                BUS.CommonControl ctr = new BUS.CommonControl();
+                string query = @"if EXISTS(SELECT [INS_KEY]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD') 
+UPDATE [TVC_UQD].[dbo].[SSINSTAL] SET [SUN_DATA] = '{0}' WHERE [INS_TB]='LCS' and [INS_KEY]='QD'
+else 
+INSERT INTO [TVC_UQD].[dbo].[SSINSTAL]([INS_TB] ,[INS_KEY] ,[SUN_DATA]) VALUES ( 'LCS' ,'QD' ,'{0}')";
                 string result = RC2.EncryptString(kq, _key, _iv, _padMode, _opMode);
-                writerStream.WriteLine(result);
-                writerStream.Close();
+                query = string.Format(query, result);
+                ctr.executeNonQuery(query);
+                //StreamWriter writerStream = new StreamWriter(_pathLicense.Replace("file:\\", ""));
+                //writerStream.WriteLine(result);
+                //writerStream.Close();
 
                 Close();
                 DialogResult = DialogResult.OK;
@@ -108,11 +122,12 @@ namespace QueryDesigner
             string add = ckbAddin.Checked == true ? "Y" : " ";
             string web = ckbWeb.Checked == true ? "Y" : " ";
             string qdadd = ckbQDADD.Checked == true ? "Y" : " ";
-            result.Modules = qd + add + web + qdadd;
+            string task = ckbTask.Checked == true ? "Y" : " ";
+            result.Modules = qd + add + web + qdadd + task;
             DateTime dateExpire = dtExpiryDate.Value;
             result.ExpiryDate = dateExpire.Year * 10000 + dateExpire.Month * 100 + dateExpire.Day;
             result.Key = txtKey.Text.Trim();
-            result.SerialCPU = GetProcessorId(); //"BFEBFBFF000006FD";
+            result.SerialCPU = ""; //"BFEBFBFF000006FD";
             return result;
         }
         public static string GetProcessorId()

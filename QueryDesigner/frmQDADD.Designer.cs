@@ -70,9 +70,12 @@
             this.bsFROMCODE = new System.Windows.Forms.BindingSource(this.components);
             this.tabField = new System.Windows.Forms.TabPage();
             this.dgvField = new Janus.Windows.GridEX.GridEX();
-            this.bsField = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dgvAddRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.bsField = new System.Windows.Forms.BindingSource(this.components);
+            this.Group = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnQD = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.panelControl.SuspendLayout();
             this.panelTab.SuspendLayout();
@@ -82,8 +85,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsFROMCODE)).BeginInit();
             this.tabField.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvField)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsField)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsField)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQD)).BeginInit();
             this.SuspendLayout();
             // 
             // ddlQD
@@ -112,7 +116,7 @@
             // 
             this.txtConnect.BackColor = System.Drawing.Color.White;
             this.txtConnect.ForeColor = System.Drawing.Color.Black;
-            this.txtConnect.Location = new System.Drawing.Point(168, 108);
+            this.txtConnect.Location = new System.Drawing.Point(367, 36);
             this.txtConnect.Name = "txtConnect";
             this.txtConnect.ReadOnly = true;
             this.txtConnect.Size = new System.Drawing.Size(302, 22);
@@ -147,7 +151,6 @@
             this.txtCode.Size = new System.Drawing.Size(100, 22);
             this.txtCode.TabIndex = 5;
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
-            this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // txtDescription
             // 
@@ -288,6 +291,9 @@
             // 
             // panelControl
             // 
+            this.panelControl.Controls.Add(this.btnQD);
+            this.panelControl.Controls.Add(this.Group);
+            this.panelControl.Controls.Add(this.label2);
             this.panelControl.Controls.Add(this.btnXML);
             this.panelControl.Controls.Add(this.txtConectEx);
             this.panelControl.Controls.Add(this.txtModule);
@@ -305,7 +311,7 @@
             this.panelControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl.Location = new System.Drawing.Point(0, 39);
             this.panelControl.Name = "panelControl";
-            this.panelControl.Size = new System.Drawing.Size(912, 139);
+            this.panelControl.Size = new System.Drawing.Size(912, 144);
             this.panelControl.TabIndex = 8;
             // 
             // btnXML
@@ -429,10 +435,10 @@
             this.tabControl1.Controls.Add(this.tabTable);
             this.tabControl1.Controls.Add(this.tabField);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 178);
+            this.tabControl1.Location = new System.Drawing.Point(0, 183);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(912, 389);
+            this.tabControl1.Size = new System.Drawing.Size(912, 384);
             this.tabControl1.TabIndex = 9;
             // 
             // tabTable
@@ -441,7 +447,7 @@
             this.tabTable.Location = new System.Drawing.Point(4, 25);
             this.tabTable.Name = "tabTable";
             this.tabTable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTable.Size = new System.Drawing.Size(904, 360);
+            this.tabTable.Size = new System.Drawing.Size(904, 355);
             this.tabTable.TabIndex = 0;
             this.tabTable.Text = "Table & Relation";
             this.tabTable.UseVisualStyleBackColor = true;
@@ -460,7 +466,7 @@
             this.dgvFrom.Location = new System.Drawing.Point(3, 3);
             this.dgvFrom.Name = "dgvFrom";
             this.dgvFrom.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvFrom.Size = new System.Drawing.Size(898, 354);
+            this.dgvFrom.Size = new System.Drawing.Size(898, 349);
             this.dgvFrom.TabIndex = 1;
             this.dgvFrom.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.dgvFrom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvFrom_MouseDown);
@@ -514,6 +520,35 @@
             this.dgvAddRow.Text = "Add Row";
             this.dgvAddRow.Click += new System.EventHandler(this.dgvAddRow_Click);
             // 
+            // Group
+            // 
+            this.Group.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Group.Location = new System.Drawing.Point(91, 114);
+            this.Group.Name = "Group";
+            this.Group.Size = new System.Drawing.Size(100, 22);
+            this.Group.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Group";
+            // 
+            // btnQD
+            // 
+            this.btnQD.BackColor = System.Drawing.Color.Transparent;
+            this.btnQD.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnQD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnQD.Location = new System.Drawing.Point(197, 117);
+            this.btnQD.Name = "btnQD";
+            this.btnQD.Size = new System.Drawing.Size(16, 16);
+            this.btnQD.TabIndex = 47;
+            this.btnQD.TabStop = false;
+            this.btnQD.Click += new System.EventHandler(this.btnQD_Click);
+            // 
             // frmQDADD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,8 +574,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsFROMCODE)).EndInit();
             this.tabField.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvField)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsField)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsField)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,5 +625,8 @@
         private System.Windows.Forms.Button btnXML;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dgvAddRow;
+        private System.Windows.Forms.TextBox Group;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox btnQD;
     }
 }

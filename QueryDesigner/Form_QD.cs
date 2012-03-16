@@ -39,6 +39,7 @@ namespace QueryDesigner
         const int _hOperator = 10;
         const int _hImportDef = 11;
         const int _hImport = 12;
+        const int _hTask = 13;
         #endregion IDHandle
         static QDConfig _config = new QDConfig();
 
@@ -74,7 +75,7 @@ namespace QueryDesigner
         string _processStatus = "";
         bool flagOpen = true;
         TreeNode _currentNode = null;
-        static string _dtb;
+        static string _dtb = "";
         public static string DB
         {
             get { return _dtb; }
@@ -256,8 +257,8 @@ namespace QueryDesigner
                     importDefinitionToolStripMenuItem.Visible = false;
                 if (popInf.PERMISSION.Substring(_hImport, 1) == "N")
                     importToolStripMenuItem1.Visible = false;
-                //if (popInf.PERMISSION.Substring(_hQuery, 1) == "N")
-                //    btnTransferOut.Enabled = false;
+                if (popInf.PERMISSION.Substring(_hTask, 1) == "N")
+                    taskToolStripMenuItem.Visible = false;
             }
             else Close();
         }
@@ -453,6 +454,7 @@ namespace QueryDesigner
         private void Form1_Load(object sender, EventArgs e)
         {
             tsMain.TabPages.Remove(tabItemSQLText);
+
             webGadget.AllowNavigation = wbChart.AllowNavigation = true;
             dgvFilter.AutoGenerateColumns = false;
             dgvSelectNodes.AutoGenerateColumns = false;
@@ -612,7 +614,7 @@ namespace QueryDesigner
 
         private void bt_datasource_Click(object sender, EventArgs e)
         {
-            Form_TableView a = new Form_TableView();
+            Form_TableView a = new Form_TableView(_dtb, _user);
             a.Code_DTB = DB;
             a.themname = THEME;
             a.BringToFront();
@@ -1036,6 +1038,9 @@ namespace QueryDesigner
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            BUS.POSControl posCtr = new BUS.POSControl();
+            DTO.POSInfo infPOS = new POSInfo(_user, DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+            posCtr.InsertUpdate(infPOS);
             //SaveFileDialog frm = new SaveFileDialog();
             //frm.Filter = "Excel file (*.xls)|*.xls";
             //if (frm.ShowDialog() == DialogResult.OK)
@@ -1801,15 +1806,17 @@ namespace QueryDesigner
                 ValidateLicense();
             }
         }
-        bool _flagQDADD = true;
+        bool _flagQDADD = false;
         private void ValidateLicense()
         {
             tsMain.Enabled = false;
-            if (File.Exists(_pathLicense.Replace("file:\\", "")))
+            BUS.CommonControl ctr = new CommonControl();
+            object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
+            if (data != null)//File.Exists(_pathLicense.Replace("file:\\", ""))
             {
-                StreamReader reader = new StreamReader(_pathLicense.Replace("file:\\", ""));
-                string result = reader.ReadLine();
-                string kq = RC2.DecryptString(result, _key, _iv, _padMode, _opMode);
+                //StreamReader reader = new StreamReader(_pathLicense.Replace("file:\\", ""));
+                //string result = reader.ReadLine();
+                string kq = RC2.DecryptString(data.ToString(), _key, _iv, _padMode, _opMode);
                 string[] tmp = kq.Split(';');
                 DTO.License license = new DTO.License();
                 license.CompanyName = tmp[0];
@@ -1819,8 +1826,8 @@ namespace QueryDesigner
                 license.SerialNumber = tmp[4];
                 license.Key = tmp[5];
                 //license.SerialCPU = tmp[6];
-                license.SerialCPU = GetProcessorId();
-                reader.Close();
+                license.SerialCPU = "";
+                //reader.Close();
 
 
                 string param = license.CompanyName + license.SerialNumber + license.NumUsers.ToString() + license.Modules + license.ExpiryDate.ToString() + license.SerialCPU;
@@ -1831,7 +1838,7 @@ namespace QueryDesigner
                 if (key == license.Key)
                 {
                     int now = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00"));
-                    BUS.CommonControl ctr = new CommonControl();
+                    //BUS.CommonControl ctr = new CommonControl();
                     object dt = ctr.executeScalar("select getdate()", _strConnect);
                     if (dt != null && dt is DateTime)
                     {
@@ -1844,12 +1851,22 @@ namespace QueryDesigner
                     }
                     else
                     {
-                        if (license.Modules.Length == 4 && license.Modules.Substring(3) == "Y")
+                        if (license.Modules.Length >= 4 && license.Modules.Substring(3, 1) == "Y")
                             _flagQDADD = true;
-                        else _flagQDADD = false;
+                        //else _flagQDADD = false;
+
+                        if (license.Modules.Length >= 5 && license.Modules.Substring(4, 1) == "Y")
+                            taskToolStripMenuItem.Visible = true;
+                        //else taskToolStripMenuItem.Visible = true;
+                        BUS.POSControl ctrPOS = new POSControl();
+                        if (ctrPOS.GetCount(ref sErr) > license.NumUsers)
                         {
-                            toolStrip1.Enabled = tsMain.Enabled = true;
+                            toolStrip1.Enabled = tsMain.Enabled = false;
+                            lb_Err.Text = "Current number of users has exceeded limit!";
                         }
+                        else
+                            toolStrip1.Enabled = tsMain.Enabled = true;
+
                     }
                 }
                 else
@@ -1973,6 +1990,9 @@ namespace QueryDesigner
         {
             try
             {
+                BUS.POSControl posCtr = new BUS.POSControl();
+                DTO.POSInfo infPOS = new POSInfo(_user, DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+                posCtr.InsertUpdate(infPOS);
                 //CommoControl commo = new CommoControl();
                 _sqlBuilder.StrConnectDes = _strConnectDes;
                 DataTable dt = _sqlBuilder.BuildDataTable(txt_sql.Text);
@@ -2083,6 +2103,9 @@ namespace QueryDesigner
 
         private void tabReportViewer_Selected()
         {
+            BUS.POSControl posCtr = new BUS.POSControl();
+            DTO.POSInfo infPOS = new POSInfo(_user, DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+            posCtr.InsertUpdate(infPOS);
             //BUS.CommoControl commo = new CommoControl();
             //string connnectString = commo.CreateConnectString(Properties.Settings.Default.Server
             //             , Properties.Settings.Default.User
@@ -2336,6 +2359,9 @@ namespace QueryDesigner
 
         private void tabChart_Selected()
         {
+            BUS.POSControl posCtr = new BUS.POSControl();
+            DTO.POSInfo infPOS = new POSInfo(_user, DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+            posCtr.InsertUpdate(infPOS);
             //_xlsFile = null;
             _xlsFile = ShowWeb();
 
@@ -2682,7 +2708,7 @@ namespace QueryDesigner
                     {
                         try
                         {
-                            frmQDADD frm = new frmQDADD(DB);
+                            frmQDADD frm = new frmQDADD(DB, _user);
                             frm._config = _config;
                             frm.Show();
                         }
@@ -3196,6 +3222,18 @@ namespace QueryDesigner
                     Clipboard.SetDataObject(dgvPreview.GetRow(dgvPreview.Row).Cells[dgvPreview.Col].Value.ToString());
                 }
             }
+        }
+
+        private void opeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPOS frm = new frmPOS(_user);
+            frm.ShowDialog();
+        }
+
+        private void Form_QD_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BUS.POSControl posCtr = new POSControl();
+            posCtr.Delete(_user);
         }
 
 

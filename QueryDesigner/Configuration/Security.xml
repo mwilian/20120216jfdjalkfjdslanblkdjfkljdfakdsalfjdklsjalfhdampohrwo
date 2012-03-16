@@ -73,4 +73,9 @@
     <Module>Import</Module>
     <Function>Import</Function>
   </POP>
+  <POP>
+    <ID>13</ID>
+    <Module>Task manager</Module>
+    <Function>Input</Function>
+  </POP>
 </DocumentElement>

@@ -29,6 +29,7 @@ namespace DTO
 			Port,
 			UserID,
 			Password,
+			Type,
 			IsUse
 		}
 		private String _DTB;
@@ -46,6 +47,7 @@ namespace DTO
 		private String _Port;
 		private String _UserID;
 		private String _Password;
+		private String _Type;
 		private String _IsUse;
 		
 		public String DTB{	get{ return _DTB;} set{_DTB = value;} }
@@ -63,6 +65,7 @@ namespace DTO
 		public String Port{	get{ return _Port;} set{_Port = value;} }
 		public String UserID{	get{ return _UserID;} set{_UserID = value;} }
 		public String Password{	get{ return _Password;} set{_Password = value;} }
+		public String Type{	get{ return _Type;} set{_Type = value;} }
 		public String IsUse{	get{ return _IsUse;} set{_IsUse = value;} }
 		
         #endregion LocalVariable
@@ -85,6 +88,7 @@ namespace DTO
 			_Port = "";
 			_UserID = "";
 			_Password = "";
+			_Type = "";
 			_IsUse = "";
 		}
 		public LIST_TASKInfo(
@@ -103,6 +107,7 @@ namespace DTO
 		String Port,
 		String UserID,
 		String Password,
+		String Type,
 		String IsUse
 		)
 		{
@@ -121,6 +126,7 @@ namespace DTO
 			_Port = Port;
 			_UserID = UserID;
 			_Password = Password;
+			_Type = Type;
 			_IsUse = IsUse;
 		}
 		public LIST_TASKInfo(DataRow dr)
@@ -142,6 +148,7 @@ namespace DTO
 				_Port = dr[Field.Port.ToString()] == DBNull.Value?"":Convert.ToString(dr[Field.Port.ToString()]);
 				_UserID = dr[Field.UserID.ToString()] == DBNull.Value?"":Convert.ToString(dr[Field.UserID.ToString()]);
 				_Password = dr[Field.Password.ToString()] == DBNull.Value?"":Convert.ToString(dr[Field.Password.ToString()]);
+				_Type = dr[Field.Type.ToString()] == DBNull.Value?"":Convert.ToString(dr[Field.Type.ToString()]);
 				_IsUse = dr[Field.IsUse.ToString()] == DBNull.Value?"":Convert.ToString(dr[Field.IsUse.ToString()]);
 			}
 		}
@@ -162,6 +169,7 @@ namespace DTO
 			_Port = objEntr.Port;			
 			_UserID = objEntr.UserID;			
 			_Password = objEntr.Password;			
+			_Type = objEntr.Type;			
 			_IsUse = objEntr.IsUse;			
 		}
         #endregion Constructor
@@ -186,6 +194,7 @@ namespace DTO
 				new DataColumn(Field.Port.ToString(), typeof(String)),
 				new DataColumn(Field.UserID.ToString(), typeof(String)),
 				new DataColumn(Field.Password.ToString(), typeof(String)),
+				new DataColumn(Field.Type.ToString(), typeof(String)),
 				new DataColumn(Field.IsUse.ToString(), typeof(String))
 			});
 			return dt;
@@ -208,6 +217,7 @@ namespace DTO
 			row[Field.Port.ToString()] = _Port;
 			row[Field.UserID.ToString()] = _UserID;
 			row[Field.Password.ToString()] = _Password;
+			row[Field.Type.ToString()] = _Type;
 			row[Field.IsUse.ToString()] = _IsUse;
 			return row;
 		}
