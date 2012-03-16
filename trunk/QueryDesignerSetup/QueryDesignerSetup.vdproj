@@ -1180,7 +1180,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TVCDesigner, Version=1.0.4448.16718, Culture=neutral, PublicKeyToken=ade9c57fe61c8852, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:TVCDesigner, Version=1.0.4455.29548, Culture=neutral, PublicKeyToken=ade9c57fe61c8852, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_CE81C2BE2E19C7C883C3D59B0B123916"
@@ -1515,14 +1515,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:QueryDesigner"
-        "ProductCode" = "8:{4D24A3B2-4EFA-4382-813D-CB26B3F9208D}"
-        "PackageCode" = "8:{A2CC7E71-55D0-4942-99B9-23DE7E51964B}"
+        "ProductCode" = "8:{ED5E65E4-2D8F-4359-BFC6-281565127A5D}"
+        "PackageCode" = "8:{4C8A04B3-60A9-484E-BA82-4A9B749429A2}"
         "UpgradeCode" = "8:{B1807040-B907-4C73-BC0D-72E90CDA0FF1}"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.3"
         "Manufacturer" = "8:Ta Vi Co. Ltd"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

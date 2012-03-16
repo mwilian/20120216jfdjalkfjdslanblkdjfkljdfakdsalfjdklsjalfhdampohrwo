@@ -45,11 +45,27 @@ namespace QueryDesigner
             else if (_type == "QDADD")
             {
                 BUS.LIST_QD_SCHEMAControl control = new BUS.LIST_QD_SCHEMAControl();
-                dt = control.GetAll(_db, ref sErr);
+                if (QD_CODE != "")
+                {
+                    DTO.LIST_QD_SCHEMAInfo inf =  control.Get(_db, QD_CODE, ref sErr);
+                    dt = inf.ToDataTable();
+                    dt.Rows.Add(inf.ToDataRow(dt));
+                    dt.TableName = "Table";
+                }
+                else
+                    dt = control.GetAll(_db, ref sErr);
             }
             else if (_type == "TASK")
             {
                 BUS.LIST_TASKControl control = new BUS.LIST_TASKControl();
+                if (QD_CODE != "")
+                {
+                    DTO.LIST_TASKInfo inf = control.Get(_db, QD_CODE, ref sErr);
+                    dt = DTO.LIST_TASKInfo.ToDataTable();
+                    dt.Rows.Add(inf.ToDataRow(dt));
+                    dt.TableName = "Table";
+                }
+                else
                 dt = control.GetAll(_db, ref sErr);
             }
             dtEnd = dt.Copy();

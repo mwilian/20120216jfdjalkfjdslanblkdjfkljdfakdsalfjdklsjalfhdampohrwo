@@ -75,6 +75,7 @@
     <Compile Include="PODInfo.cs" />
     <Compile Include="POGInfo.cs" />
     <Compile Include="POPInfo.cs" />
+    <Compile Include="POSInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

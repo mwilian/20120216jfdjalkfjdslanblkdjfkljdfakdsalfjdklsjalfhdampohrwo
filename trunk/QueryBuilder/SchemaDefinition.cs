@@ -273,8 +273,9 @@ namespace QueryBuilder
         ///  </summary>
         ///  <returns></returns>
         ///  <remarks></remarks>
-        public static Dictionary<string, string> GetUsableCodeList(string dtb, ref Dictionary<string, string> dcLookup)
+        public static Dictionary<string, string> GetUsableCodeList(string dtb, string user, ref Dictionary<string, string> dcLookup)
         {
+            _dcLookup = dcLookup;
             if (_list == null)
             {
                 dcLookup = new Dictionary<string, string>();
@@ -284,7 +285,7 @@ namespace QueryBuilder
 
                 try
                 {
-                    stream = new StringReader(GetSchemaList(dtb));
+                    stream = new StringReader(GetSchemaList(dtb, user));
                     reader = new XmlTextReader(stream);
                     string table = string.Empty;
                     string Description = string.Empty;
@@ -323,15 +324,15 @@ namespace QueryBuilder
 
 
         //  Method GetTableList
-        public static BindingList<TableItem> GetTableList(string dtb)
+        public static BindingList<TableItem> GetTableList(string dtb, string user)
         {
             BindingList<TableItem> bl = new System.ComponentModel.BindingList<TableItem>();
-            Dictionary<string, string> dcLookup = null;
-            foreach (KeyValuePair<string, string> item in GetUsableCodeList(dtb, ref dcLookup))
+
+            foreach (KeyValuePair<string, string> item in GetUsableCodeList(dtb, user, ref _dcLookup))
             {
                 TableItem ti = new TableItem(item.Key, item.Value);
                 string lookup = "";
-                if (dcLookup.TryGetValue(item.Key, out lookup))
+                if (_dcLookup != null && _dcLookup.TryGetValue(item.Key, out lookup))
                 {
                     ti.Lookup = lookup;
                 }
@@ -389,6 +390,7 @@ namespace QueryBuilder
         #region '"Dictionary Building"'
 
         private static Dictionary<string, string> _list = null;
+        private static Dictionary<string, string> _dcLookup = null;
         private static Dictionary<string, string> _joinsDictionary = null;
 
         public static Dictionary<string, string> JoinsDictionary
@@ -572,12 +574,14 @@ namespace QueryBuilder
             }
             return result;
         }
-        private static string GetSchemaList(string dtb)
+        private static string GetSchemaList(string dtb, string user)
         {
             string sErr = "";
             string result = Properties.Resources.SCHEMALIST;
             CoreQD_SCHEMAControl ctr = new CoreQD_SCHEMAControl();
             DataTable dt = ctr.GetAll(dtb, ref sErr);
+            if (user != "TVC")
+                sErr = BUS.CoreDAControl.SetDataAccessGroup("DAG", dt, user);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(result);
             XmlElement docele = doc.DocumentElement;

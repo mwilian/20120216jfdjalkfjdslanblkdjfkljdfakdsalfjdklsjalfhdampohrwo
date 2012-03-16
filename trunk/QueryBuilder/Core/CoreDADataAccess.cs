@@ -4,37 +4,38 @@ using System.Text;
 using DTO;
 using System.Data;
 using System.Data.SqlClient;
+using QueryBuilder;
 
 namespace DAO
 {
 	/// <summary> 
 	///Author: nnamthach@gmail.com 
 	/// <summary>
-    public class LIST_DADataAccess : Connection
+    public class CoreDADataAccess : CoreConnection
     {
 		#region Local Variable
         private string _strSPInsertName = "dbo.[procLIST_DA_add]";
         private string _strSPUpdateName = "dbo.[procLIST_DA_update]";
-        private string _strSPDeleteName = "dbo.[LIST_DA_delete]";
+        private string _strSPDeleteName = "dbo.[procLIST_DA_delete]";
         private string _strSPGetName = "dbo.[procLIST_DA_get]";
         private string _strSPGetAllName = "dbo.[procLIST_DA_getall]";
 		private string _strSPGetPages = "dbo.[procLIST_DA_getpaged]";
 		private string _strSPIsExist = "dbo.[procLIST_DA_isexist]";
-        private string _strTableName = "[LIST_DA]";
+        private string _strTableName = "[procLIST_DA]";
 		private string _strSPGetTransferOutName = "dbo.[procLIST_DA_gettransferout]";
         private string _strSPGetPermissionName = "LIST_DAGPermission";
         string _strSPGetPermissionByRoleName = "LIST_DAGPermissionByRole";
 		#endregion Local Variable
 		
 		#region Method
-        public LIST_DAInfo Get(
+        public CoreDAInfo Get(
         String DAG_ID,
 		ref string sErr)
         {
-			LIST_DAInfo objEntr = new LIST_DAInfo();
+			CoreDAInfo objEntr = new CoreDAInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+            AddParameter(CoreDAInfo.Field.DAG_ID.ToString(), DAG_ID);
             
             DataTable list = new DataTable();
             try
@@ -48,18 +49,18 @@ namespace DAO
             disconnect();  
             
             if (list.Rows.Count > 0)
-                objEntr = (LIST_DAInfo)GetDataFromDataRow(list, 0);
+                objEntr = (CoreDAInfo)GetDataFromDataRow(list, 0);
             //if (dr != null) list = CBO.FillCollection(dr, ref list);
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return objEntr;
         }
 
         protected override object GetDataFromDataRow(DataTable dt, int i)
         {
-            LIST_DAInfo result = new LIST_DAInfo();
-            result.DAG_ID = (dt.Rows[i][LIST_DAInfo.Field.DAG_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.DAG_ID.ToString()]));
-            result.NAME = (dt.Rows[i][LIST_DAInfo.Field.NAME.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.NAME.ToString()]));
-            result.EI = (dt.Rows[i][LIST_DAInfo.Field.EI.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.EI.ToString()]));
+            CoreDAInfo result = new CoreDAInfo();
+            result.DAG_ID = (dt.Rows[i][CoreDAInfo.Field.DAG_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreDAInfo.Field.DAG_ID.ToString()]));
+            result.NAME = (dt.Rows[i][CoreDAInfo.Field.NAME.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreDAInfo.Field.NAME.ToString()]));
+            result.EI = (dt.Rows[i][CoreDAInfo.Field.EI.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreDAInfo.Field.EI.ToString()]));
            
             return result;
         }
@@ -81,7 +82,7 @@ namespace DAO
             disconnect();
 
 
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
 		/// <summary>
@@ -90,14 +91,14 @@ namespace DAO
         /// Return -1: Erro
         /// </summary>
         /// <param name="tableName"></param>
-        public Int32 Add(LIST_DAInfo objEntr, ref string sErr)
+        public Int32 Add(CoreDAInfo objEntr, ref string sErr)
         {
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
-            AddParameter(LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
+            AddParameter(CoreDAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
+            AddParameter(CoreDAInfo.Field.NAME.ToString(), objEntr.NAME);
+            AddParameter(CoreDAInfo.Field.EI.ToString(), objEntr.EI);
           
             try
             {
@@ -113,18 +114,18 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
 			
             return ret;
         }
 
-        public string Update(LIST_DAInfo objEntr)
+        public string Update(CoreDAInfo objEntr)
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
-            AddParameter(LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
+            AddParameter(CoreDAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
+            AddParameter(CoreDAInfo.Field.NAME.ToString(), objEntr.NAME);
+            AddParameter(CoreDAInfo.Field.EI.ToString(), objEntr.EI);
                
             string sErr = "";
             try
@@ -136,7 +137,7 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return sErr;
         }
 
@@ -146,7 +147,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+            AddParameter(CoreDAInfo.Field.DAG_ID.ToString(), DAG_ID);
               
             string sErr = "";
             try
@@ -158,11 +159,11 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return sErr;
         }   
 		
-		public DataTableCollection Get_Page(LIST_DAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
+		public DataTableCollection Get_Page(CoreDAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
         {
 			string whereClause = CreateWhereClause(obj);
             DataTableCollection dtList = null;
@@ -183,7 +184,7 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return dtList;
         }
         
@@ -193,7 +194,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+            AddParameter(CoreDAInfo.Field.DAG_ID.ToString(), DAG_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -206,13 +207,13 @@ namespace DAO
                 sErr = ex.Message;
             }
             disconnect();
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             if(list.Rows.Count==1)
 				return true;
             return false;
         }
 		
-		private string CreateWhereClause(LIST_DAInfo obj)
+		private string CreateWhereClause(CoreDAInfo obj)
         {
             String result = "";
 
@@ -234,7 +235,7 @@ namespace DAO
             }
             disconnect();
             //if (dr != null) list = CBO.FillCollection(dr, ref list);
-            //    if (sErr != "") ErrorLog.SetLog(sErr);
+            //    if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
 		public DataTable GetTransferOut(string dtb, object from, object to, ref string sErr)
@@ -256,7 +257,7 @@ namespace DAO
             disconnect();
 
 
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
 		#endregion Method
@@ -279,7 +280,7 @@ namespace DAO
             disconnect();
 
 
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
         public DataTable GetPermissionByRole(string role, ref string sErr)
@@ -300,7 +301,7 @@ namespace DAO
             disconnect();
 
 
-            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
             return list;
         }
     }

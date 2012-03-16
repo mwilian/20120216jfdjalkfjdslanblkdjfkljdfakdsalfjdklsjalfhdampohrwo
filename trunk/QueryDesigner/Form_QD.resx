@@ -268,7 +268,7 @@
     <value>0, 32</value>
   </data>
   <data name="dgvFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 87</value>
+    <value>790, 86</value>
   </data>
   <data name="dgvFilter.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -538,7 +538,7 @@
     <value>0, 32</value>
   </data>
   <data name="dgvSelectNodes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 197</value>
+    <value>790, 198</value>
   </data>
   <data name="dgvSelectNodes.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -685,7 +685,7 @@
     <value>790, 352</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>119</value>
+    <value>118</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -754,7 +754,7 @@
     <value>0, 32</value>
   </data>
   <data name="wbChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 320</value>
+    <value>1014, 320</value>
   </data>
   <data name="wbChart.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -778,7 +778,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 32</value>
+    <value>1014, 32</value>
   </data>
   <data name="panel5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -923,7 +923,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACG
-        CgAAAk1TRnQBSQFMAgEBAwEAAWwBCwFsAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAcQBCwHEAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1589,7 +1589,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        EAAAAk1TRnQBSQFMAgEBBQEAAdABDQHQAQ0BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBBQEAASgBDgEoAQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAATADAAEBAQABCAYAARIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2009,6 +2009,9 @@
   <data name="taskToolStripMenuItem.Text" xml:space="preserve">
     <value>Task</value>
   </data>
+  <data name="taskToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="btnTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 20</value>
   </data>
@@ -2041,6 +2044,12 @@
   </data>
   <data name="dataAccessGroupToolStripMenuItem.Text" xml:space="preserve">
     <value>Data Access Group</value>
+  </data>
+  <data name="opeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 22</value>
+  </data>
+  <data name="opeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Operator Status</value>
   </data>
   <data name="btnOperator.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 20</value>
@@ -3008,11 +3017,11 @@
   <metadata name="IsNotbindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 93</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>123</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>123</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -4737,6 +4746,12 @@
     <value>dataAccessGroupToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;dataAccessGroupToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;opeToolStripMenuItem.Name" xml:space="preserve">
+    <value>opeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;opeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;importToolStripMenuItem.Name" xml:space="preserve">

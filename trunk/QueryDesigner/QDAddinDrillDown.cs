@@ -34,7 +34,13 @@ namespace QueryDesigner
         Node[] _arrNodes = null;
         //string _strConnectDes = "";
         QDConfig _config;
+        string _user = "";
 
+        public string User
+        {
+            get { return _user; }
+            set { _user = value; }
+        }
         public QDConfig Config
         {
             get { return _config; }

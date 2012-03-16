@@ -132,6 +132,7 @@
             this.operatorGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.permissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataAccessGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importDefinitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -627,6 +628,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.webGadget);
             this.splitContainer3.Panel2.Controls.Add(this.panel7);
+            this.splitContainer3.Panel2Collapsed = true;
             // 
             // wbChart
             // 
@@ -1027,7 +1029,8 @@
             this.operatorDefinitionToolStripMenuItem,
             this.operatorGroupToolStripMenuItem,
             this.permissionToolStripMenuItem,
-            this.dataAccessGroupToolStripMenuItem});
+            this.dataAccessGroupToolStripMenuItem,
+            this.opeToolStripMenuItem});
             this.btnOperator.Name = "btnOperator";
             resources.ApplyResources(this.btnOperator, "btnOperator");
             // 
@@ -1054,6 +1057,12 @@
             this.dataAccessGroupToolStripMenuItem.Name = "dataAccessGroupToolStripMenuItem";
             resources.ApplyResources(this.dataAccessGroupToolStripMenuItem, "dataAccessGroupToolStripMenuItem");
             this.dataAccessGroupToolStripMenuItem.Click += new System.EventHandler(this.dataAccessGroupToolStripMenuItem_Click);
+            // 
+            // opeToolStripMenuItem
+            // 
+            this.opeToolStripMenuItem.Name = "opeToolStripMenuItem";
+            resources.ApplyResources(this.opeToolStripMenuItem, "opeToolStripMenuItem");
+            this.opeToolStripMenuItem.Click += new System.EventHandler(this.opeToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
@@ -1511,6 +1520,7 @@
             this.Name = "Form_QD";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_QD_FormClosed);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form_QD_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1727,6 +1737,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opeToolStripMenuItem;
 
     }
 }

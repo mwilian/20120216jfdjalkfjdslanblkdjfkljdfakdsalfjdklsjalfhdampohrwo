@@ -117,10 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>8, -3</value>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="dataGridView1_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="Remove"&gt;&lt;ButtonDisplayMode&gt;Always&lt;/ButtonDisplayMode&gt;&lt;ButtonText&gt;Remove&lt;/ButtonText&gt;&lt;ButtonStyle&gt;ButtonCell&lt;/ButtonStyle&gt;&lt;BoundMode&gt;Unbound&lt;/BoundMode&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;Remove&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;Width&gt;50&lt;/Width&gt;&lt;/Column0&gt;&lt;Column1 ID="USER_ID"&gt;&lt;Caption&gt;User&lt;/Caption&gt;&lt;DataMember&gt;USER_ID&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;USER_ID&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;/Column1&gt;&lt;Column2 ID="WORK_STATION"&gt;&lt;Caption&gt;Work station&lt;/Caption&gt;&lt;DataMember&gt;WORK_STATION&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;WORK_STATION&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;/Column2&gt;&lt;Column3 ID="ACTIVITY"&gt;&lt;Caption&gt;Activity&lt;/Caption&gt;&lt;DataMember&gt;CURRENT_ACTIVITY&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;Key&gt;ACTIVITY&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;Width&gt;400&lt;/Width&gt;&lt;/Column3&gt;&lt;/Columns&gt;&lt;GroupCondition /&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
 </root>

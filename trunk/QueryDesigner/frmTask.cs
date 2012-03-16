@@ -49,6 +49,7 @@ namespace QueryDesigner
             Password.Text = str;
             Lookup.Text = str;
             subRange.Text = str;
+            Type.Text = str;
         }
 
         private void ClearEmailUser()
@@ -85,6 +86,7 @@ namespace QueryDesigner
             Password.Enabled = val;
             Lookup.Enabled = val;
             subRange.Enabled = val;
+            Type.Enabled = val;
         }
         private void SetDataToForm(DTO.LIST_TASKInfo inf)
         {
@@ -94,6 +96,7 @@ namespace QueryDesigner
             AttQD_ID.Text = inf.AttQD_ID;
             AttTemplate.Text = inf.AttTmp;
             CntQD_ID.Text = inf.CntQD_ID;
+            Type.Text = inf.Type;
             CntTemplate.Text = inf.CntTmp;
             Password.Text = inf.Password;
             LoadListEmail();
@@ -101,6 +104,7 @@ namespace QueryDesigner
             Port.Text = inf.Port;
             Protocol.Text = inf.Protocol;
             Server.Text = inf.Server;
+            Type.Text = inf.Type;
             Email.Text = inf.UserID;
             string[] arr = inf.ValidRange.Split(';');
             if (arr.Length >= 1)
@@ -150,6 +154,7 @@ namespace QueryDesigner
             inf.UserID = Email.Text;
             inf.ValidRange = ValidRange.Text + ";" + subRange.Text;
             inf.IsUse = ckbUse.Checked ? "Y" : "N";
+            inf.Type = Type.Text;
             return inf;
         }
 
@@ -285,6 +290,7 @@ namespace QueryDesigner
         {
             FrmTransferOut frm = new FrmTransferOut(_dtb, "TASK");
             //frm.DTB = Form_QD._dtb;
+            frm.QD_CODE = txtCode.Text;
             frm.ShowDialog();
             //BUS.LIST_TASKControl ctr = new BUS.LIST_TASKControl();
             ////if (ctr.IsExist(ddlQD.Text, txtCode.Text))
@@ -450,6 +456,7 @@ namespace QueryDesigner
             if (ctr.IsExist(_dtb, txtCode.Text))
             {
                 DTO.LIST_TASKInfo inf = new DTO.LIST_TASKInfo();
+                inf = GetDataFromForm(inf);
                 frmTestMail frm = new frmTestMail(GetDataFromForm(inf));
 
                 frm.ShowDialog();

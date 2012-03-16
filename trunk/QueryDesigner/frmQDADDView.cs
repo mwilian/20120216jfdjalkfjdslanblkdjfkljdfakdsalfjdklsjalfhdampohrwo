@@ -27,10 +27,12 @@ namespace QueryDesigner
             set { _code = value == null ? "" : value.Trim(); }
         }
         string _db = "";
-        public frmQDADDView(string db)
+        string _user = "";
+        public frmQDADDView(string db, string user)
         {
             InitializeComponent();
             _db = db;
+            _user = user;
         }
 
         private void dgvLookup_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -67,8 +69,12 @@ namespace QueryDesigner
                 dt.DefaultView.RowFilter = "DEFAULT_CONN='" + _conn_ID + "'";
             dt.Columns["SCHEMA_ID"].ColumnName = "Code";
             //dgvQDADDView.AutoGenerateColumns = false;
+            string DAField = "DAG";
+            if (_user != "TVC")
+                sErr = BUS.LIST_DAControl.SetDataAccessGroup(DAField, dt, _user);
             LoadDataGrid(dgvQDADDView, dt);
         }
+
 
         private void dgvQDADDView_KeyUp(object sender, KeyEventArgs e)
         {
@@ -78,7 +84,7 @@ namespace QueryDesigner
 
         private void dgvQDADDView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+
             //btnOK_Click(null, null);
         }
         private void LoadDataGrid(Janus.Windows.GridEX.GridEX dgv, DataTable dt)

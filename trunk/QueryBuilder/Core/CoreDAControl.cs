@@ -10,19 +10,19 @@ namespace BUS
     /// <summary> 
     ///Author: nnamthach@gmail.com 
     /// <summary>
-    public class LIST_DAControl
+    public class CoreDAControl
     {
         #region Local Variable
-        private LIST_DADataAccess _objDAO;
+        private CoreDADataAccess _objDAO;
         #endregion Local Variable
 
         #region Method
-        public LIST_DAControl()
+        public CoreDAControl()
         {
-            _objDAO = new LIST_DADataAccess();
+            _objDAO = new CoreDADataAccess();
         }
 
-        public LIST_DAInfo Get(
+        public CoreDAInfo Get(
         String DAG_ID,
         ref string sErr)
         {
@@ -38,12 +38,12 @@ namespace BUS
             ref sErr);
         }
 
-        public Int32 Add(LIST_DAInfo obj, ref string sErr)
+        public Int32 Add(CoreDAInfo obj, ref string sErr)
         {
             return _objDAO.Add(obj, ref sErr);
         }
 
-        public string Update(LIST_DAInfo obj)
+        public string Update(CoreDAInfo obj)
         {
             return _objDAO.Update(obj);
         }
@@ -65,7 +65,7 @@ namespace BUS
             );
         }
 
-        public DataTableCollection Get_Page(LIST_DAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
+        public DataTableCollection Get_Page(CoreDAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
         {
             return _objDAO.Get_Page(obj, orderBy, pageIndex, pageSize, ref sErr);
         }
@@ -74,7 +74,7 @@ namespace BUS
         {
             return _objDAO.Search(columnName, columnValue, condition, tableName, ref  sErr);
         }
-        public string InsertUpdate(LIST_DAInfo obj)
+        public string InsertUpdate(CoreDAInfo obj)
         {
             string sErr = "";
             if (IsExist(
@@ -95,13 +95,13 @@ namespace BUS
 
         public DataTable ToTransferInStruct()
         {
-            LIST_DAInfo inf = new LIST_DAInfo();
+            CoreDAInfo inf = new CoreDAInfo();
             return inf.ToDataTable();
         }
 
         public string TransferIn(DataRow row)
         {
-            LIST_DAInfo inf = new LIST_DAInfo(row);
+            CoreDAInfo inf = new CoreDAInfo(row);
             return InsertUpdate(inf);
         }
         #endregion Method
@@ -124,9 +124,9 @@ namespace BUS
                 return "DAField is not exist int DataTable";
             }
             string sErr = "";
-            BUS.LIST_DAControl daCtr = new BUS.LIST_DAControl();
-            BUS.PODControl podCtr = new BUS.PODControl();
-            DTO.PODInfo usrinf = podCtr.Get(_user, ref sErr);
+            BUS.CoreDAControl daCtr = new BUS.CoreDAControl();
+            BUS.CorePODControl podCtr = new BUS.CorePODControl();
+            DTO.CorePODInfo usrinf = podCtr.Get(_user, ref sErr);
             DataTable dtPermision = daCtr.GetPermissionByRole(usrinf.ROLE_ID, ref sErr);
             if (dtPermision.Rows.Count == 0)
                 dt.Rows.Clear();

@@ -46,6 +46,8 @@
             this.btnTransferOut = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnRun = new System.Windows.Forms.ToolStripButton();
             this.bsFROMCODE = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dgvAddRow = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,10 +56,14 @@
             this.lbErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Type = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.Lookup = new System.Windows.Forms.TextBox();
             this.dgvEmail = new Janus.Windows.GridEX.GridEX();
             this.dgvList = new Janus.Windows.GridEX.GridEX();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.subRange = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CntTemplate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -93,10 +99,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Server = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnRun = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.subRange = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsFROMCODE)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -251,6 +253,21 @@
             this.toolStripButton1.Text = "Email List";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
+            // 
+            // btnRun
+            // 
+            this.btnRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRun.Image = global::QueryDesigner.Properties.Resources._1331104457_gnome_session_reboot;
+            this.btnRun.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(36, 36);
+            this.btnRun.Text = "Test";
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -290,10 +307,12 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(719, 399);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.Type);
+            this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.Lookup);
             this.tabPage1.Controls.Add(this.dgvEmail);
             this.tabPage1.Controls.Add(this.dgvList);
@@ -318,6 +337,24 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // Type
+            // 
+            this.Type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Type.Location = new System.Drawing.Point(242, 37);
+            this.Type.MaxLength = 1;
+            this.Type.Name = "Type";
+            this.Type.Size = new System.Drawing.Size(52, 20);
+            this.Type.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(185, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(51, 14);
+            this.label14.TabIndex = 44;
+            this.label14.Text = "Type (S/)";
+            // 
             // Lookup
             // 
             this.Lookup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -341,7 +378,7 @@
             this.dgvEmail.Name = "dgvEmail";
             this.dgvEmail.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvEmail.Size = new System.Drawing.Size(307, 158);
-            this.dgvEmail.TabIndex = 5;
+            this.dgvEmail.TabIndex = 8;
             this.dgvEmail.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // dgvList
@@ -358,7 +395,7 @@
             this.dgvList.Name = "dgvList";
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.Size = new System.Drawing.Size(302, 158);
-            this.dgvList.TabIndex = 4;
+            this.dgvList.TabIndex = 7;
             this.dgvList.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
             // groupBox2
@@ -373,9 +410,26 @@
             this.groupBox2.Location = new System.Drawing.Point(343, 65);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(322, 106);
-            this.groupBox2.TabIndex = 42;
+            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Content Report";
+            this.groupBox2.Text = "Email Content";
+            // 
+            // subRange
+            // 
+            this.subRange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.subRange.Location = new System.Drawing.Point(117, 71);
+            this.subRange.Name = "subRange";
+            this.subRange.Size = new System.Drawing.Size(141, 20);
+            this.subRange.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 74);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(77, 14);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "Subject Range";
             // 
             // pictureBox1
             // 
@@ -437,9 +491,9 @@
             this.groupBox1.Location = new System.Drawing.Point(15, 65);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(322, 106);
-            this.groupBox1.TabIndex = 41;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Attachment Report";
+            this.groupBox1.Text = "Attachment";
             // 
             // btnQD
             // 
@@ -509,10 +563,10 @@
             // ckbUse
             // 
             this.ckbUse.AutoSize = true;
-            this.ckbUse.Location = new System.Drawing.Point(185, 39);
+            this.ckbUse.Location = new System.Drawing.Point(327, 39);
             this.ckbUse.Name = "ckbUse";
             this.ckbUse.Size = new System.Drawing.Size(56, 18);
-            this.ckbUse.TabIndex = 3;
+            this.ckbUse.TabIndex = 4;
             this.ckbUse.Text = "Is Use";
             this.ckbUse.UseVisualStyleBackColor = true;
             // 
@@ -551,9 +605,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(364, 183);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 14);
+            this.label5.Size = new System.Drawing.Size(41, 14);
             this.label5.TabIndex = 36;
-            this.label5.Text = "Email Use";
+            this.label5.Text = "Sent to";
             // 
             // label4
             // 
@@ -720,38 +774,6 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "Server";
             // 
-            // btnRun
-            // 
-            this.btnRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRun.Image = global::QueryDesigner.Properties.Resources._1331104457_gnome_session_reboot;
-            this.btnRun.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(36, 36);
-            this.btnRun.Text = "Test";
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 39);
-            // 
-            // subRange
-            // 
-            this.subRange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.subRange.Location = new System.Drawing.Point(117, 71);
-            this.subRange.Name = "subRange";
-            this.subRange.Size = new System.Drawing.Size(141, 20);
-            this.subRange.TabIndex = 48;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 74);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 14);
-            this.label13.TabIndex = 49;
-            this.label13.Text = "Subject Range";
-            // 
             // frmTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -763,7 +785,7 @@
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.Name = "frmTask";
-            this.Text = "Task Managerment";
+            this.Text = "Task Manager";
             this.Load += new System.EventHandler(this.frmQDADD_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -857,5 +879,7 @@
         private System.Windows.Forms.ToolStripButton btnRun;
         private System.Windows.Forms.TextBox subRange;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox Type;
+        private System.Windows.Forms.Label label14;
     }
 }

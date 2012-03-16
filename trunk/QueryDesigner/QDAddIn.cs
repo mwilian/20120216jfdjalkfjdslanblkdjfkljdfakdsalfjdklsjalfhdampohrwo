@@ -29,7 +29,14 @@ namespace QueryDesigner
         DataTable _dataReturn;
         string _currentAddress = "A1";
         QDConfig _config = null;
+        string _user = "";
 
+        public string User
+        {
+            get { return _user; }
+            set { _user = value; }
+        }
+        //string _db = "";
         public QDConfig Config
         {
             get { return _config; }
@@ -371,7 +378,7 @@ namespace QueryDesigner
 
         private void btTable_Click(object sender, EventArgs e)
         {
-            QueryDesigner.Form_TableView a = new QueryDesigner.Form_TableView();
+            QueryDesigner.Form_TableView a = new QueryDesigner.Form_TableView(_sqlBuilder.Database, _user);
             //a.themname = this.ThemeName;
             a.Code_DTB = txtDB.Text;
             a.BringToFront();
@@ -484,7 +491,7 @@ namespace QueryDesigner
             //UpdateFilterFrom(false);
         }
 
-       
+
 
         private void txtFilterTo_TextChanged(object sender, EventArgs e)
         {
@@ -534,7 +541,7 @@ namespace QueryDesigner
 
         private void GetDescSource()
         {
-            BindingList<QueryBuilder.TableItem> tmp = QueryBuilder.SchemaDefinition.GetTableList(_sqlBuilder.Database);
+            BindingList<QueryBuilder.TableItem> tmp = QueryBuilder.SchemaDefinition.GetTableList(_sqlBuilder.Database, _user);
             foreach (QueryBuilder.TableItem x in tmp)
             {
                 if (x.Code == txtTable.Text.Trim())

@@ -74,6 +74,7 @@ namespace DAO
             result.Port = (dt.Rows[i][LIST_TASKInfo.Field.Port.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_TASKInfo.Field.Port.ToString()]));
             result.UserID = (dt.Rows[i][LIST_TASKInfo.Field.UserID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_TASKInfo.Field.UserID.ToString()]));
             result.Password = (dt.Rows[i][LIST_TASKInfo.Field.Password.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_TASKInfo.Field.Password.ToString()]));
+            result.Type = (dt.Rows[i][LIST_TASKInfo.Field.Type.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_TASKInfo.Field.Type.ToString()]));
             result.IsUse = (dt.Rows[i][LIST_TASKInfo.Field.IsUse.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_TASKInfo.Field.IsUse.ToString()]));
            
             return result;
@@ -177,6 +178,7 @@ namespace DAO
             AddParameter(LIST_TASKInfo.Field.Port.ToString(), objEntr.Port);
             AddParameter(LIST_TASKInfo.Field.UserID.ToString(), objEntr.UserID);
             AddParameter(LIST_TASKInfo.Field.Password.ToString(), objEntr.Password);
+            AddParameter(LIST_TASKInfo.Field.Type.ToString(), objEntr.Type);
             AddParameter(LIST_TASKInfo.Field.IsUse.ToString(), objEntr.IsUse);
           
             try
@@ -217,6 +219,7 @@ namespace DAO
             AddParameter(LIST_TASKInfo.Field.Port.ToString(), objEntr.Port);
             AddParameter(LIST_TASKInfo.Field.UserID.ToString(), objEntr.UserID);
             AddParameter(LIST_TASKInfo.Field.Password.ToString(), objEntr.Password);
+            AddParameter(LIST_TASKInfo.Field.Type.ToString(), objEntr.Type);
             AddParameter(LIST_TASKInfo.Field.IsUse.ToString(), objEntr.IsUse);
                
             string sErr = "";

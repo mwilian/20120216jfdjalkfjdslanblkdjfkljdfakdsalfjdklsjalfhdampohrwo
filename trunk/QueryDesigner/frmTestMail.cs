@@ -59,6 +59,11 @@ namespace QueryDesigner
             Close();
         }
 
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(toolStripStatusLabel1.Text);
+        }
+
 
     }
 }

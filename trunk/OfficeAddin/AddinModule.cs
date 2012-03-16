@@ -18,6 +18,7 @@ namespace OfficeAddin
     {
 
         QDConfig _config = new QDConfig();
+        QueryDesigner.frmLoginEx frmLog;
         QueryDesigner.QDAddIn frm;
         QueryDesigner.QDAddinDrillDown frmdrill;
         QueryDesigner.FrmSystem frmConnect;
@@ -38,8 +39,10 @@ namespace OfficeAddin
         private ADXRibbonButton btnRDesign;
         private ADXRibbonButton btnRComment;
         private ADXRibbonButton btnRAnalysis;
+        private ADXCommandBarButton btnLogin;
+        private ADXRibbonButton adxLogin;
         string _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
-
+        string _user = "";
         private void InitDocument()
         {
             string filename = _appPath + "\\Configuration\\xmlConnect.xml";
@@ -133,8 +136,9 @@ namespace OfficeAddin
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddinModule));
             this.QDCommandBar = new AddinExpress.MSO.ADXCommandBar(this.components);
-            this.btnSetting = new AddinExpress.MSO.ADXCommandBarButton(this.components);
+            this.btnLogin = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.ilMain = new System.Windows.Forms.ImageList(this.components);
+            this.btnSetting = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.btnDesign = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.btnComment = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.btnAnalysis = new AddinExpress.MSO.ADXCommandBarButton(this.components);
@@ -145,11 +149,13 @@ namespace OfficeAddin
             this.btnRDesign = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRComment = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRAnalysis = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.adxLogin = new AddinExpress.MSO.ADXRibbonButton(this.components);
             // 
             // QDCommandBar
             // 
             this.QDCommandBar.CommandBarName = "TVC-QD";
             this.QDCommandBar.CommandBarTag = "1ca346fe-f8af-48ac-bb53-e85444232d09";
+            this.QDCommandBar.Controls.Add(this.btnLogin);
             this.QDCommandBar.Controls.Add(this.btnSetting);
             this.QDCommandBar.Controls.Add(this.btnDesign);
             this.QDCommandBar.Controls.Add(this.btnComment);
@@ -157,6 +163,27 @@ namespace OfficeAddin
             this.QDCommandBar.Description = "Tavicosoft Addin";
             this.QDCommandBar.SupportedApps = AddinExpress.MSO.ADXOfficeHostApp.ohaExcel;
             this.QDCommandBar.UpdateCounter = 14;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Caption = "Login";
+            this.btnLogin.ControlTag = "3e334944-80b5-4d31-beab-e482e1ea4463";
+            this.btnLogin.Image = 4;
+            this.btnLogin.ImageList = this.ilMain;
+            this.btnLogin.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnLogin.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
+            this.btnLogin.UpdateCounter = 7;
+            this.btnLogin.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnLogin_Click);
+            // 
+            // ilMain
+            // 
+            this.ilMain.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMain.ImageStream")));
+            this.ilMain.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilMain.Images.SetKeyName(0, "1328260984_Cube.png");
+            this.ilMain.Images.SetKeyName(1, "1329967013_applications-system.png");
+            this.ilMain.Images.SetKeyName(2, "1329967049_kchart.png");
+            this.ilMain.Images.SetKeyName(3, "1329967327_comment_user_chart.png");
+            this.ilMain.Images.SetKeyName(4, "1331536967_login.png");
             // 
             // btnSetting
             // 
@@ -168,15 +195,6 @@ namespace OfficeAddin
             this.btnSetting.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndWrapCaption;
             this.btnSetting.UpdateCounter = 20;
             this.btnSetting.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnSetting_Click);
-            // 
-            // ilMain
-            // 
-            this.ilMain.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMain.ImageStream")));
-            this.ilMain.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilMain.Images.SetKeyName(0, "1328260984_Cube.png");
-            this.ilMain.Images.SetKeyName(1, "1329967013_applications-system.png");
-            this.ilMain.Images.SetKeyName(2, "1329967049_kchart.png");
-            this.ilMain.Images.SetKeyName(3, "1329967327_comment_user_chart.png");
             // 
             // btnDesign
             // 
@@ -226,6 +244,7 @@ namespace OfficeAddin
             // adxRibbonGroup1
             // 
             this.adxRibbonGroup1.Caption = "Command";
+            this.adxRibbonGroup1.Controls.Add(this.adxLogin);
             this.adxRibbonGroup1.Controls.Add(this.btnRSetting);
             this.adxRibbonGroup1.Controls.Add(this.btnRDesign);
             this.adxRibbonGroup1.Controls.Add(this.btnRComment);
@@ -277,6 +296,17 @@ namespace OfficeAddin
             this.btnRAnalysis.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
             this.btnRAnalysis.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
             this.btnRAnalysis.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRAnalysis_OnClick);
+            // 
+            // adxLogin
+            // 
+            this.adxLogin.Caption = "Login";
+            this.adxLogin.Id = "adxRibbonButton_0505baae132e43b499c301bb7bf26d13";
+            this.adxLogin.Image = 4;
+            this.adxLogin.ImageList = this.ilMain;
+            this.adxLogin.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.adxLogin.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.adxLogin.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            this.adxLogin.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRLogin_OnClick);
             // 
             // AddinModule
             // 
@@ -341,6 +371,11 @@ namespace OfficeAddin
         }
         private void ShowDesign()
         {
+            if (_user == "")
+            {
+                MessageBox.Show("Please login...");
+                return;
+            }
             Excel._Worksheet sheet = (Excel._Worksheet)ExcelApp.ActiveSheet;
             _xlsCell = (Excel.Range)ExcelApp.ActiveCell;
             string _address = _xlsCell.get_AddressLocal(1, 1, Microsoft.Office.Interop.Excel.XlReferenceStyle.xlA1, 0, 0).ToString();
@@ -349,6 +384,7 @@ namespace OfficeAddin
             if (frm == null)
             {
                 frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes);
+                frm.User = _user;
                 frm.Config = _config;
                 frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                 //frm.Pos = _address;
@@ -364,7 +400,9 @@ namespace OfficeAddin
             else
             {
                 frm.Close();
+
                 frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes);
+                frm.User = _user;
                 frm.Config = _config;
                 frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                 //frm.Pos = _address;
@@ -375,6 +413,11 @@ namespace OfficeAddin
         }
         private void ShowComment()
         {
+            if (_user == "")
+            {
+                MessageBox.Show("Please login...");
+                return;
+            }
             Excel._Worksheet sheet = (Excel._Worksheet)ExcelApp.ActiveSheet;
             _xlsCell = (Excel.Range)ExcelApp.ActiveCell;
             string _address = _xlsCell.get_AddressLocal(1, 1, Microsoft.Office.Interop.Excel.XlReferenceStyle.xlA1, 0, 0).ToString().Replace("$", "");
@@ -384,6 +427,7 @@ namespace OfficeAddin
                 if (frm == null)
                 {
                     frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnect);
+                    frm.User = _user;
                     frm.Config = _config;
                     frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                     //frm.Pos = _address;
@@ -399,6 +443,7 @@ namespace OfficeAddin
                 {
                     frm.Close();
                     frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes);
+                    frm.User = _user;
                     frm.Config = _config;
                     frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                     //frm.Pos = _address;
@@ -419,6 +464,7 @@ namespace OfficeAddin
                 if (frmdrill == null)
                 {
                     frmdrill = new QDAddinDrillDown(_address, ExcelApp, formular, _strConnectDes);
+                    frmdrill.User = _user;
                     frmdrill.Config = _config;
                     frmdrill.FormClosed += new FormClosedEventHandler(frmdrill_FormClosed);
                     //frm.Pos = _address;
@@ -434,6 +480,7 @@ namespace OfficeAddin
                 {
                     frmdrill.Close();
                     frmdrill = new QDAddinDrillDown(_address, ExcelApp, formular, _strConnectDes);
+                    frmdrill.User = _user;
                     frmdrill.Config = _config;
                     frmdrill.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frmdrill_FormClosed);
                     //frm.Pos = _address;
@@ -683,6 +730,40 @@ namespace OfficeAddin
         private void btnRAnalysis_OnClick(object sender, IRibbonControl control, bool pressed)
         {
             ShowAnalysis();
+        }
+
+        private void btnLogin_Click(object sender)
+        {
+            ShowLogin();
+        }
+
+        private void ShowLogin()
+        {
+            if (frmLog == null)
+            {
+                frmLog = new frmLoginEx();
+
+                IWin32Window wincurrent = new WindowWrapper((IntPtr)ExcelApp.Hwnd);
+                if (frmLog.ShowDialog(wincurrent) == DialogResult.OK)
+                {
+                    _user = frmLog.User;
+                }
+            }
+            else
+            {
+                frmLog.Close();
+                frmLog = new frmLoginEx();
+                IWin32Window wincurrent = new WindowWrapper((IntPtr)ExcelApp.Hwnd);
+                if (frmLog.ShowDialog(wincurrent) == DialogResult.OK)
+                {
+                    _user = frmLog.User;
+                }
+            }
+        }
+
+        private void btnRLogin_OnClick(object sender, IRibbonControl control, bool pressed)
+        {
+            ShowLogin();
         }
 
     }
