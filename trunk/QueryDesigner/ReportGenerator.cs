@@ -16,6 +16,7 @@ using FlexCel.Render;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Data.SqlClient;
 
 namespace QueryDesigner
 {
@@ -323,6 +324,7 @@ namespace QueryDesigner
             }
 
         }
+       
         class NUM2ROMAN : TFlexCelUserFunction
         {
             public override object Evaluate(object[] parameters)
@@ -989,6 +991,9 @@ namespace QueryDesigner
 
         private void AddReportVariable(FlexCelReport flexcelreport)
         {
+            CommonControl ctr = new CommonControl();
+            object date = ctr.executeScalar("select GETDATE()");
+            flexcelreport.SetValue("SysDate", date);
             flexcelreport.SetValue("QDName", _name);
             flexcelreport.SetValue("QDCode", _qdCode);
             flexcelreport.SetValue("DB", _database);
