@@ -1811,76 +1811,87 @@ namespace QueryDesigner
         {
             tsMain.Enabled = false;
             BUS.CommonControl ctr = new CommonControl();
-            object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
-            if (data != null)//File.Exists(_pathLicense.Replace("file:\\", ""))
+            try
             {
-                //StreamReader reader = new StreamReader(_pathLicense.Replace("file:\\", ""));
-                //string result = reader.ReadLine();
-                string kq = RC2.DecryptString(data.ToString(), _key, _iv, _padMode, _opMode);
-                string[] tmp = kq.Split(';');
-                DTO.License license = new DTO.License();
-                license.CompanyName = tmp[0];
-                license.ExpiryDate = Convert.ToInt32(tmp[1]);
-                license.Modules = tmp[2];
-                license.NumUsers = Convert.ToInt32(tmp[3]);
-                license.SerialNumber = tmp[4];
-                license.Key = tmp[5];
-                //license.SerialCPU = tmp[6];
-                license.SerialCPU = "";
-                //reader.Close();
+                
+                object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
 
-
-                string param = license.CompanyName + license.SerialNumber + license.NumUsers.ToString() + license.Modules + license.ExpiryDate.ToString() + license.SerialCPU;
-
-
-                string temp = RC2.EncryptString(param, _key, _iv, _padMode, _opMode);
-                string key = Convert.ToBase64String(new System.Security.Cryptography.SHA1CryptoServiceProvider().ComputeHash(Encoding.ASCII.GetBytes(temp)));
-                if (key == license.Key)
+                if (data != null)//File.Exists(_pathLicense.Replace("file:\\", ""))
                 {
-                    int now = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00"));
-                    //BUS.CommonControl ctr = new CommonControl();
-                    object dt = ctr.executeScalar("select getdate()", _strConnect);
-                    if (dt != null && dt is DateTime)
+                    //StreamReader reader = new StreamReader(_pathLicense.Replace("file:\\", ""));
+                    //string result = reader.ReadLine();
+                    string kq = RC2.DecryptString(data.ToString(), _key, _iv, _padMode, _opMode);
+                    string[] tmp = kq.Split(';');
+                    DTO.License license = new DTO.License();
+                    license.CompanyName = tmp[0];
+                    license.ExpiryDate = Convert.ToInt32(tmp[1]);
+                    license.Modules = tmp[2];
+                    license.NumUsers = Convert.ToInt32(tmp[3]);
+                    license.SerialNumber = tmp[4];
+                    license.Key = tmp[5];
+                    //license.SerialCPU = tmp[6];
+                    license.SerialCPU = "";
+                    //reader.Close();
+
+
+                    string param = license.CompanyName + license.SerialNumber + license.NumUsers.ToString() + license.Modules + license.ExpiryDate.ToString() + license.SerialCPU;
+
+
+                    string temp = RC2.EncryptString(param, _key, _iv, _padMode, _opMode);
+                    string key = Convert.ToBase64String(new System.Security.Cryptography.SHA1CryptoServiceProvider().ComputeHash(Encoding.ASCII.GetBytes(temp)));
+                    if (key == license.Key)
                     {
-                        now = Convert.ToInt32(((DateTime)dt).Year.ToString() + ((DateTime)dt).Month.ToString("00") + ((DateTime)dt).Day.ToString("00"));
-                    }
-                    if (now > license.ExpiryDate)
-                    {
-                        toolStrip1.Enabled = tsMain.Enabled = false;
-                        lb_Err.Text = "Your license is expired!";
+                        int now = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00"));
+                        //BUS.CommonControl ctr = new CommonControl();
+                        object dt = ctr.executeScalar("select getdate()", _strConnect);
+                        if (dt != null && dt is DateTime)
+                        {
+                            now = Convert.ToInt32(((DateTime)dt).Year.ToString() + ((DateTime)dt).Month.ToString("00") + ((DateTime)dt).Day.ToString("00"));
+                        }
+                        if (now > license.ExpiryDate)
+                        {
+                            toolStrip1.Enabled = tsMain.Enabled = false;
+                            lb_Err.Text = "Your license is expired!";
+                        }
+                        else
+                        {
+                            if (license.Modules.Length >= 4 && license.Modules.Substring(3, 1) == "Y")
+                                _flagQDADD = true;
+                            //else _flagQDADD = false;
+
+                            if (license.Modules.Length >= 5 && license.Modules.Substring(4, 1) == "Y")
+                                taskToolStripMenuItem.Visible = true;
+                            //else taskToolStripMenuItem.Visible = true;
+                            BUS.POSControl ctrPOS = new POSControl();
+                            if (ctrPOS.GetCount(ref sErr) > license.NumUsers)
+                            {
+                                toolStrip1.Enabled = tsMain.Enabled = false;
+                                lb_Err.Text = "Current number of users has exceeded limit!";
+                            }
+                            else
+                                toolStrip1.Enabled = tsMain.Enabled = true;
+
+                        }
                     }
                     else
                     {
-                        if (license.Modules.Length >= 4 && license.Modules.Substring(3, 1) == "Y")
-                            _flagQDADD = true;
-                        //else _flagQDADD = false;
-
-                        if (license.Modules.Length >= 5 && license.Modules.Substring(4, 1) == "Y")
-                            taskToolStripMenuItem.Visible = true;
-                        //else taskToolStripMenuItem.Visible = true;
-                        BUS.POSControl ctrPOS = new POSControl();
-                        if (ctrPOS.GetCount(ref sErr) > license.NumUsers)
-                        {
-                            toolStrip1.Enabled = tsMain.Enabled = false;
-                            lb_Err.Text = "Current number of users has exceeded limit!";
-                        }
-                        else
-                            toolStrip1.Enabled = tsMain.Enabled = true;
-
+                        toolStrip1.Enabled = tsMain.Enabled = false;
+                        lb_Err.Text = "Application have not license!";
                     }
+
                 }
                 else
                 {
                     toolStrip1.Enabled = tsMain.Enabled = false;
                     lb_Err.Text = "Application have not license!";
                 }
-
             }
-            else
+            catch (Exception ex)
             {
                 toolStrip1.Enabled = tsMain.Enabled = false;
-                lb_Err.Text = "Application have not license!";
+                lb_Err.Text = ex.Message;
             }
+
         }
         public static string GetProcessorId()
         {

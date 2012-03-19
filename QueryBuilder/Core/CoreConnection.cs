@@ -20,7 +20,7 @@ namespace QueryBuilder
 
         public CoreConnection()
         {
-            connection = new SqlConnection(_connectionString);
+            connection = new SqlConnection(_connectionString + ";Connect Timeout=500");
         }
         public static string ConnectionString
         {
@@ -403,7 +403,7 @@ namespace QueryBuilder
                 conn.ConnectionString = connectString;
                 conn.Open();
                 SqlCommand command = new SqlCommand(sqlString, conn);
-                object result = command.ExecuteScalar();                
+                object result = command.ExecuteScalar();
                 conn.Close();
                 return result;
             }

@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_03A83F39F4F342458CCDC8E7682A8DE3"
+        "MsmKey" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
+        "MsmKey" = "8:_05C3AB78287B4E45A82AE0DC3C22A740"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -45,6 +45,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_11DC98A03E224CF192519BE3C4F338BC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2251659E1D7F4EC08F235071B41822C8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2331A0F8F671B3B3E4FDABE97391FDBC"
         "OwnerKey" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
         "MsmSig" = "8:_UNDEFINED"
@@ -63,13 +75,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_27CDAD5140D94407BFE3B9395EA7ED04"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3A24249DF97542C4A83821640CF2C5DB"
+        "MsmKey" = "8:_35E95005A12747E7AC523F4D2CEC18C3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -99,18 +105,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_460A802130C64F0C9B3A245AFF8C2FE3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_48AF0214933C414583EEC485E37044A7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_53C1772012B38C9387BA33852BDB44B1"
         "OwnerKey" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
         "MsmSig" = "8:_UNDEFINED"
@@ -123,13 +117,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5D2541782E3D48598E425FF169566EAD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6ACD1361239B4FF592C0238889B7D588"
+        "MsmKey" = "8:_682344AC5E9A472BBB4A23F0808957F5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -155,6 +143,12 @@
         {
         "MsmKey" = "8:_7D27B3F4D76ED1CEF1F6A126663B07B2"
         "OwnerKey" = "8:_A8DBCD33425DAC92303C05BE3238FFA7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7E05240785BD497E896D48BF0F889AC1"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -213,7 +207,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_977FA5DF9CC04E6688210BB3EDB4F2A6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_988A46B121A84C548C53AFF5EE690802"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A3F91A3F78C4C74967F70F5718283C6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -267,6 +273,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C8A540F5D25E4A6FB9E8B35A57744B68"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CCB2A5CCE02448A4AAC63C6F1A383C3C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -297,6 +309,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E476CDD1BE1C482384FFD8D6B34C0C12"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E930B3C39794D6348286F53AE8501827"
         "OwnerKey" = "8:_59FF873BD864B9AEE31A032154E2FE11"
         "MsmSig" = "8:_UNDEFINED"
@@ -311,6 +329,12 @@
         {
         "MsmKey" = "8:_EADC1746960EF5D6D2AE45DE83482ED8"
         "OwnerKey" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F45FA4584B674954A09E4482A68FBAC6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -562,10 +586,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03A83F39F4F342458CCDC8E7682A8DE3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05C3AB78287B4E45A82AE0DC3C22A740"
             {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Layout\\dgvTableView.gxl"
-            "TargetName" = "8:dgvTableView.gxl"
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\QDViewLayoutDefault.xml"
+            "TargetName" = "8:QDViewLayoutDefault.xml"
             "Tag" = "8:"
             "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
             "Condition" = "8:"
@@ -613,6 +637,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_11DC98A03E224CF192519BE3C4F338BC"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\dgvLIST_DAView.gxl"
+            "TargetName" = "8:dgvLIST_DAView.gxl"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2251659E1D7F4EC08F235071B41822C8"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\dgvQDView.gxl"
+            "TargetName" = "8:dgvQDView.gxl"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2331A0F8F671B3B3E4FDABE97391FDBC"
             {
             "AssemblyRegister" = "3:1"
@@ -644,32 +708,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_27CDAD5140D94407BFE3B9395EA7ED04"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35E95005A12747E7AC523F4D2CEC18C3"
             {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Configuration\\QDConfig.tvc"
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Configuration\\QDConfig.tvc"
             "TargetName" = "8:QDConfig.tvc"
             "Tag" = "8:"
             "Folder" = "8:_D2D8221D724444C8973BDC2EEB9914B8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A24249DF97542C4A83821640CF2C5DB"
-            {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Layout\\QDViewLayoutDefault.xml"
-            "TargetName" = "8:QDViewLayoutDefault.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -746,46 +790,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_460A802130C64F0C9B3A245AFF8C2FE3"
-            {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Configuration\\xmlConnect.xml"
-            "TargetName" = "8:xmlConnect.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_D2D8221D724444C8973BDC2EEB9914B8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48AF0214933C414583EEC485E37044A7"
-            {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Layout\\dgvImportDefView.gxl"
-            "TargetName" = "8:dgvImportDefView.gxl"
-            "Tag" = "8:"
-            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_53C1772012B38C9387BA33852BDB44B1"
             {
             "AssemblyRegister" = "3:1"
@@ -848,32 +852,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D2541782E3D48598E425FF169566EAD"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_682344AC5E9A472BBB4A23F0808957F5"
             {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Layout\\dgvDTBView.gxl"
-            "TargetName" = "8:dgvDTBView.gxl"
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Configuration\\xmlConnect.xml"
+            "TargetName" = "8:xmlConnect.xml"
             "Tag" = "8:"
-            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6ACD1361239B4FF592C0238889B7D588"
-            {
-            "SourcePath" = "8:C:\\Users\\NamThach\\Documents\\TVC-QD\\Layout\\QDViewLayout.xml"
-            "TargetName" = "8:QDViewLayout.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Folder" = "8:_D2D8221D724444C8973BDC2EEB9914B8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -950,6 +934,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E05240785BD497E896D48BF0F889AC1"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\dgvImportDefView.gxl"
+            "TargetName" = "8:dgvImportDefView.gxl"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_819851B6BC0740E61868661DB467BEEE"
             {
             "AssemblyRegister" = "3:1"
@@ -1012,12 +1016,52 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_977FA5DF9CC04E6688210BB3EDB4F2A6"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\dgvQDADDView.gxl"
+            "TargetName" = "8:dgvQDADDView.gxl"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_988A46B121A84C548C53AFF5EE690802"
             {
             "SourcePath" = "8:..\\QueryDesigner\\-.template.xlsx"
             "TargetName" = "8:-.template.xlsx"
             "Tag" = "8:"
             "Folder" = "8:_3B70D87F577543B0A8A610C6C01C1D5C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9A3F91A3F78C4C74967F70F5718283C6"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\TaskViewLayoutDefault.xml"
+            "TargetName" = "8:TaskViewLayoutDefault.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1156,6 +1200,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C8A540F5D25E4A6FB9E8B35A57744B68"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\dgvTableView.gxl"
+            "TargetName" = "8:dgvTableView.gxl"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CCB2A5CCE02448A4AAC63C6F1A383C3C"
             {
             "SourcePath" = "8:..\\QueryDesigner\\-.template.xls"
@@ -1180,7 +1244,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TVCDesigner, Version=1.0.4455.29548, Culture=neutral, PublicKeyToken=ade9c57fe61c8852, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:TVCDesigner, Version=1.0.4458.21168, Culture=neutral, PublicKeyToken=ade9c57fe61c8852, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_CE81C2BE2E19C7C883C3D59B0B123916"
@@ -1300,6 +1364,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E476CDD1BE1C482384FFD8D6B34C0C12"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\1293606505_ColorMSExcel.ico"
+            "TargetName" = "8:1293606505_ColorMSExcel.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_3B70D87F577543B0A8A610C6C01C1D5C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E930B3C39794D6348286F53AE8501827"
             {
             "AssemblyRegister" = "3:1"
@@ -1362,6 +1446,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F45FA4584B674954A09E4482A68FBAC6"
+            {
+            "SourcePath" = "8:..\\QueryDesigner\\Document\\Layout\\dgvDTBView.gxl"
+            "TargetName" = "8:dgvDTBView.gxl"
+            "Tag" = "8:"
+            "Folder" = "8:_6543B02AB1714C47910BA32FD77849D6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FFAAF3673A3B74CD67075B2E682F1330"
             {
             "AssemblyRegister" = "3:1"
@@ -1408,6 +1512,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_C5B7AE336A9E4501BF1C22DFED990AC3"
+                    {
+                    "Name" = "8:Tavicosoft"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_532D14D2F51B4AA0BD46AF8B9BD0E94B"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_3B70D87F577543B0A8A610C6C01C1D5C"
@@ -1515,14 +1630,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:QueryDesigner"
-        "ProductCode" = "8:{ED5E65E4-2D8F-4359-BFC6-281565127A5D}"
-        "PackageCode" = "8:{4C8A04B3-60A9-484E-BA82-4A9B749429A2}"
+        "ProductCode" = "8:{1A425D9C-7A4A-49E4-843B-0BB4568B06B1}"
+        "PackageCode" = "8:{2DE54843-FBAF-4333-9221-F86EFC033880}"
         "UpgradeCode" = "8:{B1807040-B907-4C73-BC0D-72E90CDA0FF1}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:3.0.1"
         "Manufacturer" = "8:Ta Vi Co. Ltd"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1635,6 +1750,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_10799B5EF5E0406996541EAED5E81F41"
+            {
+            "Name" = "8:QueryDesigner"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
+            "Folder" = "8:_C5B7AE336A9E4501BF1C22DFED990AC3"
+            "WorkingFolder" = "8:_3B70D87F577543B0A8A610C6C01C1D5C"
+            "Icon" = "8:_E476CDD1BE1C482384FFD8D6B34C0C12"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B8F9935A16184EC991ABB1D5811A77F8"
+            {
+            "Name" = "8:QueryDesigner"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_041F0E0389574BF9B98B9FAA955EF05E"
+            "Folder" = "8:_BA04369454CA4735801D37B4851BB5D4"
+            "WorkingFolder" = "8:_3B70D87F577543B0A8A610C6C01C1D5C"
+            "Icon" = "8:_E476CDD1BE1C482384FFD8D6B34C0C12"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {

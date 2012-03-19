@@ -132,7 +132,7 @@
     <value>0, 0</value>
   </data>
   <data name="twSchema.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 352</value>
+    <value>220, 351</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="twSchema.TabIndex" type="System.Int32, mscorlib">
@@ -268,7 +268,7 @@
     <value>0, 32</value>
   </data>
   <data name="dgvFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 86</value>
+    <value>790, 85</value>
   </data>
   <data name="dgvFilter.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -682,10 +682,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 352</value>
+    <value>790, 351</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>118</value>
+    <value>117</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -715,7 +715,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 352</value>
+    <value>1014, 351</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>220</value>
@@ -754,7 +754,7 @@
     <value>0, 32</value>
   </data>
   <data name="wbChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 320</value>
+    <value>1014, 319</value>
   </data>
   <data name="wbChart.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -895,7 +895,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 352</value>
+    <value>1014, 351</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
     <value>817</value>
@@ -923,7 +923,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACG
-        CgAAAk1TRnQBSQFMAgEBAwEAAcQBCwHEAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAdwBCwHcAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1106,7 +1106,7 @@
     <value>3, 3</value>
   </data>
   <data name="txt_sql.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 352</value>
+    <value>1014, 351</value>
   </data>
   <data name="txt_sql.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1142,7 +1142,7 @@
     <value>144, 0</value>
   </data>
   <data name="flexCelPreview1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>868, 316</value>
+    <value>868, 315</value>
   </data>
   <data name="flexCelPreview1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1160,7 +1160,7 @@
     <value>0, 16</value>
   </data>
   <data name="thumbs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 300</value>
+    <value>136, 299</value>
   </data>
   <data name="thumbs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1199,7 +1199,7 @@
     <value>0</value>
   </data>
   <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>8, 316</value>
+    <value>8, 315</value>
   </data>
   <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1253,7 +1253,7 @@
     <value>0, 0</value>
   </data>
   <data name="panelLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 316</value>
+    <value>136, 315</value>
   </data>
   <data name="panelLeft.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1277,7 +1277,7 @@
     <value>3, 37</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 318</value>
+    <value>1014, 317</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1589,7 +1589,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        EAAAAk1TRnQBSQFMAgEBBQEAASgBDgEoAQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBBQEAAUABDgFAAQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAATADAAEBAQABCAYAARIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2646,7 +2646,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabItemQD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 358</value>
+    <value>1020, 357</value>
   </data>
   <data name="tabItemQD.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2733,7 +2733,7 @@
     <value>3, 43</value>
   </data>
   <data name="dgvPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 312</value>
+    <value>1014, 311</value>
   </data>
   <data name="dgvPreview.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2847,7 +2847,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 358</value>
+    <value>1020, 357</value>
   </data>
   <data name="tabItemPreview.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2874,7 +2874,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabItemSQLText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 358</value>
+    <value>1020, 357</value>
   </data>
   <data name="tabItemSQLText.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2904,7 +2904,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabReportViewer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 358</value>
+    <value>1020, 357</value>
   </data>
   <data name="tabReportViewer.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2931,7 +2931,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 358</value>
+    <value>1020, 357</value>
   </data>
   <data name="tabChart.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
