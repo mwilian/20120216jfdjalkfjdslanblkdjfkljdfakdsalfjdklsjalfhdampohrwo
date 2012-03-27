@@ -1,0 +1,7 @@
+FlexCel is digitally signed, to guarantee that the package has not been modified.
+
+That key is not delivered with the source, so you need to create your own, by changing to the "key" folder and running GenerateKey.bat
+
+Once you create your own key, you can compile and use it normally, but it will be signed different than the original package.
+
+To succesfully run GenerateKey.bat, sn.exe (from the .net SDK) should be on your search path. 
