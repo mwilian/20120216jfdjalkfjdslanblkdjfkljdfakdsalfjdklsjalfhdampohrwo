@@ -82,23 +82,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\NamThach\Documents\TMSSoftware\FlexCelNET\Solutions for .NET 3.5\bin\Debug\FlexCelWinforms.dll</HintPath>
     </Reference>
-    <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Janus.Data.v3.dll</HintPath>
-    </Reference>
-    <Reference Include="Janus.Windows.CalendarCombo.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.Common.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Janus.Windows.Common.v3.dll</HintPath>
-    </Reference>
-    <Reference Include="Janus.Windows.ExplorerBar.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
-    <Reference Include="Janus.Windows.FilterEditor.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
-    <Reference Include="Janus.Windows.GridEX.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Janus.Windows.GridEX.v3.dll</HintPath>
-    </Reference>
-    <Reference Include="Janus.Windows.Ribbon.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
-    <Reference Include="Janus.Windows.UI.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
+    <Reference Include="Janus.Data.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.CalendarCombo.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.Common.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -135,6 +122,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConfigDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLoginEx.cs">
       <SubType>Form</SubType>
@@ -284,12 +277,6 @@
     <Compile Include="frmPOD.Designer.cs">
       <DependentUpon>frmPOD.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrintPreview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPrintPreview.designer.cs">
-      <DependentUpon>frmPrintPreview.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmQDADDView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,29 +385,11 @@
     <Compile Include="GridExDialog\frmFieldChooser.designer.cs">
       <DependentUpon>frmFieldChooser.cs</DependentUpon>
     </Compile>
-    <Compile Include="GridExDialog\frmFilter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GridExDialog\frmFilter.designer.cs">
-      <DependentUpon>frmFilter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GridExDialog\frmFormatConditions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GridExDialog\frmFormatConditions.designer.cs">
-      <DependentUpon>frmFormatConditions.cs</DependentUpon>
-    </Compile>
     <Compile Include="GridExDialog\frmFormatView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GridExDialog\frmFormatView.designer.cs">
       <DependentUpon>frmFormatView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GridExDialog\frmGroupBy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GridExDialog\frmGroupBy.designer.cs">
-      <DependentUpon>frmGroupBy.cs</DependentUpon>
     </Compile>
     <Compile Include="GridExDialog\frmShowFields.cs">
       <SubType>Form</SubType>
@@ -433,24 +402,6 @@
     </Compile>
     <Compile Include="GridExDialog\frmSort.designer.cs">
       <DependentUpon>frmSort.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GridExDialog\GroupByControls\ColumnGroupControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GridExDialog\GroupByControls\ColumnGroupControl.Designer.cs">
-      <DependentUpon>ColumnGroupControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GridExDialog\GroupByControls\CompositeColumnsGroupControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GridExDialog\GroupByControls\CompositeColumnsGroupControl.Designer.cs">
-      <DependentUpon>CompositeColumnsGroupControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GridExDialog\GroupByControls\ConditionalGroupControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GridExDialog\GroupByControls\ConditionalGroupControl.Designer.cs">
-      <DependentUpon>ConditionalGroupControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MainQD.cs" />
     <Compile Include="MyHash.cs" />
@@ -508,6 +459,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLoginEx.resx">
       <DependentUpon>frmLoginEx.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -604,10 +558,6 @@
       <DependentUpon>frmPOD.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrintPreview.resx">
-      <DependentUpon>frmPrintPreview.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmQDADDView.resx">
       <DependentUpon>frmQDADDView.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -699,20 +649,8 @@
       <DependentUpon>frmFieldChooser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GridExDialog\frmFilter.resx">
-      <DependentUpon>frmFilter.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GridExDialog\frmFormatConditions.resx">
-      <DependentUpon>frmFormatConditions.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="GridExDialog\frmFormatView.resx">
       <DependentUpon>frmFormatView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GridExDialog\frmGroupBy.resx">
-      <DependentUpon>frmGroupBy.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GridExDialog\frmShowFields.resx">
@@ -721,18 +659,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GridExDialog\frmSort.resx">
       <DependentUpon>frmSort.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GridExDialog\GroupByControls\ColumnGroupControl.resx">
-      <DependentUpon>ColumnGroupControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GridExDialog\GroupByControls\CompositeColumnsGroupControl.resx">
-      <DependentUpon>CompositeColumnsGroupControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GridExDialog\GroupByControls\ConditionalGroupControl.resx">
-      <DependentUpon>ConditionalGroupControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PdfProgressDialog.resx">

@@ -38,27 +38,27 @@ namespace QueryDesigner
 		{
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFilter));
-            this.grbBackground = new Janus.Windows.EditControls.UIGroupBox();
-            this.btnCancel = new Janus.Windows.EditControls.UIButton();
-            this.btnOK = new Janus.Windows.EditControls.UIButton();
+            this.grbBackground = new GroupBox();
+            this.btnCancel = new Button();
+            this.btnOK = new Button();
             this.FilterEditor1 = new Janus.Windows.FilterEditor.FilterEditor();
-            ((System.ComponentModel.ISupportInitialize)(this.grbBackground)).BeginInit();
-            this.grbBackground.SuspendLayout();
+            //((System.ComponentModel.ISupportInitialize)(this.grbBackground)).BeginInit();
+            //this.grbBackground.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbBackground
             // 
-            this.grbBackground.BackgroundStyle = Janus.Windows.EditControls.BackgroundStyle.Panel;
+            //this.grbBackground.BackgroundStyle = Janus.Windows.EditControls.BackgroundStyle.Panel;
             this.grbBackground.Controls.Add(this.btnCancel);
             this.grbBackground.Controls.Add(this.btnOK);
             this.grbBackground.Controls.Add(this.FilterEditor1);
             this.grbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grbBackground.FrameStyle = Janus.Windows.EditControls.FrameStyle.None;
+            //this.grbBackground.FrameStyle = Janus.Windows.EditControls.FrameStyle.None;
             this.grbBackground.Location = new System.Drawing.Point(0, 0);
             this.grbBackground.Name = "grbBackground";
             this.grbBackground.Size = new System.Drawing.Size(483, 341);
             this.grbBackground.TabIndex = 1;
-            this.grbBackground.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
+            //this.grbBackground.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
             // 
             // btnCancel
             // 
@@ -68,7 +68,7 @@ namespace QueryDesigner
             this.btnCancel.Size = new System.Drawing.Size(84, 24);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
+            //this.btnCancel.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             // 
             // btnOK
             // 
@@ -78,7 +78,7 @@ namespace QueryDesigner
             this.btnOK.Size = new System.Drawing.Size(84, 24);
             this.btnOK.TabIndex = 15;
             this.btnOK.Text = "OK";
-            this.btnOK.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
+            //this.btnOK.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             // 
             // FilterEditor1
             // 
@@ -107,15 +107,15 @@ namespace QueryDesigner
             this.Name = "frmFilter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Filter Conditions";
-            ((System.ComponentModel.ISupportInitialize)(this.grbBackground)).EndInit();
-            this.grbBackground.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)(this.grbBackground)).EndInit();
+            //this.grbBackground.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
-		internal Janus.Windows.EditControls.UIGroupBox grbBackground;
+		internal GroupBox grbBackground;
 		internal Janus.Windows.FilterEditor.FilterEditor FilterEditor1;
-		internal Janus.Windows.EditControls.UIButton btnCancel;
-		internal Janus.Windows.EditControls.UIButton btnOK;
+		internal Button btnCancel;
+		internal Button btnOK;
 	}
 
 } //end of root namespace

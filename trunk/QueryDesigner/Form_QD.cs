@@ -900,6 +900,9 @@ namespace QueryDesigner
                 txtANAL_Q1.Text = qdinfo.ANAL_Q1.Trim();
                 txt_sql.Text = qdinfo.SQL_TEXT.Trim();
                 ckbShared.Checked = qdinfo.SHARED;
+                LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
+                LIST_TEMPLATEInfo info = ctr.Get(_dtb, qdinfo.QD_ID, ref sErr);
+                txtTmp.Text = info.Code;
                 _processStatus = "V";
                 DisableForm();
             }
@@ -1007,6 +1010,7 @@ namespace QueryDesigner
                 }
                 if (sErr == "")
                 {
+                    UpdateTemplateToDB();
                     DisableForm();
                     _processStatus = "V";
                     //tabItemGeneral.IsSelected = true;
@@ -1015,6 +1019,8 @@ namespace QueryDesigner
                     lb_Err.Text = sErr;
             }
         }
+
+
 
         private DataTable CreateFilterTable()
         {
@@ -1053,6 +1059,10 @@ namespace QueryDesigner
             //             , Properties.Settings.Default.DBName);
 
             ReportGenerator rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
+            LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
+            if (tempInfo.Code != "")
+                rpGen.STemp = tempInfo.Data;
             //ExcelFile test = null;
             try
             {
@@ -1106,22 +1116,41 @@ namespace QueryDesigner
         {
             try
             {
+                btnEdit_Click(null, null);
 
-                //      File.Delete(saveFileDialog1.FileName);
-                string currentPath = _appPath + "\\";
-
-                if (!File.Exists(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext))
+                if (txtTmp.Text == "")
                 {
-                    XlsFile xlsTemp = new XlsFile(currentPath + "-.template" + ReportGenerator.Ext);
-                    xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 10, 2, txtqd_id.Text.Trim(), 0);
-                    xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
-                    xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
+                    //      File.Delete(saveFileDialog1.FileName);
+                    string currentPath = _appPath + "\\";
 
-                    xlsTemp.Save(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+                    if (!File.Exists(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext))
+                    {
+                        XlsFile xlsTemp = new XlsFile(currentPath + "-.template" + ReportGenerator.Ext);
+                        xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 10, 2, txtqd_id.Text.Trim(), 0);
+                        xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
+                        xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
+
+                        xlsTemp.Save(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+                    }
+                    Process.Start(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+
                 }
-                Process.Start(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
-
-
+                else if (File.Exists(txtTmp.Text))
+                {
+                    Process.Start(txtTmp.Text);
+                }
+                else
+                {
+                    LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
+                    LIST_TEMPLATEInfo info = ctr.Get(_dtb, txtqd_id.Text, ref sErr);
+                    string filename = __templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext;
+                    using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
+                    {
+                        fs.Write(info.Data, 0, info.Data.Length);
+                    }
+                    txtTmp.Text = filename;
+                    Process.Start(filename);
+                }
                 //flexCelReport1.AddTable(temp);
                 //AutoRun(temp.Tables[0], flag_filter);
                 //Set_TT_XLB_EB(path_template);
@@ -1253,6 +1282,10 @@ namespace QueryDesigner
 
                         _processStatus = "";
                     }
+                    if (sErr == "")
+                    {
+                        DeleteTemplateToDB();
+                    }
                     lb_Err.Text = sErr;
                 }
                 else
@@ -1261,6 +1294,8 @@ namespace QueryDesigner
             else
                 lb_Err.Text = "Query Designer Code is not exist.";
         }
+
+
 
         private void btnNew_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1813,7 +1848,7 @@ namespace QueryDesigner
             BUS.CommonControl ctr = new CommonControl();
             try
             {
-                
+
                 object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
 
                 if (data != null)//File.Exists(_pathLicense.Replace("file:\\", ""))
@@ -2112,7 +2147,8 @@ namespace QueryDesigner
             }
         }
 
-        private void tabReportViewer_Selected()
+        private void
+            tabReportViewer_Selected()
         {
             BUS.POSControl posCtr = new BUS.POSControl();
             DTO.POSInfo infPOS = new POSInfo(_user, DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
@@ -2124,6 +2160,10 @@ namespace QueryDesigner
             //             , Properties.Settings.Default.DBName);
             //if (_rpGen == null || _rpGen.IsClose())
             _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
+            LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
+            if (tempInfo.Code != "")
+                _rpGen.STemp = tempInfo.Data;
             //ExcelFile test = null;
             XlsFile xls = null;
             try
@@ -2408,6 +2448,10 @@ namespace QueryDesigner
             //BUS.CommoControl commo = new CommoControl();
             //if (_rpGen == null || _rpGen.IsClose())
             _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
+            LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
+            if (tempInfo.Code != "")
+                _rpGen.STemp = tempInfo.Data;
             string url = "";
             try
             {
@@ -2835,10 +2879,10 @@ namespace QueryDesigner
         private void btnPrint_Click(object sender, EventArgs e)
         {
 
-            frmPrintPreview preview = new frmPrintPreview();
+            PrintPreviewDialog preview = new PrintPreviewDialog();
             if (!DoSetup(gridEXPrintDocument1)) return;
-            preview.Show(this.gridEXPrintDocument1, this);
-
+            preview.Document = gridEXPrintDocument1;
+            preview.Show();
             //frmPrintPreview frm = new frmPrintPreview();
             //frm.Show(gridEXPrintDocument1, this);
             //try
@@ -3016,9 +3060,9 @@ namespace QueryDesigner
         }
         public void ShowGroupByDialog()
         {
-            frmGroupBy frm = new frmGroupBy();
-            frm.ShowDialog(dgvPreview, this.ParentForm);
-            frm.Dispose();
+            //frmGroupBy frm = new frmGroupBy();
+            //frm.ShowDialog(dgvPreview, this.ParentForm);
+            //frm.Dispose();
         }
         public void ShowFieldsDialog()
         {
@@ -3035,15 +3079,15 @@ namespace QueryDesigner
         }
         public void ShowFormatConditionsDialog()
         {
-            frmFormatConditions frm = new frmFormatConditions();
-            frm.ShowDialog(this.dgvPreview, this.ParentForm);
-            frm.Dispose();
+            //frmFormatConditions frm = new frmFormatConditions();
+            //frm.ShowDialog(this.dgvPreview, this.ParentForm);
+            //frm.Dispose();
         }
         public void ShowFilterDialog()
         {
-            frmFilter frm = new frmFilter();
-            frm.ShowDialog(this.dgvPreview, this.ParentForm);
-            frm.Dispose();
+            //frmFilter frm = new frmFilter();
+            //frm.ShowDialog(this.dgvPreview, this.ParentForm);
+            //frm.Dispose();
         }
         private void customGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3247,9 +3291,52 @@ namespace QueryDesigner
             posCtr.Delete(_user);
         }
 
+        private void btnTmp_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel file(*.xls,*.xlsx)|*.xls*";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string filename = ofd.FileName;
+                txtTmp.Text = filename;
+            }
+        }
 
+        private void btnTmpClear_Click(object sender, EventArgs e)
+        {
 
+            LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
+            if (ctr.IsExist(_dtb, txtqd_id.Text)
+                && MessageBox.Show("Do you want to delete this Template in database?", "Delete Message", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                DeleteTemplateToDB();
+            }
+            txtTmp.Text = "";
+        }
 
+        private void DeleteTemplateToDB()
+        {
+            LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
+            sErr = ctr.Delete(_dtb, txtqd_id.Text);
+
+        }
+
+        private void UpdateTemplateToDB()
+        {
+            if (File.Exists(txtTmp.Text))
+            {
+                LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
+                LIST_TEMPLATEInfo info = new LIST_TEMPLATEInfo();
+                info.DTB = _dtb;
+                info.Code = txtqd_id.Text;
+                using (FileStream fs = new FileStream(txtTmp.Text, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    info.Data = new byte[fs.Length];
+                    fs.Read(info.Data, 0, (int)fs.Length);
+                }
+                sErr = ctr.InsertUpdate(info);
+            }
+        }
 
 
 

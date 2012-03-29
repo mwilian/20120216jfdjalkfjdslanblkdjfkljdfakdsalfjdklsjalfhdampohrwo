@@ -969,7 +969,7 @@ namespace QueryBuilder
             return kq;
 
         }
-     
+
         public Filter SelectFilter(int index)
         {
             if (index < _filters.Count)
@@ -1127,15 +1127,16 @@ namespace QueryBuilder
             OleDbConnection connection = new OleDbConnection(_strConnectDes);
             OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
             DataSet dSet = new DataSet();
-            try
-            {
-                adapter.Fill(dSet);
-                dt = dSet.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            if (query != "")
+                try
+                {
+                    adapter.Fill(dSet);
+                    dt = dSet.Tables[0];
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             //CommoControl control = new CommoControl();
             //dt = control.executeSelectQuery(query, connectString);
             foreach (Filter x in Filters)
