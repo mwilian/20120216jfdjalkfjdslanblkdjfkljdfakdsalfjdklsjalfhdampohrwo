@@ -181,8 +181,8 @@ namespace QueryDesigner
             //the following lines:
             //TPaperDimensions t= flexCelPrintDocument1.Workbook.PrintPaperDimensions;
             //flexCelPrintDocument1.DefaultPageSettings.PaperSize = new PaperSize(t.PaperName, Convert.ToInt32(t.Width), Convert.ToInt32(t.Height));
-            frmPrintPreview frm = new frmPrintPreview();
-            frm.Show(flexCelPrintDocument1, this);
+            //frmPrintPreview frm = new frmPrintPreview();
+            //frm.Show(flexCelPrintDocument1, this);
             //printPreviewDialog1.ShowDialog();
 
         }

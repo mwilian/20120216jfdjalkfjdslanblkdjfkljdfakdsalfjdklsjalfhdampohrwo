@@ -53,6 +53,13 @@ namespace QueryDesigner
         string _database = "";
         string _pathTemplate = string.Empty;
         string _pathReport = string.Empty;
+        byte[] sTemp;
+
+        public byte[] STemp
+        {
+            get { return sTemp; }
+            set { sTemp = value; }
+        }
         static QDConfig _config = new QDConfig();
 
         public static QDConfig Config
@@ -214,12 +221,18 @@ namespace QueryDesigner
             string filename = "";
 
             filename = _pathTemplate + _qdCode + ".template" + ReportGenerator.Ext;
-            if (!File.Exists(filename))
+            if (!File.Exists(filename) && sTemp == null)
             {
                 throw new Exception("Template Report is not exist!");
                 return null;
             }
-
+            else if (sTemp != null)
+            {
+                using (FileStream outstr = new FileStream(_pathTemplate + _qdCode + ".template" + ReportGenerator.Ext, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
+                {
+                    outstr.Write(sTemp, 0, sTemp.Length);
+                }
+            }
             ExcelFile result = new XlsFile(filename);
             flexcelreport.Run(result);
             return result;
@@ -324,7 +337,7 @@ namespace QueryDesigner
             }
 
         }
-       
+
         class NUM2ROMAN : TFlexCelUserFunction
         {
             public override object Evaluate(object[] parameters)

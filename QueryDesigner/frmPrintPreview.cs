@@ -62,21 +62,15 @@ namespace QueryDesigner
 					this.PrintPreviewControl1.StartPage = this.PrintPreviewControl1.StartPage + 1;
 					break;
 				case "cmdZoom100":
-                    this.printPreviewCommands.Commands["cmdOnePage"].Checked = Janus.Windows.UI.InheritableBoolean.False;
-					this.printPreviewCommands.Commands["cmdTwoPages"].Checked = Janus.Windows.UI.InheritableBoolean.False;
 					this.PrintPreviewControl1.AutoZoom = false;
 					this.PrintPreviewControl1.Zoom = 1;
 					break;
 				case "cmdOnePage":
-					this.printPreviewCommands.Commands["cmdZoom100"].Checked = Janus.Windows.UI.InheritableBoolean.False;
-                    this.printPreviewCommands.Commands["cmdTwoPages"].Checked = Janus.Windows.UI.InheritableBoolean.False;
 					this.PrintPreviewControl1.AutoZoom = true;
 					this.PrintPreviewControl1.Rows = 1;
 					this.PrintPreviewControl1.Columns = 1;
 					break;
 				case "cmdTwoPages":
-                    this.printPreviewCommands.Commands["cmdZoom100"].Checked = Janus.Windows.UI.InheritableBoolean.False;
-                    this.printPreviewCommands.Commands["cmdOnePage"].Checked = Janus.Windows.UI.InheritableBoolean.False;
 					this.PrintPreviewControl1.AutoZoom = true;
 					this.PrintPreviewControl1.Rows = 1;
 					this.PrintPreviewControl1.Columns = 2;
@@ -109,8 +103,6 @@ namespace QueryDesigner
 
 		private void PrintPreviewControl1_StartPageChanged(object sender, System.EventArgs e)
 		{
-
-			this.printPreviewCommands.Commands["cmdMoveUp"].IsEnabled = (this.PrintPreviewControl1.StartPage > 0);
 
 		}
 
