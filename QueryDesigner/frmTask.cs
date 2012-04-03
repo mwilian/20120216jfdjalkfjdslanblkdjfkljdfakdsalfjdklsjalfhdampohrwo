@@ -369,7 +369,15 @@ namespace QueryDesigner
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 LoadListEmail();
+                 BUS.LIST_TASKControl ctr = new BUS.LIST_TASKControl();
+                 if (ctr.IsExist(_dtb, txtCode.Text))
+                 {
+                     DTO.LIST_TASKInfo inf = new DTO.LIST_TASKInfo();
+                     inf = GetDataFromForm(inf);
+                     SetListEmail(inf.Emails);
+                 }
             }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
