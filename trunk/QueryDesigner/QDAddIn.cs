@@ -667,11 +667,14 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
 
         private bool ValidateLicense(string _pathLicense)
         {
-            if (File.Exists(_pathLicense))
+            BUS.CommonControl ctr = new CommonControl();
+            object data = ctr.executeScalar(@"SELECT SUN_DATA  FROM SSINSTAL WHERE INS_TB='LCS' and INS_KEY='QD'");
+
+            if (data != null)//File.Exists(_pathLicense.Replace("file:\\", ""))
             {
-                StreamReader reader = new StreamReader(_pathLicense);
-                string result = reader.ReadLine();
-                string kq = RC2.DecryptString(result, Form_QD._key, Form_QD._iv, Form_QD._padMode, Form_QD._opMode);
+                //StreamReader reader = new StreamReader(_pathLicense);
+                //string result = reader.ReadLine();
+                string kq = RC2.DecryptString(data.ToString(), Form_QD._key, Form_QD._iv, Form_QD._padMode, Form_QD._opMode);
                 string[] tmp = kq.Split(';');
                 DTO.License license = new DTO.License();
                 license.CompanyName = tmp[0];
@@ -681,8 +684,9 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
                 license.SerialNumber = tmp[4];
                 license.Key = tmp[5];
                 //license.SerialCPU = tmp[6];
-                license.SerialCPU = GetProcessorId();
-                reader.Close();
+                //BUS.CommonControl ctr = new BUS.CommonControl();
+                license.SerialCPU = ctr.executeScalar(@"SELECT   CONVERT(varchar(200), SERVERPROPERTY('servername'))").ToString(); //"BFEBFBFF000006FD";
+                //reader.Close();
 
 
                 string param = license.CompanyName + license.SerialNumber + license.NumUsers.ToString() + license.Modules + license.ExpiryDate.ToString() + license.SerialCPU;
@@ -693,7 +697,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
                 if (key == license.Key)
                 {
                     int now = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00"));
-                    BUS.CommonControl ctr = new CommonControl();
+                    //BUS.CommonControl ctr = new CommonControl();
                     object dt = ctr.executeScalar("select getdate()", _strConnect);
                     if (dt != null && dt is DateTime)
                     {

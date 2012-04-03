@@ -28,7 +28,7 @@ namespace QueryDesigner
         {
             lbErr.Text = "";
             BUS.CommonControl ctr = new BUS.CommonControl();
-            object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
+            object data = ctr.executeScalar(@"SELECT SUN_DATA  FROM SSINSTAL WHERE INS_TB='LCS' and INS_KEY='QD'");
 
             if (data != null)// if (File.Exists(_pathLicense.Replace("file:\\", "")))
             {
@@ -94,10 +94,10 @@ namespace QueryDesigner
 
 
                 BUS.CommonControl ctr = new BUS.CommonControl();
-                string query = @"if EXISTS(SELECT [INS_KEY]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD') 
-UPDATE [TVC_UQD].[dbo].[SSINSTAL] SET [SUN_DATA] = '{0}' WHERE [INS_TB]='LCS' and [INS_KEY]='QD'
+                string query = @"if EXISTS(SELECT INS_KEY  FROM SSINSTAL WHERE INS_TB='LCS' and INS_KEY='QD') 
+UPDATE SSINSTAL SET SUN_DATA = '{0}' WHERE INS_TB='LCS' and INS_KEY='QD'
 else 
-INSERT INTO [TVC_UQD].[dbo].[SSINSTAL]([INS_TB] ,[INS_KEY] ,[SUN_DATA]) VALUES ( 'LCS' ,'QD' ,'{0}')";
+INSERT INTO SSINSTAL(INS_TB ,INS_KEY ,SUN_DATA) VALUES ( 'LCS' ,'QD' ,'{0}')";
                 string result = RC2.EncryptString(kq, _key, _iv, _padMode, _opMode);
                 query = string.Format(query, result);
                 ctr.executeNonQuery(query);
@@ -127,7 +127,8 @@ INSERT INTO [TVC_UQD].[dbo].[SSINSTAL]([INS_TB] ,[INS_KEY] ,[SUN_DATA]) VALUES (
             DateTime dateExpire = dtExpiryDate.Value;
             result.ExpiryDate = dateExpire.Year * 10000 + dateExpire.Month * 100 + dateExpire.Day;
             result.Key = txtKey.Text.Trim();
-            result.SerialCPU = ""; //"BFEBFBFF000006FD";
+            BUS.CommonControl ctr = new BUS.CommonControl();
+            result.SerialCPU = ctr.executeScalar(@"SELECT   CONVERT(varchar(200), SERVERPROPERTY('servername'))").ToString(); //"BFEBFBFF000006FD";
             return result;
         }
         public static string GetProcessorId()

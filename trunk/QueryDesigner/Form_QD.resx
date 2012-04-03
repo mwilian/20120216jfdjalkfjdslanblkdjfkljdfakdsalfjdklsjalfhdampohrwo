@@ -923,7 +923,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACG
-        CgAAAk1TRnQBSQFMAgEBAwEAARQBDAEUAQwBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAASwBDAEsAQwBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1589,7 +1589,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        EAAAAk1TRnQBSQFMAgEBBQEAAXgBDgF4AQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBBQEAAZABDgGQAQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAATADAAEBAQABCAYAARIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2268,6 +2268,9 @@
   <data name="btnTmpClear.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
+  <data name="btnTmpClear.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;btnTmpClear.Name" xml:space="preserve">
     <value>btnTmpClear</value>
   </data>
@@ -2294,6 +2297,9 @@
   </data>
   <data name="btnTmp.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
+  </data>
+  <data name="btnTmp.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;btnTmp.Name" xml:space="preserve">
     <value>btnTmp</value>
@@ -2325,6 +2331,9 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Template File</value>
   </data>
+  <data name="label4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
@@ -2345,6 +2354,9 @@
   </data>
   <data name="txtTmp.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
+  </data>
+  <data name="txtTmp.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;txtTmp.Name" xml:space="preserve">
     <value>txtTmp</value>

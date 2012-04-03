@@ -232,6 +232,7 @@ namespace QueryDesigner
                 {
                     outstr.Write(sTemp, 0, sTemp.Length);
                 }
+				sTemp=null;
             }
             ExcelFile result = new XlsFile(filename);
             flexcelreport.Run(result);

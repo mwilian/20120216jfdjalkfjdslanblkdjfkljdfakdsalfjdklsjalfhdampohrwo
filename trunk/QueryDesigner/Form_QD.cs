@@ -680,10 +680,14 @@ namespace QueryDesigner
             txtANAL_Q1.Enabled = true;
             btnParameter.Enabled = true;
             ckbShared.Enabled = true;
+            btnTmpClear.Enabled = true;
+            btnTmp.Enabled = true;
         }
 
         public void DisableForm()
         {
+            btnTmp.Enabled = false;
+            btnTmpClear.Enabled = false;
             txtANAL_Q1.Enabled = false;
             //txt_database.Enabled = false;
             txt_datasource.Enabled = false;
@@ -1849,7 +1853,7 @@ namespace QueryDesigner
             try
             {
 
-                object data = ctr.executeScalar(@"SELECT [SUN_DATA]  FROM [TVC_UQD].[dbo].[SSINSTAL] WHERE [INS_TB]='LCS' and [INS_KEY]='QD'");
+                object data = ctr.executeScalar(@"SELECT SUN_DATA  FROM SSINSTAL WHERE INS_TB='LCS' and INS_KEY='QD'");
 
                 if (data != null)//File.Exists(_pathLicense.Replace("file:\\", ""))
                 {
@@ -1865,7 +1869,8 @@ namespace QueryDesigner
                     license.SerialNumber = tmp[4];
                     license.Key = tmp[5];
                     //license.SerialCPU = tmp[6];
-                    license.SerialCPU = "";
+                    BUS.CommonControl ctrCom = new BUS.CommonControl();
+                    license.SerialCPU = ctrCom.executeScalar(@"SELECT   CONVERT(varchar(200), SERVERPROPERTY('servername'))").ToString(); //"BFEBFBFF000006FD";
                     //reader.Close();
 
 
@@ -3293,6 +3298,7 @@ namespace QueryDesigner
 
         private void btnTmp_Click(object sender, EventArgs e)
         {
+            
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel file(*.xls,*.xlsx)|*.xls*";
             if (ofd.ShowDialog() == DialogResult.OK)
