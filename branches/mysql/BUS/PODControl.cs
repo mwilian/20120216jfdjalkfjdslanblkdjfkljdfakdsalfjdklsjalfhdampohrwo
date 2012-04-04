@@ -95,12 +95,12 @@ namespace BUS
 
         internal DataTable GetTransferOut(string dtb, string from, string to, ref string sErr)
         {
-            throw new NotImplementedException();
+            return _PODDAO.GetTransferOut(dtb, from, to, ref sErr);
         }
 
         internal DataTable ToTransferInStruct()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
 

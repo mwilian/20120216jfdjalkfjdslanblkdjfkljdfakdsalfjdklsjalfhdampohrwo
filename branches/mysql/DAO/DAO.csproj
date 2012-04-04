@@ -49,6 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Data" />
@@ -74,6 +75,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LIST_TASKDataAccess.cs" />
+    <Compile Include="LIST_TEMPLATEDataAccess.cs" />
     <Compile Include="PODDataAccess.cs" />
     <Compile Include="POGDataAccess.cs" />
     <Compile Include="POPDataAccess.cs" />

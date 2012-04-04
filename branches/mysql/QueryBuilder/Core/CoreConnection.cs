@@ -7,20 +7,21 @@ using System.Collections;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace QueryBuilder
 {
     public class CoreConnection
     {
         public static string _connectionString = "";
-        protected SqlConnection connection;
-        protected SqlDataAdapter adapter;
-        protected SqlCommand command;
-        protected SqlTransaction trans;
+        protected MySqlConnection connection;
+        protected MySqlDataAdapter adapter;
+        protected MySqlCommand command;
+        protected MySqlTransaction trans;
 
         public CoreConnection()
         {
-            connection = new SqlConnection(_connectionString + ";Connect Timeout=500");
+            connection = new MySqlConnection(_connectionString + ";Connect Timeout=500");
         }
         public static string ConnectionString
         {
@@ -54,8 +55,8 @@ namespace QueryBuilder
         }
         public void connect()
         {
-            connection = new SqlConnection(_connectionString);
-            command = new SqlCommand();
+            connection = new MySqlConnection(_connectionString);
+            command = new MySqlCommand();
             connection.Open();
             command.Connection = connection;
         }
@@ -64,8 +65,8 @@ namespace QueryBuilder
         {
             try
             {
-                connection = new SqlConnection(_connectionString);
-                command = new SqlCommand();
+                connection = new MySqlConnection(_connectionString);
+                command = new MySqlCommand();
                 command.Connection = connection;
                 trans = connection.BeginTransaction();
                 command.Transaction = trans;
@@ -130,9 +131,9 @@ namespace QueryBuilder
         /// <param name="value"></param>
         protected void AddParameter(string name, object value)
         {
-            SqlParameter para = command.CreateParameter();
+            MySqlParameter para = command.CreateParameter();
             para.ParameterName = name;
-            para.SqlValue = value;
+            para.Value = value;
             command.Parameters.Add(para);
         }
         public static Byte[] ConvertImageToByte(Image value)
@@ -165,10 +166,10 @@ namespace QueryBuilder
         }
         protected void AddParameterImage(string name, System.Drawing.Image value)
         {
-            SqlParameter para = command.CreateParameter();
+            MySqlParameter para = command.CreateParameter();
             para.ParameterName = name;
             Byte[] barrImg = ConvertImageToByte(value);
-            para.SqlValue = barrImg;
+            para.Value = barrImg;
             command.Parameters.Add(para);
         }
 
@@ -177,7 +178,7 @@ namespace QueryBuilder
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
-        protected void AddParameters(SqlParameter[] arrParam)
+        protected void AddParameters(MySqlParameter[] arrParam)
         {
             for (int i = 0; i < arrParam.Length; i++)
                 command.Parameters.Add(arrParam[i]);
@@ -215,21 +216,21 @@ namespace QueryBuilder
         public DataTable executeSelectQuery(string sqlString)
         {
             DataSet ds = new DataSet();
-            adapter = new SqlDataAdapter(sqlString, connection);
+            adapter = new MySqlDataAdapter(sqlString, connection);
             adapter.Fill(ds);
             return ds.Tables[0];
         }
         public DataTable executeSelectSP()
         {
             DataSet ds = new DataSet();
-            adapter = new SqlDataAdapter(command);
+            adapter = new MySqlDataAdapter(command);
             adapter.Fill(ds);
             return ds.Tables[0];
         }
-        public DataTable executeSelectSP(SqlCommand command)
+        public DataTable executeSelectSP(MySqlCommand command)
         {
             DataSet ds = new DataSet();
-            adapter = new SqlDataAdapter(command);
+            adapter = new MySqlDataAdapter(command);
             adapter.Fill(ds);
             return ds.Tables[0];
         }
@@ -238,17 +239,17 @@ namespace QueryBuilder
             command.CommandText = sqlString;
             return command.ExecuteReader();
         }
-        public DataTableCollection executeCollectSelectSP(SqlCommand command)
+        public DataTableCollection executeCollectSelectSP(MySqlCommand command)
         {
             DataSet ds = new DataSet();
-            adapter = new SqlDataAdapter(command);
+            adapter = new MySqlDataAdapter(command);
             adapter.Fill(ds);
             return ds.Tables;
         }
         public DataTableCollection executeCollectSelectSP()
         {
             DataSet ds = new DataSet();
-            adapter = new SqlDataAdapter(command);
+            adapter = new MySqlDataAdapter(command);
             adapter.Fill(ds);
             return ds.Tables;
         }
@@ -262,7 +263,7 @@ namespace QueryBuilder
         {
             return command.ExecuteScalar();
         }
-        public object executeSPScalar(SqlCommand command)
+        public object executeSPScalar(MySqlCommand command)
         {
             return command.ExecuteScalar();
         }
@@ -348,7 +349,7 @@ namespace QueryBuilder
 
         public bool TestConnect(string connectString)
         {
-            SqlConnection test = new SqlConnection(connectString);
+            MySqlConnection test = new MySqlConnection(connectString);
             try
             {
                 test.Open();
@@ -361,11 +362,11 @@ namespace QueryBuilder
 
         public DataTable executeSelectQuery(string sqlString, string strConnection)
         {
-            SqlConnection test = new SqlConnection(strConnection);
+            MySqlConnection test = new MySqlConnection(strConnection);
             try
             {
                 DataSet ds = new DataSet();
-                adapter = new SqlDataAdapter(sqlString, test);
+                adapter = new MySqlDataAdapter(sqlString, test);
                 adapter.Fill(ds);
                 return ds.Tables[0];
             }
@@ -375,7 +376,7 @@ namespace QueryBuilder
 
         public DataTable GetDataBases(string Server, string UserName, string Pass)
         {
-            SqlConnection conn = new SqlConnection();
+            MySqlConnection conn = new MySqlConnection();
             try
             {
                 //Server=.;Database=SiteCamera;uid=sa;pwd=qawsed;Connection Lifetime=100;Connect Timeout=500
@@ -396,13 +397,13 @@ namespace QueryBuilder
 
         public object executeScalar(string sqlString, string connectString)
         {
-            SqlConnection conn = new SqlConnection();
+            MySqlConnection conn = new MySqlConnection();
             try
             {
                 //Server=.;Database=SiteCamera;uid=sa;pwd=qawsed;Connection Lifetime=100;Connect Timeout=500                
                 conn.ConnectionString = connectString;
                 conn.Open();
-                SqlCommand command = new SqlCommand(sqlString, conn);
+                MySqlCommand command = new MySqlCommand(sqlString, conn);
                 object result = command.ExecuteScalar();
                 conn.Close();
                 return result;

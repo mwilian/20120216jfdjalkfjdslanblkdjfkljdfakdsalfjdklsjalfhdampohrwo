@@ -13,16 +13,17 @@ namespace DAO
     public class LIST_DAOGDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_DAOG_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_DAOG_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_DAOG_delete]";
-        private string _strSPDeletesName = "dbo.[procLIST_DAOGs_delete]";
-        private string _strSPGetName = "dbo.[procLIST_DAOG_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_DAOG_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_DAOG_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_DAOG_isexist]";
-        private string _strTableName = "[LIST_DAOG]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_DAOG_gettransferout]";
+        private string _strSPInsertName = "procLIST_DAOG_add";
+        private string _strSPUpdateName = "procLIST_DAOG_update";
+        private string _strSPDeleteName = "procLIST_DAOG_delete";
+        private string _strSPDeletesName = "procLIST_DAOGs_delete";
+        private string _strSPGetName = "procLIST_DAOG_get";
+        private string _strSPGetAllName = "procLIST_DAOG_getall";
+		private string _strSPGetPages = "procLIST_DAOG_getpaged";
+		private string _strSPIsExist = "procLIST_DAOG_isexist";
+        private string _strTableName = "LIST_DAOG";
+		private string _strSPGetTransferOutName = "procLIST_DAOG_gettransferout";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -34,8 +35,8 @@ namespace DAO
 			LIST_DAOGInfo objEntr = new LIST_DAOGInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
-            AddParameter(LIST_DAOGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
             
             DataTable list = new DataTable();
             try
@@ -69,7 +70,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
             DataTable list = new DataTable();
             try
             {
@@ -96,8 +97,8 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAOGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
           
             try
             {
@@ -122,8 +123,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAOGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
                
             string sErr = "";
             try
@@ -146,8 +147,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
-            AddParameter(LIST_DAOGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
               
             string sErr = "";
             try
@@ -170,10 +171,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+           AddParameter(prefix +  "WhereClause", whereClause);
+           AddParameter(prefix +  "OrderBy", orderBy);
+           AddParameter(prefix +  "PageIndex", pageIndex);
+           AddParameter(prefix +  "PageSize", pageSize);
             
             try
             {
@@ -195,8 +196,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
-            AddParameter(LIST_DAOGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -244,9 +245,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + prefix + "DB", dtb);
+			AddParameter(prefix + prefix + "FROM", from);
+			AddParameter(prefix + prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {
@@ -269,7 +270,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeletesName);
-            AddParameter(LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
+           AddParameter(prefix +  LIST_DAOGInfo.Field.DAG_ID.ToString(), DAG_ID);
 
             string sErr = "";
             try

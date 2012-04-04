@@ -118,7 +118,7 @@ namespace QueryBuilder
             using (SqlCommand cm = cn.CreateCommand())
             {
                 cm.CommandType = CommandType.StoredProcedure;
-                cm.CommandText = "[dbo].[procAND_getall]";
+                cm.CommandText = "dbo].[procAND_getall";
                 cm.Parameters.AddWithValue("@SUN_DB", _DTB);
                 //    cm.Parameters.AddWithValue("@CATEGORY", String.Empty)
                 using (SqlDataReader dr = cm.ExecuteReader())

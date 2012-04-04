@@ -13,16 +13,17 @@ namespace DAO
     public class LIST_QDD_FILTERDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_QDD_FILTER_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_QDD_FILTER_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_QDD_FILTER_delete]";
-        private string _strSPGetName = "dbo.[procLIST_QDD_FILTER_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_QDD_FILTER_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_QDD_FILTER_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_QDD_FILTER_isexist]";
-        private string _strTableName = "[LIST_QDD_FILTER]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_QDD_FILTER_gettransferout]";
+        private string _strSPInsertName = "procLIST_QDD_FILTER_add";
+        private string _strSPUpdateName = "procLIST_QDD_FILTER_update";
+        private string _strSPDeleteName = "procLIST_QDD_FILTER_delete";
+        private string _strSPGetName = "procLIST_QDD_FILTER_get";
+        private string _strSPGetAllName = "procLIST_QDD_FILTER_getall";
+		private string _strSPGetPages = "procLIST_QDD_FILTER_getpaged";
+		private string _strSPIsExist = "procLIST_QDD_FILTER_isexist";
+        private string _strTableName = "LIST_QDD_FILTER";
+		private string _strSPGetTransferOutName = "procLIST_QDD_FILTER_gettransferout";
         private string _strSPDeleteByQDName = "procLIST_QDD_FILTER_deleteqd";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -35,9 +36,9 @@ namespace DAO
 			LIST_QDD_FILTERInfo objEntr = new LIST_QDD_FILTERInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
             
             DataTable list = new DataTable();
             try
@@ -75,7 +76,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-			AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+			AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
             DataTable list = new DataTable();
             try
             {
@@ -97,8 +98,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-			AddParameter("INX", pos);
-			AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+			AddParameter(prefix + "INX", pos);
+			AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
             DataTable list = new DataTable();
             try
             {
@@ -121,7 +122,7 @@ namespace DAO
 			int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
           
             try
             {
@@ -152,11 +153,11 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
-            AddParameter(LIST_QDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
           
             try
             {
@@ -181,11 +182,11 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
-            AddParameter(LIST_QDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
                
             string sErr = "";
             try
@@ -209,9 +210,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
               
             string sErr = "";
             try
@@ -234,10 +235,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -260,9 +261,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -310,9 +311,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {
@@ -335,8 +336,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteByQDName);
-            AddParameter(LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_QDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
 
             try
             {

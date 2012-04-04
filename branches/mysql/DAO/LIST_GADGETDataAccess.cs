@@ -13,15 +13,16 @@ namespace DAO
     public class LIST_GADGETDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_GADGET_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_GADGET_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_GADGET_delete]";
-        private string _strSPGetName = "dbo.[procLIST_GADGET_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_GADGET_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_GADGET_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_GADGET_isexist]";
-        private string _strTableName = "[LIST_GADGET]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_GADGET_gettransferout]";
+        private string _strSPInsertName = "procLIST_GADGET_add";
+        private string _strSPUpdateName = "procLIST_GADGET_update";
+        private string _strSPDeleteName = "procLIST_GADGET_delete";
+        private string _strSPGetName = "procLIST_GADGET_get";
+        private string _strSPGetAllName = "procLIST_GADGET_getall";
+		private string _strSPGetPages = "procLIST_GADGET_getpaged";
+		private string _strSPIsExist = "procLIST_GADGET_isexist";
+        private string _strTableName = "LIST_GADGET";
+		private string _strSPGetTransferOutName = "procLIST_GADGET_gettransferout";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -32,7 +33,7 @@ namespace DAO
 			LIST_GADGETInfo objEntr = new LIST_GADGETInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_GADGETInfo.Field.ID.ToString(), ID);
+            AddParameter(prefix + LIST_GADGETInfo.Field.ID.ToString(), ID);
             
             DataTable list = new DataTable();
             try
@@ -93,7 +94,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-			AddParameter("INX", pos);
+			AddParameter(prefix + "INX", pos);
             DataTable list = new DataTable();
             try
             {
@@ -145,14 +146,14 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_GADGETInfo.Field.Description.ToString(), objEntr.Description);
-            AddParameter(LIST_GADGETInfo.Field.QDCode.ToString(), objEntr.QDCode);
-            AddParameter(LIST_GADGETInfo.Field.ReportTmp.ToString(), objEntr.ReportTmp);
-            AddParameter(LIST_GADGETInfo.Field.AutoUpdate.ToString(), objEntr.AutoUpdate);
-            AddParameter(LIST_GADGETInfo.Field.IsScroll.ToString(), objEntr.IsScroll);
-            AddParameter(LIST_GADGETInfo.Field.Action.ToString(), objEntr.Action);
-            AddParameter(LIST_GADGETInfo.Field.Argument.ToString(), objEntr.Argument);
-            AddParameter(LIST_GADGETInfo.Field.Image.ToString(), objEntr.Image);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Description.ToString(), objEntr.Description);
+            AddParameter(prefix + LIST_GADGETInfo.Field.QDCode.ToString(), objEntr.QDCode);
+            AddParameter(prefix + LIST_GADGETInfo.Field.ReportTmp.ToString(), objEntr.ReportTmp);
+            AddParameter(prefix + LIST_GADGETInfo.Field.AutoUpdate.ToString(), objEntr.AutoUpdate);
+            AddParameter(prefix + LIST_GADGETInfo.Field.IsScroll.ToString(), objEntr.IsScroll);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Action.ToString(), objEntr.Action);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Argument.ToString(), objEntr.Argument);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Image.ToString(), objEntr.Image);
           
             try
             {
@@ -177,15 +178,15 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_GADGETInfo.Field.ID.ToString(), objEntr.ID);
-            AddParameter(LIST_GADGETInfo.Field.Description.ToString(), objEntr.Description);
-            AddParameter(LIST_GADGETInfo.Field.QDCode.ToString(), objEntr.QDCode);
-            AddParameter(LIST_GADGETInfo.Field.ReportTmp.ToString(), objEntr.ReportTmp);
-            AddParameter(LIST_GADGETInfo.Field.AutoUpdate.ToString(), objEntr.AutoUpdate);
-            AddParameter(LIST_GADGETInfo.Field.IsScroll.ToString(), objEntr.IsScroll);
-            AddParameter(LIST_GADGETInfo.Field.Action.ToString(), objEntr.Action);
-            AddParameter(LIST_GADGETInfo.Field.Argument.ToString(), objEntr.Argument);
-            AddParameter(LIST_GADGETInfo.Field.Image.ToString(), objEntr.Image);
+            AddParameter(prefix + LIST_GADGETInfo.Field.ID.ToString(), objEntr.ID);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Description.ToString(), objEntr.Description);
+            AddParameter(prefix + LIST_GADGETInfo.Field.QDCode.ToString(), objEntr.QDCode);
+            AddParameter(prefix + LIST_GADGETInfo.Field.ReportTmp.ToString(), objEntr.ReportTmp);
+            AddParameter(prefix + LIST_GADGETInfo.Field.AutoUpdate.ToString(), objEntr.AutoUpdate);
+            AddParameter(prefix + LIST_GADGETInfo.Field.IsScroll.ToString(), objEntr.IsScroll);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Action.ToString(), objEntr.Action);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Argument.ToString(), objEntr.Argument);
+            AddParameter(prefix + LIST_GADGETInfo.Field.Image.ToString(), objEntr.Image);
                
             string sErr = "";
             try
@@ -207,7 +208,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_GADGETInfo.Field.ID.ToString(), ID);
+            AddParameter(prefix + LIST_GADGETInfo.Field.ID.ToString(), ID);
               
             string sErr = "";
             try
@@ -230,10 +231,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -254,7 +255,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_GADGETInfo.Field.ID.ToString(), ID);
+            AddParameter(prefix + LIST_GADGETInfo.Field.ID.ToString(), ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -302,9 +303,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

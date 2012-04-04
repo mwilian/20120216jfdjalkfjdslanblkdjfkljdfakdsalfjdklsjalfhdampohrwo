@@ -208,7 +208,7 @@ namespace QueryBuilder
             int AnalCnt = 0;
             string cat = string.Empty;
             string catNode = string.Empty;
-            // Dim ANAL_Regex As String = "(?<=ANAL_)[A,T,M,I,C,Q,F][0-9][0-9]|(?<=ANAL)[A,T,M,I,C,Q,F][0-9][0-9]|(?<=[^A-Za-z0-90-9])[A,T,M,I,C,Q,F][0-9][0-9]|(?<=Anal)[A,T,M,I,C,Q,F][0-9][0-9]"
+            // Dim ANAL_Regex As String = "(?<=ANAL_)[A,T,M,I,C,Q,F][0-9][0-9]|(?<=ANAL)[A,T,M,I,C,Q,F][0-9][0-9]|(?<=[^A-Za-z0-90-9])[A,T,M,I,C,Q,F][0-9][0-9]|(?<=Anal)[A,T,M,I,C,Q,F][0-9][0-9"
             string ANAL_Regex = "[A,T,M,I,Q,F][0-9][0-9]";
 
             foreach (Node F in _schema)

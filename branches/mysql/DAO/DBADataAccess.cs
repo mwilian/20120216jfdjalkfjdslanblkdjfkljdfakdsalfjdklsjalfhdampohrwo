@@ -13,15 +13,16 @@ namespace DAO
     public class DBADataAccess : Connection
     {
         #region Local Variable
-        private string _strSPInsertName = "dbo.[procDBA_add]";
-        private string _strSPUpdateName = "dbo.[procDBA_update]";
-        private string _strSPDeleteName = "dbo.[procDBA_delete]";
-        private string _strSPGetName = "dbo.[procDBA_get]";
-        private string _strSPGetAllName = "dbo.[procDBA_getall]";
-        private string _strSPGetPages = "dbo.[procDBA_getpaged]";
-        private string _strSPIsExist = "dbo.[procDBA_isexist]";
-        private string _strTableName = "[SSINSTAL]";
-        private string _strSPGetTransferOutName = "dbo.[procDBA_gettransferout]";
+        private string _strSPInsertName = "procDBA_add";
+        private string _strSPUpdateName = "procDBA_update";
+        private string _strSPDeleteName = "procDBA_delete";
+        private string _strSPGetName = "procDBA_get";
+        private string _strSPGetAllName = "procDBA_getall";
+        private string _strSPGetPages = "procDBA_getpaged";
+        private string _strSPIsExist = "procDBA_isexist";
+        private string _strTableName = "SSINSTAL";
+        private string _strSPGetTransferOutName = "procDBA_gettransferout";
+        string prefix = "param";
         #endregion Local Variable
 
         #region Method
@@ -32,7 +33,7 @@ namespace DAO
             DBAInfo objEntr = new DBAInfo();
             connect();
             InitSPCommand(_strSPGetName);
-            AddParameter(DBAInfo.Field.DB.ToString(), DB);
+            AddParameter(prefix + DBAInfo.Field.DB.ToString(), DB);
 
             DataTable list = new DataTable();
             try
@@ -56,8 +57,8 @@ namespace DAO
         {
             DBAInfo result = new DBAInfo();
             result.DB = (dt.Rows[i][DBAInfo.Field.DB.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DB.ToString()]));
-            result.DB1 = (dt.Rows[i][DBAInfo.Field.DB1.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DB1.ToString()]));
-            result.DB2 = (dt.Rows[i][DBAInfo.Field.DB2.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DB2.ToString()]));
+            result.DB1 = result.DB;// (dt.Rows[i][DBAInfo.Field.DB1.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DB1.ToString()]));
+            result.DB2 = result.DB;// (dt.Rows[i][DBAInfo.Field.DB2.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DB2.ToString()]));
             result.DESCRIPTION = (dt.Rows[i][DBAInfo.Field.DESCRIPTION.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DESCRIPTION.ToString()]));
             result.DATE_FORMAT = (dt.Rows[i][DBAInfo.Field.DATE_FORMAT.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DATE_FORMAT.ToString()]));
             result.DECIMAL_PLACES_SUNACCOUNT = (dt.Rows[i][DBAInfo.Field.DECIMAL_PLACES_SUNACCOUNT.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][DBAInfo.Field.DECIMAL_PLACES_SUNACCOUNT.ToString()]));
@@ -114,24 +115,24 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(DBAInfo.Field.DB.ToString(), objEntr.DB);
-            AddParameter(DBAInfo.Field.DB1.ToString(), objEntr.DB1);
-            AddParameter(DBAInfo.Field.DB2.ToString(), objEntr.DB2);
-            AddParameter(DBAInfo.Field.DESCRIPTION.ToString(), objEntr.DESCRIPTION);
-            AddParameter(DBAInfo.Field.DATE_FORMAT.ToString(), objEntr.DATE_FORMAT);
-            AddParameter(DBAInfo.Field.DECIMAL_PLACES_SUNACCOUNT.ToString(), objEntr.DECIMAL_PLACES_SUNACCOUNT);
-            AddParameter(DBAInfo.Field.DECIMAL_SEPERATOR.ToString(), objEntr.DECIMAL_SEPERATOR);
-            AddParameter(DBAInfo.Field.THOUSAND_SEPERATOR.ToString(), objEntr.THOUSAND_SEPERATOR);
-            AddParameter(DBAInfo.Field.PRIMARY_BUDGET.ToString(), objEntr.PRIMARY_BUDGET);
-            AddParameter(DBAInfo.Field.DATA_ACCESS_GROUP.ToString(), objEntr.DATA_ACCESS_GROUP);
-            AddParameter(DBAInfo.Field.DECIMAL_PLACES_SUNBUSINESS.ToString(), objEntr.DECIMAL_PLACES_SUNBUSINESS);
-            AddParameter(DBAInfo.Field.REPORT_TEMPLATE_DRIVER.ToString(), objEntr.REPORT_TEMPLATE_DRIVER);
-            AddParameter(DBAInfo.Field.PARAM_1.ToString(), objEntr.PARAM_1);
-            AddParameter(DBAInfo.Field.PARAM_2.ToString(), objEntr.PARAM_2);
-            AddParameter(DBAInfo.Field.PARAM_3.ToString(), objEntr.PARAM_3);
-            AddParameter(DBAInfo.Field.PARAM_4.ToString(), objEntr.PARAM_4);
-            AddParameter(DBAInfo.Field.PARAM_5.ToString(), objEntr.PARAM_5);
-            AddParameter(DBAInfo.Field.PARAM_6.ToString(), objEntr.PARAM_6);
+            AddParameter(prefix + DBAInfo.Field.DB.ToString(), objEntr.DB);
+            AddParameter(prefix + DBAInfo.Field.DB1.ToString(), objEntr.DB1);
+            AddParameter(prefix + DBAInfo.Field.DB2.ToString(), objEntr.DB2);
+            AddParameter(prefix + DBAInfo.Field.DESCRIPTION.ToString(), objEntr.DESCRIPTION);
+            AddParameter(prefix + DBAInfo.Field.DATE_FORMAT.ToString(), objEntr.DATE_FORMAT);
+            AddParameter(prefix + DBAInfo.Field.DECIMAL_PLACES_SUNACCOUNT.ToString(), objEntr.DECIMAL_PLACES_SUNACCOUNT);
+            AddParameter(prefix + DBAInfo.Field.DECIMAL_SEPERATOR.ToString(), objEntr.DECIMAL_SEPERATOR);
+            AddParameter(prefix + DBAInfo.Field.THOUSAND_SEPERATOR.ToString(), objEntr.THOUSAND_SEPERATOR);
+            AddParameter(prefix + DBAInfo.Field.PRIMARY_BUDGET.ToString(), objEntr.PRIMARY_BUDGET);
+            AddParameter(prefix + DBAInfo.Field.DATA_ACCESS_GROUP.ToString(), objEntr.DATA_ACCESS_GROUP);
+            AddParameter(prefix + DBAInfo.Field.DECIMAL_PLACES_SUNBUSINESS.ToString(), objEntr.DECIMAL_PLACES_SUNBUSINESS);
+            AddParameter(prefix + DBAInfo.Field.REPORT_TEMPLATE_DRIVER.ToString(), objEntr.REPORT_TEMPLATE_DRIVER);
+            AddParameter(prefix + DBAInfo.Field.PARAM_1.ToString(), objEntr.PARAM_1);
+            AddParameter(prefix + DBAInfo.Field.PARAM_2.ToString(), objEntr.PARAM_2);
+            AddParameter(prefix + DBAInfo.Field.PARAM_3.ToString(), objEntr.PARAM_3);
+            AddParameter(prefix + DBAInfo.Field.PARAM_4.ToString(), objEntr.PARAM_4);
+            AddParameter(prefix + DBAInfo.Field.PARAM_5.ToString(), objEntr.PARAM_5);
+            AddParameter(prefix + DBAInfo.Field.PARAM_6.ToString(), objEntr.PARAM_6);
 
             try
             {
@@ -156,24 +157,24 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(DBAInfo.Field.DB.ToString(), objEntr.DB);
-            AddParameter(DBAInfo.Field.DB1.ToString(), objEntr.DB1);
-            AddParameter(DBAInfo.Field.DB2.ToString(), objEntr.DB2);
-            AddParameter(DBAInfo.Field.DESCRIPTION.ToString(), objEntr.DESCRIPTION);
-            AddParameter(DBAInfo.Field.DATE_FORMAT.ToString(), objEntr.DATE_FORMAT);
-            AddParameter(DBAInfo.Field.DECIMAL_PLACES_SUNACCOUNT.ToString(), objEntr.DECIMAL_PLACES_SUNACCOUNT);
-            AddParameter(DBAInfo.Field.DECIMAL_SEPERATOR.ToString(), objEntr.DECIMAL_SEPERATOR);
-            AddParameter(DBAInfo.Field.THOUSAND_SEPERATOR.ToString(), objEntr.THOUSAND_SEPERATOR);
-            AddParameter(DBAInfo.Field.PRIMARY_BUDGET.ToString(), objEntr.PRIMARY_BUDGET);
-            AddParameter(DBAInfo.Field.DATA_ACCESS_GROUP.ToString(), objEntr.DATA_ACCESS_GROUP);
-            AddParameter(DBAInfo.Field.DECIMAL_PLACES_SUNBUSINESS.ToString(), objEntr.DECIMAL_PLACES_SUNBUSINESS);
-            AddParameter(DBAInfo.Field.REPORT_TEMPLATE_DRIVER.ToString(), objEntr.REPORT_TEMPLATE_DRIVER);
-            AddParameter(DBAInfo.Field.PARAM_1.ToString(), objEntr.PARAM_1);
-            AddParameter(DBAInfo.Field.PARAM_2.ToString(), objEntr.PARAM_2);
-            AddParameter(DBAInfo.Field.PARAM_3.ToString(), objEntr.PARAM_3);
-            AddParameter(DBAInfo.Field.PARAM_4.ToString(), objEntr.PARAM_4);
-            AddParameter(DBAInfo.Field.PARAM_5.ToString(), objEntr.PARAM_5);
-            AddParameter(DBAInfo.Field.PARAM_6.ToString(), objEntr.PARAM_6);
+            AddParameter(prefix + DBAInfo.Field.DB.ToString(), objEntr.DB);
+            AddParameter(prefix + DBAInfo.Field.DB1.ToString(), objEntr.DB1);
+            AddParameter(prefix + DBAInfo.Field.DB2.ToString(), objEntr.DB2);
+            AddParameter(prefix + DBAInfo.Field.DESCRIPTION.ToString(), objEntr.DESCRIPTION);
+            AddParameter(prefix + DBAInfo.Field.DATE_FORMAT.ToString(), objEntr.DATE_FORMAT);
+            AddParameter(prefix + DBAInfo.Field.DECIMAL_PLACES_SUNACCOUNT.ToString(), objEntr.DECIMAL_PLACES_SUNACCOUNT);
+            AddParameter(prefix + DBAInfo.Field.DECIMAL_SEPERATOR.ToString(), objEntr.DECIMAL_SEPERATOR);
+            AddParameter(prefix + DBAInfo.Field.THOUSAND_SEPERATOR.ToString(), objEntr.THOUSAND_SEPERATOR);
+            AddParameter(prefix + DBAInfo.Field.PRIMARY_BUDGET.ToString(), objEntr.PRIMARY_BUDGET);
+            AddParameter(prefix + DBAInfo.Field.DATA_ACCESS_GROUP.ToString(), objEntr.DATA_ACCESS_GROUP);
+            AddParameter(prefix + DBAInfo.Field.DECIMAL_PLACES_SUNBUSINESS.ToString(), objEntr.DECIMAL_PLACES_SUNBUSINESS);
+            AddParameter(prefix + DBAInfo.Field.REPORT_TEMPLATE_DRIVER.ToString(), objEntr.REPORT_TEMPLATE_DRIVER);
+            AddParameter(prefix + DBAInfo.Field.PARAM_1.ToString(), objEntr.PARAM_1);
+            AddParameter(prefix + DBAInfo.Field.PARAM_2.ToString(), objEntr.PARAM_2);
+            AddParameter(prefix + DBAInfo.Field.PARAM_3.ToString(), objEntr.PARAM_3);
+            AddParameter(prefix + DBAInfo.Field.PARAM_4.ToString(), objEntr.PARAM_4);
+            AddParameter(prefix + DBAInfo.Field.PARAM_5.ToString(), objEntr.PARAM_5);
+            AddParameter(prefix + DBAInfo.Field.PARAM_6.ToString(), objEntr.PARAM_6);
 
             string sErr = "";
             try
@@ -195,7 +196,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(DBAInfo.Field.DB.ToString(), DB);
+            AddParameter(prefix + DBAInfo.Field.DB.ToString(), DB);
 
             string sErr = "";
             try
@@ -218,10 +219,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages);
 
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
 
             try
             {
@@ -242,7 +243,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(DBAInfo.Field.DB.ToString(), DB);
+            AddParameter(prefix + DBAInfo.Field.DB.ToString(), DB);
 
             string sErr = "";
             DataTable list = new DataTable();
@@ -290,9 +291,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-            AddParameter("DB", dtb);
-            AddParameter("FROM", from);
-            AddParameter("TO", to);
+            AddParameter(prefix + "DB", dtb);
+            AddParameter(prefix + "FROM", from);
+            AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

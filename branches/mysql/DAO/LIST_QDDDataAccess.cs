@@ -10,15 +10,16 @@ namespace DAO
     public class LIST_QDDDataAccess : Connection
     {
         #region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_QDD_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_QDD_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_QDD_delete]";
-        private string _strSPGetName = "dbo.[procLIST_QDD_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_QDD_getall]";
-        private string _strSPGetAllName_By_QD_ID = "dbo.[sp_procLIST_QDD_Select_By_QD_ID]";
-        private string _strSPGetPages = "dbo.[procLIST_QDD_getpaged]";
-        private string _strSPIsExist = "dbo.[procLIST_QDD_isexist]";
+        private string _strSPInsertName = "procLIST_QDD_add";
+        private string _strSPUpdateName = "procLIST_QDD_update";
+        private string _strSPDeleteName = "procLIST_QDD_delete";
+        private string _strSPGetName = "procLIST_QDD_get";
+        private string _strSPGetAllName = "procLIST_QDD_getall";
+        private string _strSPGetAllName_By_QD_ID = "sp_procLIST_QDD_Select_By_QD_ID";
+        private string _strSPGetPages = "procLIST_QDD_getpaged";
+        private string _strSPIsExist = "procLIST_QDD_isexist";
         private string _strTableName = "LIST_QDD";
+        string prefix = "param";
         #endregion Local Variable
 
         #region Method
@@ -34,9 +35,9 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPGetName);
-                AddParameter("DTB", DTB);
-                AddParameter("QD_ID", QD_ID);
-                AddParameter("QDD_ID", QDD_ID);
+                AddParameter(prefix + "DTB", DTB);
+                AddParameter(prefix + "QD_ID", QD_ID);
+                AddParameter(prefix + "QDD_ID", QDD_ID);
 
 
                 list = executeSelectSP(command);
@@ -66,8 +67,8 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPGetAllName_By_QD_ID);
-                AddParameter("DTB", DTB);
-                AddParameter("QD_ID", QD_ID);
+                AddParameter(prefix + "DTB", DTB);
+                AddParameter(prefix + "QD_ID", QD_ID);
                 list = executeSelectSP(command);
             }
             catch (Exception ex)
@@ -136,18 +137,18 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPInsertName);
-                AddParameter("DTB", objEntr.DTB);
-                AddParameter("QD_ID", objEntr.QD_ID);
-                AddParameter("QDD_ID", objEntr.QDD_ID);
-                AddParameter("CODE", objEntr.CODE);
-                AddParameter("DESCRIPTN", objEntr.DESCRIPTN);
-                AddParameter("F_TYPE", objEntr.F_TYPE);
-                AddParameter("SORTING", objEntr.SORTING);
-                AddParameter("AGREGATE", objEntr.AGREGATE);
-                AddParameter("EXPRESSION", objEntr.EXPRESSION);
-                AddParameter("FILTER_FROM", objEntr.FILTER_FROM);
-                AddParameter("FILTER_TO", objEntr.FILTER_TO);
-                AddParameter("IS_FILTER", objEntr.IS_FILTER);
+                AddParameter(prefix + "DTB", objEntr.DTB);
+                AddParameter(prefix + "QD_ID", objEntr.QD_ID);
+                AddParameter(prefix + "QDD_ID", objEntr.QDD_ID);
+                AddParameter(prefix + "CODE", objEntr.CODE);
+                AddParameter(prefix + "DESCRIPTN", objEntr.DESCRIPTN);
+                AddParameter(prefix + "F_TYPE", objEntr.F_TYPE);
+                AddParameter(prefix + "SORTING", objEntr.SORTING);
+                AddParameter(prefix + "AGREGATE", objEntr.AGREGATE);
+                AddParameter(prefix + "EXPRESSION", objEntr.EXPRESSION);
+                AddParameter(prefix + "FILTER_FROM", objEntr.FILTER_FROM);
+                AddParameter(prefix + "FILTER_TO", objEntr.FILTER_TO);
+                AddParameter(prefix + "IS_FILTER", objEntr.IS_FILTER);
 
 
                 //command.ExecuteNonQuery();
@@ -176,18 +177,18 @@ namespace DAO
                 connect();
                 InitSPCommand(_strSPUpdateName);
 
-                AddParameter("DTB", objEntr.DTB);
-                AddParameter("QD_ID", objEntr.QD_ID);
-                AddParameter("QDD_ID", objEntr.QDD_ID);
-                AddParameter("CODE", objEntr.CODE);
-                AddParameter("DESCRIPTN", objEntr.DESCRIPTN);
-                AddParameter("F_TYPE", objEntr.F_TYPE);
-                AddParameter("SORTING", objEntr.SORTING);
-                AddParameter("AGREGATE", objEntr.AGREGATE);
-                AddParameter("EXPRESSION", objEntr.EXPRESSION);
-                AddParameter("FILTER_FROM", objEntr.FILTER_FROM);
-                AddParameter("FILTER_TO", objEntr.FILTER_TO);
-                AddParameter("IS_FILTER", objEntr.IS_FILTER);
+                AddParameter(prefix + "DTB", objEntr.DTB);
+                AddParameter(prefix + "QD_ID", objEntr.QD_ID);
+                AddParameter(prefix + "QDD_ID", objEntr.QDD_ID);
+                AddParameter(prefix + "CODE", objEntr.CODE);
+                AddParameter(prefix + "DESCRIPTN", objEntr.DESCRIPTN);
+                AddParameter(prefix + "F_TYPE", objEntr.F_TYPE);
+                AddParameter(prefix + "SORTING", objEntr.SORTING);
+                AddParameter(prefix + "AGREGATE", objEntr.AGREGATE);
+                AddParameter(prefix + "EXPRESSION", objEntr.EXPRESSION);
+                AddParameter(prefix + "FILTER_FROM", objEntr.FILTER_FROM);
+                AddParameter(prefix + "FILTER_TO", objEntr.FILTER_TO);
+                AddParameter(prefix + "IS_FILTER", objEntr.IS_FILTER);
 
 
                 excuteSPNonQuery();
@@ -212,9 +213,9 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPDeleteName);
-                AddParameter("DTB", DTB);
-                AddParameter("QD_ID", QD_ID);
-                AddParameter("QDD_ID", QDD_ID);
+                AddParameter(prefix + "DTB", DTB);
+                AddParameter(prefix + "QD_ID", QD_ID);
+                AddParameter(prefix + "QDD_ID", QDD_ID);
 
 
                 excuteSPNonQuery();
@@ -237,10 +238,10 @@ namespace DAO
                 connect();
                 InitSPCommand(_strSPGetPages);
 
-                AddParameter("WhereClause", whereClause);
-                AddParameter("OrderBy", orderBy);
-                AddParameter("PageIndex", pageIndex);
-                AddParameter("PageSize", pageSize);
+                AddParameter(prefix + "WhereClause", whereClause);
+                AddParameter(prefix + "OrderBy", orderBy);
+                AddParameter(prefix + "PageIndex", pageIndex);
+                AddParameter(prefix + "PageSize", pageSize);
 
 
                 dtList = executeCollectSelectSP();
@@ -267,9 +268,9 @@ namespace DAO
                 connect();
                 InitSPCommand(_strSPIsExist);
 
-                AddParameter("DTB", DTB);
-                AddParameter("QD_ID", QD_ID);
-                AddParameter("QDD_ID", QDD_ID);
+                AddParameter(prefix + "DTB", DTB);
+                AddParameter(prefix + "QD_ID", QD_ID);
+                AddParameter(prefix + "QDD_ID", QDD_ID);
 
 
                 list = executeSelectSP();

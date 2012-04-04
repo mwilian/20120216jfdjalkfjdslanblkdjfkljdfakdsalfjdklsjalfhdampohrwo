@@ -13,15 +13,16 @@ namespace DAO
     public class POGDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procPOG_add]";
-        private string _strSPUpdateName = "dbo.[procPOG_update]";
-        private string _strSPDeleteName = "dbo.[procPOG_delete]";
-        private string _strSPGetName = "dbo.[procPOG_get]";
-        private string _strSPGetAllName = "dbo.[procPOG_getall]";
-		private string _strSPGetPages = "dbo.[procPOG_getpaged]";
-		private string _strSPIsExist = "dbo.[procPOG_isexist]";
-        private string _strTableName = "[SSINSTAL]";
-		private string _strSPGetTransferOutName = "dbo.[procPOG_gettransferout]";
+        private string _strSPInsertName = "procPOG_add";
+        private string _strSPUpdateName = "procPOG_update";
+        private string _strSPDeleteName = "procPOG_delete";
+        private string _strSPGetName = "procPOG_get";
+        private string _strSPGetAllName = "procPOG_getall";
+		private string _strSPGetPages = "procPOG_getpaged";
+		private string _strSPIsExist = "procPOG_isexist";
+        private string _strTableName = "SSINSTAL";
+		private string _strSPGetTransferOutName = "procPOG_gettransferout";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -32,7 +33,7 @@ namespace DAO
 			POGInfo objEntr = new POGInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(POGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
             
             DataTable list = new DataTable();
             try
@@ -97,13 +98,13 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(POGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
-            AddParameter(POGInfo.Field.TB.ToString(), objEntr.TB);
-            AddParameter(POGInfo.Field.ROLE_ID1.ToString(), objEntr.ROLE_ID1);
-            AddParameter(POGInfo.Field.ROLE_NAME.ToString(), objEntr.ROLE_NAME);
-            AddParameter(POGInfo.Field.PASS_MIN_LEN.ToString(), objEntr.PASS_MIN_LEN);
-            AddParameter(POGInfo.Field.PASS_VALID.ToString(), objEntr.PASS_VALID);
-            AddParameter(POGInfo.Field.RPT_CODE.ToString(), objEntr.RPT_CODE);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(prefix + POGInfo.Field.TB.ToString(), objEntr.TB);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID1.ToString(), objEntr.ROLE_ID1);
+            AddParameter(prefix + POGInfo.Field.ROLE_NAME.ToString(), objEntr.ROLE_NAME);
+            AddParameter(prefix + POGInfo.Field.PASS_MIN_LEN.ToString(), objEntr.PASS_MIN_LEN);
+            AddParameter(prefix + POGInfo.Field.PASS_VALID.ToString(), objEntr.PASS_VALID);
+            AddParameter(prefix + POGInfo.Field.RPT_CODE.ToString(), objEntr.RPT_CODE);
           
             try
             {
@@ -128,13 +129,13 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(POGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
-            AddParameter(POGInfo.Field.TB.ToString(), objEntr.TB);
-            AddParameter(POGInfo.Field.ROLE_ID1.ToString(), objEntr.ROLE_ID1);
-            AddParameter(POGInfo.Field.ROLE_NAME.ToString(), objEntr.ROLE_NAME);
-            AddParameter(POGInfo.Field.PASS_MIN_LEN.ToString(), objEntr.PASS_MIN_LEN);
-            AddParameter(POGInfo.Field.PASS_VALID.ToString(), objEntr.PASS_VALID);
-            AddParameter(POGInfo.Field.RPT_CODE.ToString(), objEntr.RPT_CODE);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(prefix + POGInfo.Field.TB.ToString(), objEntr.TB);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID1.ToString(), objEntr.ROLE_ID1);
+            AddParameter(prefix + POGInfo.Field.ROLE_NAME.ToString(), objEntr.ROLE_NAME);
+            AddParameter(prefix + POGInfo.Field.PASS_MIN_LEN.ToString(), objEntr.PASS_MIN_LEN);
+            AddParameter(prefix + POGInfo.Field.PASS_VALID.ToString(), objEntr.PASS_VALID);
+            AddParameter(prefix + POGInfo.Field.RPT_CODE.ToString(), objEntr.RPT_CODE);
                
             string sErr = "";
             try
@@ -156,7 +157,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(POGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
               
             string sErr = "";
             try
@@ -179,10 +180,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -203,7 +204,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(POGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+            AddParameter(prefix + POGInfo.Field.ROLE_ID.ToString(), ROLE_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -251,9 +252,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

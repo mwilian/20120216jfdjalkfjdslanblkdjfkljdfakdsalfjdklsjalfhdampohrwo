@@ -132,7 +132,7 @@
     <value>0, 0</value>
   </data>
   <data name="twSchema.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 351</value>
+    <value>220, 352</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="twSchema.TabIndex" type="System.Int32, mscorlib">
@@ -538,7 +538,7 @@
     <value>0, 32</value>
   </data>
   <data name="dgvSelectNodes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 198</value>
+    <value>790, 199</value>
   </data>
   <data name="dgvSelectNodes.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -682,7 +682,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 351</value>
+    <value>790, 352</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
     <value>117</value>
@@ -715,7 +715,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 351</value>
+    <value>1014, 352</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>220</value>
@@ -754,7 +754,7 @@
     <value>0, 32</value>
   </data>
   <data name="wbChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 319</value>
+    <value>1014, 320</value>
   </data>
   <data name="wbChart.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -895,7 +895,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 351</value>
+    <value>1014, 352</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
     <value>817</value>
@@ -923,7 +923,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACG
-        CgAAAk1TRnQBSQFMAgEBAwEAAdwBCwHcAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAATQBDAE0AQwBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -992,7 +992,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txtANAL_Q1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="txtANAL_Q2.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 176</value>
@@ -1013,7 +1013,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txtANAL_Q2.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>18</value>
   </data>
   <data name="txtdatasource.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 135</value>
@@ -1034,7 +1034,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txtdatasource.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>19</value>
   </data>
   <data name="txtowner.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 92</value>
@@ -1055,7 +1055,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txtowner.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>20</value>
   </data>
   <data name="txtdesr.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 56</value>
@@ -1076,7 +1076,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txtdesr.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>21</value>
   </data>
   <data name="txtqd_id.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 20</value>
@@ -1097,7 +1097,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txtqd_id.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>22</value>
   </data>
   <data name="txt_sql.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1106,7 +1106,7 @@
     <value>3, 3</value>
   </data>
   <data name="txt_sql.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 351</value>
+    <value>1014, 352</value>
   </data>
   <data name="txt_sql.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1142,7 +1142,7 @@
     <value>144, 0</value>
   </data>
   <data name="flexCelPreview1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>868, 315</value>
+    <value>868, 316</value>
   </data>
   <data name="flexCelPreview1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1160,7 +1160,7 @@
     <value>0, 16</value>
   </data>
   <data name="thumbs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 299</value>
+    <value>136, 300</value>
   </data>
   <data name="thumbs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1199,7 +1199,7 @@
     <value>0</value>
   </data>
   <data name="splitter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>8, 315</value>
+    <value>8, 316</value>
   </data>
   <data name="splitter1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1253,7 +1253,7 @@
     <value>0, 0</value>
   </data>
   <data name="panelLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 315</value>
+    <value>136, 316</value>
   </data>
   <data name="panelLeft.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1277,7 +1277,7 @@
     <value>3, 37</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 317</value>
+    <value>1014, 318</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1589,7 +1589,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        EAAAAk1TRnQBSQFMAgEBBQEAAUABDgFAAQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBBQEAAZgBDgGYAQ4BGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAATADAAEBAQABCAYAARIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2240,6 +2240,124 @@
   <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="btnTmpClear.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABfUlEQVQ4T6WTu0vDUBTGz1+g
+        VBtB1KBgdSsUNFvHQoZChw4upWoRupYO7a6giw66KCj4wgciuAiKg5M4XcFBUHAVBxdXcfD4fTGJqaZT
+        hx+353yPezNUVFU6oaMwL/YKDkXkCJyIuMDw5LzvE6cx87eAIaPNpvIEbqTA0z5qtVBrKfCN5qvR0Id8
+        Xj/rdcXOAJYQ81apeNpLqRRovy/YxXOAuwPje7Wq146jr+WyciaPhYK3u8vlvB29zISfwAGCbEHYhOG5
+        WNSLdFpvs1m9ymR027L02LaVGj30xhbAIBswrMN4nkrpXiLhcZBMKnfU6PlXsIjlElgBqzCtwXyGW08R
+        DuCOGj30MhN+QlCw/GMwlwjGQY2edgUUzA3CAZzb7NyWF8zjOcDcIxzAeQG3kTiNmfATbAxTMNYRekIJ
+        T87D2JM4jZmwAL8HwdiEyNw0wpMis5hHwRAYACOOyAw1ejCPMxMt6MKiF/T79OHsAd2AWgJYET3JfVjQ
+        yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnTmpClear.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnTmpClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnTmpClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>498, 294</value>
+  </data>
+  <data name="btnTmpClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="btnTmpClear.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;btnTmpClear.Name" xml:space="preserve">
+    <value>btnTmpClear</value>
+  </data>
+  <data name="&gt;&gt;btnTmpClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTmpClear.Parent" xml:space="preserve">
+    <value>tabItemGeneral</value>
+  </data>
+  <data name="&gt;&gt;btnTmpClear.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnTmp.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="btnTmp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnTmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>521, 294</value>
+  </data>
+  <data name="btnTmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="btnTmp.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;btnTmp.Name" xml:space="preserve">
+    <value>btnTmp</value>
+  </data>
+  <data name="&gt;&gt;btnTmp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTmp.Parent" xml:space="preserve">
+    <value>tabItemGeneral</value>
+  </data>
+  <data name="&gt;&gt;btnTmp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 297</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Template File</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabItemGeneral</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtTmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 294</value>
+  </data>
+  <data name="txtTmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 22</value>
+  </data>
+  <data name="txtTmp.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="&gt;&gt;txtTmp.Name" xml:space="preserve">
+    <value>txtTmp</value>
+  </data>
+  <data name="&gt;&gt;txtTmp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTmp.Parent" xml:space="preserve">
+    <value>tabItemGeneral</value>
+  </data>
+  <data name="&gt;&gt;txtTmp.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="ckbShared.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2268,7 +2386,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;ckbShared.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="lbShare.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2298,7 +2416,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lbShare.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="bt_group.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2322,7 +2440,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;bt_group.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="bt_datasource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2346,7 +2464,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;bt_datasource.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="btnQD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2370,7 +2488,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;btnQD.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="txt_datasource.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2400,7 +2518,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;txt_datasource.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="lbANAL_Q1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2430,7 +2548,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lbANAL_Q1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="lbgroup.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2460,7 +2578,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lbgroup.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="lblGroup.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2490,7 +2608,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lblGroup.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="lblQueryDataSource.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2520,7 +2638,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lblQueryDataSource.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="lblOwner.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2550,7 +2668,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lblOwner.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="lblInquiryCode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2580,7 +2698,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lblInquiryCode.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="lblDescription.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2610,7 +2728,7 @@
     <value>tabItemGeneral</value>
   </data>
   <data name="&gt;&gt;lblDescription.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="tabItemGeneral.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2646,7 +2764,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabItemQD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 357</value>
+    <value>1020, 358</value>
   </data>
   <data name="tabItemQD.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2670,52 +2788,34 @@
     <value>961, 44</value>
   </metadata>
   <data name="expandedAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="expandedAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Expanded All</value>
   </data>
   <data name="collapsedAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="collapsedAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Collapsed All</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 6</value>
-  </data>
-  <data name="customGroupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
-  </data>
-  <data name="customGroupToolStripMenuItem.Text" xml:space="preserve">
-    <value>Custom Group</value>
+    <value>136, 6</value>
   </data>
   <data name="showFieldToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="showFieldToolStripMenuItem.Text" xml:space="preserve">
     <value>Field Chooser</value>
   </data>
   <data name="formatViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
+    <value>139, 22</value>
   </data>
   <data name="formatViewToolStripMenuItem.Text" xml:space="preserve">
     <value>Format View</value>
   </data>
-  <data name="formatConditionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
-  </data>
-  <data name="formatConditionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Format Condition</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
-  </data>
-  <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>Custom Filter</value>
-  </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 164</value>
+    <value>140, 98</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>
@@ -2733,7 +2833,7 @@
     <value>3, 43</value>
   </data>
   <data name="dgvPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 311</value>
+    <value>1014, 312</value>
   </data>
   <data name="dgvPreview.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2742,7 +2842,7 @@
     <value>dgvPreview</value>
   </data>
   <data name="&gt;&gt;dgvPreview.Type" xml:space="preserve">
-    <value>Janus.Windows.GridEX.GridEX, Janus.Windows.GridEX.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+    <value>Janus.Windows.GridEX.GridEX, Janus.Windows.GridEX.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
   </data>
   <data name="&gt;&gt;dgvPreview.Parent" xml:space="preserve">
     <value>tabItemPreview</value>
@@ -2847,7 +2947,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabItemPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 357</value>
+    <value>1020, 358</value>
   </data>
   <data name="tabItemPreview.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2874,7 +2974,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabItemSQLText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 357</value>
+    <value>1020, 358</value>
   </data>
   <data name="tabItemSQLText.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2904,7 +3004,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabReportViewer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 357</value>
+    <value>1020, 358</value>
   </data>
   <data name="tabReportViewer.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2931,7 +3031,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabChart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1020, 357</value>
+    <value>1020, 358</value>
   </data>
   <data name="tabChart.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4880,12 +4980,6 @@
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;customGroupToolStripMenuItem.Name" xml:space="preserve">
-    <value>customGroupToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;customGroupToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;showFieldToolStripMenuItem.Name" xml:space="preserve">
     <value>showFieldToolStripMenuItem</value>
   </data>
@@ -4898,29 +4992,17 @@
   <data name="&gt;&gt;formatViewToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;formatConditionToolStripMenuItem.Name" xml:space="preserve">
-    <value>formatConditionToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;formatConditionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;gridEXExporter1.Name" xml:space="preserve">
     <value>gridEXExporter1</value>
   </data>
   <data name="&gt;&gt;gridEXExporter1.Type" xml:space="preserve">
-    <value>Janus.Windows.GridEX.Export.GridEXExporter, Janus.Windows.GridEX.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+    <value>Janus.Windows.GridEX.Export.GridEXExporter, Janus.Windows.GridEX.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
   </data>
   <data name="&gt;&gt;gridEXPrintDocument1.Name" xml:space="preserve">
     <value>gridEXPrintDocument1</value>
   </data>
   <data name="&gt;&gt;gridEXPrintDocument1.Type" xml:space="preserve">
-    <value>Janus.Windows.GridEX.GridEXPrintDocument, Janus.Windows.GridEX.v3, Version=3.5.0.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
+    <value>Janus.Windows.GridEX.GridEXPrintDocument, Janus.Windows.GridEX.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
     <value>toolStripMenuItem2</value>

@@ -7,35 +7,36 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-	/// <summary> 
-	///Author: nnamthach@gmail.com 
-	/// <summary>
+    /// <summary> 
+    ///Author: nnamthach@gmail.com 
+    /// <summary>
     public class LIST_DADataAccess : Connection
     {
-		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_DA_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_DA_update]";
-        private string _strSPDeleteName = "dbo.[LIST_DA_delete]";
-        private string _strSPGetName = "dbo.[procLIST_DA_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_DA_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_DA_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_DA_isexist]";
-        private string _strTableName = "[LIST_DA]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_DA_gettransferout]";
+        #region Local Variable
+        private string _strSPInsertName = "procLIST_DA_add";
+        private string _strSPUpdateName = "procLIST_DA_update";
+        private string _strSPDeleteName = "LIST_DA_delete";
+        private string _strSPGetName = "procLIST_DA_get";
+        private string _strSPGetAllName = "procLIST_DA_getall";
+        private string _strSPGetPages = "procLIST_DA_getpaged";
+        private string _strSPIsExist = "procLIST_DA_isexist";
+        private string _strTableName = "LIST_DA";
+        private string _strSPGetTransferOutName = "procLIST_DA_gettransferout";
         private string _strSPGetPermissionName = "LIST_DAGPermission";
         string _strSPGetPermissionByRoleName = "LIST_DAGPermissionByRole";
-		#endregion Local Variable
-		
-		#region Method
+        string prefix = "param";
+        #endregion Local Variable
+
+        #region Method
         public LIST_DAInfo Get(
         String DAG_ID,
-		ref string sErr)
+        ref string sErr)
         {
-			LIST_DAInfo objEntr = new LIST_DAInfo();
-			connect();
-			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
-            
+            LIST_DAInfo objEntr = new LIST_DAInfo();
+            connect();
+            InitSPCommand(_strSPGetName);
+           AddParameter(prefix +  LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+
             DataTable list = new DataTable();
             try
             {
@@ -45,8 +46,8 @@ namespace DAO
             {
                 sErr = ex.Message;
             }
-            disconnect();  
-            
+            disconnect();
+
             if (list.Rows.Count > 0)
                 objEntr = (LIST_DAInfo)GetDataFromDataRow(list, 0);
             //if (dr != null) list = CBO.FillCollection(dr, ref list);
@@ -60,7 +61,7 @@ namespace DAO
             result.DAG_ID = (dt.Rows[i][LIST_DAInfo.Field.DAG_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.DAG_ID.ToString()]));
             result.NAME = (dt.Rows[i][LIST_DAInfo.Field.NAME.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.NAME.ToString()]));
             result.EI = (dt.Rows[i][LIST_DAInfo.Field.EI.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][LIST_DAInfo.Field.EI.ToString()]));
-           
+
             return result;
         }
 
@@ -84,7 +85,7 @@ namespace DAO
             if (sErr != "") ErrorLog.SetLog(sErr);
             return list;
         }
-		/// <summary>
+        /// <summary>
         /// Return 1: Table is exist Identity Field
         /// Return 0: Table is not exist Identity Field
         /// Return -1: Erro
@@ -95,18 +96,18 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
-            AddParameter(LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
-          
+           AddParameter(prefix +  LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
+           AddParameter(prefix +  LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
+           AddParameter(prefix +  LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
+
             try
             {
                 //command.ExecuteNonQuery();
                 object tmp = executeSPScalar();
-                if(tmp != null && tmp != DBNull.Value)
-					ret = Convert.ToInt32(tmp);
-				else 
-					ret=0;
+                if (tmp != null && tmp != DBNull.Value)
+                    ret = Convert.ToInt32(tmp);
+                else
+                    ret = 0;
             }
             catch (Exception ex)
             {
@@ -114,7 +115,7 @@ namespace DAO
             }
             disconnect();
             if (sErr != "") ErrorLog.SetLog(sErr);
-			
+
             return ret;
         }
 
@@ -122,10 +123,10 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
-            AddParameter(LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
-            AddParameter(LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
-               
+           AddParameter(prefix +  LIST_DAInfo.Field.DAG_ID.ToString(), objEntr.DAG_ID);
+           AddParameter(prefix +  LIST_DAInfo.Field.NAME.ToString(), objEntr.NAME);
+           AddParameter(prefix +  LIST_DAInfo.Field.EI.ToString(), objEntr.EI);
+
             string sErr = "";
             try
             {
@@ -142,12 +143,12 @@ namespace DAO
 
         public string Delete(
         String DAG_ID
-		)
+        )
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
-              
+           AddParameter(prefix +  LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+
             string sErr = "";
             try
             {
@@ -160,20 +161,20 @@ namespace DAO
             disconnect();
             if (sErr != "") ErrorLog.SetLog(sErr);
             return sErr;
-        }   
-		
-		public DataTableCollection Get_Page(LIST_DAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
+        }
+
+        public DataTableCollection Get_Page(LIST_DAInfo obj, string orderBy, int pageIndex, int pageSize, ref String sErr)
         {
-			string whereClause = CreateWhereClause(obj);
+            string whereClause = CreateWhereClause(obj);
             DataTableCollection dtList = null;
             connect();
-            InitSPCommand(_strSPGetPages); 
-          
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
-            
+            InitSPCommand(_strSPGetPages);
+
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
+
             try
             {
                 dtList = executeCollectSelectSP();
@@ -186,15 +187,15 @@ namespace DAO
             if (sErr != "") ErrorLog.SetLog(sErr);
             return dtList;
         }
-        
+
         public Boolean IsExist(
         String DAG_ID
-		)
+        )
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
-              
+           AddParameter(prefix +  LIST_DAInfo.Field.DAG_ID.ToString(), DAG_ID);
+
             string sErr = "";
             DataTable list = new DataTable();
             try
@@ -207,18 +208,18 @@ namespace DAO
             }
             disconnect();
             if (sErr != "") ErrorLog.SetLog(sErr);
-            if(list.Rows.Count==1)
-				return true;
+            if (list.Rows.Count == 1)
+                return true;
             return false;
         }
-		
-		private string CreateWhereClause(LIST_DAInfo obj)
+
+        private string CreateWhereClause(LIST_DAInfo obj)
         {
             String result = "";
 
             return result;
         }
-        
+
         public DataTable Search(string columnName, string columnValue, string condition, string tableName, ref string sErr)
         {
             string query = "select * from " + _strTableName + " where " + columnName + " " + condition + " " + columnValue;
@@ -237,13 +238,13 @@ namespace DAO
             //    if (sErr != "") ErrorLog.SetLog(sErr);
             return list;
         }
-		public DataTable GetTransferOut(string dtb, object from, object to, ref string sErr)
+        public DataTable GetTransferOut(string dtb, object from, object to, ref string sErr)
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+           AddParameter(prefix +  "DB", dtb);
+           AddParameter(prefix +  "FROM", from);
+           AddParameter(prefix +  "TO", to);
             DataTable list = new DataTable();
             try
             {
@@ -259,14 +260,14 @@ namespace DAO
             if (sErr != "") ErrorLog.SetLog(sErr);
             return list;
         }
-		#endregion Method
+        #endregion Method
 
 
         public DataTable GetPermission(string user, ref string sErr)
         {
             connect();
             InitSPCommand(_strSPGetPermissionName);
-            AddParameter("USER_ID", user);           
+           AddParameter(prefix +  "USER_ID", user);
             DataTable list = new DataTable();
             try
             {
@@ -287,7 +288,7 @@ namespace DAO
 
             connect();
             InitSPCommand(_strSPGetPermissionByRoleName);
-            AddParameter("ROLE_ID", role);
+           AddParameter(prefix +  "ROLE_ID", role);
             DataTable list = new DataTable();
             try
             {

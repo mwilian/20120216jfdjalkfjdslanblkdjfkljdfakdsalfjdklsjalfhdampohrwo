@@ -14,15 +14,16 @@ namespace DAO
     public class CorePODDataAccess : CoreConnection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procPOD_add]";
-        private string _strSPUpdateName = "dbo.[procPOD_update]";
-        private string _strSPDeleteName = "dbo.[procPOD_delete]";
-        private string _strSPGetName = "dbo.[procPOD_get]";
-        private string _strSPGetAllName = "dbo.[procPOD_getall]";
-		private string _strSPGetPages = "dbo.[procPOD_getpaged]";
-		private string _strSPIsExist = "dbo.[procPOD_isexist]";
-        private string _strTableName = "[SSINSTAL]";
-		private string _strSPGetTransferOutName = "dbo.[procPOD_gettransferout]";
+        private string _strSPInsertName = "procPOD_add";
+        private string _strSPUpdateName = "procPOD_update";
+        private string _strSPDeleteName = "procPOD_delete";
+        private string _strSPGetName = "procPOD_get";
+        private string _strSPGetAllName = "procPOD_getall";
+		private string _strSPGetPages = "procPOD_getpaged";
+		private string _strSPIsExist = "procPOD_isexist";
+        private string _strTableName = "SSINSTAL";
+		private string _strSPGetTransferOutName = "procPOD_gettransferout";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -33,7 +34,7 @@ namespace DAO
 			CorePODInfo objEntr = new CorePODInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(CorePODInfo.Field.USER_ID.ToString(), USER_ID);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID.ToString(), USER_ID);
             
             DataTable list = new DataTable();
             try
@@ -99,14 +100,14 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(CorePODInfo.Field.USER_ID.ToString(), objEntr.USER_ID);
-            AddParameter(CorePODInfo.Field.TB.ToString(), objEntr.TB);
-            AddParameter(CorePODInfo.Field.USER_ID1.ToString(), objEntr.USER_ID1);
-            AddParameter(CorePODInfo.Field.USER_NAME.ToString(), objEntr.USER_NAME);
-            AddParameter(CorePODInfo.Field.DB_DEFAULT.ToString(), objEntr.DB_DEFAULT);
-            AddParameter(CorePODInfo.Field.LANGUAGE.ToString(), objEntr.LANGUAGE);
-            AddParameter(CorePODInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
-            AddParameter(CorePODInfo.Field.PASS.ToString(), objEntr.PASS);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID.ToString(), objEntr.USER_ID);
+            AddParameter(prefix + CorePODInfo.Field.TB.ToString(), objEntr.TB);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID1.ToString(), objEntr.USER_ID1);
+            AddParameter(prefix + CorePODInfo.Field.USER_NAME.ToString(), objEntr.USER_NAME);
+            AddParameter(prefix + CorePODInfo.Field.DB_DEFAULT.ToString(), objEntr.DB_DEFAULT);
+            AddParameter(prefix + CorePODInfo.Field.LANGUAGE.ToString(), objEntr.LANGUAGE);
+            AddParameter(prefix + CorePODInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(prefix + CorePODInfo.Field.PASS.ToString(), objEntr.PASS);
           
             try
             {
@@ -131,14 +132,14 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(CorePODInfo.Field.USER_ID.ToString(), objEntr.USER_ID);
-            AddParameter(CorePODInfo.Field.TB.ToString(), objEntr.TB);
-            AddParameter(CorePODInfo.Field.USER_ID1.ToString(), objEntr.USER_ID1);
-            AddParameter(CorePODInfo.Field.USER_NAME.ToString(), objEntr.USER_NAME);
-            AddParameter(CorePODInfo.Field.DB_DEFAULT.ToString(), objEntr.DB_DEFAULT);
-            AddParameter(CorePODInfo.Field.LANGUAGE.ToString(), objEntr.LANGUAGE);
-            AddParameter(CorePODInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
-            AddParameter(CorePODInfo.Field.PASS.ToString(), objEntr.PASS);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID.ToString(), objEntr.USER_ID);
+            AddParameter(prefix + CorePODInfo.Field.TB.ToString(), objEntr.TB);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID1.ToString(), objEntr.USER_ID1);
+            AddParameter(prefix + CorePODInfo.Field.USER_NAME.ToString(), objEntr.USER_NAME);
+            AddParameter(prefix + CorePODInfo.Field.DB_DEFAULT.ToString(), objEntr.DB_DEFAULT);
+            AddParameter(prefix + CorePODInfo.Field.LANGUAGE.ToString(), objEntr.LANGUAGE);
+            AddParameter(prefix + CorePODInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(prefix + CorePODInfo.Field.PASS.ToString(), objEntr.PASS);
                
             string sErr = "";
             try
@@ -160,7 +161,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(CorePODInfo.Field.USER_ID.ToString(), USER_ID);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID.ToString(), USER_ID);
               
             string sErr = "";
             try
@@ -183,10 +184,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -207,7 +208,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(CorePODInfo.Field.USER_ID.ToString(), USER_ID);
+            AddParameter(prefix + CorePODInfo.Field.USER_ID.ToString(), USER_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -255,9 +256,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

@@ -13,17 +13,18 @@ namespace DAO
     public class LIST_EMAILDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_EMAIL_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_EMAIL_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_EMAIL_delete]";
-        private string _strSPGetName = "dbo.[procLIST_EMAIL_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_EMAIL_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_EMAIL_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_EMAIL_isexist]";
-        private string _strTableName = "[LIST_EMAIL]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_EMAIL_gettransferout]";
+        private string _strSPInsertName = "procLIST_EMAIL_add";
+        private string _strSPUpdateName = "procLIST_EMAIL_update";
+        private string _strSPDeleteName = "procLIST_EMAIL_delete";
+        private string _strSPGetName = "procLIST_EMAIL_get";
+        private string _strSPGetAllName = "procLIST_EMAIL_getall";
+		private string _strSPGetPages = "procLIST_EMAIL_getpaged";
+		private string _strSPIsExist = "procLIST_EMAIL_isexist";
+        private string _strTableName = "LIST_EMAIL";
+		private string _strSPGetTransferOutName = "procLIST_EMAIL_gettransferout";
 		string _strSPGetCountName = "procLIST_EMAIL_getcount";
         string _strSPGetByIndexName = "procLIST_EMAIL_getindex";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -34,7 +35,7 @@ namespace DAO
 			LIST_EMAILInfo objEntr = new LIST_EMAILInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_EMAILInfo.Field.Mail.ToString(), Mail);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Mail.ToString(), Mail);
             
             DataTable list = new DataTable();
             try
@@ -89,7 +90,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetByIndexName);
-			AddParameter("INX", pos);
+			AddParameter(prefix + "INX", pos);
             DataTable list = new DataTable();
             try
             {
@@ -141,9 +142,9 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_EMAILInfo.Field.Mail.ToString(), objEntr.Mail);
-            AddParameter(LIST_EMAILInfo.Field.Name.ToString(), objEntr.Name);
-            AddParameter(LIST_EMAILInfo.Field.Lookup.ToString(), objEntr.Lookup);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Mail.ToString(), objEntr.Mail);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Name.ToString(), objEntr.Name);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Lookup.ToString(), objEntr.Lookup);
           
             try
             {
@@ -168,9 +169,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_EMAILInfo.Field.Mail.ToString(), objEntr.Mail);
-            AddParameter(LIST_EMAILInfo.Field.Name.ToString(), objEntr.Name);
-            AddParameter(LIST_EMAILInfo.Field.Lookup.ToString(), objEntr.Lookup);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Mail.ToString(), objEntr.Mail);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Name.ToString(), objEntr.Name);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Lookup.ToString(), objEntr.Lookup);
                
             string sErr = "";
             try
@@ -192,7 +193,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_EMAILInfo.Field.Mail.ToString(), Mail);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Mail.ToString(), Mail);
               
             string sErr = "";
             try
@@ -215,10 +216,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -239,7 +240,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_EMAILInfo.Field.Mail.ToString(), Mail);
+            AddParameter(prefix + LIST_EMAILInfo.Field.Mail.ToString(), Mail);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -287,9 +288,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

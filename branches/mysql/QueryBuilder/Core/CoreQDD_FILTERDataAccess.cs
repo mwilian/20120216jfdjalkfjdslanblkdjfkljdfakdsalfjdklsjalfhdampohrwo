@@ -12,15 +12,16 @@ namespace QueryBuilder
     public class CoreQDD_FILTERDataAccess : CoreConnection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_QDD_FILTER_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_QDD_FILTER_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_QDD_FILTER_delete]";
-        private string _strSPGetName = "dbo.[procLIST_QDD_FILTER_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_QDD_FILTER_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_QDD_FILTER_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_QDD_FILTER_isexist]";
-        private string _strTableName = "[CoreQDD_FILTER]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_QDD_FILTER_gettransferout]";
+        private string _strSPInsertName = "procLIST_QDD_FILTER_add";
+        private string _strSPUpdateName = "procLIST_QDD_FILTER_update";
+        private string _strSPDeleteName = "procLIST_QDD_FILTER_delete";
+        private string _strSPGetName = "procLIST_QDD_FILTER_get";
+        private string _strSPGetAllName = "procLIST_QDD_FILTER_getall";
+		private string _strSPGetPages = "procLIST_QDD_FILTER_getpaged";
+		private string _strSPIsExist = "procLIST_QDD_FILTER_isexist";
+        private string _strTableName = "CoreQDD_FILTER";
+		private string _strSPGetTransferOutName = "procLIST_QDD_FILTER_gettransferout";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -33,9 +34,9 @@ namespace QueryBuilder
 			CoreQDD_FILTERInfo objEntr = new CoreQDD_FILTERInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(CoreQDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
             
             DataTable list = new DataTable();
             try
@@ -73,7 +74,7 @@ namespace QueryBuilder
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-			AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
+			AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
             DataTable list = new DataTable();
             try
             {
@@ -95,8 +96,8 @@ namespace QueryBuilder
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-			AddParameter("INX", pos);
-			AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
+			AddParameter(prefix + "INX", pos);
+			AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
             DataTable list = new DataTable();
             try
             {
@@ -119,7 +120,7 @@ namespace QueryBuilder
 			int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
           
             try
             {
@@ -150,11 +151,11 @@ namespace QueryBuilder
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
-            AddParameter(CoreQDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
-            AddParameter(CoreQDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
           
             try
             {
@@ -179,11 +180,11 @@ namespace QueryBuilder
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
-            AddParameter(CoreQDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
-            AddParameter(CoreQDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), objEntr.DTB);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QD_ID.ToString(), objEntr.QD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), objEntr.QDD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.OPERATOR.ToString(), objEntr.OPERATOR);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.IS_NOT.ToString(), objEntr.IS_NOT);
                
             string sErr = "";
             try
@@ -207,9 +208,9 @@ namespace QueryBuilder
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(CoreQDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
               
             string sErr = "";
             try
@@ -232,10 +233,10 @@ namespace QueryBuilder
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -258,9 +259,9 @@ namespace QueryBuilder
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
-            AddParameter(CoreQDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
-            AddParameter(CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QD_ID.ToString(), QD_ID);
+            AddParameter(prefix + CoreQDD_FILTERInfo.Field.QDD_ID.ToString(), QDD_ID);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -308,9 +309,9 @@ namespace QueryBuilder
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Data.Sql;
+using MySql.Data.MySqlClient;
 
 
 namespace QueryDesigner
@@ -77,8 +78,8 @@ namespace QueryDesigner
         {
             string connect = "Persist Security Info=True;Database={1};Server={0};User Id={2};Password={3}";
             Connection = string.Format(connect, Server.Text, Database.Text, User.Text, Pass.Text);
-            if (type != "QD")
-                Connection = "Provider=SQLOLEDB.1;" + Connection;
+            //if (type != "QD")
+            //    Connection = "Provider=SQLOLEDB.1;" + Connection;
             DialogResult = DialogResult.OK;
             
             Close();
@@ -89,7 +90,7 @@ namespace QueryDesigner
         public class clsConnectSQL
         {
             static String _connectString = "Data Source=[SERVER];Initial Catalog=[DATABASE]; uid=[USERNAME];pwd=[PASSWORD];Integrated Security=False";
-            SqlConnection conn;
+            MySqlConnection conn;
 
             public clsConnectSQL()
             {
@@ -102,7 +103,7 @@ namespace QueryDesigner
                 set
                 {
                     _connectString = value;
-                    conn = new SqlConnection(_connectString);
+                    conn = new MySqlConnection(_connectString);
                 }
             }
             public bool TestConnect()
@@ -137,7 +138,7 @@ namespace QueryDesigner
                                                                "GROUP BY D.TABLE_NAME, D.ORDINAL_POSITION, D.COLUMN_NAME, D.DATA_TYPE, D.CHARACTER_MAXIMUM_LENGTH, D.NUMERIC_PRECISION, " +
                                                                                       "D.NUMERIC_SCALE, D.IS_NULLABLE) AS A INNER JOIN " +
                                                               "INFORMATION_SCHEMA.TABLES AS t ON t.TABLE_NAME = A.TABLE_NAME AND t.TABLE_TYPE = 'BASE TABLE'";
-                    SqlDataAdapter adap = new SqlDataAdapter(queryField, conn);
+                    MySqlDataAdapter adap = new MySqlDataAdapter(queryField, conn);
                     DataSet dset = new DataSet();
                     adap.Fill(dset);
                     return dset;
@@ -187,7 +188,7 @@ namespace QueryDesigner
                 try
                 {
                     string queryField = "SELECT  OBJECTPROPERTY(OBJECT_ID('" + tablename + "'),'TableHasIdentity')";
-                    SqlDataAdapter adap = new SqlDataAdapter(queryField, conn);
+                    MySqlDataAdapter adap = new MySqlDataAdapter(queryField, conn);
                     DataSet dset = new DataSet();
                     adap.Fill(dset);
                     if (Convert.ToInt32(dset.Tables[0].Rows[0][0]) == 1)
@@ -211,7 +212,7 @@ namespace QueryDesigner
                 {
                     //Server=.;Database=SiteCamera;uid=sa;pwd=qawsed;Connection Lifetime=100;Connect Timeout=500
                     string connectString = "Server=" + Server + "; User Id=" + Username + ";pwd=" + Pass + "; Connection Lifetime=100;Connect Timeout=500";
-                    conn = new SqlConnection(connectString);
+                    conn = new MySqlConnection(connectString);
                     conn.Open();
                     DataTable dt = conn.GetSchema("Databases");
                     conn.Close();
@@ -230,7 +231,7 @@ namespace QueryDesigner
                 {
                     string queryTable = "select CAST(0 as bit) as checked,TABLE_NAME, '' as FILE_STRUCT from INFORMATION_SCHEMA.TABLES where TABLE_NAME<>'sysdiagrams' and TABLE_NAME<>'dtproperties' and TABLE_TYPE='BASE TABLE'";// where id = object_id(N'dbo.[tbl_Admin]')";
 
-                    SqlDataAdapter adap = new SqlDataAdapter(queryTable, conn);
+                    MySqlDataAdapter adap = new MySqlDataAdapter(queryTable, conn);
 
                     DataSet dset = new DataSet();
                     adap.Fill(dset);
@@ -245,7 +246,7 @@ namespace QueryDesigner
             {
                 _connectString = "Data Source=[SERVER];Initial Catalog=[DATABASE]; uid=[USERNAME];pwd=[PASSWORD];Integrated Security=False";
                 _connectString = _connectString.Replace("[SERVER]", Server).Replace("[DATABASE]", Database).Replace("[USERNAME]", Username).Replace("[PASSWORD]", Pass);
-                conn = new SqlConnection(_connectString);
+                conn = new MySqlConnection(_connectString);
 
 
             }

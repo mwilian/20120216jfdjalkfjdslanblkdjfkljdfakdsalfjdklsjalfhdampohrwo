@@ -70,7 +70,6 @@ namespace QueryDesigner
             this.uiPanel1Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
             this.btnOK = new Janus.Windows.EditControls.UIButton();
             this.btnCancel = new Janus.Windows.EditControls.UIButton();
-            this.officeFormAdorner1 = new Janus.Windows.Ribbon.OfficeFormAdorner(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.UiCommandManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomRebar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UiCommandBar1)).BeginInit();
@@ -85,7 +84,6 @@ namespace QueryDesigner
             this.uiPanel0Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel1)).BeginInit();
             this.uiPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.officeFormAdorner1)).BeginInit();
             this.SuspendLayout();
             // 
             // UiCommandManager1
@@ -111,7 +109,6 @@ namespace QueryDesigner
             this.UiCommandManager1.LockCommandBars = true;
             this.UiCommandManager1.RightRebar = this.RightRebar1;
             this.UiCommandManager1.ShowCustomizeButton = Janus.Windows.UI.InheritableBoolean.False;
-            this.UiCommandManager1.Tag = null;
             this.UiCommandManager1.TopRebar = this.TopRebar1;
             this.UiCommandManager1.CommandClick += new Janus.Windows.UI.CommandBars.CommandEventHandler(this.UiCommandManager1_CommandClick);
             // 
@@ -330,11 +327,11 @@ namespace QueryDesigner
             this.grdGroupList.ImageList = this.ImageList1;
             this.grdGroupList.Location = new System.Drawing.Point(0, 0);
             this.grdGroupList.Name = "grdGroupList";
-            this.grdGroupList.Size = new System.Drawing.Size(161, 315);
+            this.grdGroupList.Size = new System.Drawing.Size(161, 322);
             this.grdGroupList.TabIndex = 0;
             this.grdGroupList.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2003;
-            this.grdGroupList.SelectionChanged += new System.EventHandler(this.grdGroupList_SelectionChanged);
             this.grdGroupList.CurrentCellChanging += new Janus.Windows.GridEX.CurrentCellChangingEventHandler(this.grdGroupList_CurrentCellChanging);
+            this.grdGroupList.SelectionChanged += new System.EventHandler(this.grdGroupList_SelectionChanged);
             this.grdGroupList.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.grdGroupList_FormattingRow);
             // 
             // UiPanelManager1
@@ -345,7 +342,6 @@ namespace QueryDesigner
             this.UiPanelManager1.PanelPadding.Left = 4;
             this.UiPanelManager1.PanelPadding.Right = 4;
             this.UiPanelManager1.PanelPadding.Top = 4;
-            this.UiPanelManager1.Tag = null;
             this.uiPanel0.Id = new System.Guid("3d65b9ea-5b85-478d-b855-d837f98a5649");
             this.UiPanelManager1.Panels.Add(this.uiPanel0);
             this.uiPanel1.Id = new System.Guid("809ccdb1-da44-4be9-8362-3863df05aec2");
@@ -354,8 +350,8 @@ namespace QueryDesigner
             // Design Time Panel Info:
             // 
             this.UiPanelManager1.BeginPanelInfo();
-            this.UiPanelManager1.AddDockPanelInfo(new System.Guid("3d65b9ea-5b85-478d-b855-d837f98a5649"), Janus.Windows.UI.Dock.PanelDockStyle.Left, new System.Drawing.Size(167, 317), true);
-            this.UiPanelManager1.AddDockPanelInfo(new System.Guid("809ccdb1-da44-4be9-8362-3863df05aec2"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(682, 317), true);
+            this.UiPanelManager1.AddDockPanelInfo(new System.Guid("3d65b9ea-5b85-478d-b855-d837f98a5649"), Janus.Windows.UI.Dock.PanelDockStyle.Left, new System.Drawing.Size(167, 324), true);
+            this.UiPanelManager1.AddDockPanelInfo(new System.Guid("809ccdb1-da44-4be9-8362-3863df05aec2"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(682, 324), true);
             this.UiPanelManager1.AddFloatingPanelInfo(new System.Guid("3d65b9ea-5b85-478d-b855-d837f98a5649"), new System.Drawing.Point(-1, -1), new System.Drawing.Size(-1, -1), false);
             this.UiPanelManager1.AddFloatingPanelInfo(new System.Guid("809ccdb1-da44-4be9-8362-3863df05aec2"), new System.Drawing.Point(-1, -1), new System.Drawing.Size(-1, -1), false);
             this.UiPanelManager1.EndPanelInfo();
@@ -365,7 +361,7 @@ namespace QueryDesigner
             this.uiPanel0.InnerContainer = this.uiPanel0Container;
             this.uiPanel0.Location = new System.Drawing.Point(4, 32);
             this.uiPanel0.Name = "uiPanel0";
-            this.uiPanel0.Size = new System.Drawing.Size(167, 317);
+            this.uiPanel0.Size = new System.Drawing.Size(167, 324);
             this.uiPanel0.TabIndex = 4;
             this.uiPanel0.Text = "Panel 0";
             // 
@@ -374,7 +370,7 @@ namespace QueryDesigner
             this.uiPanel0Container.Controls.Add(this.grdGroupList);
             this.uiPanel0Container.Location = new System.Drawing.Point(1, 1);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(161, 315);
+            this.uiPanel0Container.Size = new System.Drawing.Size(161, 322);
             this.uiPanel0Container.TabIndex = 0;
             this.uiPanel0Container.TabStop = false;
             // 
@@ -384,7 +380,7 @@ namespace QueryDesigner
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(171, 32);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(682, 317);
+            this.uiPanel1.Size = new System.Drawing.Size(682, 324);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.Text = "Panel 1";
             // 
@@ -392,7 +388,7 @@ namespace QueryDesigner
             // 
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 1);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(680, 315);
+            this.uiPanel1Container.Size = new System.Drawing.Size(680, 322);
             this.uiPanel1Container.TabIndex = 0;
             this.uiPanel1Container.TabStop = false;
             // 
@@ -400,7 +396,7 @@ namespace QueryDesigner
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(682, 357);
+            this.btnOK.Location = new System.Drawing.Point(682, 364);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 5;
@@ -412,7 +408,7 @@ namespace QueryDesigner
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(763, 357);
+            this.btnCancel.Location = new System.Drawing.Point(763, 364);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;
@@ -420,18 +416,12 @@ namespace QueryDesigner
             this.btnCancel.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // officeFormAdorner1
-            // 
-            this.officeFormAdorner1.DocumentName = "Group By...";
-            this.officeFormAdorner1.Form = this;
-            this.officeFormAdorner1.Office2007CustomColor = System.Drawing.Color.Empty;
-            // 
             // frmGroupBy
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 394);
+            this.ClientSize = new System.Drawing.Size(857, 401);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.uiPanel1);
@@ -456,7 +446,6 @@ namespace QueryDesigner
             this.uiPanel0Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel1)).EndInit();
             this.uiPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.officeFormAdorner1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -494,8 +483,7 @@ namespace QueryDesigner
 		internal Janus.Windows.UI.CommandBars.UICommand cmdExpand;
 		internal Janus.Windows.UI.CommandBars.UICommand cmdHierarchicalGroupMode1;
 		internal Janus.Windows.UI.CommandBars.UICommand cmdHierarchicalGroupMode;
-		internal System.Windows.Forms.ImageList ImageList1;
-        private Janus.Windows.Ribbon.OfficeFormAdorner officeFormAdorner1;
+        internal System.Windows.Forms.ImageList ImageList1;
 	}
 
 } //end of root namespace

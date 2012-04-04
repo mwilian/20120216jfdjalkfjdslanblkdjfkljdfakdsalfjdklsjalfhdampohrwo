@@ -350,7 +350,7 @@ namespace QueryDesigner
             DataTable dtX = IMPORT_SCHEMAControl.GetDataTableStruct(_importCtr.DtStruct, _importCtr.Lookup);
             try
             {
-                DataTable dt = PreviewExcelFile(dtX, filename, cboConvertor.SelectedValue.ToString(), ddlImport.Value.ToString());
+                DataTable dt = PreviewExcelFile(dtX, filename, cboConvertor.SelectedValue.ToString(), ddlImport.SelectedValue.ToString());
                 dgvList.DataSource = dt;
                 dgvList.AllowEdit = InheritableBoolean.False;
                 lbErr.Text = "You have " + dt.Rows.Count + " records from file";
@@ -395,8 +395,9 @@ namespace QueryDesigner
                 }
 
             }
-            ddlImport.DataSource = dt;           
-
+            ddlImport.DataSource = dt;
+            ddlImport.ValueMember = "SCHEMA_ID";
+            ddlImport.DisplayMember = "DESCRIPTN";
             _importCtr.StrConn = Form_QD._strConnectDes;
         }
 

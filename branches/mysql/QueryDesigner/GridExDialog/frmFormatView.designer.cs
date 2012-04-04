@@ -37,49 +37,49 @@ namespace QueryDesigner
 		//It can be modified using the Windows Form Designer.  
 		//Do not modify it using the code editor.
 		internal System.Windows.Forms.FontDialog FontDialog1;
-		internal Janus.Windows.EditControls.UIGroupBox UiGroupBox1;
-		internal Janus.Windows.EditControls.UIButton btnCancel;
-		internal Janus.Windows.EditControls.UIButton btnOK;
-		internal Janus.Windows.EditControls.UIGroupBox GroupBox3;
-		internal Janus.Windows.EditControls.UICheckBox chkShadeGroupHeaders;
-		internal Janus.Windows.EditControls.UIComboBox cboGridlineStyle;
+		internal GroupBox UiGroupBox1;
+		internal Button btnCancel;
+		internal Button btnOK;
+		internal GroupBox GroupBox3;
+		internal CheckBox chkShadeGroupHeaders;
+		internal ComboBox cboGridlineStyle;
 		internal System.Windows.Forms.Label Label2;
-		internal Janus.Windows.EditControls.UIGroupBox GroupBox2;
-		internal Janus.Windows.EditControls.UICheckBox chkAllowAddNew;
-		internal Janus.Windows.EditControls.UICheckBox chkAllowEdit;
+		internal GroupBox GroupBox2;
+		internal CheckBox chkAllowAddNew;
+		internal CheckBox chkAllowEdit;
 		internal System.Windows.Forms.Label lblRowsFont;
-		internal Janus.Windows.EditControls.UIButton btnRowsFont;
-		internal Janus.Windows.EditControls.UIGroupBox GroupBox1;
-		internal Janus.Windows.EditControls.UICheckBox chkAutoSize;
+		internal Button btnRowsFont;
+		internal GroupBox GroupBox1;
+		internal CheckBox chkAutoSize;
 		internal System.Windows.Forms.Label lblHeaderFont;
-		internal Janus.Windows.EditControls.UIButton btnHeaderFont;
+		internal Button btnHeaderFont;
 		private void InitializeComponent()
 		{
             this.FontDialog1 = new System.Windows.Forms.FontDialog();
-            this.UiGroupBox1 = new Janus.Windows.EditControls.UIGroupBox();
-            this.btnCancel = new Janus.Windows.EditControls.UIButton();
-            this.btnOK = new Janus.Windows.EditControls.UIButton();
-            this.GroupBox3 = new Janus.Windows.EditControls.UIGroupBox();
-            this.chkShadeGroupHeaders = new Janus.Windows.EditControls.UICheckBox();
-            this.cboGridlineStyle = new Janus.Windows.EditControls.UIComboBox();
+            this.UiGroupBox1 = new GroupBox();
+            this.btnCancel = new Button();
+            this.btnOK = new Button();
+            this.GroupBox3 = new GroupBox();
+            this.chkShadeGroupHeaders = new CheckBox();
+            this.cboGridlineStyle = new ComboBox();
             this.Label2 = new System.Windows.Forms.Label();
-            this.GroupBox2 = new Janus.Windows.EditControls.UIGroupBox();
-            this.chkAllowAddNew = new Janus.Windows.EditControls.UICheckBox();
-            this.chkAllowEdit = new Janus.Windows.EditControls.UICheckBox();
+            this.GroupBox2 = new GroupBox();
+            this.chkAllowAddNew = new CheckBox();
+            this.chkAllowEdit = new CheckBox();
             this.lblRowsFont = new System.Windows.Forms.Label();
-            this.btnRowsFont = new Janus.Windows.EditControls.UIButton();
-            this.GroupBox1 = new Janus.Windows.EditControls.UIGroupBox();
-            this.chkAutoSize = new Janus.Windows.EditControls.UICheckBox();
+            this.btnRowsFont = new Button();
+            this.GroupBox1 = new GroupBox();
+            this.chkAutoSize = new CheckBox();
             this.lblHeaderFont = new System.Windows.Forms.Label();
-            this.btnHeaderFont = new Janus.Windows.EditControls.UIButton();
-            ((System.ComponentModel.ISupportInitialize)(this.UiGroupBox1)).BeginInit();
-            this.UiGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupBox3)).BeginInit();
-            this.GroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupBox2)).BeginInit();
-            this.GroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupBox1)).BeginInit();
-            this.GroupBox1.SuspendLayout();
+            this.btnHeaderFont = new Button();
+            //((System.ComponentModel.ISupportInitialize)(this.UiGroupBox1)).BeginInit();
+            //this.UiGroupBox1.SuspendLayout();
+            //((System.ComponentModel.ISupportInitialize)(this.GroupBox3)).BeginInit();
+            //this.GroupBox3.SuspendLayout();
+            //((System.ComponentModel.ISupportInitialize)(this.GroupBox2)).BeginInit();
+            //this.GroupBox2.SuspendLayout();
+            //((System.ComponentModel.ISupportInitialize)(this.GroupBox1)).BeginInit();
+            //this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // FontDialog1
@@ -90,19 +90,19 @@ namespace QueryDesigner
             // 
             // UiGroupBox1
             // 
-            this.UiGroupBox1.BackgroundStyle = Janus.Windows.EditControls.BackgroundStyle.Panel;
+            //this.UiGroupBox1.BackgroundStyle = Janus.Windows.EditControls.BackgroundStyle.Panel;
             this.UiGroupBox1.Controls.Add(this.btnCancel);
             this.UiGroupBox1.Controls.Add(this.btnOK);
             this.UiGroupBox1.Controls.Add(this.GroupBox3);
             this.UiGroupBox1.Controls.Add(this.GroupBox2);
             this.UiGroupBox1.Controls.Add(this.GroupBox1);
             this.UiGroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UiGroupBox1.FrameStyle = Janus.Windows.EditControls.FrameStyle.None;
+            //this.UiGroupBox1.FrameStyle = Janus.Windows.EditControls.FrameStyle.None;
             this.UiGroupBox1.Location = new System.Drawing.Point(0, 0);
             this.UiGroupBox1.Name = "UiGroupBox1";
             this.UiGroupBox1.Size = new System.Drawing.Size(538, 240);
             this.UiGroupBox1.TabIndex = 0;
-            this.UiGroupBox1.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
+            //this.UiGroupBox1.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
             // 
             // btnCancel
             // 
@@ -113,7 +113,7 @@ namespace QueryDesigner
             this.btnCancel.Size = new System.Drawing.Size(80, 24);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
+            //this.btnCancel.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             // 
             // btnOK
             // 
@@ -124,7 +124,7 @@ namespace QueryDesigner
             this.btnOK.Size = new System.Drawing.Size(80, 24);
             this.btnOK.TabIndex = 10;
             this.btnOK.Text = "OK";
-            this.btnOK.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
+            //this.btnOK.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // GroupBox3
@@ -138,7 +138,7 @@ namespace QueryDesigner
             this.GroupBox3.Size = new System.Drawing.Size(424, 68);
             this.GroupBox3.TabIndex = 12;
             this.GroupBox3.Text = "Grid lines";
-            this.GroupBox3.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
+            //this.GroupBox3.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
             // 
             // chkShadeGroupHeaders
             // 
@@ -176,7 +176,7 @@ namespace QueryDesigner
             this.GroupBox2.Size = new System.Drawing.Size(424, 68);
             this.GroupBox2.TabIndex = 13;
             this.GroupBox2.Text = "Rows";
-            this.GroupBox2.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
+            //this.GroupBox2.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
             // 
             // chkAllowAddNew
             // 
@@ -211,7 +211,7 @@ namespace QueryDesigner
             this.btnRowsFont.Size = new System.Drawing.Size(76, 24);
             this.btnRowsFont.TabIndex = 0;
             this.btnRowsFont.Text = "Font...";
-            this.btnRowsFont.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
+            //this.btnRowsFont.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             this.btnRowsFont.Click += new System.EventHandler(this.btnRowsFont_Click);
             // 
             // GroupBox1
@@ -225,7 +225,7 @@ namespace QueryDesigner
             this.GroupBox1.Size = new System.Drawing.Size(424, 68);
             this.GroupBox1.TabIndex = 14;
             this.GroupBox1.Text = "Column headings";
-            this.GroupBox1.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
+            //this.GroupBox1.VisualStyle = Janus.Windows.UI.Dock.PanelVisualStyle.Office2003;
             // 
             // chkAutoSize
             // 
@@ -252,7 +252,7 @@ namespace QueryDesigner
             this.btnHeaderFont.Size = new System.Drawing.Size(76, 24);
             this.btnHeaderFont.TabIndex = 0;
             this.btnHeaderFont.Text = "Font...";
-            this.btnHeaderFont.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
+            //this.btnHeaderFont.VisualStyle = Janus.Windows.UI.VisualStyle.Office2003;
             this.btnHeaderFont.Click += new System.EventHandler(this.btnHeaderFont_Click);
             // 
             // frmFormatView
@@ -267,15 +267,15 @@ namespace QueryDesigner
             this.Name = "frmFormatView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Format Table View";
-            ((System.ComponentModel.ISupportInitialize)(this.UiGroupBox1)).EndInit();
-            this.UiGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GroupBox3)).EndInit();
-            this.GroupBox3.ResumeLayout(false);
-            this.GroupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupBox2)).EndInit();
-            this.GroupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GroupBox1)).EndInit();
-            this.GroupBox1.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)(this.UiGroupBox1)).EndInit();
+            //this.UiGroupBox1.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)(this.GroupBox3)).EndInit();
+            //this.GroupBox3.ResumeLayout(false);
+            //this.GroupBox3.PerformLayout();
+            //((System.ComponentModel.ISupportInitialize)(this.GroupBox2)).EndInit();
+            //this.GroupBox2.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)(this.GroupBox1)).EndInit();
+            //this.GroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}

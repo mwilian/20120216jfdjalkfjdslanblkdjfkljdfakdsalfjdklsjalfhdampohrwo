@@ -13,17 +13,18 @@ namespace DAO
     public class LIST_TASKDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_TASK_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_TASK_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_TASK_delete]";
-        private string _strSPGetName = "dbo.[procLIST_TASK_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_TASK_getall]";
-		private string _strSPGetPages = "dbo.[procLIST_TASK_getpaged]";
-		private string _strSPIsExist = "dbo.[procLIST_TASK_isexist]";
-        private string _strTableName = "[LIST_TASK]";
-		private string _strSPGetTransferOutName = "dbo.[procLIST_TASK_gettransferout]";
+        private string _strSPInsertName = "procLIST_TASK_add";
+        private string _strSPUpdateName = "procLIST_TASK_update";
+        private string _strSPDeleteName = "procLIST_TASK_delete";
+        private string _strSPGetName = "procLIST_TASK_get";
+        private string _strSPGetAllName = "procLIST_TASK_getall";
+		private string _strSPGetPages = "procLIST_TASK_getpaged";
+		private string _strSPIsExist = "procLIST_TASK_isexist";
+        private string _strTableName = "LIST_TASK";
+		private string _strSPGetTransferOutName = "procLIST_TASK_gettransferout";
 		string _strSPGetCountName = "procLIST_TASK_getcount";
         string _strSPGetByIndexName = "procLIST_TASK_getindex";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -35,8 +36,8 @@ namespace DAO
 			LIST_TASKInfo objEntr = new LIST_TASKInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(LIST_TASKInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_TASKInfo.Field.Code.ToString(), Code);
+            AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_TASKInfo.Field.Code.ToString(), Code);
             
             DataTable list = new DataTable();
             try
@@ -86,7 +87,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetAllName);
-			AddParameter(LIST_TASKInfo.Field.DTB.ToString(), DTB);
+			AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), DTB);
             DataTable list = new DataTable();
             try
             {
@@ -108,8 +109,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetByIndexName);
-			AddParameter("INX", pos);
-			AddParameter(LIST_TASKInfo.Field.DTB.ToString(), DTB);
+			AddParameter(prefix + "INX", pos);
+			AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), DTB);
             DataTable list = new DataTable();
             try
             {
@@ -132,7 +133,7 @@ namespace DAO
 			int ret = -1;
             connect();
             InitSPCommand(_strSPGetCountName);
-            AddParameter(LIST_TASKInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), DTB);
           
             try
             {
@@ -163,23 +164,23 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(LIST_TASKInfo.Field.DTB.ToString(), objEntr.DTB);
-            AddParameter(LIST_TASKInfo.Field.Code.ToString(), objEntr.Code);
-            AddParameter(LIST_TASKInfo.Field.Description.ToString(), objEntr.Description);
-            AddParameter(LIST_TASKInfo.Field.Lookup.ToString(), objEntr.Lookup);
-            AddParameter(LIST_TASKInfo.Field.AttQD_ID.ToString(), objEntr.AttQD_ID);
-            AddParameter(LIST_TASKInfo.Field.AttTmp.ToString(), objEntr.AttTmp);
-            AddParameter(LIST_TASKInfo.Field.ValidRange.ToString(), objEntr.ValidRange);
-            AddParameter(LIST_TASKInfo.Field.CntQD_ID.ToString(), objEntr.CntQD_ID);
-            AddParameter(LIST_TASKInfo.Field.CntTmp.ToString(), objEntr.CntTmp);
-            AddParameter(LIST_TASKInfo.Field.Emails.ToString(), objEntr.Emails);
-            AddParameter(LIST_TASKInfo.Field.Server.ToString(), objEntr.Server);
-            AddParameter(LIST_TASKInfo.Field.Protocol.ToString(), objEntr.Protocol);
-            AddParameter(LIST_TASKInfo.Field.Port.ToString(), objEntr.Port);
-            AddParameter(LIST_TASKInfo.Field.UserID.ToString(), objEntr.UserID);
-            AddParameter(LIST_TASKInfo.Field.Password.ToString(), objEntr.Password);
-            AddParameter(LIST_TASKInfo.Field.Type.ToString(), objEntr.Type);
-            AddParameter(LIST_TASKInfo.Field.IsUse.ToString(), objEntr.IsUse);
+            AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), objEntr.DTB);
+            AddParameter(prefix + LIST_TASKInfo.Field.Code.ToString(), objEntr.Code);
+            AddParameter(prefix + LIST_TASKInfo.Field.Description.ToString(), objEntr.Description);
+            AddParameter(prefix + LIST_TASKInfo.Field.Lookup.ToString(), objEntr.Lookup);
+            AddParameter(prefix + LIST_TASKInfo.Field.AttQD_ID.ToString(), objEntr.AttQD_ID);
+            AddParameter(prefix + LIST_TASKInfo.Field.AttTmp.ToString(), objEntr.AttTmp);
+            AddParameter(prefix + LIST_TASKInfo.Field.ValidRange.ToString(), objEntr.ValidRange);
+            AddParameter(prefix + LIST_TASKInfo.Field.CntQD_ID.ToString(), objEntr.CntQD_ID);
+            AddParameter(prefix + LIST_TASKInfo.Field.CntTmp.ToString(), objEntr.CntTmp);
+            AddParameter(prefix + LIST_TASKInfo.Field.Emails.ToString(), objEntr.Emails);
+            AddParameter(prefix + LIST_TASKInfo.Field.Server.ToString(), objEntr.Server);
+            AddParameter(prefix + LIST_TASKInfo.Field.Protocol.ToString(), objEntr.Protocol);
+            AddParameter(prefix + LIST_TASKInfo.Field.Port.ToString(), objEntr.Port);
+            AddParameter(prefix + LIST_TASKInfo.Field.UserID.ToString(), objEntr.UserID);
+            AddParameter(prefix + LIST_TASKInfo.Field.Password.ToString(), objEntr.Password);
+            AddParameter(prefix + LIST_TASKInfo.Field.Type.ToString(), objEntr.Type);
+            AddParameter(prefix + LIST_TASKInfo.Field.IsUse.ToString(), objEntr.IsUse);
           
             try
             {
@@ -204,23 +205,23 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(LIST_TASKInfo.Field.DTB.ToString(), objEntr.DTB);
-            AddParameter(LIST_TASKInfo.Field.Code.ToString(), objEntr.Code);
-            AddParameter(LIST_TASKInfo.Field.Description.ToString(), objEntr.Description);
-            AddParameter(LIST_TASKInfo.Field.Lookup.ToString(), objEntr.Lookup);
-            AddParameter(LIST_TASKInfo.Field.AttQD_ID.ToString(), objEntr.AttQD_ID);
-            AddParameter(LIST_TASKInfo.Field.AttTmp.ToString(), objEntr.AttTmp);
-            AddParameter(LIST_TASKInfo.Field.ValidRange.ToString(), objEntr.ValidRange);
-            AddParameter(LIST_TASKInfo.Field.CntQD_ID.ToString(), objEntr.CntQD_ID);
-            AddParameter(LIST_TASKInfo.Field.CntTmp.ToString(), objEntr.CntTmp);
-            AddParameter(LIST_TASKInfo.Field.Emails.ToString(), objEntr.Emails);
-            AddParameter(LIST_TASKInfo.Field.Server.ToString(), objEntr.Server);
-            AddParameter(LIST_TASKInfo.Field.Protocol.ToString(), objEntr.Protocol);
-            AddParameter(LIST_TASKInfo.Field.Port.ToString(), objEntr.Port);
-            AddParameter(LIST_TASKInfo.Field.UserID.ToString(), objEntr.UserID);
-            AddParameter(LIST_TASKInfo.Field.Password.ToString(), objEntr.Password);
-            AddParameter(LIST_TASKInfo.Field.Type.ToString(), objEntr.Type);
-            AddParameter(LIST_TASKInfo.Field.IsUse.ToString(), objEntr.IsUse);
+            AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), objEntr.DTB);
+            AddParameter(prefix + LIST_TASKInfo.Field.Code.ToString(), objEntr.Code);
+            AddParameter(prefix + LIST_TASKInfo.Field.Description.ToString(), objEntr.Description);
+            AddParameter(prefix + LIST_TASKInfo.Field.Lookup.ToString(), objEntr.Lookup);
+            AddParameter(prefix + LIST_TASKInfo.Field.AttQD_ID.ToString(), objEntr.AttQD_ID);
+            AddParameter(prefix + LIST_TASKInfo.Field.AttTmp.ToString(), objEntr.AttTmp);
+            AddParameter(prefix + LIST_TASKInfo.Field.ValidRange.ToString(), objEntr.ValidRange);
+            AddParameter(prefix + LIST_TASKInfo.Field.CntQD_ID.ToString(), objEntr.CntQD_ID);
+            AddParameter(prefix + LIST_TASKInfo.Field.CntTmp.ToString(), objEntr.CntTmp);
+            AddParameter(prefix + LIST_TASKInfo.Field.Emails.ToString(), objEntr.Emails);
+            AddParameter(prefix + LIST_TASKInfo.Field.Server.ToString(), objEntr.Server);
+            AddParameter(prefix + LIST_TASKInfo.Field.Protocol.ToString(), objEntr.Protocol);
+            AddParameter(prefix + LIST_TASKInfo.Field.Port.ToString(), objEntr.Port);
+            AddParameter(prefix + LIST_TASKInfo.Field.UserID.ToString(), objEntr.UserID);
+            AddParameter(prefix + LIST_TASKInfo.Field.Password.ToString(), objEntr.Password);
+            AddParameter(prefix + LIST_TASKInfo.Field.Type.ToString(), objEntr.Type);
+            AddParameter(prefix + LIST_TASKInfo.Field.IsUse.ToString(), objEntr.IsUse);
                
             string sErr = "";
             try
@@ -243,8 +244,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(LIST_TASKInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_TASKInfo.Field.Code.ToString(), Code);
+            AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_TASKInfo.Field.Code.ToString(), Code);
               
             string sErr = "";
             try
@@ -267,10 +268,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -292,8 +293,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(LIST_TASKInfo.Field.DTB.ToString(), DTB);
-            AddParameter(LIST_TASKInfo.Field.Code.ToString(), Code);
+            AddParameter(prefix + LIST_TASKInfo.Field.DTB.ToString(), DTB);
+            AddParameter(prefix + LIST_TASKInfo.Field.Code.ToString(), Code);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -341,9 +342,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

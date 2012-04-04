@@ -87,6 +87,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LIST_TASKControl.cs" />
+    <Compile Include="LIST_TEMPLATEControl.cs" />
     <Compile Include="PODControl.cs" />
     <Compile Include="POGControl.cs" />
     <Compile Include="POPControl.cs" />

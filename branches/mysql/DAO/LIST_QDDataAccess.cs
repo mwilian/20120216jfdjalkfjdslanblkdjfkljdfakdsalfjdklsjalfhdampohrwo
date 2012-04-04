@@ -10,16 +10,17 @@ namespace DAO
     public class LIST_QDDataAccess : Connection
     {
         #region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_QD_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_QD_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_QD_delete]";
-        private string _strSPGetName = "dbo.[procLIST_QD_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_QD_getall]";
-        private string _strSPGetAllByUserName = "[dbo].[procLIST_QDs_getuser]";
-        private string _strSPGetAllByCateName = "dbo.[procLIST_QD_getcate]";
-        private string _strSPGetPages = "dbo.[procLIST_QD_getpaged]";
-        private string _strSPIsExist = "dbo.[procLIST_QD_isexist]";
+        private string _strSPInsertName = "procLIST_QD_add";
+        private string _strSPUpdateName = "procLIST_QD_update";
+        private string _strSPDeleteName = "procLIST_QD_delete";
+        private string _strSPGetName = "procLIST_QD_get";
+        private string _strSPGetAllName = "procLIST_QD_getall";
+        private string _strSPGetAllByUserName = "procLIST_QDs_getuser";
+        private string _strSPGetAllByCateName = "procLIST_QD_getcate";
+        private string _strSPGetPages = "procLIST_QD_getpaged";
+        private string _strSPIsExist = "procLIST_QD_isexist";
         private string _strTableName = "LIST_QD";
+        string prefix = "param";
         #endregion Local Variable
 
         #region Method
@@ -34,8 +35,8 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPGetName);
-                AddParameter("DTB", DTB);
-                AddParameter("QD_ID", QD_ID);
+                AddParameter(prefix + "DTB", DTB);
+                AddParameter(prefix + "QD_ID", QD_ID);
 
 
 
@@ -90,7 +91,7 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPGetAllName);
-                AddParameter("DTB", DTB);
+                AddParameter(prefix + "DTB", DTB);
 
 
                 list = executeSelectSP(command);
@@ -118,25 +119,25 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPInsertName);
-                AddParameter("DTB", objEntr.DTB);
-                AddParameter("QD_ID", objEntr.QD_ID);
-                AddParameter("DESCRIPTN", objEntr.DESCRIPTN);
-                AddParameter("OWNER", objEntr.OWNER);
-                AddParameter("SHARED", objEntr.SHARED);
-                AddParameter("LAYOUT", objEntr.LAYOUT);
-                AddParameter("ANAL_Q0", objEntr.ANAL_Q0);
-                AddParameter("ANAL_Q9", objEntr.ANAL_Q9);
-                AddParameter("ANAL_Q8", objEntr.ANAL_Q8);
-                AddParameter("ANAL_Q7", objEntr.ANAL_Q7);
-                AddParameter("ANAL_Q6", objEntr.ANAL_Q6);
-                AddParameter("ANAL_Q5", objEntr.ANAL_Q5);
-                AddParameter("ANAL_Q4", objEntr.ANAL_Q4);
-                AddParameter("ANAL_Q3", objEntr.ANAL_Q3);
-                AddParameter("ANAL_Q2", objEntr.ANAL_Q2);
-                AddParameter("ANAL_Q1", objEntr.ANAL_Q1);
-                AddParameter("SQL_TEXT", objEntr.SQL_TEXT);
-                AddParameter("HEADER_TEXT", objEntr.HEADER_TEXT);
-                AddParameter("FOOTER_TEXT", objEntr.FOOTER_TEXT);
+                AddParameter(prefix + "DTB", objEntr.DTB);
+                AddParameter(prefix + "QD_ID", objEntr.QD_ID);
+                AddParameter(prefix + "DESCRIPTN", objEntr.DESCRIPTN);
+                AddParameter(prefix + "OWNER", objEntr.OWNER);
+                AddParameter(prefix + "SHARED", objEntr.SHARED);
+                AddParameter(prefix + "LAYOUT", objEntr.LAYOUT);
+                AddParameter(prefix + "ANAL_Q0", objEntr.ANAL_Q0);
+                AddParameter(prefix + "ANAL_Q9", objEntr.ANAL_Q9);
+                AddParameter(prefix + "ANAL_Q8", objEntr.ANAL_Q8);
+                AddParameter(prefix + "ANAL_Q7", objEntr.ANAL_Q7);
+                AddParameter(prefix + "ANAL_Q6", objEntr.ANAL_Q6);
+                AddParameter(prefix + "ANAL_Q5", objEntr.ANAL_Q5);
+                AddParameter(prefix + "ANAL_Q4", objEntr.ANAL_Q4);
+                AddParameter(prefix + "ANAL_Q3", objEntr.ANAL_Q3);
+                AddParameter(prefix + "ANAL_Q2", objEntr.ANAL_Q2);
+                AddParameter(prefix + "ANAL_Q1", objEntr.ANAL_Q1);
+                AddParameter(prefix + "SQL_TEXT", objEntr.SQL_TEXT);
+                AddParameter(prefix + "HEADER_TEXT", objEntr.HEADER_TEXT);
+                AddParameter(prefix + "FOOTER_TEXT", objEntr.FOOTER_TEXT);
 
 
                 //command.ExecuteNonQuery();
@@ -164,25 +165,25 @@ namespace DAO
                 connect();
                 InitSPCommand(_strSPUpdateName);
 
-                AddParameter("DTB", objEntr.DTB);
-                AddParameter("QD_ID", objEntr.QD_ID);
-                AddParameter("DESCRIPTN", objEntr.DESCRIPTN);
-                AddParameter("OWNER", objEntr.OWNER);
-                AddParameter("SHARED", objEntr.SHARED);
-                AddParameter("LAYOUT", objEntr.LAYOUT);
-                AddParameter("ANAL_Q0", objEntr.ANAL_Q0);
-                AddParameter("ANAL_Q9", objEntr.ANAL_Q9);
-                AddParameter("ANAL_Q8", objEntr.ANAL_Q8);
-                AddParameter("ANAL_Q7", objEntr.ANAL_Q7);
-                AddParameter("ANAL_Q6", objEntr.ANAL_Q6);
-                AddParameter("ANAL_Q5", objEntr.ANAL_Q5);
-                AddParameter("ANAL_Q4", objEntr.ANAL_Q4);
-                AddParameter("ANAL_Q3", objEntr.ANAL_Q3);
-                AddParameter("ANAL_Q2", objEntr.ANAL_Q2);
-                AddParameter("ANAL_Q1", objEntr.ANAL_Q1);
-                AddParameter("SQL_TEXT", objEntr.SQL_TEXT);
-                AddParameter("HEADER_TEXT", objEntr.HEADER_TEXT);
-                AddParameter("FOOTER_TEXT", objEntr.FOOTER_TEXT);
+                AddParameter(prefix + "DTB", objEntr.DTB);
+                AddParameter(prefix + "QD_ID", objEntr.QD_ID);
+                AddParameter(prefix + "DESCRIPTN", objEntr.DESCRIPTN);
+                AddParameter(prefix + "OWNER", objEntr.OWNER);
+                AddParameter(prefix + "SHARED", objEntr.SHARED);
+                AddParameter(prefix + "LAYOUT", objEntr.LAYOUT);
+                AddParameter(prefix + "ANAL_Q0", objEntr.ANAL_Q0);
+                AddParameter(prefix + "ANAL_Q9", objEntr.ANAL_Q9);
+                AddParameter(prefix + "ANAL_Q8", objEntr.ANAL_Q8);
+                AddParameter(prefix + "ANAL_Q7", objEntr.ANAL_Q7);
+                AddParameter(prefix + "ANAL_Q6", objEntr.ANAL_Q6);
+                AddParameter(prefix + "ANAL_Q5", objEntr.ANAL_Q5);
+                AddParameter(prefix + "ANAL_Q4", objEntr.ANAL_Q4);
+                AddParameter(prefix + "ANAL_Q3", objEntr.ANAL_Q3);
+                AddParameter(prefix + "ANAL_Q2", objEntr.ANAL_Q2);
+                AddParameter(prefix + "ANAL_Q1", objEntr.ANAL_Q1);
+                AddParameter(prefix + "SQL_TEXT", objEntr.SQL_TEXT);
+                AddParameter(prefix + "HEADER_TEXT", objEntr.HEADER_TEXT);
+                AddParameter(prefix + "FOOTER_TEXT", objEntr.FOOTER_TEXT);
 
 
                 excuteSPNonQuery();
@@ -203,8 +204,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter("DTB", DTB);
-            AddParameter("QD_ID", QD_ID);
+            AddParameter(prefix + "DTB", DTB);
+            AddParameter(prefix + "QD_ID", QD_ID);
 
             string sErr = "";
             try
@@ -228,10 +229,10 @@ namespace DAO
                 connect();
                 InitSPCommand(_strSPGetPages);
 
-                AddParameter("WhereClause", whereClause);
-                AddParameter("OrderBy", orderBy);
-                AddParameter("PageIndex", pageIndex);
-                AddParameter("PageSize", pageSize);
+                AddParameter(prefix + "WhereClause", whereClause);
+                AddParameter(prefix + "OrderBy", orderBy);
+                AddParameter(prefix + "PageIndex", pageIndex);
+                AddParameter(prefix + "PageSize", pageSize);
 
 
                 dtList = executeCollectSelectSP();
@@ -257,8 +258,8 @@ namespace DAO
                 connect();
                 InitSPCommand(_strSPIsExist);
 
-                AddParameter("DTB", DTB);
-                AddParameter("QD_ID", QD_ID);
+                AddParameter(prefix + "DTB", DTB);
+                AddParameter(prefix + "QD_ID", QD_ID);
 
 
                 list = executeSelectSP();
@@ -364,8 +365,8 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPGetAllByCateName);
-                AddParameter("DTB", dtb);
-                AddParameter("CATEGORY", _strCategory);
+                AddParameter(prefix + "DTB", dtb);
+                AddParameter(prefix + "CATEGORY", _strCategory);
 
 
                 list = executeSelectSP(command);
@@ -451,8 +452,8 @@ namespace DAO
             {
                 connect();
                 InitSPCommand(_strSPGetAllByUserName);
-                AddParameter("DTB", database);
-                AddParameter("USER_ID", user);
+                AddParameter(prefix + "DTB", database);
+                AddParameter(prefix + "USER_ID", user);
 
 
                 list = executeSelectSP(command);

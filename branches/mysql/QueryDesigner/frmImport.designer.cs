@@ -1,4 +1,5 @@
-﻿namespace QueryDesigner
+﻿using System.Windows.Forms;
+namespace QueryDesigner
 {
     partial class frmImport
     {
@@ -31,9 +32,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmImport));
             Janus.Windows.GridEX.GridEXLayout ddlImport_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.EditControls.UIComboBoxItem uiComboBoxItem1 = new Janus.Windows.EditControls.UIComboBoxItem();
-            Janus.Windows.EditControls.UIComboBoxItem uiComboBoxItem2 = new Janus.Windows.EditControls.UIComboBoxItem();
-            Janus.Windows.EditControls.UIComboBoxItem uiComboBoxItem3 = new Janus.Windows.EditControls.UIComboBoxItem();
+
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnImport = new System.Windows.Forms.Button();
@@ -42,16 +41,15 @@
             this.dgvList = new Janus.Windows.GridEX.GridEX();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.ddlImport = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.ddlImport = new ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.cboConvertor = new Janus.Windows.EditControls.UIComboBox();
+            this.cboConvertor = new ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lbErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnGroup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlImport)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,9 +137,7 @@
             // 
             // ddlImport
             // 
-            this.ddlImport.ComboStyle = Janus.Windows.GridEX.ComboStyle.DropDownList;
             ddlImport_DesignTimeLayout.LayoutString = resources.GetString("ddlImport_DesignTimeLayout.LayoutString");
-            this.ddlImport.DesignTimeLayout = ddlImport_DesignTimeLayout;
             this.ddlImport.DisplayMember = "SCHEMA_ID";
             this.ddlImport.Location = new System.Drawing.Point(85, 6);
             this.ddlImport.Name = "ddlImport";
@@ -150,8 +146,7 @@
             this.ddlImport.Size = new System.Drawing.Size(253, 20);
             this.ddlImport.TabIndex = 7;
             this.ddlImport.ValueMember = "SCHEMA_ID";
-            this.ddlImport.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.ddlImport.ValueChanged += new System.EventHandler(this.multiColumnCombo1_ValueChanged);
+            this.ddlImport.SelectedValueChanged += new System.EventHandler(this.multiColumnCombo1_ValueChanged);
             // 
             // checkBox1
             // 
@@ -174,32 +169,13 @@
             this.checkBox2.TabIndex = 9;
             this.checkBox2.Text = "Update";
             this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // cboConvertor
-            // 
-            this.cboConvertor.ComboStyle = Janus.Windows.EditControls.ComboStyle.DropDownList;
-            uiComboBoxItem1.FormatStyle.Alpha = 0;
-            uiComboBoxItem1.IsSeparator = false;
-            uiComboBoxItem1.Text = "Default";
-            uiComboBoxItem1.Value = "Unicode";
-            uiComboBoxItem2.FormatStyle.Alpha = 0;
-            uiComboBoxItem2.IsSeparator = false;
-            uiComboBoxItem2.Text = "VNI Windows";
-            uiComboBoxItem2.Value = "VNI";
-            uiComboBoxItem3.FormatStyle.Alpha = 0;
-            uiComboBoxItem3.IsSeparator = false;
-            uiComboBoxItem3.Text = "TVCN3 (ABC)";
-            uiComboBoxItem3.Value = "TVCN3";
-            this.cboConvertor.Items.AddRange(new Janus.Windows.EditControls.UIComboBoxItem[] {
-            uiComboBoxItem1,
-            uiComboBoxItem2,
-            uiComboBoxItem3});
+            
+            cboConvertor.Items.AddRange(new object[] { "Unicode", "VNI", "TVCN3" });
             this.cboConvertor.Location = new System.Drawing.Point(610, 6);
             this.cboConvertor.Name = "cboConvertor";
             this.cboConvertor.Size = new System.Drawing.Size(157, 20);
             this.cboConvertor.TabIndex = 10;
             this.cboConvertor.Text = "None";
-            this.cboConvertor.VisualStyle = Janus.Windows.UI.VisualStyle.Office2007;
             // 
             // label2
             // 
@@ -264,7 +240,6 @@
             this.Text = "Import";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlImport)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -281,11 +256,11 @@
         private System.Windows.Forms.Button button3;
         private Janus.Windows.GridEX.GridEX dgvList;
         private System.Windows.Forms.Label label1;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo ddlImport;
+        private ComboBox ddlImport;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.ImageList imageList1;
-        private Janus.Windows.EditControls.UIComboBox cboConvertor;
+        private ComboBox cboConvertor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbErr;
