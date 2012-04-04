@@ -15,7 +15,7 @@ namespace DAO
 		#region Local Variable
         private string _strSPInsertName = "dbo.[procLIST_DA_add]";
         private string _strSPUpdateName = "dbo.[procLIST_DA_update]";
-        private string _strSPDeleteName = "dbo.[LIST_DA_delete]";
+        private string _strSPDeleteName = "dbo.[procLIST_DA_delete]";
         private string _strSPGetName = "dbo.[procLIST_DA_get]";
         private string _strSPGetAllName = "dbo.[procLIST_DA_getall]";
 		private string _strSPGetPages = "dbo.[procLIST_DA_getpaged]";

@@ -646,6 +646,7 @@ namespace QueryDesigner
             txtdatasource.Text = "";
             txt_sql.Text = "";
             lb_Err.Text = "";
+            txtTmp.Text = "";
 
             ckbShared.Checked = false;
             //_sqlBuilder.SelectedNodes.Clear();
@@ -680,14 +681,10 @@ namespace QueryDesigner
             txtANAL_Q1.Enabled = true;
             btnParameter.Enabled = true;
             ckbShared.Enabled = true;
-            btnTmpClear.Enabled = true;
-            btnTmp.Enabled = true;
         }
 
         public void DisableForm()
         {
-            btnTmp.Enabled = false;
-            btnTmpClear.Enabled = false;
             txtANAL_Q1.Enabled = false;
             //txt_database.Enabled = false;
             txt_datasource.Enabled = false;
@@ -1065,8 +1062,12 @@ namespace QueryDesigner
             ReportGenerator rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
+
             if (tempInfo.Code != "")
+            {
                 rpGen.STemp = tempInfo.Data;
+                rpGen.LengthTemp = tempInfo.Length;
+            }
             //ExcelFile test = null;
             try
             {
@@ -1869,8 +1870,7 @@ namespace QueryDesigner
                     license.SerialNumber = tmp[4];
                     license.Key = tmp[5];
                     //license.SerialCPU = tmp[6];
-                    BUS.CommonControl ctrCom = new BUS.CommonControl();
-                    license.SerialCPU = ctrCom.executeScalar(@"SELECT   CONVERT(varchar(200), SERVERPROPERTY('servername'))").ToString(); //"BFEBFBFF000006FD";
+                    license.SerialCPU = ctr.executeScalar("SELECT   CONVERT(varchar(200), SERVERPROPERTY('servername'))").ToString(); //"BFEBFBFF000006FD";
                     //reader.Close();
 
 
@@ -1883,7 +1883,7 @@ namespace QueryDesigner
                     {
                         int now = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00"));
                         //BUS.CommonControl ctr = new CommonControl();
-                        object dt = ctr.executeScalar("select getdate()", _strConnect);
+                        object dt = ctr.executeScalar("select getdate()", _strConnect);//curdate()
                         if (dt != null && dt is DateTime)
                         {
                             now = Convert.ToInt32(((DateTime)dt).Year.ToString() + ((DateTime)dt).Month.ToString("00") + ((DateTime)dt).Day.ToString("00"));
@@ -2168,7 +2168,10 @@ namespace QueryDesigner
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
             if (tempInfo.Code != "")
+            {
                 _rpGen.STemp = tempInfo.Data;
+                _rpGen.LengthTemp = tempInfo.Length;
+            }
             //ExcelFile test = null;
             XlsFile xls = null;
             try
@@ -2456,7 +2459,10 @@ namespace QueryDesigner
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
             if (tempInfo.Code != "")
+            {
                 _rpGen.STemp = tempInfo.Data;
+                _rpGen.LengthTemp = tempInfo.Length;
+            }
             string url = "";
             try
             {
@@ -3298,7 +3304,6 @@ namespace QueryDesigner
 
         private void btnTmp_Click(object sender, EventArgs e)
         {
-            
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel file(*.xls,*.xlsx)|*.xls*";
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -3338,9 +3343,12 @@ namespace QueryDesigner
                 using (FileStream fs = new FileStream(txtTmp.Text, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     info.Data = new byte[fs.Length];
+                    info.Length = (int)fs.Length;
                     fs.Read(info.Data, 0, (int)fs.Length);
                 }
                 sErr = ctr.InsertUpdate(info);
+                if (sErr == "")
+                    txtTmp.Text = info.Code;
             }
         }
 
