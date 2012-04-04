@@ -21,7 +21,8 @@ namespace QueryBuilder
         private const string STR_SUBSTRING = "SUBSTRING";
         private const string LeftSign = "(";
         private const string RightSign = ")";
-
+        public const string RightBoxBracket = "";
+        public const string LeftBoxBracket = "";
         private const string Regex_Root = @"^[^\/,\\]*(?=[\/,\\]|^)";
         private const string Regex_Leaf = @"(?<=[\/,\\]|^)[^\/,\\]*$";
         private const string Regex_Family = @"[A-Z,a-z,0-9,_,\/,\\]+(?=[\/,\\])";
@@ -538,7 +539,7 @@ namespace QueryBuilder
             {
                 return string.Empty;
             }
-            return "[" + original.Trim() + "]";
+            return "" + LeftBoxBracket + original.Trim() + RightBoxBracket + "";
         }
 
         //  Method BoxBracketWithDot
@@ -548,7 +549,7 @@ namespace QueryBuilder
             {
                 return string.Empty;
             }
-            return "[" + original.Trim() + "].";
+            return "" + LeftBoxBracket + original.Trim() + RightBoxBracket + ".";
         }
 
         #endregion

@@ -12,15 +12,16 @@ namespace QueryBuilder
     public class CoreQD_SCHEMADataAccess : CoreConnection
     {
         #region Local Variable
-        private string _strSPInsertName = "dbo.[procLIST_QD_SCHEMA_add]";
-        private string _strSPUpdateName = "dbo.[procLIST_QD_SCHEMA_update]";
-        private string _strSPDeleteName = "dbo.[procLIST_QD_SCHEMA_delete]";
-        private string _strSPGetName = "dbo.[procLIST_QD_SCHEMA_get]";
-        private string _strSPGetAllName = "dbo.[procLIST_QD_SCHEMA_getall]";
-        private string _strSPGetPages = "dbo.[procLIST_QD_SCHEMA_getpaged]";
-        private string _strSPIsExist = "dbo.[procLIST_QD_SCHEMA_isexist]";
-        private string _strTableName = "[CoreQD_SCHEMA]";
-        private string _strSPGetTransferOutName = "dbo.[procLIST_QD_SCHEMA_gettransferout]";
+        private string _strSPInsertName = "procLIST_QD_SCHEMA_add";
+        private string _strSPUpdateName = "procLIST_QD_SCHEMA_update";
+        private string _strSPDeleteName = "procLIST_QD_SCHEMA_delete";
+        private string _strSPGetName = "procLIST_QD_SCHEMA_get";
+        private string _strSPGetAllName = "procLIST_QD_SCHEMA_getall";
+        private string _strSPGetPages = "procLIST_QD_SCHEMA_getpaged";
+        private string _strSPIsExist = "procLIST_QD_SCHEMA_isexist";
+        private string _strTableName = "CoreQD_SCHEMA";
+        private string _strSPGetTransferOutName = "procLIST_QD_SCHEMA_gettransferout";
+        string prefix = "param";
         #endregion Local Variable
 
         #region Method
@@ -34,8 +35,8 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPGetName);
-                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
 
 
                 list = executeSelectSP(command);
@@ -82,7 +83,7 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPGetAllName);
-                AddParameter("CONN_ID", conn);
+                AddParameter(prefix + "CONN_ID", conn);
 
                 list = executeSelectSP();
             }
@@ -108,17 +109,17 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPInsertName);
-                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), objEntr.CONN_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), objEntr.SCHEMA_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.LOOK_UP.ToString(), objEntr.LOOK_UP);
-                AddParameter(CoreQD_SCHEMAInfo.Field.DESCRIPTN.ToString(), objEntr.DESCRIPTN);
-                AddParameter(CoreQD_SCHEMAInfo.Field.FIELD_TEXT.ToString(), objEntr.FIELD_TEXT);
-                AddParameter(CoreQD_SCHEMAInfo.Field.FROM_TEXT.ToString(), objEntr.FROM_TEXT);
-                AddParameter(CoreQD_SCHEMAInfo.Field.DAG.ToString(), objEntr.DAG);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_STATUS.ToString(), objEntr.SCHEMA_STATUS);
-                AddParameter(CoreQD_SCHEMAInfo.Field.UPDATED.ToString(), objEntr.UPDATED);
-                AddParameter(CoreQD_SCHEMAInfo.Field.ENTER_BY.ToString(), objEntr.ENTER_BY);
-                AddParameter(CoreQD_SCHEMAInfo.Field.DEFAULT_CONN.ToString(), objEntr.DEFAULT_CONN);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), objEntr.CONN_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), objEntr.SCHEMA_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.LOOK_UP.ToString(), objEntr.LOOK_UP);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.DESCRIPTN.ToString(), objEntr.DESCRIPTN);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.FIELD_TEXT.ToString(), objEntr.FIELD_TEXT);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.FROM_TEXT.ToString(), objEntr.FROM_TEXT);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.DAG.ToString(), objEntr.DAG);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_STATUS.ToString(), objEntr.SCHEMA_STATUS);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.UPDATED.ToString(), objEntr.UPDATED);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.ENTER_BY.ToString(), objEntr.ENTER_BY);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.DEFAULT_CONN.ToString(), objEntr.DEFAULT_CONN);
 
 
                 //command.ExecuteNonQuery();
@@ -145,17 +146,17 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPUpdateName);
-                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), objEntr.CONN_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), objEntr.SCHEMA_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.LOOK_UP.ToString(), objEntr.LOOK_UP);
-                AddParameter(CoreQD_SCHEMAInfo.Field.DESCRIPTN.ToString(), objEntr.DESCRIPTN);
-                AddParameter(CoreQD_SCHEMAInfo.Field.FIELD_TEXT.ToString(), objEntr.FIELD_TEXT);
-                AddParameter(CoreQD_SCHEMAInfo.Field.FROM_TEXT.ToString(), objEntr.FROM_TEXT);
-                AddParameter(CoreQD_SCHEMAInfo.Field.DAG.ToString(), objEntr.DAG);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_STATUS.ToString(), objEntr.SCHEMA_STATUS);
-                AddParameter(CoreQD_SCHEMAInfo.Field.UPDATED.ToString(), objEntr.UPDATED);
-                AddParameter(CoreQD_SCHEMAInfo.Field.ENTER_BY.ToString(), objEntr.ENTER_BY);
-                AddParameter(CoreQD_SCHEMAInfo.Field.DEFAULT_CONN.ToString(), objEntr.DEFAULT_CONN);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), objEntr.CONN_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), objEntr.SCHEMA_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.LOOK_UP.ToString(), objEntr.LOOK_UP);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.DESCRIPTN.ToString(), objEntr.DESCRIPTN);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.FIELD_TEXT.ToString(), objEntr.FIELD_TEXT);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.FROM_TEXT.ToString(), objEntr.FROM_TEXT);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.DAG.ToString(), objEntr.DAG);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_STATUS.ToString(), objEntr.SCHEMA_STATUS);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.UPDATED.ToString(), objEntr.UPDATED);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.ENTER_BY.ToString(), objEntr.ENTER_BY);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.DEFAULT_CONN.ToString(), objEntr.DEFAULT_CONN);
 
 
                 excuteSPNonQuery();
@@ -179,8 +180,8 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPDeleteName);
-                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
 
 
                 excuteSPNonQuery();
@@ -202,10 +203,10 @@ namespace QueryBuilder
                 connect();
                 InitSPCommand(_strSPGetPages);
 
-                AddParameter("WhereClause", whereClause);
-                AddParameter("OrderBy", orderBy);
-                AddParameter("PageIndex", pageIndex);
-                AddParameter("PageSize", pageSize);
+                AddParameter(prefix + "WhereClause", whereClause);
+                AddParameter(prefix + "OrderBy", orderBy);
+                AddParameter(prefix + "PageIndex", pageIndex);
+                AddParameter(prefix + "PageSize", pageSize);
 
 
                 dtList = executeCollectSelectSP();
@@ -230,8 +231,8 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPIsExist);
-                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
-                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
+                AddParameter(prefix + CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
 
 
                 list = executeSelectSP();
@@ -279,9 +280,9 @@ namespace QueryBuilder
             {
                 connect();
                 InitSPCommand(_strSPGetTransferOutName);
-                AddParameter("DB", dtb);
-                AddParameter("FROM", from);
-                AddParameter("TO", to);
+                AddParameter(prefix + "DB", dtb);
+                AddParameter(prefix + "FROM", from);
+                AddParameter(prefix + "TO", to);
 
                 list = executeSelectSP();
             }

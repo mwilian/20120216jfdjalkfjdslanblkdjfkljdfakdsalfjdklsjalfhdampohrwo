@@ -154,8 +154,10 @@ namespace QueryDesigner
             flag = true;
 
             LIST_QDControl pdControl = new LIST_QDControl();
-            DataTable dt = pdControl.GetAll_LIST_QD_USER(database, _user, ref sErr);
-            //dgvFilter.MasterGridViewTemplate.AutoGenerateColumns = false;            
+            DataTable dt = pdControl.GetAll_LIST_QD(database, ref sErr);
+            string DAField = "ANAL_Q2";
+            if (_user != "TVC")
+                sErr = BUS.LIST_DAControl.SetDataAccessGroup(DAField, dt, _user);
             LoadDataGrid(dt);
             LoadLayout();
             flag = false;
@@ -186,7 +188,9 @@ namespace QueryDesigner
         private void btnReresh_Click(object sender, EventArgs e)
         {
             LIST_QDControl pdControl = new LIST_QDControl();
-            DataTable dt = pdControl.GetAll_LIST_QD_USER(database, _user, ref sErr);
+            DataTable dt = pdControl.GetAll_LIST_QD(database, ref sErr);
+            string DAField = "ANAL_Q2";
+            sErr = sErr = BUS.LIST_DAControl.SetDataAccessGroup(DAField, dt, _user);
             //dgvFilter.MasterGridViewTemplate.AutoGenerateColumns = false;
             dgvQDView.DataSource = dt;
             //dgvQDView.AutoSizeColumns();

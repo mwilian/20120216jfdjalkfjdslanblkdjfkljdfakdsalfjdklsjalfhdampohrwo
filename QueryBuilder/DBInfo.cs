@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
 
 namespace QueryBuilder
 {
@@ -240,7 +241,7 @@ namespace QueryBuilder
         #region '" Factory Methods "'
 
         //  Method GetDBInfo
-        public static DBInfo GetDBInfo(SqlDataReader dr)
+        public static DBInfo GetDBInfo(MySqlDataReader dr)
         {
             return new DBInfo(dr);
         }
@@ -258,7 +259,7 @@ namespace QueryBuilder
             //_dbId = pbs.Helper.SystemDTB; 
         }
 
-        private DBInfo(SqlDataReader dr)
+        private DBInfo(MySqlDataReader dr)
         {
             Fetch(dr);
         }
@@ -270,7 +271,7 @@ namespace QueryBuilder
         #region '" Data Access - Fetch "'
 
         //  Method Fetch
-        private void Fetch(SqlDataReader dr)
+        private void Fetch(MySqlDataReader dr)
         {
             FetchObject(dr);
 
@@ -278,7 +279,7 @@ namespace QueryBuilder
 
 
         //  Method FetchObject
-        private void FetchObject(SqlDataReader dr)
+        private void FetchObject(MySqlDataReader dr)
         {
             _dbId = dr["DB"].ToString().Trim();
             //_dbId = dr["DB_ID"].ToString().Trim();

@@ -6,6 +6,7 @@ using System.Drawing;
 
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace QueryDesigner
 {
@@ -53,12 +54,12 @@ namespace QueryDesigner
             if (Text == "Table List")
             {
                 DataTable kq = new DataTable();
-                System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(_connect);
+                MySqlConnection conn = new MySqlConnection(_connect);
                 try
                 {
 
                     conn.Open();
-                    kq = conn.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Tables, new Object[] { null, null, null, "TABLE" });
+                    kq = conn.GetSchema("Tables", new string[] { null, conn.Database, null, null });//("Tables", new string[0]);
                     //conn.Close();
                     kq.Columns["TABLE_NAME"].ColumnName = "Code";
                 }

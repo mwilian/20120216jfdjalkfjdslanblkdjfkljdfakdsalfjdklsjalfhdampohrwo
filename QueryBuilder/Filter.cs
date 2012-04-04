@@ -187,7 +187,7 @@ namespace QueryBuilder
         //  Method usingWildCard
         private bool usingWildCard()
         {
-            // string test = @"^[\*][=]";
+            // string test = @"^[\*][=";
             if (Regex.IsMatch(_ValueFrom.Trim(), @"(>|<|>=|<=|<<|\[|%|_|\]|\*>|\!)"))//Wildcard_Signature
             {
                 return true;
@@ -400,7 +400,7 @@ namespace QueryBuilder
 
         private string GetWhereClause(string _wildCard)
         {
-            string strOperator = Regex.Replace(_wildCard, @"[0-9a-zA-Z,\-]", string.Empty).Trim();
+            string strOperator = Regex.Replace(_wildCard, @"0-9a-zA-Z,\-", string.Empty).Trim();
             string strParam = Regex.Replace(_wildCard, @"\=|\s|\>|\<|\*>", string.Empty).Trim();
             //   _wildCard = Regex.Replace(_wildCard, @"\*|\=|\s|\>|\<", string.Empty);
             // Like clause support only text node

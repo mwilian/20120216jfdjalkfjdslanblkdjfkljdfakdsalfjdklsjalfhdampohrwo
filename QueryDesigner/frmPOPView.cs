@@ -68,8 +68,8 @@ namespace QueryDesigner
             if (dgvPOPView.CurrentRow != null && dgvPOPView.CurrentRow.RowIndex >= 0)
             {
                 _Code = dgvPOPView.CurrentRow.Cells["Code"].Value.ToString();
-                _Description = dgvPOPView.CurrentRow.Cells["Description"].Value.ToString();
-                _lookup = dgvPOPView.CurrentRow.Cells["LookUp"].Value.ToString();
+                //_Description = dgvPOPView.CurrentRow.Cells["Description"].Value.ToString();
+                //_lookup = dgvPOPView.CurrentRow.Cells["LookUp"].Value.ToString();
                 DialogResult = DialogResult.OK;
                 Close();
             }

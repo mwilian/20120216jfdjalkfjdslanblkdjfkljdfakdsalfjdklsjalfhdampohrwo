@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Data;
 //using System.Drawing;
 using System.Diagnostics;
+using MySql.Data.MySqlClient;
 //using System.Windows.Forms;
 
 
@@ -331,7 +332,7 @@ namespace QueryBuilder
         private string AddNextCell(string aPos)
         {
             string tmp = null;
-            tmp = Regex.Match(aPos, "[A-Z]{1,4}").Value.ToString();
+            tmp = Regex.Match(aPos, "A-Z]{1,4}").Value.ToString();
             if (!(string.IsNullOrEmpty(tmp)))
             {
                 if (tmp.Length > 1)
@@ -360,7 +361,7 @@ namespace QueryBuilder
                 }
             }
 
-            return tmp + Regex.Match(aPos, "[0-9]{1,9}").Value.ToString();
+            return tmp + Regex.Match(aPos, "0-9]{1,9}").Value.ToString();
         }
 
 
@@ -610,8 +611,8 @@ namespace QueryBuilder
             for (int i = 0; i <= _nodes.Count - 1; i++)
             {
                 if (_nodes[i].Expresstion == "")
-                    selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].Description + "]", System.Environment.NewLine);
-                //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].MyCode + "]", System.Environment.NewLine);
+                    selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as " + Node.LeftBoxBracket + _nodes[i].Description + Node.RightBoxBracket + "", System.Environment.NewLine);
+                //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].MyCode + "", System.Environment.NewLine);
                 //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), _nodes[i].MyAlias(), System.Environment.NewLine);
                 // SelectClause += String.Concat(Tab, _nodes(i).AgregateMe, _nodes(i).MyAlias, Comma, System.Environment.NewLine)
             }
@@ -969,7 +970,7 @@ namespace QueryBuilder
             return kq;
 
         }
-     
+
         public Filter SelectFilter(int index)
         {
             if (index < _filters.Count)
@@ -1124,18 +1125,19 @@ namespace QueryBuilder
             //; Everything after this line is an OLE DB initstring
             //Provider=SQLNCLI.1;Persist Security Info=False;User ID=sa;Initial Catalog=TVC_IC;Data Source=.
 
-            OleDbConnection connection = new OleDbConnection(_strConnectDes);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+            MySqlConnection connection = new MySqlConnection(_strConnectDes);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             DataSet dSet = new DataSet();
-            try
-            {
-                adapter.Fill(dSet);
-                dt = dSet.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            if (query != "")
+                try
+                {
+                    adapter.Fill(dSet);
+                    dt = dSet.Tables[0];
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             //CommoControl control = new CommoControl();
             //dt = control.executeSelectQuery(query, connectString);
             foreach (Filter x in Filters)

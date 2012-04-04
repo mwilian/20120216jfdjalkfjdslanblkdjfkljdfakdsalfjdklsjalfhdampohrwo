@@ -13,14 +13,15 @@ namespace DAO
     public class POSDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procPOS_add]";
-        private string _strSPUpdateName = "dbo.[procPOS_update]";
-        private string _strSPDeleteName = "dbo.[procPOS_delete]";
-        private string _strSPGetName = "dbo.[procPOS_get]";
-        private string _strSPGetAllName = "dbo.[procPOS_getall]";
-		private string _strSPGetPages = "dbo.[procPOS_getpaged]";
-		private string _strSPIsExist = "dbo.[procPOS_isexist]";
-        private string _strTableName = "[SSINSTAL]";
+        private string _strSPInsertName = "procPOS_add";
+        private string _strSPUpdateName = "procPOS_update";
+        private string _strSPDeleteName = "procPOS_delete";
+        private string _strSPGetName = "procPOS_get";
+        private string _strSPGetAllName = "procPOS_getall";
+		private string _strSPGetPages = "procPOS_getpaged";
+		private string _strSPIsExist = "procPOS_isexist";
+        private string _strTableName = "SSINSTAL";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -31,7 +32,7 @@ namespace DAO
 			POSInfo objEntr = new POSInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter("USER_ID", USER_ID);
+            AddParameter(prefix + "USER_ID", USER_ID);
             
             DataTable list = new DataTable();
             try
@@ -94,11 +95,11 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter("USER_ID", objEntr.USER_ID);
-            AddParameter("CURRENT_DB", objEntr.CURRENT_DB);
-            AddParameter("CURRENT_ACTIVITY", objEntr.CURRENT_ACTIVITY);
-            AddParameter("WORK_STATION", objEntr.WORK_STATION);
-            AddParameter("LOGIN_TIME", objEntr.LOGIN_TIME);
+            AddParameter(prefix + "USER_ID", objEntr.USER_ID);
+            AddParameter(prefix + "CURRENT_DB", objEntr.CURRENT_DB);
+            AddParameter(prefix + "CURRENT_ACTIVITY", objEntr.CURRENT_ACTIVITY);
+            AddParameter(prefix + "WORK_STATION", objEntr.WORK_STATION);
+            AddParameter(prefix + "LOGIN_TIME", objEntr.LOGIN_TIME);
           
             try
             {
@@ -123,11 +124,11 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter("USER_ID", objEntr.USER_ID);
-            AddParameter("CURRENT_DB", objEntr.CURRENT_DB);
-            AddParameter("CURRENT_ACTIVITY", objEntr.CURRENT_ACTIVITY);
-            AddParameter("WORK_STATION", objEntr.WORK_STATION);
-            AddParameter("LOGIN_TIME", objEntr.LOGIN_TIME);
+            AddParameter(prefix + "USER_ID", objEntr.USER_ID);
+            AddParameter(prefix + "CURRENT_DB", objEntr.CURRENT_DB);
+            AddParameter(prefix + "CURRENT_ACTIVITY", objEntr.CURRENT_ACTIVITY);
+            AddParameter(prefix + "WORK_STATION", objEntr.WORK_STATION);
+            AddParameter(prefix + "LOGIN_TIME", objEntr.LOGIN_TIME);
                
             string sErr = "";
             try
@@ -149,7 +150,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter("USER_ID", USER_ID);
+            AddParameter(prefix + "USER_ID", USER_ID);
               
             string sErr = "";
             try
@@ -172,10 +173,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -196,7 +197,7 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter("USER_ID", USER_ID);
+            AddParameter(prefix + "USER_ID", USER_ID);
               
             string sErr = "";
             DataTable list = new DataTable();

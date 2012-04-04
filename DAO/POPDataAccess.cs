@@ -13,15 +13,16 @@ namespace DAO
     public class POPDataAccess : Connection
     {
 		#region Local Variable
-        private string _strSPInsertName = "dbo.[procPOP_add]";
-        private string _strSPUpdateName = "dbo.[procPOP_update]";
-        private string _strSPDeleteName = "dbo.[procPOP_delete]";
-        private string _strSPGetName = "dbo.[procPOP_get]";
-        private string _strSPGetAllName = "dbo.[procPOP_getall]";
-		private string _strSPGetPages = "dbo.[procPOP_getpaged]";
-		private string _strSPIsExist = "dbo.[procPOP_isexist]";
-        private string _strTableName = "[SSINSTAL]";
-		private string _strSPGetTransferOutName = "dbo.[procPOP_gettransferout]";
+        private string _strSPInsertName = "procPOP_add";
+        private string _strSPUpdateName = "procPOP_update";
+        private string _strSPDeleteName = "procPOP_delete";
+        private string _strSPGetName = "procPOP_get";
+        private string _strSPGetAllName = "procPOP_getall";
+		private string _strSPGetPages = "procPOP_getpaged";
+		private string _strSPIsExist = "procPOP_isexist";
+        private string _strTableName = "SSINSTAL";
+		private string _strSPGetTransferOutName = "procPOP_gettransferout";
+        string prefix = "param";
 		#endregion Local Variable
 		
 		#region Method
@@ -33,8 +34,8 @@ namespace DAO
 			POPInfo objEntr = new POPInfo();
 			connect();
 			InitSPCommand(_strSPGetName);              
-            AddParameter(POPInfo.Field.ROLE_ID.ToString(), ROLE_ID);
-            AddParameter(POPInfo.Field.DB.ToString(), DB);
+            AddParameter(prefix + POPInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+            AddParameter(prefix + POPInfo.Field.DB.ToString(), DB);
             
             DataTable list = new DataTable();
             try
@@ -96,10 +97,10 @@ namespace DAO
             int ret = -1;
             connect();
             InitSPCommand(_strSPInsertName);
-            AddParameter(POPInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
-            AddParameter(POPInfo.Field.DB.ToString(), objEntr.DB);
-            AddParameter(POPInfo.Field.DEFAULT_VALUE.ToString(), objEntr.DEFAULT_VALUE);
-            AddParameter(POPInfo.Field.PERMISSION.ToString(), objEntr.PERMISSION);
+            AddParameter(prefix + POPInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(prefix + POPInfo.Field.DB.ToString(), objEntr.DB);
+            AddParameter(prefix + POPInfo.Field.DEFAULT_VALUE.ToString(), objEntr.DEFAULT_VALUE);
+            AddParameter(prefix + POPInfo.Field.PERMISSION.ToString(), objEntr.PERMISSION);
           
             try
             {
@@ -124,10 +125,10 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPUpdateName);
-            AddParameter(POPInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
-            AddParameter(POPInfo.Field.DB.ToString(), objEntr.DB);
-            AddParameter(POPInfo.Field.DEFAULT_VALUE.ToString(), objEntr.DEFAULT_VALUE);
-            AddParameter(POPInfo.Field.PERMISSION.ToString(), objEntr.PERMISSION);
+            AddParameter(prefix + POPInfo.Field.ROLE_ID.ToString(), objEntr.ROLE_ID);
+            AddParameter(prefix + POPInfo.Field.DB.ToString(), objEntr.DB);
+            AddParameter(prefix + POPInfo.Field.DEFAULT_VALUE.ToString(), objEntr.DEFAULT_VALUE);
+            AddParameter(prefix + POPInfo.Field.PERMISSION.ToString(), objEntr.PERMISSION);
                
             string sErr = "";
             try
@@ -150,8 +151,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPDeleteName);
-            AddParameter(POPInfo.Field.ROLE_ID.ToString(), ROLE_ID);
-            AddParameter(POPInfo.Field.DB.ToString(), DB);
+            AddParameter(prefix + POPInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+            AddParameter(prefix + POPInfo.Field.DB.ToString(), DB);
               
             string sErr = "";
             try
@@ -174,10 +175,10 @@ namespace DAO
             connect();
             InitSPCommand(_strSPGetPages); 
           
-            AddParameter("WhereClause", whereClause);
-            AddParameter("OrderBy", orderBy);
-            AddParameter("PageIndex", pageIndex);
-            AddParameter("PageSize", pageSize);
+            AddParameter(prefix + "WhereClause", whereClause);
+            AddParameter(prefix + "OrderBy", orderBy);
+            AddParameter(prefix + "PageIndex", pageIndex);
+            AddParameter(prefix + "PageSize", pageSize);
             
             try
             {
@@ -199,8 +200,8 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPIsExist);
-            AddParameter(POPInfo.Field.ROLE_ID.ToString(), ROLE_ID);
-            AddParameter(POPInfo.Field.DB.ToString(), DB);
+            AddParameter(prefix + POPInfo.Field.ROLE_ID.ToString(), ROLE_ID);
+            AddParameter(prefix + POPInfo.Field.DB.ToString(), DB);
               
             string sErr = "";
             DataTable list = new DataTable();
@@ -248,9 +249,9 @@ namespace DAO
         {
             connect();
             InitSPCommand(_strSPGetTransferOutName);
-			AddParameter("DB", dtb);
-			AddParameter("FROM", from);
-			AddParameter("TO", to);
+			AddParameter(prefix + "DB", dtb);
+			AddParameter(prefix + "FROM", from);
+			AddParameter(prefix + "TO", to);
             DataTable list = new DataTable();
             try
             {

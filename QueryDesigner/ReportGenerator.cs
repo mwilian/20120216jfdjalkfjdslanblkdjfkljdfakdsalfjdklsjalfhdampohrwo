@@ -53,6 +53,20 @@ namespace QueryDesigner
         string _database = "";
         string _pathTemplate = string.Empty;
         string _pathReport = string.Empty;
+        int lengthTemp = 0;
+
+        public int LengthTemp
+        {
+            get { return lengthTemp; }
+            set { lengthTemp = value; }
+        }
+        byte[] sTemp;
+
+        public byte[] STemp
+        {
+            get { return sTemp; }
+            set { sTemp = value; }
+        }
         static QDConfig _config = new QDConfig();
 
         public static QDConfig Config
@@ -214,15 +228,34 @@ namespace QueryDesigner
             string filename = "";
 
             filename = _pathTemplate + _qdCode + ".template" + ReportGenerator.Ext;
-            if (!File.Exists(filename))
+            string result = _pathReport + _qdCode + ReportGenerator.Ext; ;
+            ExcelFile xlsResult = new XlsFile(filename, true);
+            if (!File.Exists(filename) && sTemp == null)
             {
                 throw new Exception("Template Report is not exist!");
                 return null;
             }
+            else if (sTemp != null)
+            {
+                using (Stream InStream = new MemoryStream(sTemp, 0, LengthTemp))
+                {
+                    using (Stream OutStream = new MemoryStream())
+                    {
+                        flexcelreport.Run(InStream, OutStream);
+                        xlsResult = new XlsFile();
+                        xlsResult.Open(OutStream);
+                    }
+                }
+                //outstr.Write(sTemp, 0, sTemp.Length);               
+            }
+            else
+            {
 
-            ExcelFile result = new XlsFile(filename);
-            flexcelreport.Run(result);
-            return result;
+                flexcelreport.Run(xlsResult);
+
+            }
+
+            return xlsResult;
         }
 
         #region Userfuntion
@@ -324,7 +357,7 @@ namespace QueryDesigner
             }
 
         }
-       
+
         class NUM2ROMAN : TFlexCelUserFunction
         {
             public override object Evaluate(object[] parameters)
@@ -992,7 +1025,7 @@ namespace QueryDesigner
         private void AddReportVariable(FlexCelReport flexcelreport)
         {
             CommonControl ctr = new CommonControl();
-            object date = ctr.executeScalar("select GETDATE()");
+            object date = ctr.executeScalar("select CURDATE()");//GETDATE()
             flexcelreport.SetValue("SysDate", date);
             flexcelreport.SetValue("QDName", _name);
             flexcelreport.SetValue("QDCode", _qdCode);

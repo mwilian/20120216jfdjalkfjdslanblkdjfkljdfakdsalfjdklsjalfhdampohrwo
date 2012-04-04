@@ -154,6 +154,10 @@
             this.btnTemplate = new System.Windows.Forms.ToolStripButton();
             this.tsMain = new System.Windows.Forms.TabControl();
             this.tabItemGeneral = new System.Windows.Forms.TabPage();
+            this.btnTmpClear = new System.Windows.Forms.PictureBox();
+            this.btnTmp = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTmp = new System.Windows.Forms.TextBox();
             this.ckbShared = new System.Windows.Forms.CheckBox();
             this.lbShare = new System.Windows.Forms.Label();
             this.bt_group = new System.Windows.Forms.PictureBox();
@@ -174,11 +178,8 @@
             this.expandedAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.collapsedAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.customGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.formatConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -219,6 +220,8 @@
             this.toolStrip1.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.tabItemGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTmpClear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bt_group)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bt_datasource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnQD)).BeginInit();
@@ -1230,6 +1233,10 @@
             // 
             // tabItemGeneral
             // 
+            this.tabItemGeneral.Controls.Add(this.btnTmpClear);
+            this.tabItemGeneral.Controls.Add(this.btnTmp);
+            this.tabItemGeneral.Controls.Add(this.label4);
+            this.tabItemGeneral.Controls.Add(this.txtTmp);
             this.tabItemGeneral.Controls.Add(this.ckbShared);
             this.tabItemGeneral.Controls.Add(this.lbShare);
             this.tabItemGeneral.Controls.Add(this.bt_group);
@@ -1251,6 +1258,36 @@
             this.tabItemGeneral.Controls.Add(this.txtqd_id);
             resources.ApplyResources(this.tabItemGeneral, "tabItemGeneral");
             this.tabItemGeneral.Name = "tabItemGeneral";
+            // 
+            // btnTmpClear
+            // 
+            this.btnTmpClear.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnTmpClear, "btnTmpClear");
+            this.btnTmpClear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnTmpClear.Name = "btnTmpClear";
+            this.btnTmpClear.TabStop = false;
+            this.btnTmpClear.Click += new System.EventHandler(this.btnTmpClear_Click);
+            // 
+            // btnTmp
+            // 
+            this.btnTmp.BackColor = System.Drawing.Color.Transparent;
+            this.btnTmp.BackgroundImage = global::QueryDesigner.Properties.Resources.Folder;
+            resources.ApplyResources(this.btnTmp, "btnTmp");
+            this.btnTmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnTmp.Name = "btnTmp";
+            this.btnTmp.TabStop = false;
+            this.btnTmp.Click += new System.EventHandler(this.btnTmp_Click);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // txtTmp
+            // 
+            resources.ApplyResources(this.txtTmp, "txtTmp");
+            this.txtTmp.Name = "txtTmp";
+            this.txtTmp.ReadOnly = true;
             // 
             // ckbShared
             // 
@@ -1352,11 +1389,11 @@
             this.dgvPreview.ContextMenuStrip = this.contextMenuStrip1;
             resources.ApplyResources(this.dgvPreview, "dgvPreview");
             this.dgvPreview.Name = "dgvPreview";
-            this.dgvPreview.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Blue;
+            this.dgvPreview.OfficeColorScheme = Janus.Windows.GridEX.OfficeColorScheme.Blue;
             this.dgvPreview.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvPreview.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgvPreview.DoubleClick += new System.EventHandler(this.dgvPreview_DoubleClick);
             this.dgvPreview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvPreview_KeyUp);
+            this.dgvPreview.DoubleClick += new System.EventHandler(this.dgvPreview_DoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -1364,11 +1401,8 @@
             this.expandedAllToolStripMenuItem,
             this.collapsedAllToolStripMenuItem,
             this.toolStripSeparator4,
-            this.customGroupToolStripMenuItem,
             this.showFieldToolStripMenuItem,
-            this.formatViewToolStripMenuItem,
-            this.formatConditionToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.formatViewToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
@@ -1389,12 +1423,6 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
-            // customGroupToolStripMenuItem
-            // 
-            this.customGroupToolStripMenuItem.Name = "customGroupToolStripMenuItem";
-            resources.ApplyResources(this.customGroupToolStripMenuItem, "customGroupToolStripMenuItem");
-            this.customGroupToolStripMenuItem.Click += new System.EventHandler(this.customGroupToolStripMenuItem_Click);
-            // 
             // showFieldToolStripMenuItem
             // 
             this.showFieldToolStripMenuItem.Name = "showFieldToolStripMenuItem";
@@ -1406,18 +1434,6 @@
             this.formatViewToolStripMenuItem.Name = "formatViewToolStripMenuItem";
             resources.ApplyResources(this.formatViewToolStripMenuItem, "formatViewToolStripMenuItem");
             this.formatViewToolStripMenuItem.Click += new System.EventHandler(this.formatViewToolStripMenuItem_Click);
-            // 
-            // formatConditionToolStripMenuItem
-            // 
-            this.formatConditionToolStripMenuItem.Name = "formatConditionToolStripMenuItem";
-            resources.ApplyResources(this.formatConditionToolStripMenuItem, "formatConditionToolStripMenuItem");
-            this.formatConditionToolStripMenuItem.Click += new System.EventHandler(this.formatConditionToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // panel6
             // 
@@ -1555,6 +1571,8 @@
             this.tsMain.ResumeLayout(false);
             this.tabItemGeneral.ResumeLayout(false);
             this.tabItemGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTmpClear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bt_group)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bt_datasource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnQD)).EndInit();
@@ -1679,11 +1697,8 @@
         private System.Windows.Forms.Button btnPrintReport;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem customGroupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showFieldToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formatViewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem formatConditionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         internal Janus.Windows.GridEX.GridEXPrintDocument gridEXPrintDocument1;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.WebBrowser wbChart;
@@ -1738,6 +1753,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opeToolStripMenuItem;
+        private System.Windows.Forms.PictureBox btnTmp;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTmp;
+        private System.Windows.Forms.PictureBox btnTmpClear;
 
     }
 }

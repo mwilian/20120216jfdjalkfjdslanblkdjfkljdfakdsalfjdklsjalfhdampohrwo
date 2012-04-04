@@ -72,6 +72,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="LIST_TASKInfo.cs" />
+    <Compile Include="LIST_TEMPLATEInfo.cs" />
     <Compile Include="PODInfo.cs" />
     <Compile Include="POGInfo.cs" />
     <Compile Include="POPInfo.cs" />

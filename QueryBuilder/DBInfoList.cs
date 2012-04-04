@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using System.Configuration;
+using MySql.Data.MySqlClient;
 namespace QueryBuilder
 {
     //  Class DBInfoList
@@ -97,7 +98,7 @@ namespace QueryBuilder
         {
             RaiseListChangedEvents = false;
 
-            using (SqlConnection cn = new SqlConnection(CoreCommonControl.GetConnection()))
+            using (MySqlConnection cn = new MySqlConnection(CoreCommonControl.GetConnection()))
             {
                 cn.Open();
                 ExecuteFetch(cn);
@@ -109,14 +110,14 @@ namespace QueryBuilder
 
 
         //  Method ExecuteFetch
-        private void ExecuteFetch(SqlConnection cn)
+        private void ExecuteFetch(MySqlConnection cn)
         {
-            using (SqlCommand cm = cn.CreateCommand())
+            using (MySqlCommand cm = cn.CreateCommand())
             {
                 cm.CommandType = CommandType.StoredProcedure;
-                cm.CommandText = "dbo.[procDBA_getall]";
+                cm.CommandText = "procDBA_getall";
 
-                using (SqlDataReader dr = cm.ExecuteReader())
+                using (MySqlDataReader dr = cm.ExecuteReader())
                 {
                     while (dr.Read())
                     {

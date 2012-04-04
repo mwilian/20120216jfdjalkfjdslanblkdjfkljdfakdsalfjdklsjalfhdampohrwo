@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
+using MySql.Data.MySqlClient;
 
 namespace QueryDesigner
 {
@@ -166,11 +167,12 @@ namespace QueryDesigner
                     txtCode.Text = tableName;
                     _code = txtCode.Text.Trim();
                     DataTable kq = new DataTable();
-                    System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(frm.Connect);
+                    MySqlConnection conn = new MySqlConnection(frm.Connect);
                     try
                     {
                         conn.Open();
-                        kq = conn.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Columns, new Object[] { null, null, tableName, null });
+                        //kq = conn.GetSchema((System.Data.OleDb.OleDbSchemaGuid.Columns, new Object[] { null, null, tableName, null });
+                        kq = conn.GetSchema("Columns", new string[] { null, conn.Database, tableName, null });
                         //dgvField.AutoGenerateColumns = true;
                         _data.Tables["field"].Clear();
                         _data.Tables["fromcode"].Clear();

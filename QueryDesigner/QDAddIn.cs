@@ -681,7 +681,8 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
                 license.SerialNumber = tmp[4];
                 license.Key = tmp[5];
                 //license.SerialCPU = tmp[6];
-                license.SerialCPU = GetProcessorId();
+                BUS.CommonControl ctrCom = new BUS.CommonControl();
+                license.SerialCPU = ctrCom.executeScalar("SELECT @@hostname").ToString(); //"BFEBFBFF000006FD";
                 reader.Close();
 
 
@@ -694,7 +695,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
                 {
                     int now = Convert.ToInt32(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00") + DateTime.Now.Day.ToString("00"));
                     BUS.CommonControl ctr = new CommonControl();
-                    object dt = ctr.executeScalar("select getdate()", _strConnect);
+                    object dt = ctr.executeScalar("select curdate()", _strConnect);
                     if (dt != null && dt is DateTime)
                     {
                         now = Convert.ToInt32(((DateTime)dt).Year.ToString() + ((DateTime)dt).Month.ToString("00") + ((DateTime)dt).Day.ToString("00"));

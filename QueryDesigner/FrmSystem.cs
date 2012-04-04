@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace QueryDesigner
 {
@@ -35,22 +36,23 @@ namespace QueryDesigner
             //MSDASC.DataLinks mydlg = new MSDASC.DataLinks();
             //object cn = new ADODB.Connection();
             frm.Type = type;
-            if (type == "QD" || type == null || type == "")
-                frm.SetConnect("Provider=SQLOLEDB.1;" + connect);//((ADODB.Connection)cn).ConnectionString =
-            else frm.SetConnect(connect);//((ADODB.Connection)cn).ConnectionString
+            //if (type == "QD" || type == null || type == "")
+            //    frm.SetConnect("Provider=SQLOLEDB.1;" + connect);//((ADODB.Connection)cn).ConnectionString =
+            //else 
+            frm.SetConnect(connect);//((ADODB.Connection)cn).ConnectionString
 
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-             
-   
+
+
                 string kq = frm.Connection;// ((ADODB.Connection)cn).ConnectionString;
-                
+
                 kq = BUS.CommonControl.RemoveAttribute(kq, "Persist Security Info");
                 kq = BUS.CommonControl.RemoveAttribute(kq, "Extended Properties");
                 kq = BUS.CommonControl.RemoveAttribute(kq, "Provider");
-                if (type != "QD")
-                    kq = "Provider=SQLOLEDB.1;" + kq;
+                //if (type != "QD")
+                //    kq = "Provider=SQLOLEDB.1;" + kq;
                 return kq;
             }
             return "";
@@ -65,7 +67,7 @@ namespace QueryDesigner
                 if (dgvList.Columns[e.ColumnIndex].Name == "BUILD")
                 {
 
-                   
+
                     string type = "";
                     string connect = "";
                     if (dgvList.Rows[e.RowIndex].Cells["TYPE"].Value != null)
@@ -88,26 +90,26 @@ namespace QueryDesigner
                 {
                     if (dgvList.Rows[e.RowIndex].Cells["CONTENT"].Value != null && dgvList.Rows[e.RowIndex].Cells["TYPE"].Value != null)
                     {
-                        if (dgvList.Rows[e.RowIndex].Cells["TYPE"].Value.ToString() == "QD")
+                        //if (dgvList.Rows[e.RowIndex].Cells["TYPE"].Value.ToString() == "QD")
+                        //{
+                        MySqlConnection conn = new MySqlConnection(dgvList.Rows[e.RowIndex].Cells["CONTENT"].Value.ToString());
+                        try { conn.Open(); dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "OK"; }
+                        catch
                         {
-                            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(dgvList.Rows[e.RowIndex].Cells["CONTENT"].Value.ToString());
-                            try { conn.Open(); dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "OK"; }
-                            catch
-                            {
-                                dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "Fail";
-                            }
-                            finally { conn.Close(); }
+                            dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "Fail";
                         }
-                        else
-                        {
-                            System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(dgvList.Rows[e.RowIndex].Cells["CONTENT"].Value.ToString());
-                            try { conn.Open(); dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "OK"; }
-                            catch
-                            {
-                                dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "Fail";
-                            }
-                            finally { conn.Close(); }
-                        }
+                        finally { conn.Close(); }
+                        //}
+                        //else
+                        //{
+                        //    System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(dgvList.Rows[e.RowIndex].Cells["CONTENT"].Value.ToString());
+                        //    try { conn.Open(); dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "OK"; }
+                        //    catch
+                        //    {
+                        //        dgvList.Rows[e.RowIndex].Cells["TEST"].Value = "Fail";
+                        //    }
+                        //    finally { conn.Close(); }
+                        //}
 
                     }
                     else

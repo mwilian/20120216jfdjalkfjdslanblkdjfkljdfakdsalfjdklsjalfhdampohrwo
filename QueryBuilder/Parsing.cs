@@ -545,8 +545,8 @@ namespace QueryBuilder
                 {
                     Filter f = new Filter(new Node(key, string.Empty)); // description is not required for light version
 
-                    string fromRegex = @"(?<=F\=)[^\/|\\]*(?=\,K\=" + Regex.Replace(key, @"[\/]+|[\\]+", @"\/") + ")";
-                    string toRegex = @"(?<=T\=)[^\/|\\]*(?=\,K\=" + Regex.Replace(key, @"[\/]+|[\\]+", @"\/") + ")";
+                    string fromRegex = @"(?<=F\=)[^\/|\\]*(?=\,K\=" + Regex.Replace(key, @"\/]+|[\\]+", @"\/") + ")";
+                    string toRegex = @"(?<=T\=)[^\/|\\]*(?=\,K\=" + Regex.Replace(key, @"\/]+|[\\]+", @"\/") + ")";
 
                     f.ValueFrom = Regex.Match(filterValues[i].Value, @".+(?=\,)").Value;
                     f.ValueTo = Regex.Match(filterValues[i].Value, @"(?<=T\=).+").Value.ToString();
@@ -562,7 +562,7 @@ namespace QueryBuilder
             foreach (System.Text.RegularExpressions.Match output in outList)
             {
                 key = output.Value.ToString();
-                string argRegex = @"[0-9](?=\,O\=" + Regex.Replace(key, @"[\/]+|[\\]+", @"\/") + ")";
+                string argRegex = @"[0-9](?=\,O\=" + Regex.Replace(key, @"\/]+|[\\]+", @"\/") + ")";
                 Node n = new Node(key, string.Empty);
 
                 n.Agregate = AgregateN2Code(Regex.Match(ParseString, argRegex).Value);
