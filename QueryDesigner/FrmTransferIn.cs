@@ -65,6 +65,17 @@ namespace QueryDesigner
                 }
 
             }
+            else if (_type == "POD")
+            {
+                BUS.PODControl control = new BUS.PODControl();
+                dt = control.ToTransferInStruct();
+                dt.TableName = "Table";
+                foreach (DataColumn col in dt.Columns)
+                {
+                    col.DataType = typeof(string);
+                }
+
+            }
             BUS.CommonControl commonCtr = new BUS.CommonControl();
 
             try
@@ -84,6 +95,7 @@ namespace QueryDesigner
             BUS.LIST_QDControl control = new BUS.LIST_QDControl();
             BUS.LIST_QD_SCHEMAControl controlADD = new BUS.LIST_QD_SCHEMAControl();
             BUS.LIST_TASKControl controlTASK = new BUS.LIST_TASKControl();
+            BUS.PODControl controlPOD = new BUS.PODControl();
             try
             {
                 foreach (DataRow row in dt.Rows)
@@ -96,6 +108,8 @@ namespace QueryDesigner
                             sErr = controlADD.TransferIn(row);
                         else if (_type == "TASK")
                             sErr = controlTASK.TransferIn(row);
+                        else if (_type=="POD")
+                            sErr = controlPOD.TransferIn(row);
                     }
                 }
                 Close();
