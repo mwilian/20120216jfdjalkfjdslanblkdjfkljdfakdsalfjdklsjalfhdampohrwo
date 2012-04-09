@@ -103,7 +103,7 @@ namespace DTO
         #endregion Constructor
         
         #region InitTable
-		public DataTable ToDataTable()
+		public static DataTable ToDataTable()
 		{
 			DataTable dt = new DataTable("POD");
 			dt.Columns.AddRange(new DataColumn[] { 

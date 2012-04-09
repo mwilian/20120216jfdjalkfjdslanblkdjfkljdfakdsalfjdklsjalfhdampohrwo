@@ -13,15 +13,18 @@ namespace QueryDesigner
         BUS.PODControl ctr = new BUS.PODControl();
         string _sErr = "";
         string _processStatus = "";
-        public frmPOD()
+        string _db = "";
+        public frmPOD(string db)
         {
             InitializeComponent();
+            _db = db;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             RefreshForm("");
             EnabledForm(true);
+            btnReset.Enabled = false;
             txtCode.Enabled = true;
             _processStatus = "C";
         }
@@ -45,7 +48,7 @@ namespace QueryDesigner
                 _processStatus = "A";
             }
         }
-
+        bool flagPass = false;
         private void btnSave_Click(object sender, EventArgs e)
         {
             //string sErr = "";
@@ -65,6 +68,10 @@ namespace QueryDesigner
             else if (_processStatus == "A")
             {
                 inf = ctr.Get(txtCode.Text, ref _sErr);
+                if (flagPass)
+                {
+                    inf.PASS = Convert.ToBase64String(new System.Security.Cryptography.SHA1CryptoServiceProvider().ComputeHash(Encoding.ASCII.GetBytes("")));
+                }
                 _sErr = ctr.Update(GetDataFromForm(inf));
             }
             if (_sErr == "")
@@ -129,6 +136,8 @@ namespace QueryDesigner
         private void EnabledForm(bool value)
         {
             pContain.Enabled = value;
+            flagPass = false;
+            btnReset.Enabled = value;
         }
         private void RefreshForm(string value)
         {
@@ -137,6 +146,7 @@ namespace QueryDesigner
                 if (x is TextBox)
                     x.Text = value;
             }
+            flagPass = false;
         }
 
 
@@ -158,6 +168,25 @@ namespace QueryDesigner
         {
             BUS.POGControl pogCtr = new BUS.POGControl();
             lbRole.Text = pogCtr.Get(txtGroup.Text, ref _sErr).ROLE_NAME;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            flagPass = true;
+            btnReset.Enabled = false;
+        }
+
+        private void btnTransferIn_Click(object sender, EventArgs e)
+        {
+            FrmTransferIn frm = new FrmTransferIn("POD");
+            frm.ShowDialog();
+        }
+
+        private void btnTransferOut_Click(object sender, EventArgs e)
+        {
+            FrmTransferOut frm = new FrmTransferOut(_db, "POD");
+            frm.QD_CODE = txtCode.Text;
+            frm.ShowDialog();
         }
 
 

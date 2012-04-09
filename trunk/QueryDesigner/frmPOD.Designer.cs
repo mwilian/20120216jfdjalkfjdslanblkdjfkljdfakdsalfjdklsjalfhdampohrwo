@@ -52,8 +52,12 @@
             this.btnRole = new System.Windows.Forms.PictureBox();
             this.btnDB = new System.Windows.Forms.PictureBox();
             this.pContain = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
             this.lbDB = new System.Windows.Forms.Label();
             this.lbRole = new System.Windows.Forms.Label();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnTransferIn = new System.Windows.Forms.ToolStripButton();
+            this.btnTransferOut = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRole)).BeginInit();
@@ -72,6 +76,9 @@
             this.btnEdit,
             this.btnSave,
             this.toolStripSeparator1,
+            this.btnTransferIn,
+            this.btnTransferOut,
+            this.toolStripSeparator2,
             this.btnDelete,
             this.btnCopy});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -282,6 +289,7 @@
             // 
             // pContain
             // 
+            this.pContain.Controls.Add(this.btnReset);
             this.pContain.Controls.Add(this.lbDB);
             this.pContain.Controls.Add(this.lbRole);
             this.pContain.Controls.Add(this.txtCode);
@@ -302,6 +310,16 @@
             this.pContain.Size = new System.Drawing.Size(508, 239);
             this.pContain.TabIndex = 50;
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(208, 10);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(165, 23);
+            this.btnReset.TabIndex = 52;
+            this.btnReset.Text = "Reset password";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // lbDB
             // 
             this.lbDB.AutoSize = true;
@@ -319,6 +337,31 @@
             this.lbRole.Size = new System.Drawing.Size(13, 13);
             this.lbRole.TabIndex = 50;
             this.lbRole.Text = "_";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // btnTransferIn
+            // 
+            this.btnTransferIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnTransferIn.Image = global::QueryDesigner.Properties.Resources.download;
+            this.btnTransferIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTransferIn.Name = "btnTransferIn";
+            this.btnTransferIn.Size = new System.Drawing.Size(36, 36);
+            this.btnTransferIn.Text = "toolStripButton1";
+            this.btnTransferIn.Click += new System.EventHandler(this.btnTransferIn_Click);
+            // 
+            // btnTransferOut
+            // 
+            this.btnTransferOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnTransferOut.Image = global::QueryDesigner.Properties.Resources.app_upload_32x32;
+            this.btnTransferOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTransferOut.Name = "btnTransferOut";
+            this.btnTransferOut.Size = new System.Drawing.Size(36, 36);
+            this.btnTransferOut.Text = "toolStripButton2";
+            this.btnTransferOut.Click += new System.EventHandler(this.btnTransferOut_Click);
             // 
             // frmPOD
             // 
@@ -372,5 +415,9 @@
         private System.Windows.Forms.Panel pContain;
         private System.Windows.Forms.Label lbDB;
         private System.Windows.Forms.Label lbRole;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ToolStripButton btnTransferIn;
+        private System.Windows.Forms.ToolStripButton btnTransferOut;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

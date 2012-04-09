@@ -2938,7 +2938,7 @@ namespace QueryDesigner
         {
             if (_frmPOD == null || !this.Controls.Contains(_frmPOD))
             {
-                _frmPOD = new frmPOD();
+                _frmPOD = new frmPOD(_dtb);
                 _frmPOD.Show(this);
             }
             else

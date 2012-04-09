@@ -98,9 +98,9 @@ namespace BUS
             throw new NotImplementedException();
         }
 
-        internal DataTable ToTransferInStruct()
+        public DataTable ToTransferInStruct()
         {
-            throw new NotImplementedException();
+            return DTO.PODInfo.ToDataTable();
         }
 
 
@@ -114,5 +114,14 @@ namespace BUS
                 Add(pODInfo, ref sErr);
             return sErr;
         }
+
+
+        public string TransferIn(DataRow row)
+        {
+            PODInfo inf = new PODInfo(row);
+            return InsertUpdate(inf);
+        }
+
+       
     }
 }

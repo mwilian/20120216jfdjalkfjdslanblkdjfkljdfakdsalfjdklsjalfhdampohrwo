@@ -47,7 +47,7 @@ namespace QueryDesigner
                 BUS.LIST_QD_SCHEMAControl control = new BUS.LIST_QD_SCHEMAControl();
                 if (QD_CODE != "")
                 {
-                    DTO.LIST_QD_SCHEMAInfo inf =  control.Get(_db, QD_CODE, ref sErr);
+                    DTO.LIST_QD_SCHEMAInfo inf = control.Get(_db, QD_CODE, ref sErr);
                     dt = inf.ToDataTable();
                     dt.Rows.Add(inf.ToDataRow(dt));
                     dt.TableName = "Table";
@@ -66,7 +66,20 @@ namespace QueryDesigner
                     dt.TableName = "Table";
                 }
                 else
-                dt = control.GetAll(_db, ref sErr);
+                    dt = control.GetAll(_db, ref sErr);
+            }
+            else if (_type == "POD")
+            {
+                BUS.PODControl control = new BUS.PODControl();
+                if (QD_CODE != "")
+                {
+                    DTO.PODInfo inf = control.Get(QD_CODE, ref sErr);
+                    dt = DTO.PODInfo.ToDataTable();
+                    dt.Rows.Add(inf.ToDataRow(dt));
+                    dt.TableName = "Table";
+                }
+                else
+                    dt = control.GetAll(ref sErr);
             }
             dtEnd = dt.Copy();
             radGridView1.DataSource = dtEnd;
@@ -105,6 +118,10 @@ namespace QueryDesigner
                 {
                     rows = dt.Select("CODE ='" + From.Text + "'");
                 }
+                else if (_type == "POD")
+                {
+                    rows = dt.Select("USER_ID ='" + From.Text + "'");
+                }
             }
             else
             {
@@ -119,6 +136,10 @@ namespace QueryDesigner
                 else if (_type == "TASK")
                 {
                     rows = dt.Select("CODE >='" + From.Text + "'" + "and  CODE <='" + To.Text + "'");
+                }
+                else if (_type == "POD")
+                {
+                    rows = dt.Select("USER_ID >='" + From.Text + "'" + "and  USER_ID <='" + To.Text + "'");
                 }
             }
             if (rows != null || rows.Length > 0)

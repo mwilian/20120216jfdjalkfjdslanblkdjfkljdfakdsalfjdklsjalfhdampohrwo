@@ -243,6 +243,7 @@ namespace QueryDesigner
                     {
                         flexcelreport.Run(InStream, OutStream);
                         xlsResult = new XlsFile();
+                        OutStream.Position = 0;
                         xlsResult.Open(OutStream);
                     }
                 }
