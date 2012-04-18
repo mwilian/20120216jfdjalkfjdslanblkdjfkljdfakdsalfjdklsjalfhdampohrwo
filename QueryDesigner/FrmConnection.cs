@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Data.Sql;
 
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class FrmConnection : Form
     {

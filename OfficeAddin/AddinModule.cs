@@ -8,6 +8,7 @@ using QueryDesigner;
 using System.IO;
 using BUS;
 
+
 namespace OfficeAddin
 {
     /// <summary>
@@ -45,22 +46,22 @@ namespace OfficeAddin
         string _user = "";
         private void InitDocument()
         {
-            string filename = _appPath + "\\Configuration\\xmlConnect.xml";
-            __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
-            if (!Directory.Exists(__documentDirectory))
-            {
-                Directory.CreateDirectory(__documentDirectory);
-            }
+            //string filename = _appPath + "\\Configuration\\xmlConnect.xml";
+            //__documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            //if (!Directory.Exists(__documentDirectory))
+            //{
+            //    Directory.CreateDirectory(__documentDirectory);
+            //}
             string configureDirectory = __documentDirectory + "\\Configuration";
             if (!Directory.Exists(configureDirectory))
             {
                 Directory.CreateDirectory(configureDirectory);
             }
-            string connectionFile = configureDirectory + "\\xmlConnect.xml";
-            if (!File.Exists(connectionFile))
-            {
-                File.Copy(filename, connectionFile);
-            }
+            //string connectionFile = configureDirectory + "\\xmlConnect.xml";
+            //if (!File.Exists(connectionFile))
+            //{
+            //    File.Copy(filename, connectionFile);
+            //}
             string logFolder = configureDirectory + "\\Log";
             if (!Directory.Exists(logFolder))
             {
@@ -79,19 +80,20 @@ namespace OfficeAddin
                 _strConnect = _config.GetConnection(ref key, "QD");
                 QueryBuilder.SQLBuilder.SetConnection(_strConnect);
                 CommonControl.SetConnection(_strConnect);
+                MessageBox.Show(_strConnect);
                 _strConnectDes = _config.GetConnection(ref strAP, "AP");
                 _conn_ID = strAP;
 
 
 
-                if (_config.DIR.Rows.Count > 0)
+                if (_config.DIR.Count > 0)
                 {
-                    __templatePath = _config.DIR.Rows[0]["TMP"].ToString();
-                    __reportPath = _config.DIR.Rows[0]["RPT"].ToString();
+                    __templatePath = _config.DIR[0]["TMP"].ToString();
+                    __reportPath = _config.DIR[0]["RPT"].ToString();
                 }
-                if (_config.SYS.Rows.Count > 0)
+                if (_config.SYS.Count > 0)
 
-                    ReportGenerator.User2007 = (bool)_config.SYS.Rows[0][_config.SYS.USE2007Column];
+                    ReportGenerator.User2007 = (bool)_config.SYS[0][_config.SYS.USE2007Column];
             }
         }
 
@@ -145,15 +147,15 @@ namespace OfficeAddin
             this.adxExcelEvents = new AddinExpress.MSO.ADXExcelAppEvents(this.components);
             this.adxRibbonTab1 = new AddinExpress.MSO.ADXRibbonTab(this.components);
             this.adxRibbonGroup1 = new AddinExpress.MSO.ADXRibbonGroup(this.components);
+            this.adxLogin = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRSetting = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRDesign = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRComment = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRAnalysis = new AddinExpress.MSO.ADXRibbonButton(this.components);
-            this.adxLogin = new AddinExpress.MSO.ADXRibbonButton(this.components);
             // 
             // QDCommandBar
             // 
-            this.QDCommandBar.CommandBarName = "TVC-QD";
+            this.QDCommandBar.CommandBarName = "TVC-UQD";
             this.QDCommandBar.CommandBarTag = "1ca346fe-f8af-48ac-bb53-e85444232d09";
             this.QDCommandBar.Controls.Add(this.btnLogin);
             this.QDCommandBar.Controls.Add(this.btnSetting);
@@ -162,7 +164,7 @@ namespace OfficeAddin
             this.QDCommandBar.Controls.Add(this.btnAnalysis);
             this.QDCommandBar.Description = "Tavicosoft Addin";
             this.QDCommandBar.SupportedApps = AddinExpress.MSO.ADXOfficeHostApp.ohaExcel;
-            this.QDCommandBar.UpdateCounter = 14;
+            this.QDCommandBar.UpdateCounter = 15;
             // 
             // btnLogin
             // 
@@ -179,11 +181,11 @@ namespace OfficeAddin
             // 
             this.ilMain.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilMain.ImageStream")));
             this.ilMain.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilMain.Images.SetKeyName(0, "1328260984_Cube.png");
-            this.ilMain.Images.SetKeyName(1, "1329967013_applications-system.png");
-            this.ilMain.Images.SetKeyName(2, "1329967049_kchart.png");
-            this.ilMain.Images.SetKeyName(3, "1329967327_comment_user_chart.png");
-            this.ilMain.Images.SetKeyName(4, "1331536967_login.png");
+            this.ilMain.Images.SetKeyName(0, "Design");
+            this.ilMain.Images.SetKeyName(1, "Setting");
+            this.ilMain.Images.SetKeyName(2, "Analysis");
+            this.ilMain.Images.SetKeyName(3, "Comment");
+            this.ilMain.Images.SetKeyName(4, "Login");
             // 
             // btnSetting
             // 
@@ -231,12 +233,12 @@ namespace OfficeAddin
             // 
             // adxExcelEvents
             // 
-            this.adxExcelEvents.SheetBeforeDoubleClick += new AddinExpress.MSO.ADXExcelSheetBefore_EventHandler(this.adxExcelEvents_SheetBeforeDoubleClick);
             this.adxExcelEvents.SheetSelectionChange += new AddinExpress.MSO.ADXExcelSheet_EventHandler(this.adxExcelEvents_SheetSelectionChange);
+            this.adxExcelEvents.SheetBeforeDoubleClick += new AddinExpress.MSO.ADXExcelSheetBefore_EventHandler(this.adxExcelEvents_SheetBeforeDoubleClick);
             // 
             // adxRibbonTab1
             // 
-            this.adxRibbonTab1.Caption = "TVC-QD";
+            this.adxRibbonTab1.Caption = "TVC-UQD";
             this.adxRibbonTab1.Controls.Add(this.adxRibbonGroup1);
             this.adxRibbonTab1.Id = "adxRibbonTab_72d9a8860ea24ea08ec7ced4085f0b35";
             this.adxRibbonTab1.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
@@ -252,6 +254,17 @@ namespace OfficeAddin
             this.adxRibbonGroup1.Id = "adxRibbonGroup_81754909ad5e45eb9ea84f07866d115e";
             this.adxRibbonGroup1.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.adxRibbonGroup1.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            // 
+            // adxLogin
+            // 
+            this.adxLogin.Caption = "Login";
+            this.adxLogin.Id = "adxRibbonButton_0505baae132e43b499c301bb7bf26d13";
+            this.adxLogin.Image = 4;
+            this.adxLogin.ImageList = this.ilMain;
+            this.adxLogin.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.adxLogin.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.adxLogin.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            this.adxLogin.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRLogin_OnClick);
             // 
             // btnRSetting
             // 
@@ -296,17 +309,6 @@ namespace OfficeAddin
             this.btnRAnalysis.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
             this.btnRAnalysis.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
             this.btnRAnalysis.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRAnalysis_OnClick);
-            // 
-            // adxLogin
-            // 
-            this.adxLogin.Caption = "Login";
-            this.adxLogin.Id = "adxRibbonButton_0505baae132e43b499c301bb7bf26d13";
-            this.adxLogin.Image = 4;
-            this.adxLogin.ImageList = this.ilMain;
-            this.adxLogin.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.adxLogin.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
-            this.adxLogin.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
-            this.adxLogin.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRLogin_OnClick);
             // 
             // AddinModule
             // 

@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmQDADD
     {
@@ -191,7 +191,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(36, 36);
@@ -203,7 +203,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(36, 36);
@@ -213,7 +213,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(36, 36);
@@ -223,7 +223,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(36, 36);
@@ -238,7 +238,7 @@
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(36, 36);
@@ -248,7 +248,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(36, 36);
@@ -263,7 +263,7 @@
             // btnTransferIn
             // 
             this.btnTransferIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferIn.Image = global::QueryDesigner.Properties.Resources.download;
+            this.btnTransferIn.Image = global::dCube.Properties.Resources.download;
             this.btnTransferIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTransferIn.Name = "btnTransferIn";
             this.btnTransferIn.Size = new System.Drawing.Size(36, 36);
@@ -273,7 +273,7 @@
             // btnTransferOut
             // 
             this.btnTransferOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferOut.Image = global::QueryDesigner.Properties.Resources.app_upload_32x32;
+            this.btnTransferOut.Image = global::dCube.Properties.Resources.app_upload_32x32;
             this.btnTransferOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTransferOut.Name = "btnTransferOut";
             this.btnTransferOut.Size = new System.Drawing.Size(36, 36);
@@ -404,7 +404,7 @@
             // btnSelectView
             // 
             this.btnSelectView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectView.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnSelectView.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnSelectView.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSelectView.Location = new System.Drawing.Point(814, 3);
             this.btnSelectView.Name = "btnSelectView";
@@ -418,7 +418,7 @@
             // btnSelectTable
             // 
             this.btnSelectTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectTable.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnSelectTable.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnSelectTable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSelectTable.Location = new System.Drawing.Point(720, 3);
             this.btnSelectTable.Name = "btnSelectTable";
@@ -540,7 +540,7 @@
             // btnQD
             // 
             this.btnQD.BackColor = System.Drawing.Color.Transparent;
-            this.btnQD.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnQD.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnQD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnQD.Location = new System.Drawing.Point(197, 117);
             this.btnQD.Name = "btnQD";

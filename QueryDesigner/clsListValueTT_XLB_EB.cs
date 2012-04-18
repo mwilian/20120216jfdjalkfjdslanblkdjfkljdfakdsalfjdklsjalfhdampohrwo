@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using FlexCel.Core;
 
-namespace QueryDesigner
+namespace dCube
 {
     public static class  clsListValueTT_XLB_EB
     {        

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmImportDefView : Form
     {

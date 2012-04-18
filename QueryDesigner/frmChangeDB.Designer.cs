@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmChangeDB
     {
@@ -41,7 +41,7 @@
             // bt_database
             // 
             this.bt_database.BackColor = System.Drawing.Color.Transparent;
-            this.bt_database.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.bt_database.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.bt_database.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.bt_database.Location = new System.Drawing.Point(130, 20);
             this.bt_database.Name = "bt_database";

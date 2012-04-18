@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmDA
     {
@@ -49,6 +49,7 @@
             this.lbErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.pContain = new System.Windows.Forms.Panel();
             this.dgvData = new Janus.Windows.GridEX.GridEX();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.pContain.SuspendLayout();
@@ -82,7 +83,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(36, 36);
@@ -94,7 +95,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(36, 36);
@@ -104,7 +105,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(36, 36);
@@ -114,7 +115,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(36, 36);
@@ -129,7 +130,7 @@
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(36, 36);
@@ -139,7 +140,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(36, 36);
@@ -216,6 +217,7 @@
             // 
             // pContain
             // 
+            this.pContain.Controls.Add(this.label4);
             this.pContain.Controls.Add(this.dgvData);
             this.pContain.Controls.Add(this.txtCode);
             this.pContain.Controls.Add(this.label1);
@@ -249,6 +251,15 @@
             this.dgvData.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             this.dgvData.LoadingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.dgvData_LoadingRow);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(138, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "(I/E)";
+            // 
             // frmDA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,7 +269,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmDA";
-            this.Text = "Data Access Permission";
+            this.Text = "Data Access Group";
             this.Load += new System.EventHandler(this.frmPOD_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -293,5 +304,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lbErr;
         private System.Windows.Forms.Panel pContain;
         private Janus.Windows.GridEX.GridEX dgvData;
+        private System.Windows.Forms.Label label4;
     }
 }

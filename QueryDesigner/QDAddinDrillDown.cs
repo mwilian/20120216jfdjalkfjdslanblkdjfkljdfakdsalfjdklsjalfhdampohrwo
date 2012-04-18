@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using QueryBuilder;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 using System.Text.RegularExpressions;
 
 
@@ -16,7 +16,7 @@ using System.IO;
 using BUS;
 using Janus.Windows.GridEX;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class QDAddinDrillDown : Form
     {
@@ -87,9 +87,10 @@ namespace QueryDesigner
             //TopMost = true;
             //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
         }
-        public QDAddinDrillDown(string Pos, Excel._Application xls, string formular, string connectDesc)
+        public QDAddinDrillDown(string Pos, Excel._Application xls, string formular, string connectDesc,string user)
         {
             InitializeComponent();
+            _user = user;
             //_strConnectDes = connectDesc;
             Init(Pos, xls, formular);
             _sqlBuilder.StrConnectDes = connectDesc;
@@ -127,50 +128,54 @@ namespace QueryDesigner
 
         public void GetQueryBuilderFromFomular(string formular)
         {
-            if (formular.Contains("TT_XLB_EB") || formular.Contains("USER TABLE"))
+            if (formular.Contains("TVC_QUERY") && formular.Contains("USER TABLE"))
             {
+                string tmp = formular.Replace("USER TABLE(", "");
+                formular = tmp.Substring(0, tmp.Length - 1);
+            }
+
+            if (formular.Contains("TT_XLB_EB") || formular.Contains("USER TABLE") || formular.Contains("TVC_QUERY"))
+            {
+                Excel._Worksheet sheet = null;
+
+                string vParamsString = Regex.Match(formular, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
+                Excel._Workbook wbook = null;
                 if (_xlsApp != null)
                 {
-                    Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
-                    Excel._Workbook wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
+                    sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
+                    wbook = (Excel._Workbook)_xlsApp.ActiveWorkbook;
+                }
+                // fill to parameter Array
+                int i = 0, n = 0;
 
-                    string vParamsString = Regex.Match(formular, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
-
-                    // fill to parameter Array
-                    int i = 0, n = 0;
-
-                    if (!(string.IsNullOrEmpty(vParamsString)))
+                if (!(string.IsNullOrEmpty(vParamsString)))
+                {
+                    vParamsString =  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ vParamsString.Substring(1);
+                    vParamsString = vParamsString.Substring(1, vParamsString.Length - 2);// Strings.Mid(vParamsString, 1,  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ vParamsString.Length - 1); 
+                    vParamsString = vParamsString + ","; //  them dau , cho de xu ly
+                    n = Regex.Matches(vParamsString, ".*?,").Count; //  cac tham so
+                    if (n > 0)
                     {
-                        vParamsString =  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ vParamsString.Substring(1);
-                        vParamsString = vParamsString.Substring(1, vParamsString.Length - 2);// Strings.Mid(vParamsString, 1,  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ vParamsString.Length - 1); 
-                        vParamsString = vParamsString + ","; //  them dau , cho de xu ly
-                        n = Regex.Matches(vParamsString, ".*?,").Count; //  cac tham so
-                        if (n > 0)
+                        string[] vParameter = new string[n]; // tham so dau tien la vi tri cua cong thuc
+                        foreach (System.Text.RegularExpressions.Match p in Regex.Matches(vParamsString, ".*?,"))
                         {
-                            string[] vParameter = new string[n]; // tham so dau tien la vi tri cua cong thuc
-                            foreach (System.Text.RegularExpressions.Match p in Regex.Matches(vParamsString, ".*?,"))
+                            i = i + 1;
+                            if (i == 1)
                             {
-                                i = i + 1;
-                                if (i == 1)
-                                {
-                                    _sqlBuilder.Pos = p.Value.ToString().Replace(",", string.Empty);
+                                _sqlBuilder.Pos = p.Value.ToString().Replace(",", string.Empty);
 
-                                }
-                                else
-                                {
+                            }
+                            else
+                            {
 
-                                    string address = p.Value.ToString().Replace(",", string.Empty);
-                                    string value = "";
-                                    //try
-                                    //{
-                                    //    value = sheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
-
-                                    //    _sqlBuilder.ParaValueList[i - 1] = value;
+                                string address = p.Value.ToString().Replace(",", string.Empty);
+                                string value = "";
+                                if (wbook != null)
                                     foreach (Excel._Worksheet isheet in wbook.Sheets)
                                     {
                                         try
                                         {
-                                            value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
+                                            value = isheet.get_Range(address, Type.Missing).Value.ToString();
 
                                             _sqlBuilder.ParaValueList[i - 1] = value;
                                             break;
@@ -180,25 +185,21 @@ namespace QueryDesigner
                                         {
                                         }
                                     }
-
-                                    //}
-                                    //catch
-                                    //{
-                                    //    value = ((Excel.Range)wbook.Sheets.get_Item(address)).get_Value(Type.Missing).ToString();
-
-                                    //    _sqlBuilder.ParaValueList[i - 1] = value;
-                                    //}
-                                    //vParameter[i - 1] = p.Value.ToString().Replace(",", string.Empty);
-                                }
-
+                                //vParameter[i - 1] = p.Value.ToString().Replace(",", string.Empty);
                             }
+
                         }
                     }
+
+                    if (!formular.Contains("TVC_QUERY"))
+                        Parsing.Formular2SQLBuilder(formular, ref _sqlBuilder);
+                    else
+                    {
+                        Parsing.TVCFormular2SQLBuilder(formular, ref _sqlBuilder);
+                    }
+
+
                 }
-                Parsing.Formular2SQLBuilder(formular, ref _sqlBuilder);
-
-
-
                 //SetDataToForm();
             }
         }

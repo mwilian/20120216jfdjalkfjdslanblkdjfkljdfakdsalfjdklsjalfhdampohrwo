@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text.RegularExpressions;
 
-namespace QueryDesigner
+namespace dCube
 {
     /// <summary>
     // Customer class to be displayed in the property grid

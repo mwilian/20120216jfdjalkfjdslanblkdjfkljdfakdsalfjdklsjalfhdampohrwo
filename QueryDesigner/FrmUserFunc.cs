@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class FrmUserFunc : Form
     {

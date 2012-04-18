@@ -22,9 +22,10 @@ namespace QueryBuilder
     public class SQLBuilder
     {
 
+
         // Public Output() As Double
         // Public NoOfOutput As Integer
-
+        public const string DocumentFolder = "TVC-QD";
         private processingMode _Mode = processingMode.Details;
         private bool _headerVisible = false;
         private static string periodParterm = @"[1-9]{1}[0-9]{3}0[0-9]{1}[1-9]{1}";
@@ -100,7 +101,8 @@ namespace QueryBuilder
             foreach (Filter filter in sqlBuilder.Filters)
             {
                 Filter newNode = new Filter(filter.Node, filter.FilterFrom, filter.FilterTo, filter.ValueFrom, filter.ValueTo, filter.FilterFromP, filter.FilterToP);
-
+                newNode.Operate = filter.Operate;
+                newNode.IsNot = filter.IsNot;
                 Filters.Add(newNode);
             }
         }
@@ -568,6 +570,83 @@ namespace QueryBuilder
         }
 
 
+        ///  <summary>
+        ///  Return TTION Formula to Position POS
+        ///  </summary>
+        ///  <param name="Pos"></param>
+        ///  <returns></returns>
+        ///  <remarks></remarks>
+        public string BuildTVCformula(string Pos)
+        {
+            int indexPara = 1;
+            string param = "";
+            string result = "TVC_QUERY(\"{";
+            if (Regex.IsMatch(DatabaseP, @"\{P\}"))
+            {
+                result += "dtb={P}" + indexPara + ";";
+                param += "," + Database;
+                indexPara++;
+            }
+            else
+                result += "dtb=" + _DatabaseV + ";";
+
+            result += "tbl=" + _Table + ";";
+
+            if (Regex.IsMatch(_LedgerP, @"\{P\}"))
+            {
+                result += "ldg={P}" + indexPara + ";";
+                param += "," + Ledger;
+                indexPara++;
+            }
+            else
+                result += "ldg=" + _ledgerV + ";";
+            foreach (Filter f in Filters)
+            {
+                result += "fil={";
+                if (Regex.IsMatch(f.FilterFromP, @"\{P\}"))
+                {
+                    result += "f={P}" + indexPara + ";";
+                    param += "," + f.FilterFrom;
+                    indexPara++;
+                }
+                else
+                {
+                    result += "f=" + f.ValueFrom + ";";
+                }
+                if (Regex.IsMatch(f.FilterToP, @"\{P\}"))
+                {
+                    result += "t={P}" + indexPara + ";";
+                    param += "," + f.FilterTo;
+                    indexPara++;
+                }
+                else
+                {
+                    result += "t=" + f.ValueTo + ";";
+                }
+                result += "o=" + f.Operate + ";";
+                result += "i=" + f.IsNot + ";";
+                result += "k=" + f.Node.Code + ";";
+                result += "};";
+            }
+            foreach (Node n in SelectedNodes)
+            {
+                result += "out={";
+                result += "a=" + n.Agregate + ";";
+                result += "k=" + n.Code + ";";
+                result += "};";
+            }
+
+            result += "}\"," + Pos + param;
+            result += ")";
+            return result;
+        }
+
+        //  Method BuildTTformula
+        public string BuildTVCformula()
+        {
+            return BuildTVCformula(Pos);
+        }
+
         //  Method Convert2XML
         public string Convert2XML()
         {
@@ -694,8 +773,9 @@ namespace QueryBuilder
             List<Filter> sortList = new System.Collections.Generic.List<Filter>();
             foreach (Filter f in _filters)
             {
-                if (!string.IsNullOrEmpty(f.FilterFrom) && !Regex.IsMatch(f.Code, @"^@") && f.Code.Substring(0, 2) != "__")
+                if (f.Operate == "SPACE" || f.Operate == "EXISTS" || (!string.IsNullOrEmpty(f.FilterFrom) && !Regex.IsMatch(f.Code, @"^@") && f.Code.Substring(0, 2) != "__"))
                     sortList.Add(f);
+
             }
 
             /* L:424 */
@@ -1019,7 +1099,7 @@ namespace QueryBuilder
             if (_SQLDebugMode)
             {
                 //CoreCommonControl log = new CoreCommonControl();
-                string __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+                string __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + DocumentFolder;
                 CoreCommonControl.AddLog("cmdlog", __documentDirectory + "\\Log", "" + DateTime.Today.ToString("yyyyMMdd") + "" + this.Table + ":" + query);
 
                 //System.Windows.Forms.Clipboard.SetText(query);

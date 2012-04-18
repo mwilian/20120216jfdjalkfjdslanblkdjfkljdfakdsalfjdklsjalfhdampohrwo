@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmLoading
     {
@@ -46,7 +46,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::QueryDesigner.Properties.Resources.lightbox_loading;
+            this.pictureBox1.Image = global::dCube.Properties.Resources.lightbox_loading;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 32);

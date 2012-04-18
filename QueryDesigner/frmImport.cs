@@ -13,7 +13,7 @@ using Janus.Windows.GridEX;
 using System.Xml;
 using BUS;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmImport : Form
     {

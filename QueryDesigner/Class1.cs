@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace QueryDesigner
+namespace dCube
 {
     class Class1
     {

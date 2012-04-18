@@ -12,7 +12,7 @@ using System.IO;
 using System.Windows.Forms;
 
 
-namespace QueryDesigner.Configuration
+namespace dCube.Configuration
 {
     public class clsConfigurarion
     {

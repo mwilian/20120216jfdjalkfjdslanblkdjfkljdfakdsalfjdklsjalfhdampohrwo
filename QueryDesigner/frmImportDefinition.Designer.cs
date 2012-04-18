@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmImportDefinition
     {
@@ -175,7 +175,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(36, 36);
@@ -187,7 +187,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(36, 36);
@@ -197,7 +197,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(36, 36);
@@ -207,7 +207,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(36, 36);
@@ -222,7 +222,7 @@
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(36, 36);
@@ -232,7 +232,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(36, 36);
@@ -280,7 +280,7 @@
             // bt_group
             // 
             this.bt_group.BackColor = System.Drawing.Color.Transparent;
-            this.bt_group.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.bt_group.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.bt_group.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.bt_group.Location = new System.Drawing.Point(379, 83);
             this.bt_group.Name = "bt_group";
@@ -376,7 +376,7 @@
             // btnSelectTable
             // 
             this.btnSelectTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectTable.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnSelectTable.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnSelectTable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSelectTable.Location = new System.Drawing.Point(942, 3);
             this.btnSelectTable.Name = "btnSelectTable";

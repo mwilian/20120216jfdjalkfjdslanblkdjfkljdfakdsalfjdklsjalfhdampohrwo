@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmTask
     {
@@ -137,7 +137,7 @@
             this.btnRun});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(719, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(830, 39);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "Export Excel";
             // 
@@ -149,7 +149,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(36, 36);
@@ -161,7 +161,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(36, 36);
@@ -171,7 +171,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(36, 36);
@@ -181,7 +181,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(36, 36);
@@ -196,7 +196,7 @@
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(36, 36);
@@ -206,7 +206,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(36, 36);
@@ -221,7 +221,7 @@
             // btnTransferIn
             // 
             this.btnTransferIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferIn.Image = global::QueryDesigner.Properties.Resources.download;
+            this.btnTransferIn.Image = global::dCube.Properties.Resources.download;
             this.btnTransferIn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTransferIn.Name = "btnTransferIn";
             this.btnTransferIn.Size = new System.Drawing.Size(36, 36);
@@ -231,7 +231,7 @@
             // btnTransferOut
             // 
             this.btnTransferOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferOut.Image = global::QueryDesigner.Properties.Resources.app_upload_32x32;
+            this.btnTransferOut.Image = global::dCube.Properties.Resources.app_upload_32x32;
             this.btnTransferOut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTransferOut.Name = "btnTransferOut";
             this.btnTransferOut.Size = new System.Drawing.Size(36, 36);
@@ -246,7 +246,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::QueryDesigner.Properties.Resources._1331113101_addressbook;
+            this.toolStripButton1.Image = global::dCube.Properties.Resources._1331113101_addressbook;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
@@ -261,7 +261,7 @@
             // btnRun
             // 
             this.btnRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRun.Image = global::QueryDesigner.Properties.Resources._1331104457_gnome_session_reboot;
+            this.btnRun.Image = global::dCube.Properties.Resources._1331104457_gnome_session_reboot;
             this.btnRun.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(36, 36);
@@ -285,9 +285,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbErr});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 438);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 575);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(719, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(830, 22);
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -306,7 +306,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 39);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(719, 399);
+            this.tabControl1.Size = new System.Drawing.Size(830, 536);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -332,7 +332,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(711, 372);
+            this.tabPage1.Size = new System.Drawing.Size(822, 509);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -340,7 +340,7 @@
             // Type
             // 
             this.Type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.Type.Location = new System.Drawing.Point(242, 37);
+            this.Type.Location = new System.Drawing.Point(302, 40);
             this.Type.MaxLength = 1;
             this.Type.Name = "Type";
             this.Type.Size = new System.Drawing.Size(52, 20);
@@ -349,16 +349,16 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(185, 40);
+            this.label14.Location = new System.Drawing.Point(245, 43);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 14);
-            this.label14.TabIndex = 44;
+            this.label14.TabIndex = 3;
             this.label14.Text = "Type (S/)";
             // 
             // Lookup
             // 
             this.Lookup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.Lookup.Location = new System.Drawing.Point(79, 37);
+            this.Lookup.Location = new System.Drawing.Point(54, 40);
             this.Lookup.MaxLength = 15;
             this.Lookup.Name = "Lookup";
             this.Lookup.Size = new System.Drawing.Size(100, 20);
@@ -374,10 +374,10 @@
             this.dgvEmail.DesignTimeLayout = dgvEmail_DesignTimeLayout;
             this.dgvEmail.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvEmail.GroupByBoxVisible = false;
-            this.dgvEmail.Location = new System.Drawing.Point(358, 200);
+            this.dgvEmail.Location = new System.Drawing.Point(432, 200);
             this.dgvEmail.Name = "dgvEmail";
             this.dgvEmail.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvEmail.Size = new System.Drawing.Size(307, 158);
+            this.dgvEmail.Size = new System.Drawing.Size(385, 303);
             this.dgvEmail.TabIndex = 8;
             this.dgvEmail.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
@@ -391,10 +391,10 @@
             this.dgvList.DesignTimeLayout = dgvList_DesignTimeLayout;
             this.dgvList.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvList.GroupByBoxVisible = false;
-            this.dgvList.Location = new System.Drawing.Point(15, 200);
+            this.dgvList.Location = new System.Drawing.Point(6, 200);
             this.dgvList.Name = "dgvList";
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(302, 158);
+            this.dgvList.Size = new System.Drawing.Size(385, 303);
             this.dgvList.TabIndex = 7;
             this.dgvList.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
             // 
@@ -407,10 +407,10 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.CntQD_ID);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Location = new System.Drawing.Point(343, 65);
+            this.groupBox2.Location = new System.Drawing.Point(6, 74);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(322, 106);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.Size = new System.Drawing.Size(385, 106);
+            this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Email Content";
             // 
@@ -434,7 +434,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.pictureBox1.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pictureBox1.Location = new System.Drawing.Point(264, 20);
             this.pictureBox1.Name = "pictureBox1";
@@ -449,7 +449,7 @@
             this.CntTemplate.Location = new System.Drawing.Point(117, 45);
             this.CntTemplate.MaxLength = 15;
             this.CntTemplate.Name = "CntTemplate";
-            this.CntTemplate.Size = new System.Drawing.Size(199, 20);
+            this.CntTemplate.Size = new System.Drawing.Size(262, 20);
             this.CntTemplate.TabIndex = 1;
             // 
             // label7
@@ -477,7 +477,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 14);
             this.label8.TabIndex = 11;
-            this.label8.Text = "Inquiry Code";
+            this.label8.Text = "Report Code";
             // 
             // groupBox1
             // 
@@ -488,17 +488,17 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.ValidRange);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(15, 65);
+            this.groupBox1.Location = new System.Drawing.Point(432, 74);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 106);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.Size = new System.Drawing.Size(385, 106);
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attachment";
             // 
             // btnQD
             // 
             this.btnQD.BackColor = System.Drawing.Color.Transparent;
-            this.btnQD.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnQD.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnQD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnQD.Location = new System.Drawing.Point(264, 20);
             this.btnQD.Name = "btnQD";
@@ -513,7 +513,7 @@
             this.AttTemplate.Location = new System.Drawing.Point(117, 45);
             this.AttTemplate.MaxLength = 15;
             this.AttTemplate.Name = "AttTemplate";
-            this.AttTemplate.Size = new System.Drawing.Size(199, 20);
+            this.AttTemplate.Size = new System.Drawing.Size(262, 20);
             this.AttTemplate.TabIndex = 1;
             // 
             // label6
@@ -541,7 +541,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 14);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Inquiry Code";
+            this.label1.Text = "Report Code";
             // 
             // ValidRange
             // 
@@ -563,39 +563,39 @@
             // ckbUse
             // 
             this.ckbUse.AutoSize = true;
-            this.ckbUse.Location = new System.Drawing.Point(327, 39);
+            this.ckbUse.Location = new System.Drawing.Point(482, 42);
             this.ckbUse.Name = "ckbUse";
-            this.ckbUse.Size = new System.Drawing.Size(56, 18);
+            this.ckbUse.Size = new System.Drawing.Size(57, 18);
             this.ckbUse.TabIndex = 4;
-            this.ckbUse.Text = "Is Use";
+            this.ckbUse.Text = "Active";
             this.ckbUse.UseVisualStyleBackColor = true;
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(323, 316);
+            this.btnRemove.Location = new System.Drawing.Point(397, 380);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(29, 23);
-            this.btnRemove.TabIndex = 39;
+            this.btnRemove.TabIndex = 12;
             this.btnRemove.Text = "<";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnRemoveAll
             // 
-            this.btnRemoveAll.Location = new System.Drawing.Point(323, 287);
+            this.btnRemoveAll.Location = new System.Drawing.Point(397, 351);
             this.btnRemoveAll.Name = "btnRemoveAll";
             this.btnRemoveAll.Size = new System.Drawing.Size(29, 23);
-            this.btnRemoveAll.TabIndex = 38;
+            this.btnRemoveAll.TabIndex = 11;
             this.btnRemoveAll.Text = "<<";
             this.btnRemoveAll.UseVisualStyleBackColor = true;
             this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
             // 
             // btnFill
             // 
-            this.btnFill.Location = new System.Drawing.Point(323, 258);
+            this.btnFill.Location = new System.Drawing.Point(397, 322);
             this.btnFill.Name = "btnFill";
             this.btnFill.Size = new System.Drawing.Size(29, 23);
-            this.btnFill.TabIndex = 37;
+            this.btnFill.TabIndex = 10;
             this.btnFill.Text = ">>";
             this.btnFill.UseVisualStyleBackColor = true;
             this.btnFill.Click += new System.EventHandler(this.btnFill_Click);
@@ -603,7 +603,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(364, 183);
+            this.label5.Location = new System.Drawing.Point(429, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 14);
             this.label5.TabIndex = 36;
@@ -612,7 +612,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 183);
+            this.label4.Location = new System.Drawing.Point(3, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 14);
             this.label4.TabIndex = 35;
@@ -620,10 +620,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(323, 229);
+            this.btnAdd.Location = new System.Drawing.Point(397, 293);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(29, 23);
-            this.btnAdd.TabIndex = 34;
+            this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = ">";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -631,7 +631,7 @@
             // txtCode
             // 
             this.txtCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtCode.Location = new System.Drawing.Point(79, 6);
+            this.txtCode.Location = new System.Drawing.Point(54, 6);
             this.txtCode.MaxLength = 15;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 20);
@@ -640,7 +640,7 @@
             // lbDescription
             // 
             this.lbDescription.AutoSize = true;
-            this.lbDescription.Location = new System.Drawing.Point(12, 40);
+            this.lbDescription.Location = new System.Drawing.Point(3, 43);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(45, 14);
             this.lbDescription.TabIndex = 29;
@@ -649,7 +649,7 @@
             // lbCode
             // 
             this.lbCode.AutoSize = true;
-            this.lbCode.Location = new System.Drawing.Point(12, 10);
+            this.lbCode.Location = new System.Drawing.Point(3, 9);
             this.lbCode.Name = "lbCode";
             this.lbCode.Size = new System.Drawing.Size(32, 14);
             this.lbCode.TabIndex = 28;
@@ -658,7 +658,7 @@
             // txtDescription
             // 
             this.txtDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.txtDescription.Location = new System.Drawing.Point(185, 6);
+            this.txtDescription.Location = new System.Drawing.Point(160, 6);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(379, 20);
             this.txtDescription.TabIndex = 1;
@@ -678,7 +678,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(711, 372);
+            this.tabPage2.Size = new System.Drawing.Size(822, 509);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Configuration";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -778,7 +778,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 460);
+            this.ClientSize = new System.Drawing.Size(830, 597);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);

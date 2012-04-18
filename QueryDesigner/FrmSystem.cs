@@ -10,7 +10,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class FrmSystem : Form
     {
@@ -178,7 +178,7 @@ namespace QueryDesigner
 
         private string GetDocumentDirec()
         {
-            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
         }
 
         private void radPageViewPage2_Click(object sender, EventArgs e)

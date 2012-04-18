@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmPOD
     {
@@ -35,6 +35,9 @@
             this.btnEdit = new System.Windows.Forms.ToolStripButton();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnTransferIn = new System.Windows.Forms.ToolStripButton();
+            this.btnTransferOut = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,9 +58,6 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.lbDB = new System.Windows.Forms.Label();
             this.lbRole = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnTransferIn = new System.Windows.Forms.ToolStripButton();
-            this.btnTransferOut = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRole)).BeginInit();
@@ -95,7 +95,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(36, 36);
@@ -107,7 +107,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(36, 36);
@@ -117,7 +117,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(36, 36);
@@ -127,7 +127,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(36, 36);
@@ -139,10 +139,35 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
+            // btnTransferIn
+            // 
+            this.btnTransferIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnTransferIn.Image = global::dCube.Properties.Resources.download;
+            this.btnTransferIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTransferIn.Name = "btnTransferIn";
+            this.btnTransferIn.Size = new System.Drawing.Size(36, 36);
+            this.btnTransferIn.Text = "toolStripButton1";
+            this.btnTransferIn.Click += new System.EventHandler(this.btnTransferIn_Click);
+            // 
+            // btnTransferOut
+            // 
+            this.btnTransferOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnTransferOut.Image = global::dCube.Properties.Resources.app_upload_32x32;
+            this.btnTransferOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTransferOut.Name = "btnTransferOut";
+            this.btnTransferOut.Size = new System.Drawing.Size(36, 36);
+            this.btnTransferOut.Text = "toolStripButton2";
+            this.btnTransferOut.Click += new System.EventHandler(this.btnTransferOut_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(36, 36);
@@ -152,7 +177,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(36, 36);
@@ -243,9 +268,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(17, 119);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.Size = new System.Drawing.Size(90, 13);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Defaule Database";
+            this.label5.Text = "Default Database";
             // 
             // statusStrip1
             // 
@@ -269,7 +294,7 @@
             // btnRole
             // 
             this.btnRole.BackColor = System.Drawing.Color.Transparent;
-            this.btnRole.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnRole.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnRole.Location = new System.Drawing.Point(208, 67);
             this.btnRole.Name = "btnRole";
             this.btnRole.Size = new System.Drawing.Size(16, 16);
@@ -280,7 +305,7 @@
             // btnDB
             // 
             this.btnDB.BackColor = System.Drawing.Color.Transparent;
-            this.btnDB.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnDB.Image = global::dCube.Properties.Resources._1303882176_search_16;
             this.btnDB.Location = new System.Drawing.Point(208, 119);
             this.btnDB.Name = "btnDB";
             this.btnDB.Size = new System.Drawing.Size(16, 16);
@@ -338,31 +363,6 @@
             this.lbRole.TabIndex = 50;
             this.lbRole.Text = "_";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // btnTransferIn
-            // 
-            this.btnTransferIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferIn.Image = global::QueryDesigner.Properties.Resources.download;
-            this.btnTransferIn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnTransferIn.Name = "btnTransferIn";
-            this.btnTransferIn.Size = new System.Drawing.Size(36, 36);
-            this.btnTransferIn.Text = "toolStripButton1";
-            this.btnTransferIn.Click += new System.EventHandler(this.btnTransferIn_Click);
-            // 
-            // btnTransferOut
-            // 
-            this.btnTransferOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferOut.Image = global::QueryDesigner.Properties.Resources.app_upload_32x32;
-            this.btnTransferOut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnTransferOut.Name = "btnTransferOut";
-            this.btnTransferOut.Size = new System.Drawing.Size(36, 36);
-            this.btnTransferOut.Text = "toolStripButton2";
-            this.btnTransferOut.Click += new System.EventHandler(this.btnTransferOut_Click);
-            // 
             // frmPOD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +372,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmPOD";
-            this.Text = "User Definition";
+            this.Text = "Operator Definition";
             this.Load += new System.EventHandler(this.frmPOD_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

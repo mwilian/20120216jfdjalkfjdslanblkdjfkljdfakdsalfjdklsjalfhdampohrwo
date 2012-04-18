@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmFilterSelect : Form
     {
@@ -81,41 +81,46 @@ namespace QueryDesigner
                 _sqlBuidler.SelectedNodes.Add(_sqlBuidler.Filters[_indexFilter].Node);
                 _sqlBuidler.Filters.RemoveAt(_indexFilter);
 
-                _sqlBuidler.SelectedNodes[0].Agregate = "Min";
-                object min = _sqlBuidler.BuildObject("", _connectString);
-
-                _sqlBuidler.SelectedNodes[0].Agregate = "Max";
-                object max = _sqlBuidler.BuildObject("", _connectString);
-
-                int minyear = DateTime.Now.Year - 2;
-                int maxyear = DateTime.Now.Year + 2;
-
-                if (min != null)
+                try
                 {
-                    minyear = ((int)min) / 1000;
-                }
-                if (max != null)
-                {
-                    maxyear = ((int)max) / 1000;
-                }
+                    _sqlBuidler.SelectedNodes[0].Agregate = "Min";
+                    object min = _sqlBuidler.BuildObject("", _connectString);
 
-                DataTable dt = new DataTable();
-                DataColumn[] col = new DataColumn[] { new DataColumn("SELECTED", typeof(bool)), new DataColumn("VALUE"), new DataColumn("Lookup"), new DataColumn("Description") };
-                dt.Columns.AddRange(col);
-                for (int i = minyear; i <= maxyear; i++)
-                {
-                    for (int j = 1; j < 13; j++)
+                    _sqlBuidler.SelectedNodes[0].Agregate = "Max";
+                    object max = _sqlBuidler.BuildObject("", _connectString);
+
+                    int minyear = DateTime.Now.Year - 2;
+                    int maxyear = DateTime.Now.Year + 2;
+
+                    if (min != null)
                     {
-                        DataRow row = dt.NewRow();
-                        row["SELECTED"] = false;
-                        row["VALUE"] = i.ToString("0000") + j.ToString("000");
-                        row["Lookup"] = i.ToString("0000");
-                        row["Description"] = j.ToString("000") + "/" + i.ToString("0000");
-                        dt.Rows.Add(row);
+                        minyear = ((int)min) / 1000;
                     }
+                    if (max != null)
+                    {
+                        maxyear = ((int)max) / 1000;
+                    }
+
+                    DataTable dt = new DataTable();
+                    DataColumn[] col = new DataColumn[] { new DataColumn("SELECTED", typeof(bool)), new DataColumn("VALUE"), new DataColumn("Lookup"), new DataColumn("Description") };
+                    dt.Columns.AddRange(col);
+                    for (int i = minyear; i <= maxyear; i++)
+                    {
+                        for (int j = 1; j < 13; j++)
+                        {
+                            DataRow row = dt.NewRow();
+                            row["SELECTED"] = false;
+                            row["VALUE"] = i.ToString("0000") + j.ToString("000");
+                            row["Lookup"] = i.ToString("0000");
+                            row["Description"] = j.ToString("000") + "/" + i.ToString("0000");
+                            dt.Rows.Add(row);
+                        }
+                    }
+                    dgvSelect.RootTable.Columns["VALUE"].Caption = "Code";
+                    dgvSelect.DataSource = dt;
                 }
-                dgvSelect.RootTable.Columns["VALUE"].Caption = "Code";
-                dgvSelect.DataSource = dt;
+                catch (Exception ex)
+                { }
             }
             else
             {
@@ -133,23 +138,30 @@ namespace QueryDesigner
 
                 _sqlBuidler.Filters.RemoveAt(_indexFilter);
                 _sqlBuidler.StrConnectDes = _connectString;
-                DataTable dt = _sqlBuidler.BuildDataTable("");
-                dgvSelect.RootTable.Columns["VALUE"].Caption = dt.Columns[0].ColumnName;
-                dgvSelect.RootTable.Columns["VALUE"].DataMember = dt.Columns[0].ColumnName;
-                if (dt.Columns.Count == 2)
-                {
-                    dgvSelect.RootTable.Columns["Description"].Caption = dt.Columns[1].ColumnName;
-                    dgvSelect.RootTable.Columns["Description"].DataMember = dt.Columns[1].ColumnName;
-                }
-                //dt.Columns[0].ColumnName = "VALUE";
 
-                DataColumn col = new DataColumn("SELECTED", typeof(bool));
-                dt.Columns.Add(col);
-                foreach (DataRow row in dt.Rows)
+                try
                 {
-                    row["SELECTED"] = false;
+                    DataTable dt = _sqlBuidler.BuildDataTable("");
+                    dgvSelect.RootTable.Columns["VALUE"].Caption = dt.Columns[0].ColumnName;
+                    dgvSelect.RootTable.Columns["VALUE"].DataMember = dt.Columns[0].ColumnName;
+                    if (dt.Columns.Count == 2)
+                    {
+                        dgvSelect.RootTable.Columns["Description"].Caption = dt.Columns[1].ColumnName;
+                        dgvSelect.RootTable.Columns["Description"].DataMember = dt.Columns[1].ColumnName;
+                    }
+                    //dt.Columns[0].ColumnName = "VALUE";
+
+                    DataColumn col = new DataColumn("SELECTED", typeof(bool));
+                    dt.Columns.Add(col);
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        row["SELECTED"] = false;
+                    }
+                    dgvSelect.DataSource = dt;
                 }
-                dgvSelect.DataSource = dt;
+                catch (Exception ex)
+                { }
+
             }
             dgvSelect.RootTable.Columns["VALUE"].Width = 100;
             //dgvSelect.RootTable.Columns["VALUE"].ReadOnly = true;
@@ -166,7 +178,7 @@ namespace QueryDesigner
         {
             flag = false;
         }
-       
+
 
         private void dgvSelect_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -176,7 +188,7 @@ namespace QueryDesigner
                 else txtFilterTo.Text = dgvSelect.CurrentRow.Cells["VALUE"].Value.ToString();
                 flag = !flag;
             }
-            
+
             for (int i = 0; i < dgvSelect.RowCount; i++)
             {
                 dgvSelect.GetRow(i).BeginEdit();
@@ -213,6 +225,6 @@ namespace QueryDesigner
                 txtFilterTo.Text = "";
             }
         }
-        
+
     }
 }

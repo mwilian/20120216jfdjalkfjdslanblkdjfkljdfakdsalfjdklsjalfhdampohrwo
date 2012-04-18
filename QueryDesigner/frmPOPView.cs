@@ -13,7 +13,7 @@ using DTO;
 using QueryBuilder;
 using System.IO;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmPOPView : Form
     {
