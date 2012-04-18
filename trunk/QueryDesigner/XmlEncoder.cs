@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-namespace QueryDesigner
+namespace dCube
 {
     public class XmlEncoder
     {

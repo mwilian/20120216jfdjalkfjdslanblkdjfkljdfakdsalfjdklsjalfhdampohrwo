@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using BUS;
 using Janus.Windows.GridEX;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmImportDefinition : Form
     {
@@ -122,7 +122,7 @@ namespace QueryDesigner
         }
         private string GetDocumentDirec()
         {
-            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
         }
 
         private void ddlQD_SelectedIndexChanged(object sender, EventArgs e)

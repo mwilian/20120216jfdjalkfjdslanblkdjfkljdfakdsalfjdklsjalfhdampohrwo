@@ -22,7 +22,7 @@ using System.Threading;
 using System.Windows.Forms;
 //using Excel = Microsoft.Office.Interop.Excel;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class Form_QD : Form
     {
@@ -61,17 +61,18 @@ namespace QueryDesigner
         string THEME = "Office2010";
         Node[] _arrNodes = null;
         string _hashTmp = null;
-        public static string _key = "newoppo123456789";
-        public static string _iv = "12345678";
-        public static string _padMode = "PKCS7";
-        public static string _opMode = "CBC";
+        public const string _key = "newoppo123456789";
+        public const string _iv = "12345678";
+        public const string _padMode = "PKCS7";
+        public const string _opMode = "CBC";
+        public const string DocumentFolder = "TVC-QD";
         string owner = "";
         string _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
         string _pathLicense = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
         string _datePaterm = @"^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{3}|[0-9]{2}|[0-9]{1})$";
         public static string __documentDirectory = string.Empty;
-        public static string __reportPath = "";
-        public static string __templatePath = "";
+        //public static string __reportPath = "";
+        //public static string __templatePath = "";
         string _processStatus = "";
         bool flagOpen = true;
         TreeNode _currentNode = null;
@@ -203,6 +204,13 @@ namespace QueryDesigner
 
             }
             _sqlBuilder.Database = DB;
+            if (DB != "")
+            {
+                BUS.DBAControl dbaCtr = new DBAControl();
+                DTO.DBAInfo dbaInf = dbaCtr.Get(DB, ref sErr);
+                if (dbaInf.REPORT_TEMPLATE_DRIVER != "")
+                    _config.DIR[0].TMP = dbaInf.REPORT_TEMPLATE_DRIVER;
+            }
         }
 
         //void SqlBuilder_Change()
@@ -355,8 +363,8 @@ namespace QueryDesigner
 
                     if (_config.DIR.Rows.Count > 0)
                     {
-                        __templatePath = _config.DIR.Rows[0]["TMP"].ToString();
-                        __reportPath = _config.DIR.Rows[0]["RPT"].ToString();
+                        //__templatePath = _config.DIR.Rows[0]["TMP"].ToString();
+                        //__reportPath = _config.DIR.Rows[0]["RPT"].ToString();
                     }
 
                     if (_config.SYS.Rows.Count > 0)
@@ -411,8 +419,8 @@ namespace QueryDesigner
                 CmdManager.Db = DB;
                 CmdManager.AppConnect = _strConnect;
                 CmdManager.RepConnect = _strConnectDes;
-                CmdManager.ReptPath = __reportPath;
-                CmdManager.TempPath = __templatePath;
+                CmdManager.ReptPath = _config.DIR[0].RPT;
+                CmdManager.TempPath = _config.DIR[0].TMP;
             }
             catch (Exception ex)
             {
@@ -484,15 +492,15 @@ namespace QueryDesigner
 
             try
             {
-                if (!Directory.Exists(__templatePath))
-                    Directory.CreateDirectory(__templatePath);
-                if (!Directory.Exists(__reportPath))
-                    Directory.CreateDirectory(__reportPath);
+                if (!Directory.Exists(_config.DIR[0].TMP))
+                    Directory.CreateDirectory(_config.DIR[0].TMP);
+                if (!Directory.Exists(_config.DIR[0].RPT))
+                    Directory.CreateDirectory(_config.DIR[0].RPT);
                 string ext = "";
 
-                if (!File.Exists(__templatePath + "-.template" + ReportGenerator.Ext))
+                if (!File.Exists(_config.DIR[0].TMP + "-.template" + ReportGenerator.Ext))
                 {
-                    File.Copy(_appPath + "\\-.template" + ReportGenerator.Ext, __templatePath + "-.template" + ReportGenerator.Ext);
+                    File.Copy(_appPath + "\\-.template" + ReportGenerator.Ext, _config.DIR[0].TMP + "-.template" + ReportGenerator.Ext);
                 }
             }
             catch (Exception ex)
@@ -506,7 +514,7 @@ namespace QueryDesigner
             if (sErr != "")
                 lb_Err.Text = sErr;
             splitContainer3.SplitterDistance = 1124;
-            Text = "Query Desinger for WinForm - " + _user + "@" + DB;
+            Text = "dCube - " + _user + "@" + DB;
             //frmLoading frm = new frmLoading();
 
             //frm.Show();
@@ -514,8 +522,8 @@ namespace QueryDesigner
 
         private void InitDocument()
         {
-            string filename = _appPath + "\\Configuration\\xmlConnect.xml";
-            __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            string filename = _appPath + "\\Configuration\\QDConfig.tvc";
+            __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
             if (!Directory.Exists(__documentDirectory))
             {
                 Directory.CreateDirectory(__documentDirectory);
@@ -536,18 +544,18 @@ namespace QueryDesigner
                 Directory.CreateDirectory(logFolder);
             }
 
-            string connectionFile = configureDirectory + "\\xmlConnect.xml";
+            string connectionFile = configureDirectory + "\\QDConfig.tvc";
             if (!File.Exists(connectionFile))
             {
                 File.Copy(filename, connectionFile);
             }
-            string tmpLicense = _appPath + "\\license.bin";
-            string fileLicense = configureDirectory + "\\license.bin";
-            if (!File.Exists(fileLicense))
-                if (File.Exists(tmpLicense))
-                {
-                    File.Copy(tmpLicense, fileLicense);
-                }
+            //string tmpLicense = _appPath + "\\license.bin";
+            //string fileLicense = configureDirectory + "\\license.bin";
+            //if (!File.Exists(fileLicense))
+            //    if (File.Exists(tmpLicense))
+            //    {
+            //        File.Copy(tmpLicense, fileLicense);
+            //    }
         }
 
 
@@ -808,7 +816,7 @@ namespace QueryDesigner
             }
             if (txtqd_id.Text.Trim() == "")
             {
-                err = err + "- Inquiry Code required !!!\n";
+                err = err + "- Report Code required !!!\n";
                 flag = true;
             }
             if (txtdesr.Text == "")
@@ -843,7 +851,7 @@ namespace QueryDesigner
             }
             if (txtqd_id.Text.Trim() == "")
             {
-                err = err + "- Inquiry Code required !!!\n";
+                err = err + "- Report Code required !!!\n";
                 flag = true;
             }
             if (txtdesr.Text == "")
@@ -1059,7 +1067,7 @@ namespace QueryDesigner
             //             , Properties.Settings.Default.Pass
             //             , Properties.Settings.Default.DBName);
 
-            ReportGenerator rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            ReportGenerator rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
 
@@ -1073,9 +1081,9 @@ namespace QueryDesigner
             {
                 //string ext = "";
 
-                string filename = __reportPath + txtdesr.Text + ReportGenerator.Ext;
+                string filename = _config.DIR[0].RPT + txtdesr.Text + ReportGenerator.Ext;
                 rpGen.Name = txtdesr.Text;
-                if (CheckChange(_xlsFile, __templatePath, txtqd_id.Text))
+                if (CheckChange(_xlsFile, _config.DIR[0].TMP, txtqd_id.Text))
                     _xlsFile = rpGen.CreateReport();
                 _xlsFile.Save(filename, ReportGenerator._format);
 
@@ -1128,16 +1136,16 @@ namespace QueryDesigner
                     //      File.Delete(saveFileDialog1.FileName);
                     string currentPath = _appPath + "\\";
 
-                    if (!File.Exists(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext))
+                    if (!File.Exists(_config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext))
                     {
                         XlsFile xlsTemp = new XlsFile(currentPath + "-.template" + ReportGenerator.Ext);
                         xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 10, 2, txtqd_id.Text.Trim(), 0);
                         xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
                         xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
 
-                        xlsTemp.Save(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+                        xlsTemp.Save(_config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
                     }
-                    Process.Start(__templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+                    Process.Start(_config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
 
                 }
                 else if (File.Exists(txtTmp.Text))
@@ -1148,7 +1156,7 @@ namespace QueryDesigner
                 {
                     LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
                     LIST_TEMPLATEInfo info = ctr.Get(_dtb, txtqd_id.Text, ref sErr);
-                    string filename = __templatePath + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext;
+                    string filename = _config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext;
                     using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
                     {
                         fs.Write(info.Data, 0, info.Data.Length);
@@ -1294,10 +1302,10 @@ namespace QueryDesigner
                     lb_Err.Text = sErr;
                 }
                 else
-                    lb_Err.Text = "Query Designer Code is not exist.";
+                    lb_Err.Text = "Report Code is not exist.";
             }
             else
-                lb_Err.Text = "Query Designer Code is not exist.";
+                lb_Err.Text = "Report Code is not exist.";
         }
 
 
@@ -2164,7 +2172,7 @@ namespace QueryDesigner
             //             , Properties.Settings.Default.Pass
             //             , Properties.Settings.Default.DBName);
             //if (_rpGen == null || _rpGen.IsClose())
-            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
             if (tempInfo.Code != "")
@@ -2177,19 +2185,19 @@ namespace QueryDesigner
             try
             {
                 xls = new XlsFile();
-                if (File.Exists(__templatePath + "\\NODATA.xls"))
-                    xls.Open(__templatePath + "\\NODATA.xls");
+                if (File.Exists(_config.DIR[0].TMP + "\\NODATA.xls"))
+                    xls.Open(_config.DIR[0].TMP + "\\NODATA.xls");
                 else
                 {
                     if (File.Exists(_appPath + "\\NODATA.xls"))
                     {
-                        File.Copy(_appPath + "\\NODATA.xls", __templatePath + "\\NODATA.xls");
-                        xls.Open(__templatePath + "\\NODATA.xls");
+                        File.Copy(_appPath + "\\NODATA.xls", _config.DIR[0].TMP + "\\NODATA.xls");
+                        xls.Open(_config.DIR[0].TMP + "\\NODATA.xls");
                     }
                 }
 
                 _rpGen.Name = txtdesr.Text;
-                if (CheckChange(_xlsFile, __templatePath, txtqd_id.Text))
+                if (CheckChange(_xlsFile, _config.DIR[0].TMP, txtqd_id.Text))
                 {
                     _xlsFile = _rpGen.CreateReport();
 
@@ -2246,46 +2254,53 @@ namespace QueryDesigner
         {
             if (e.RowIndex == -1)
                 return;
-            QueryBuilder.Node node = ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).Node;
-
-            if (node.MyCode.Length > 2 && node.MyCode.Substring(0, 2) != "__")
+            try
             {
-                if (node.FType == "SDN" || node.FType == "D")
+                QueryBuilder.Node node = ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).Node;
+
+                if (node.MyCode.Length > 2 && node.MyCode.Substring(0, 2) != "__")
                 {
-                    frmDateFilterSelect frm = new frmDateFilterSelect(node.FType);
-                    frm.FilterFrom = dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value.ToString();
-                    frm.FilterTo = dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value.ToString();
-                    if (frm.ShowDialog() == DialogResult.OK)
+                    if (node.FType == "SDN" || node.FType == "D")
                     {
-                        dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value = frm.FilterFrom;
-                        dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value = frm.FilterTo;
+                        frmDateFilterSelect frm = new frmDateFilterSelect(node.FType);
+                        frm.FilterFrom = dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value.ToString();
+                        frm.FilterTo = dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value.ToString();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value = frm.FilterFrom;
+                            dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value = frm.FilterTo;
+                        }
+                    }
+                    else
+                    {
+                        frmFilterSelect frm = new frmFilterSelect(_strConnectDes, _sqlBuilder, e.RowIndex);
+                        frm.FilterFrom = dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value.ToString();
+                        frm.FilterTo = dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value.ToString();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value = frm.FilterFrom;
+                            dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value = frm.FilterTo;
+                        }
                     }
                 }
-                else
+                else if (node.MyCode.Substring(0, 2) == "__")
                 {
-                    frmFilterSelect frm = new frmFilterSelect(_strConnectDes, _sqlBuilder, e.RowIndex);
-                    frm.FilterFrom = dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value.ToString();
-                    frm.FilterTo = dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value.ToString();
-                    if (frm.ShowDialog() == DialogResult.OK)
+                    if (node.FType == "SDN" || node.FType == "D")
                     {
-                        dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value = frm.FilterFrom;
-                        dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value = frm.FilterTo;
+                        frmDateFilterSelect frm = new frmDateFilterSelect(node.FType);
+                        frm.FilterFrom = dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value.ToString();
+                        frm.FilterTo = dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value.ToString();
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value = frm.FilterFrom;
+                            dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value = frm.FilterTo;
+                        }
                     }
                 }
             }
-            else if (node.MyCode.Substring(0, 2) == "__")
+            catch (Exception ex)
             {
-                if (node.FType == "SDN" || node.FType == "D")
-                {
-                    frmDateFilterSelect frm = new frmDateFilterSelect(node.FType);
-                    frm.FilterFrom = dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value.ToString();
-                    frm.FilterTo = dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value.ToString();
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        dgvFilter.Rows[e.RowIndex].Cells["FilterFrom"].Value = frm.FilterFrom;
-                        dgvFilter.Rows[e.RowIndex].Cells["FilterTo"].Value = frm.FilterTo;
-                    }
-                }
+                lb_Err.Text = ex.Message;
             }
         }
 
@@ -2455,7 +2470,7 @@ namespace QueryDesigner
             //XlsFile xls = new XlsFile();
             //BUS.CommoControl commo = new CommoControl();
             //if (_rpGen == null || _rpGen.IsClose())
-            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
             if (tempInfo.Code != "")
@@ -2469,10 +2484,10 @@ namespace QueryDesigner
                 _rpGen.Name = txtdesr.Text;
                 if (_rpGen.IsClose() || _filehtml == "")
                 {
-                    if (CheckChange(_xlsFile, __templatePath, txtqd_id.Text))
+                    if (CheckChange(_xlsFile, _config.DIR[0].TMP, txtqd_id.Text))
                         _xlsFile = _rpGen.CreateReport();
                     else _rpGen.XlsFile = _xlsFile;
-                    _filehtml = _rpGen.ExportHTMLToPath(__reportPath);
+                    _filehtml = _rpGen.ExportHTMLToPath(_config.DIR[0].RPT);
 
                     url = "file:///" + _filehtml.Replace("\\", "/");
                     wbChart.Url = new Uri(url);
@@ -2501,7 +2516,7 @@ namespace QueryDesigner
             //             , Properties.Settings.Default.Pass
             //             , Properties.Settings.Default.DBName);
             //if (_rpGen == null || _rpGen.IsClose())
-            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, __templatePath, __reportPath);
+            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
             //ExcelFile test = null;
             try
             {
@@ -2783,9 +2798,23 @@ namespace QueryDesigner
                             lb_Err.Text = ex.Message;
                         }
                     }
+
                 }
             }
             else lb_Err.Text = "Required Database!";
+
+            if (txtCommand.Text == "QDS")
+            {
+                try
+                {
+                    Form1 frm = new Form1(_config);
+                    frm.Show();
+                }
+                catch (Exception ex)
+                {
+                    lb_Err.Text = ex.Message;
+                }
+            }
         }
 
         private void btnChartPropety_Click(object sender, EventArgs e)
@@ -2833,7 +2862,7 @@ namespace QueryDesigner
                             try
                             {
                                 //function = XmlEncoder.Decode(function);
-                                QDAddinDrillDown frm = new QDAddinDrillDown("A1", null, Base64ToString(arry[1].Replace("tag=", "")), _strConnectDes);
+                                QDAddinDrillDown frm = new QDAddinDrillDown("A1", null, Base64ToString(arry[1].Replace("tag=", "")), _strConnectDes, _user);
                                 frm.Config = _config;
                                 frm.Show(this);
                             }
@@ -3233,7 +3262,9 @@ namespace QueryDesigner
                 //txtdatabase.Focus();
                 ResetForm();
                 _sqlBuilder.Database = DB;
-                Text = "Query Desinger for WinForm - " + _user + "@" + DB;
+                Text = "dCube - " + _user + "@" + DB;
+                if (frm.ReportDir != "")
+                    _config.DIR[0].TMP = frm.ReportDir;
                 //}
             }
         }
@@ -3264,7 +3295,7 @@ namespace QueryDesigner
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            frmDBDef frm = new frmDBDef();
+            frmDBDef frm = new frmDBDef(_config);
             frm.ShowDialog();
         }
 

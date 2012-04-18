@@ -4,14 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+
 using System.Windows.Forms;
 using QueryBuilder;
-using Excel = Microsoft.Office.Interop.Excel;
 using System.Text.RegularExpressions;
 using System.Management;
 using System.IO;
 using BUS;
-namespace QueryDesigner
+namespace dCube
 {
     public partial class QDAddIn : Form
     {
@@ -97,11 +97,11 @@ namespace QueryDesigner
             _strConnect = connect;
             _strConnectDes = connectDes;
         }
-        public QDAddIn(string Pos, Excel._Application xls, string formular, string connect, string connectDes)
+        public QDAddIn(string Pos, Excel._Application xls, string formular, string connect, string connectDes,string user)
         {
             InitializeComponent();
             ////ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
-
+            _user = user;
             _strConnect = connect;
             _strConnectDes = connectDes;
             Init(Pos, xls, formular);
@@ -121,7 +121,13 @@ namespace QueryDesigner
 
         public void GetQueryBuilderFromFomular(string formular)
         {
-            if (formular.Contains("TT_XLB_EB") || formular.Contains("USER TABLE"))
+            if (formular.Contains("TVC_QUERY") && formular.Contains("USER TABLE"))
+            {
+                string tmp = formular.Replace("USER TABLE(", "");
+                formular = tmp.Substring(0, tmp.Length - 1);
+            }
+
+            if (formular.Contains("TT_XLB_EB") || formular.Contains("USER TABLE") || formular.Contains("TVC_QUERY"))
             {
                 Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
                 string vParamsString = Regex.Match(formular, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
@@ -155,7 +161,7 @@ namespace QueryDesigner
                                 {
                                     try
                                     {
-                                        value = isheet.get_Range(address, Type.Missing).get_Value(Type.Missing).ToString();
+                                        value = isheet.get_Range(address, Type.Missing).Value.ToString();
 
                                         _sqlBuilder.ParaValueList[i - 1] = value;
                                         break;
@@ -170,12 +176,16 @@ namespace QueryDesigner
 
                         }
                     }
+
+                    if (!formular.Contains("TVC_QUERY"))
+                        Parsing.Formular2SQLBuilder(formular, ref _sqlBuilder);
+                    else
+                    {
+                        Parsing.TVCFormular2SQLBuilder(formular, ref _sqlBuilder);
+                    }
+
+                    SetDataToForm();
                 }
-                Parsing.Formular2SQLBuilder(formular, ref _sqlBuilder);
-
-
-
-                SetDataToForm();
             }
         }
         public void SetValueFocus(string address, string value)
@@ -355,7 +365,7 @@ namespace QueryDesigner
         private void btOK_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            _ttFormular = _sqlBuilder.BuildTTformula(_sqlBuilder.Pos);
+            _ttFormular = "=" + _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
             Close();
         }
 
@@ -367,7 +377,7 @@ namespace QueryDesigner
 
         private void btDB_Click(object sender, EventArgs e)
         {
-            QueryDesigner.Form_DTBView a = new QueryDesigner.Form_DTBView();
+            dCube.Form_DTBView a = new dCube.Form_DTBView();
             //a.themname = this.ThemeName;
             a.BringToFront();
             a.ShowDialog(this);
@@ -378,7 +388,7 @@ namespace QueryDesigner
 
         private void btTable_Click(object sender, EventArgs e)
         {
-            QueryDesigner.Form_TableView a = new QueryDesigner.Form_TableView(_sqlBuilder.Database, _user);
+            dCube.Form_TableView a = new dCube.Form_TableView(txtDB.Text, _user);
             //a.themname = this.ThemeName;
             a.Code_DTB = txtDB.Text;
             a.BringToFront();
@@ -450,8 +460,15 @@ namespace QueryDesigner
             dgvFilter.AutoGenerateColumns = false;
             dgvSelectNodes.AutoGenerateColumns = false;
             SQLBuilderBindingSource.DataSource = _sqlBuilder;
+            QueryBuilder.SQLBuilder.SQLDebugMode = Properties.Settings.Default.SQLDebugMode;
+            IsNot.DataSource = QueryBuilder.Parsing.GetListIsNot();
+            IsNot.ValueMember = "Code";
+            IsNot.DisplayMember = "Description";
+            Operate.DataSource = QueryBuilder.Parsing.GetListOperator("");
+            Operate.ValueMember = "Code";
+            Operate.DisplayMember = "Description";
             DialogResult = DialogResult.Yes;
-            btnUserTable.Visible = ValidateLicense(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD\\Configuration\\license.bin");
+            btnUserTable.Visible = ValidateLicense(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\"+Form_QD.DocumentFolder+"\\Configuration\\license.bin");
             _status = "I";
 
             Text = "TTFomular - " + _sqlBuilder.Pos;
@@ -609,8 +626,8 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         private void btnUserTable_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            _ttFormular = _sqlBuilder.BuildTTformula(_sqlBuilder.Pos);
-            _ttFormular = _ttFormular.Replace("=TT_XLB_EB", "USER TABLE");
+            _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
+            _ttFormular = string.Format("USER TABLE({0})", _ttFormular);
             Close();
         }
 
@@ -618,7 +635,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             DialogResult = DialogResult.OK;
             Status = "C";
-            _ttFormular = _sqlBuilder.BuildTTformula(_sqlBuilder.Pos);
+            _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
 
             Close();
         }

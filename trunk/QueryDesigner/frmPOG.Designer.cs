@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmPOG
     {
@@ -85,7 +85,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(36, 36);
@@ -97,7 +97,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             this.btnView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(36, 36);
@@ -107,7 +107,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(36, 36);
@@ -117,7 +117,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(36, 36);
@@ -132,7 +132,7 @@
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(36, 36);
@@ -142,7 +142,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(36, 36);
@@ -161,7 +161,7 @@
             // txtCode
             // 
             this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCode.Location = new System.Drawing.Point(102, 12);
+            this.txtCode.Location = new System.Drawing.Point(116, 12);
             this.txtCode.MaxLength = 5;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(100, 20);
@@ -169,7 +169,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(102, 38);
+            this.txtName.Location = new System.Drawing.Point(116, 38);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(271, 20);
             this.txtName.TabIndex = 12;
@@ -187,7 +187,7 @@
             // 
             this.txtLen.Location = new System.Drawing.Point(154, 64);
             this.txtLen.Name = "txtLen";
-            this.txtLen.Size = new System.Drawing.Size(48, 20);
+            this.txtLen.Size = new System.Drawing.Size(62, 20);
             this.txtLen.TabIndex = 14;
             // 
             // label3
@@ -201,7 +201,7 @@
             // 
             // txtValid
             // 
-            this.txtValid.Location = new System.Drawing.Point(102, 90);
+            this.txtValid.Location = new System.Drawing.Point(116, 90);
             this.txtValid.Name = "txtValid";
             this.txtValid.Size = new System.Drawing.Size(100, 20);
             this.txtValid.TabIndex = 16;
@@ -211,15 +211,15 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(17, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 13);
+            this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Password Valid";
+            this.label4.Text = "Password Interval";
             // 
             // txtQD
             // 
             this.txtQD.Location = new System.Drawing.Point(116, 116);
             this.txtQD.Name = "txtQD";
-            this.txtQD.Size = new System.Drawing.Size(86, 20);
+            this.txtQD.Size = new System.Drawing.Size(100, 20);
             this.txtQD.TabIndex = 18;
             // 
             // label5
@@ -253,8 +253,8 @@
             // btnDB
             // 
             this.btnDB.BackColor = System.Drawing.Color.Transparent;
-            this.btnDB.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
-            this.btnDB.Location = new System.Drawing.Point(208, 119);
+            this.btnDB.Image = global::dCube.Properties.Resources._1303882176_search_16;
+            this.btnDB.Location = new System.Drawing.Point(222, 119);
             this.btnDB.Name = "btnDB";
             this.btnDB.Size = new System.Drawing.Size(16, 16);
             this.btnDB.TabIndex = 49;
@@ -284,7 +284,7 @@
             // lbDB
             // 
             this.lbDB.AutoSize = true;
-            this.lbDB.Location = new System.Drawing.Point(230, 119);
+            this.lbDB.Location = new System.Drawing.Point(244, 119);
             this.lbDB.Name = "lbDB";
             this.lbDB.Size = new System.Drawing.Size(13, 13);
             this.lbDB.TabIndex = 51;
@@ -299,7 +299,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmPOG";
-            this.Text = "User Definition";
+            this.Text = "Group Definition";
             this.Load += new System.EventHandler(this.frmPOD_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

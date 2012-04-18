@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace QueryDesigner
+namespace dCube
 {
     public class objValidatedList : IConvertible
     {

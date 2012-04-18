@@ -14,7 +14,7 @@ using System.Reflection;
 using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Runtime.InteropServices;
-namespace QueryDesigner
+namespace dCube
 {
 	public partial class frmFlexPrintPreview : System.Windows.Forms.Form
 	{

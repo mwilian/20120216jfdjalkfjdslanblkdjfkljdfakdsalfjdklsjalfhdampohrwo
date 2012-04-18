@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.ComponentModel;
 
-namespace QueryDesigner
+namespace dCube
 {
     static class Program
     {
@@ -40,7 +40,7 @@ namespace QueryDesigner
         }
         private static void LoadConfig(string db)
         {
-            string __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            string __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
             string _strConnect = "";
             string _strConnectDes = "";
             string __templatePath = "";

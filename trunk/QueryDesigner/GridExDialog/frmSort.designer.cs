@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 using Janus.Windows.GridEX;
 
-namespace QueryDesigner
+namespace dCube
 {
 	public partial class frmSort : System.Windows.Forms.Form
 	{

@@ -11,7 +11,7 @@ using System.ComponentModel;
 using QueryBuilder;
 using System.Windows.Forms;
 
-namespace QueryDesigner
+namespace dCube
 {
     public class TreeViewLoader
     {
@@ -22,7 +22,7 @@ namespace QueryDesigner
             root.Name = rootCode;
             root.Text = rootCode;
 
-            //    Configuration.clsConfigurarion config = new QueryDesigner.Configuration.clsConfigurarion();
+            //    Configuration.clsConfigurarion config = new dCube.Configuration.clsConfigurarion();
             //    config.GetDictionary(GetServerDirPath() + "/Configuration/Languages/" + fileLanguage);
             for (int i = 0; i < list.Count; i++)
             {

@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class FrmSystem
     {
@@ -38,10 +38,18 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabConnect = new System.Windows.Forms.TabPage();
             this.dgvList = new System.Windows.Forms.DataGridView();
+            this.DEFAULT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.KEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CONTENT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContentEx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TEST = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.BUILD = new System.Windows.Forms.DataGridViewButtonColumn();
             this.iTEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingConfig = new System.Windows.Forms.BindingSource(this.components);
-            this.qDConfig = new QueryDesigner.QDConfig();
+            this.qDConfig = new dCube.QDConfig();
             this.tabAP = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtForce = new System.Windows.Forms.TextBox();
             this.sYSBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -57,27 +65,19 @@
             this.txtFont = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtRPT = new System.Windows.Forms.TextBox();
             this.dIRBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.ddlAP = new System.Windows.Forms.ComboBox();
-            this.dTBBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.APITEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ddlQD = new System.Windows.Forms.ComboBox();
+            this.dTBBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.QDITEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtTMP = new System.Windows.Forms.TextBox();
-            this.DEFAULT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.KEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.CONTENT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContentEx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TEST = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.BUILD = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ddlAP = new System.Windows.Forms.ComboBox();
+            this.APITEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabConnect.SuspendLayout();
@@ -86,15 +86,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingConfig)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qDConfig)).BeginInit();
             this.tabAP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sYSBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dIRBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTBBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.APITEMBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QDITEMBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.APITEMBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -171,8 +171,67 @@
             this.dgvList.Name = "dgvList";
             this.dgvList.Size = new System.Drawing.Size(857, 290);
             this.dgvList.TabIndex = 0;
-            this.dgvList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellValueChanged);
             this.dgvList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellClick);
+            this.dgvList.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellValueChanged);
+            // 
+            // DEFAULT
+            // 
+            this.DEFAULT.DataPropertyName = "DEFAULT";
+            this.DEFAULT.HeaderText = "Default";
+            this.DEFAULT.Name = "DEFAULT";
+            this.DEFAULT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DEFAULT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DEFAULT.Visible = false;
+            this.DEFAULT.Width = 50;
+            // 
+            // KEY
+            // 
+            this.KEY.DataPropertyName = "KEY";
+            this.KEY.HeaderText = "Code";
+            this.KEY.Name = "KEY";
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "TYPE";
+            this.Type.HeaderText = "Type";
+            this.Type.Items.AddRange(new object[] {
+            "QD",
+            "AP"});
+            this.Type.Name = "Type";
+            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CONTENT
+            // 
+            this.CONTENT.DataPropertyName = "CONTENT";
+            this.CONTENT.HeaderText = "CONTENT";
+            this.CONTENT.Name = "CONTENT";
+            this.CONTENT.ReadOnly = true;
+            this.CONTENT.Visible = false;
+            // 
+            // ContentEx
+            // 
+            this.ContentEx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ContentEx.DataPropertyName = "CONTENTEX";
+            this.ContentEx.HeaderText = "Connection String";
+            this.ContentEx.Name = "ContentEx";
+            this.ContentEx.ReadOnly = true;
+            // 
+            // TEST
+            // 
+            this.TEST.DataPropertyName = "TEST";
+            this.TEST.HeaderText = "Test";
+            this.TEST.Name = "TEST";
+            this.TEST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TEST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // BUILD
+            // 
+            this.BUILD.DataPropertyName = "BUTTON";
+            this.BUILD.HeaderText = "Build";
+            this.BUILD.Name = "BUILD";
+            this.BUILD.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BUILD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // iTEMBindingSource
             // 
@@ -193,6 +252,8 @@
             // 
             this.tabAP.Controls.Add(this.groupBox2);
             this.tabAP.Controls.Add(this.groupBox1);
+            this.tabAP.Controls.Add(this.label2);
+            this.tabAP.Controls.Add(this.ddlAP);
             this.tabAP.Location = new System.Drawing.Point(4, 25);
             this.tabAP.Name = "tabAP";
             this.tabAP.Padding = new System.Windows.Forms.Padding(3);
@@ -200,6 +261,18 @@
             this.tabAP.TabIndex = 1;
             this.tabAP.Text = "Application";
             this.tabAP.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Image = global::dCube.Properties.Resources._1303882176_search_16;
+            this.button1.Location = new System.Drawing.Point(460, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(16, 16);
+            this.button1.TabIndex = 49;
+            this.button1.TabStop = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
@@ -216,7 +289,7 @@
             this.groupBox2.Controls.Add(this.txtFont);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(3, 86);
+            this.groupBox2.Location = new System.Drawing.Point(3, 84);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(857, 107);
             this.groupBox2.TabIndex = 8;
@@ -350,75 +423,44 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtRPT);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ddlAP);
-            this.groupBox1.Controls.Add(this.ddlQD);
             this.groupBox1.Controls.Add(this.txtTMP);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.ddlQD);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(857, 83);
+            this.groupBox1.Size = new System.Drawing.Size(857, 81);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connect";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
-            this.button1.Location = new System.Drawing.Point(680, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(16, 16);
-            this.button1.TabIndex = 49;
-            this.button1.TabStop = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.groupBox1.Text = "Connection";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(263, 48);
+            this.label4.Location = new System.Drawing.Point(32, 47);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Report";
+            this.label4.Text = "Report Path";
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
-            this.button2.Location = new System.Drawing.Point(680, 47);
+            this.button2.Image = global::dCube.Properties.Resources._1303882176_search_16;
+            this.button2.Location = new System.Drawing.Point(460, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(16, 16);
             this.button2.TabIndex = 46;
             this.button2.TabStop = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Report Source";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(263, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Template";
-            // 
             // txtRPT
             // 
             this.txtRPT.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.dIRBindingSource, "RPT", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtRPT.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dIRBindingSource, "RPT", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtRPT.Location = new System.Drawing.Point(322, 45);
+            this.txtRPT.Location = new System.Drawing.Point(102, 44);
             this.txtRPT.Name = "txtRPT";
             this.txtRPT.Size = new System.Drawing.Size(352, 20);
             this.txtRPT.TabIndex = 4;
@@ -431,37 +473,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(7, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Query Source";
-            // 
-            // ddlAP
-            // 
-            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ddlAP.DataSource = this.APITEMBindingSource;
-            this.ddlAP.DisplayMember = "KEY";
-            this.ddlAP.FormattingEnabled = true;
-            this.ddlAP.Location = new System.Drawing.Point(89, 45);
-            this.ddlAP.Name = "ddlAP";
-            this.ddlAP.Size = new System.Drawing.Size(121, 21);
-            this.ddlAP.TabIndex = 6;
-            this.ddlAP.ValueMember = "KEY";
-            // 
-            // dTBBindingSource
-            // 
-            this.dTBBindingSource.DataMember = "DTB";
-            this.dTBBindingSource.DataSource = this.bindingConfig;
-            // 
-            // APITEMBindingSource
-            // 
-            this.APITEMBindingSource.DataMember = "ITEM";
-            this.APITEMBindingSource.DataSource = this.bindingConfig;
-            this.APITEMBindingSource.Filter = "TYPE=\'AP\'";
+            this.label1.Text = "Metadata Source";
             // 
             // ddlQD
             // 
@@ -472,11 +489,16 @@
             this.ddlQD.DataSource = this.QDITEMBindingSource;
             this.ddlQD.DisplayMember = "KEY";
             this.ddlQD.FormattingEnabled = true;
-            this.ddlQD.Location = new System.Drawing.Point(89, 18);
+            this.ddlQD.Location = new System.Drawing.Point(102, 17);
             this.ddlQD.Name = "ddlQD";
             this.ddlQD.Size = new System.Drawing.Size(121, 21);
             this.ddlQD.TabIndex = 5;
             this.ddlQD.ValueMember = "KEY";
+            // 
+            // dTBBindingSource
+            // 
+            this.dTBBindingSource.DataMember = "DTB";
+            this.dTBBindingSource.DataSource = this.bindingConfig;
             // 
             // QDITEMBindingSource
             // 
@@ -488,68 +510,54 @@
             // 
             this.txtTMP.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.dIRBindingSource, "TMP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtTMP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dIRBindingSource, "TMP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtTMP.Location = new System.Drawing.Point(322, 18);
+            this.txtTMP.Location = new System.Drawing.Point(102, 70);
             this.txtTMP.Name = "txtTMP";
             this.txtTMP.Size = new System.Drawing.Size(352, 20);
             this.txtTMP.TabIndex = 3;
+            this.txtTMP.Visible = false;
             // 
-            // DEFAULT
+            // label2
             // 
-            this.DEFAULT.DataPropertyName = "DEFAULT";
-            this.DEFAULT.HeaderText = "Default";
-            this.DEFAULT.Name = "DEFAULT";
-            this.DEFAULT.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DEFAULT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DEFAULT.Width = 50;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(587, 244);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Report Source";
+            this.label2.Visible = false;
             // 
-            // KEY
+            // ddlAP
             // 
-            this.KEY.DataPropertyName = "KEY";
-            this.KEY.HeaderText = "Key";
-            this.KEY.Name = "KEY";
+            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ddlAP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dTBBindingSource, "AP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ddlAP.DataSource = this.APITEMBindingSource;
+            this.ddlAP.DisplayMember = "KEY";
+            this.ddlAP.FormattingEnabled = true;
+            this.ddlAP.Location = new System.Drawing.Point(542, 260);
+            this.ddlAP.Name = "ddlAP";
+            this.ddlAP.Size = new System.Drawing.Size(121, 21);
+            this.ddlAP.TabIndex = 6;
+            this.ddlAP.ValueMember = "KEY";
+            this.ddlAP.Visible = false;
             // 
-            // Type
+            // APITEMBindingSource
             // 
-            this.Type.DataPropertyName = "TYPE";
-            this.Type.HeaderText = "Type";
-            this.Type.Items.AddRange(new object[] {
-            "QD",
-            "AP"});
-            this.Type.Name = "Type";
-            this.Type.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Type.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.APITEMBindingSource.DataMember = "ITEM";
+            this.APITEMBindingSource.DataSource = this.bindingConfig;
+            this.APITEMBindingSource.Filter = "TYPE=\'AP\'";
             // 
-            // CONTENT
+            // label3
             // 
-            this.CONTENT.DataPropertyName = "CONTENT";
-            this.CONTENT.HeaderText = "CONTENT";
-            this.CONTENT.Name = "CONTENT";
-            this.CONTENT.ReadOnly = true;
-            this.CONTENT.Visible = false;
-            // 
-            // ContentEx
-            // 
-            this.ContentEx.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ContentEx.DataPropertyName = "CONTENTEX";
-            this.ContentEx.HeaderText = "Connect String";
-            this.ContentEx.Name = "ContentEx";
-            this.ContentEx.ReadOnly = true;
-            // 
-            // TEST
-            // 
-            this.TEST.DataPropertyName = "TEST";
-            this.TEST.HeaderText = "Test";
-            this.TEST.Name = "TEST";
-            this.TEST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TEST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // BUILD
-            // 
-            this.BUILD.DataPropertyName = "BUTTON";
-            this.BUILD.HeaderText = "Build";
-            this.BUILD.Name = "BUILD";
-            this.BUILD.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BUILD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Template Path";
+            this.label3.Visible = false;
             // 
             // FrmSystem
             // 
@@ -561,7 +569,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.MaximumSize = new System.Drawing.Size(9999, 9999);
             this.Name = "FrmSystem";
-            this.Text = "Connection System";
+            this.Text = "Configuration";
             this.Load += new System.EventHandler(this.FrmSystem_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
@@ -571,17 +579,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingConfig)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qDConfig)).EndInit();
             this.tabAP.ResumeLayout(false);
+            this.tabAP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.button1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sYSBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dIRBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dTBBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.APITEMBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QDITEMBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.APITEMBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,4 @@
-namespace QueryDesigner
+namespace dCube
 {
     partial class FrmListReport
     {
@@ -68,7 +68,7 @@ namespace QueryDesigner
             // btnPrint
             // 
             this.btnPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnPrint.Image = global::QueryDesigner.Properties.Resources._1303701366_print_32;
+            this.btnPrint.Image = global::dCube.Properties.Resources._1303701366_print_32;
             this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(36, 36);

@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using BUS;
 using Janus.Windows.GridEX;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmDBDef : Form
     {
@@ -26,9 +26,10 @@ namespace QueryDesigner
             get { return _dtb; }
             set { _dtb = value; }
         }
-        public frmDBDef()
+        public frmDBDef(QDConfig config)
         {
             InitializeComponent();
+            _config = config;
         }
 
         private void frmQDADD_Load(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace QueryDesigner
             RefreshForm("");
             txtDescription.Text = inf.DESCRIPTION;
             txtCode.Text = inf.DB;
-
+            txtTMP.Text = inf.REPORT_TEMPLATE_DRIVER;
         }
 
 
@@ -62,7 +63,7 @@ namespace QueryDesigner
         {
             inf.DB = inf.DB1 = inf.DB2 = txtCode.Text;
             inf.DESCRIPTION = txtDescription.Text;
-
+            inf.REPORT_TEMPLATE_DRIVER = txtTMP.Text;
 
             return inf;
         }
@@ -71,7 +72,7 @@ namespace QueryDesigner
 
         private string GetDocumentDirec()
         {
-            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
         }
 
 
@@ -134,6 +135,7 @@ namespace QueryDesigner
             else if (_processStatus == "A")
             {
                 sErr = ctr.Update(GetDataFromForm(inf));
+                _config.DIR[0].TMP = inf.REPORT_TEMPLATE_DRIVER;
             }
             if (sErr == "")
             {
@@ -188,6 +190,12 @@ namespace QueryDesigner
         private void lbErr_Click(object sender, EventArgs e)
         {
             MessageBox.Show(lbErr.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                txtTMP.Text = folderBrowserDialog1.SelectedPath + "\\";
         }
 
 

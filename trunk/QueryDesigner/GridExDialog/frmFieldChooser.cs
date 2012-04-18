@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Janus.Windows.GridEX;
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmFieldChooser : Form
     {

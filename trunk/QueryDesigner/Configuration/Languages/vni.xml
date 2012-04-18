@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ROOT>
   <ITEM Code="Description" Value="Diễn giải"/>
-  <ITEM Code="QueryDesigner" Value="Thiết kế Truy Vấn"/>
+  <ITEM Code="dCube" Value="Thiết kế Truy Vấn"/>
   <ITEM Code="Database" Value="Cơ sở dữ liệu"/>
   <ITEM Code="Select Database" Value="Chọn Database"/>
   <ITEM Code="Select Datasource" Value="Chọn Datasource"/>

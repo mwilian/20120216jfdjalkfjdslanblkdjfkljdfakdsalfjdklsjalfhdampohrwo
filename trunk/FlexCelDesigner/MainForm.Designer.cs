@@ -136,8 +136,8 @@ namespace TVCDesigner
             this.tvFields.SelectedImageIndex = 0;
             this.tvFields.Size = new System.Drawing.Size(239, 212);
             this.tvFields.TabIndex = 2;
-            this.tvFields.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvFields_DragDrop);
             this.tvFields.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.tvFields_ItemDrag);
+            this.tvFields.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvFields_DragDrop);
             this.tvFields.DragOver += new System.Windows.Forms.DragEventHandler(this.tvFields_DragOver);
             // 
             // imageListTree
@@ -289,10 +289,10 @@ namespace TVCDesigner
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.MainMenu;
             this.Name = "MainForm";
-            this.Text = "TVC-QD Designer";
+            this.Text = "dCube Designer";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

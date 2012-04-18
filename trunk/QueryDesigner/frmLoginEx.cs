@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DTO;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmLoginEx : Form
     {

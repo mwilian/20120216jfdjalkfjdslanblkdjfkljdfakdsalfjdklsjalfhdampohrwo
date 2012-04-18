@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-namespace QueryDesigner
+namespace dCube
 {
     partial class frmImport
     {

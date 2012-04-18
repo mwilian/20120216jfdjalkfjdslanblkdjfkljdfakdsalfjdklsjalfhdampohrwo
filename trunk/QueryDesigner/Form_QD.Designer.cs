@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class Form_QD
     {
@@ -254,9 +254,9 @@
             // 
             resources.ApplyResources(this.twSchema, "twSchema");
             this.twSchema.Name = "twSchema";
-            this.twSchema.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.twSchema_MouseDoubleClick);
-            this.twSchema.KeyUp += new System.Windows.Forms.KeyEventHandler(this.twSchema_KeyUp);
             this.twSchema.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.twSchema_ItemDrag);
+            this.twSchema.KeyUp += new System.Windows.Forms.KeyEventHandler(this.twSchema_KeyUp);
+            this.twSchema.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.twSchema_MouseDoubleClick);
             // 
             // splitContainer2
             // 
@@ -296,12 +296,12 @@
             this.dgvFilter.DataSource = this.filterBindingSource;
             resources.ApplyResources(this.dgvFilter, "dgvFilter");
             this.dgvFilter.Name = "dgvFilter";
-            this.dgvFilter.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellValueChanged);
             this.dgvFilter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellDoubleClick);
-            this.dgvFilter.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvFilter_DragEnter);
+            this.dgvFilter.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellValueChanged);
             this.dgvFilter.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvFilter_DataError);
             this.dgvFilter.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvSelectNodes_RowsRemoved);
             this.dgvFilter.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvFilter_DragDrop);
+            this.dgvFilter.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvFilter_DragEnter);
             // 
             // Description
             // 
@@ -395,7 +395,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::QueryDesigner.Properties.Resources._1328261867_filter_add;
+            this.pictureBox1.BackgroundImage = global::dCube.Properties.Resources._1328261867_filter_add;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
@@ -443,13 +443,13 @@
             this.dgvSelectNodes.DataSource = this.nodeBindingSource;
             resources.ApplyResources(this.dgvSelectNodes, "dgvSelectNodes");
             this.dgvSelectNodes.Name = "dgvSelectNodes";
-            this.dgvSelectNodes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectNodes_CellValueChanged);
             this.dgvSelectNodes.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSelectNodes_CellBeginEdit);
             this.dgvSelectNodes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectNodes_CellDoubleClick);
-            this.dgvSelectNodes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvSelectNodes_MouseDoubleClick);
-            this.dgvSelectNodes.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvSelectNodes_DragEnter);
+            this.dgvSelectNodes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSelectNodes_CellValueChanged);
             this.dgvSelectNodes.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvSelectNodes_RowsRemoved);
             this.dgvSelectNodes.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvSelectNodes_DragDrop);
+            this.dgvSelectNodes.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvSelectNodes_DragEnter);
+            this.dgvSelectNodes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvSelectNodes_MouseDoubleClick);
             // 
             // nodeDescription
             // 
@@ -594,7 +594,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImage = global::QueryDesigner.Properties.Resources._1328262186_database_table;
+            this.pictureBox2.BackgroundImage = global::dCube.Properties.Resources._1328262186_database_table;
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
@@ -695,8 +695,8 @@
             resources.ApplyResources(this.txtdatasource, "txtdatasource");
             this.txtdatasource.Name = "txtdatasource";
             this.txtdatasource.TextChanged += new System.EventHandler(this.txtdatasource_TextChanged);
-            this.txtdatasource.Validated += new System.EventHandler(this.txtdatasource_Validated);
             this.txtdatasource.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtdatasource_KeyUp);
+            this.txtdatasource.Validated += new System.EventHandler(this.txtdatasource_Validated);
             // 
             // txtowner
             // 
@@ -713,8 +713,8 @@
             // 
             resources.ApplyResources(this.txtqd_id, "txtqd_id");
             this.txtqd_id.Name = "txtqd_id";
-            this.txtqd_id.Validated += new System.EventHandler(this.txtqd_id_Validated);
             this.txtqd_id.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtqd_id_KeyUp);
+            this.txtqd_id.Validated += new System.EventHandler(this.txtqd_id_Validated);
             // 
             // txt_sql
             // 
@@ -811,7 +811,7 @@
             // 
             // btnPrintReport
             // 
-            this.btnPrintReport.Image = global::QueryDesigner.Properties.Resources._1303701366_print_32;
+            this.btnPrintReport.Image = global::dCube.Properties.Resources._1303701366_print_32;
             resources.ApplyResources(this.btnPrintReport, "btnPrintReport");
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.UseVisualStyleBackColor = true;
@@ -918,15 +918,15 @@
             // 
             resources.ApplyResources(this.edZoom, "edZoom");
             this.edZoom.Name = "edZoom";
-            this.edZoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edZoom_KeyPress);
             this.edZoom.Enter += new System.EventHandler(this.edZoom_Enter);
+            this.edZoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edZoom_KeyPress);
             // 
             // edPage
             // 
             resources.ApplyResources(this.edPage, "edPage");
             this.edPage.Name = "edPage";
-            this.edPage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edPage_KeyPress);
             this.edPage.Enter += new System.EventHandler(this.edPage_Leave);
+            this.edPage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.edPage_KeyPress);
             // 
             // saveFileDialog1
             // 
@@ -975,7 +975,7 @@
             this.changeDatabaseToolStripMenuItem,
             this.connectToolStripMenuItem,
             this.toolStripMenuItem5});
-            this.btnSystem.Image = global::QueryDesigner.Properties.Resources.run16;
+            this.btnSystem.Image = global::dCube.Properties.Resources.run16;
             this.btnSystem.Name = "btnSystem";
             resources.ApplyResources(this.btnSystem, "btnSystem");
             // 
@@ -999,7 +999,7 @@
             // 
             // btnLicense
             // 
-            this.btnLicense.Image = global::QueryDesigner.Properties.Resources.key;
+            this.btnLicense.Image = global::dCube.Properties.Resources.key;
             this.btnLicense.Name = "btnLicense";
             resources.ApplyResources(this.btnLicense, "btnLicense");
             this.btnLicense.Click += new System.EventHandler(this.btnLicense_Click);
@@ -1125,7 +1125,7 @@
             // btnNew
             // 
             this.btnNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnNew.Image = global::QueryDesigner.Properties.Resources.app_32x32;
+            this.btnNew.Image = global::dCube.Properties.Resources.app_32x32;
             resources.ApplyResources(this.btnNew, "btnNew");
             this.btnNew.Name = "btnNew";
             this.btnNew.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
@@ -1134,7 +1134,7 @@
             // btnView
             // 
             this.btnView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnView.Image = global::QueryDesigner.Properties.Resources.app_search_32x32;
+            this.btnView.Image = global::dCube.Properties.Resources.app_search_32x32;
             resources.ApplyResources(this.btnView, "btnView");
             this.btnView.Name = "btnView";
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
@@ -1142,7 +1142,7 @@
             // btnEdit
             // 
             this.btnEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnEdit.Image = global::QueryDesigner.Properties.Resources.app_edit_32x32;
+            this.btnEdit.Image = global::dCube.Properties.Resources.app_edit_32x32;
             resources.ApplyResources(this.btnEdit, "btnEdit");
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -1150,7 +1150,7 @@
             // btnSave
             // 
             this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = global::QueryDesigner.Properties.Resources.save_48x48;
+            this.btnSave.Image = global::dCube.Properties.Resources.save_48x48;
             resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -1163,7 +1163,7 @@
             // btnDelete
             // 
             this.btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnDelete.Image = global::QueryDesigner.Properties.Resources.app_delete_32x32;
+            this.btnDelete.Image = global::dCube.Properties.Resources.app_delete_32x32;
             resources.ApplyResources(this.btnDelete, "btnDelete");
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -1171,7 +1171,7 @@
             // btnCopy
             // 
             this.btnCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnCopy.Image = global::QueryDesigner.Properties.Resources.Copy;
+            this.btnCopy.Image = global::dCube.Properties.Resources.Copy;
             resources.ApplyResources(this.btnCopy, "btnCopy");
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -1184,7 +1184,7 @@
             // btnTransferIn
             // 
             this.btnTransferIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferIn.Image = global::QueryDesigner.Properties.Resources.download;
+            this.btnTransferIn.Image = global::dCube.Properties.Resources.download;
             resources.ApplyResources(this.btnTransferIn, "btnTransferIn");
             this.btnTransferIn.Name = "btnTransferIn";
             this.btnTransferIn.Click += new System.EventHandler(this.btnTransferIn_Click);
@@ -1192,7 +1192,7 @@
             // btnTransferOut
             // 
             this.btnTransferOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTransferOut.Image = global::QueryDesigner.Properties.Resources.app_upload_32x32;
+            this.btnTransferOut.Image = global::dCube.Properties.Resources.app_upload_32x32;
             resources.ApplyResources(this.btnTransferOut, "btnTransferOut");
             this.btnTransferOut.Name = "btnTransferOut";
             this.btnTransferOut.Click += new System.EventHandler(this.btnTransferOut_Click);
@@ -1205,7 +1205,7 @@
             // btnRun
             // 
             this.btnRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRun.Image = global::QueryDesigner.Properties.Resources._1303702678_application_vnd_ms_excel;
+            this.btnRun.Image = global::dCube.Properties.Resources._1333965527_Microsoft_Office_2007_Excel;
             resources.ApplyResources(this.btnRun, "btnRun");
             this.btnRun.Name = "btnRun";
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
@@ -1213,7 +1213,7 @@
             // btnTemplate
             // 
             this.btnTemplate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnTemplate.Image = global::QueryDesigner.Properties.Resources._1300847659_package_graphics;
+            this.btnTemplate.Image = global::dCube.Properties.Resources._1300847659_package_graphics;
             resources.ApplyResources(this.btnTemplate, "btnTemplate");
             this.btnTemplate.Name = "btnTemplate";
             this.btnTemplate.Click += new System.EventHandler(this.btnTemplate_Click);
@@ -1271,7 +1271,7 @@
             // btnTmp
             // 
             this.btnTmp.BackColor = System.Drawing.Color.Transparent;
-            this.btnTmp.BackgroundImage = global::QueryDesigner.Properties.Resources.Folder;
+            this.btnTmp.BackgroundImage = global::dCube.Properties.Resources.Folder;
             resources.ApplyResources(this.btnTmp, "btnTmp");
             this.btnTmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.btnTmp.Name = "btnTmp";
@@ -1303,7 +1303,7 @@
             // bt_group
             // 
             this.bt_group.BackColor = System.Drawing.Color.Transparent;
-            this.bt_group.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.bt_group.Image = global::dCube.Properties.Resources._1303882176_search_16;
             resources.ApplyResources(this.bt_group, "bt_group");
             this.bt_group.Name = "bt_group";
             this.bt_group.TabStop = false;
@@ -1312,7 +1312,7 @@
             // bt_datasource
             // 
             this.bt_datasource.BackColor = System.Drawing.Color.Transparent;
-            this.bt_datasource.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.bt_datasource.Image = global::dCube.Properties.Resources._1303882176_search_16;
             resources.ApplyResources(this.bt_datasource, "bt_datasource");
             this.bt_datasource.Name = "bt_datasource";
             this.bt_datasource.TabStop = false;
@@ -1321,7 +1321,7 @@
             // btnQD
             // 
             this.btnQD.BackColor = System.Drawing.Color.Transparent;
-            this.btnQD.Image = global::QueryDesigner.Properties.Resources._1303882176_search_16;
+            this.btnQD.Image = global::dCube.Properties.Resources._1303882176_search_16;
             resources.ApplyResources(this.btnQD, "btnQD");
             this.btnQD.Name = "btnQD";
             this.btnQD.TabStop = false;
@@ -1392,8 +1392,8 @@
             this.dgvPreview.OfficeColorScheme = Janus.Windows.GridEX.OfficeColorScheme.Blue;
             this.dgvPreview.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvPreview.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgvPreview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvPreview_KeyUp);
             this.dgvPreview.DoubleClick += new System.EventHandler(this.dgvPreview_DoubleClick);
+            this.dgvPreview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvPreview_KeyUp);
             // 
             // contextMenuStrip1
             // 
@@ -1444,7 +1444,7 @@
             // 
             // button1
             // 
-            this.button1.Image = global::QueryDesigner.Properties.Resources._1303702678_application_vnd_ms_excel;
+            this.button1.Image = global::dCube.Properties.Resources._1303702678_application_vnd_ms_excel;
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -1452,7 +1452,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Image = global::QueryDesigner.Properties.Resources._1303701366_print_32;
+            this.btnPrint.Image = global::dCube.Properties.Resources._1303701366_print_32;
             resources.ApplyResources(this.btnPrint, "btnPrint");
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -1535,8 +1535,8 @@
             this.MainMenuStrip = this.mMain;
             this.Name = "Form_QD";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_QD_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form_QD_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1713,6 +1713,19 @@
         private System.Windows.Forms.ToolStripMenuItem importDefinitionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem1;
         private System.Windows.Forms.BindingSource IsNotbindingSource;
+        private System.Windows.Forms.ToolStripMenuItem changeDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opeToolStripMenuItem;
+        private System.Windows.Forms.PictureBox btnTmp;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTmp;
+        private System.Windows.Forms.PictureBox btnTmpClear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewComboBoxColumn IsNot;
         private System.Windows.Forms.DataGridViewComboBoxColumn Operate;
@@ -1744,19 +1757,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn myParentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn myAliasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn myFamilyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem changeDatabaseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ToolStripMenuItem taskToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem opeToolStripMenuItem;
-        private System.Windows.Forms.PictureBox btnTmp;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTmp;
-        private System.Windows.Forms.PictureBox btnTmpClear;
 
     }
 }

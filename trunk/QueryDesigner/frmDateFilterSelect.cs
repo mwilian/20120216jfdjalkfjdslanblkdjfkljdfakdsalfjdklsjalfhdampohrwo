@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmDateFilterSelect : Form
     {

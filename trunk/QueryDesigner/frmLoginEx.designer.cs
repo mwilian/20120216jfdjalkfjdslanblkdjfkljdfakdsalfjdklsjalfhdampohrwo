@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class frmLoginEx
     {
@@ -59,7 +59,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(330, 57);
-            this.tableLayoutPanel1.TabIndex = 20;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
@@ -79,7 +79,8 @@
             this.txtUser.Location = new System.Drawing.Point(112, 3);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(172, 22);
-            this.txtUser.TabIndex = 8;
+            this.txtUser.TabIndex = 0;
+            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown);
             // 
             // label2
             // 
@@ -99,7 +100,8 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = 'X';
             this.txtPass.Size = new System.Drawing.Size(172, 22);
-            this.txtPass.TabIndex = 9;
+            this.txtPass.TabIndex = 1;
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
             // lbErr
             // 
@@ -120,9 +122,10 @@
             this.btnCancel.Location = new System.Drawing.Point(328, 90);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(133, 23);
-            this.btnCancel.TabIndex = 18;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnLogin
             // 
@@ -132,14 +135,15 @@
             this.btnLogin.Location = new System.Drawing.Point(195, 90);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(127, 23);
-            this.btnLogin.TabIndex = 17;
+            this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::QueryDesigner.Properties.Resources.login;
+            this.pictureBox1.Image = global::dCube.Properties.Resources.login;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(141, 174);

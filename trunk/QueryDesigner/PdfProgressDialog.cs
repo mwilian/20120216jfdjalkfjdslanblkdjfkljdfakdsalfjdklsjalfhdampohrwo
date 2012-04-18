@@ -8,7 +8,7 @@ using System.Threading;
 
 using FlexCel.Render;
 
-namespace QueryDesigner
+namespace dCube
 {
 	/// <summary>
 	/// Summary description for PdfProgressDialog.

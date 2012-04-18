@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmMsg : Form
     {

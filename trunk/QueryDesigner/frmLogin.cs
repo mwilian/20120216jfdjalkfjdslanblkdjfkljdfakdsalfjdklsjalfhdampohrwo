@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DTO;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmLogin : Form
     {
@@ -34,6 +34,7 @@ namespace QueryDesigner
         private void Form1_Load(object sender, EventArgs e)
         {
             lbErr.Text = "";
+            txtUser.Focus();
         }
         string _DB = "";
 

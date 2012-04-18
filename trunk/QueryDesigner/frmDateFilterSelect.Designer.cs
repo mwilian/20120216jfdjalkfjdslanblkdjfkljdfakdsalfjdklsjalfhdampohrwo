@@ -1,4 +1,4 @@
-namespace QueryDesigner
+namespace dCube
 {
     partial class frmDateFilterSelect
     {

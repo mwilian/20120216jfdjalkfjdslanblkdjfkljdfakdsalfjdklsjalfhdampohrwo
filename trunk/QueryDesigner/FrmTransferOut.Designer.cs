@@ -1,4 +1,4 @@
-﻿namespace QueryDesigner
+﻿namespace dCube
 {
     partial class FrmTransferOut
     {
@@ -56,7 +56,7 @@
             // 
             // radButton1
             // 
-            this.radButton1.Image = global::QueryDesigner.Properties.Resources._1303702678_application_vnd_ms_excel;
+            this.radButton1.Image = global::dCube.Properties.Resources._1303702678_application_vnd_ms_excel;
             this.radButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.radButton1.Location = new System.Drawing.Point(3, 3);
             this.radButton1.Name = "radButton1";

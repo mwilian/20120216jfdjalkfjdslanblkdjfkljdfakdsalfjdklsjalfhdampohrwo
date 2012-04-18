@@ -5,7 +5,7 @@ using System.Configuration;
 
 
 
-namespace QueryDesigner.Configuration
+namespace dCube.Configuration
 {
     public class clsControlsInForm
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BUS;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmChangeDB : Form
     {
@@ -26,7 +26,13 @@ namespace QueryDesigner
             InitializeComponent();
             _dtb = db;
         }
+        string reportDir = "";
 
+        public string ReportDir
+        {
+            get { return reportDir; }
+            set { reportDir = value; }
+        }
         private void txtdatabase_Validated(object sender, EventArgs e)
         {
             BUS.DBAControl dbaCtr = new DBAControl();
@@ -45,6 +51,9 @@ namespace QueryDesigner
                 podInf.DB_DEFAULT = txtdatabase.Text;
                 podCtr.Update(podInf);
             }
+            BUS.DBAControl dbaCtr = new DBAControl();
+            DTO.DBAInfo dbaInf = dbaCtr.Get(txtdatabase.Text, ref sErr);
+            reportDir = dbaInf.REPORT_TEMPLATE_DRIVER;
             DialogResult = DialogResult.OK;
             Close();
         }

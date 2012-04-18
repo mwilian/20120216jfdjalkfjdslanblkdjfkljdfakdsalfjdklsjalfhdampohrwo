@@ -24,7 +24,7 @@ namespace DAO
 		private string _strSPGetTransferOutName = "procLIST_TEMPLATE_gettransferout";
 		string _strSPGetCountName = "procLIST_TEMPLATE_getcount";
         string _strSPGetByIndexName = "procLIST_TEMPLATE_getindex";
-        string prefix = "param";
+        string prefix = "";
 		#endregion Local Variable
 		
 		#region Method

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("QueryDesigner")]
+[assembly: AssemblyTitle("dCube")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sony Electronics, Inc.")]
-[assembly: AssemblyProduct("QueryDesigner")]
+[assembly: AssemblyProduct("dCube")]
 [assembly: AssemblyCopyright("Copyright © Sony Electronics, Inc. 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace QueryDesigner
+namespace dCube
 {
     class NumberToWordsConverter
     {

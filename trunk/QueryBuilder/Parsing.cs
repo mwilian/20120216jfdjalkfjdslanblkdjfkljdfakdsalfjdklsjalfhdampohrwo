@@ -13,6 +13,7 @@ namespace QueryBuilder
     //  Class Parsing
     public class Parsing
     {
+
         public const string STR_SUM = "SUM";
         public const string STR_COUNT = "COUNT";
         public const string STR_AVERAGE = "AVG";
@@ -25,7 +26,18 @@ namespace QueryBuilder
         private const string regexDB = @"(?<=0\,2\,)[^\,]+(?=\,)";
         private const string regexTable = @"(?<=0\,2\,[^\,]+\,)[_A-Za-z0-9]{1,}";
         private const string regexLedger = @"(?<=F\=)[^\,]+(?=\,K\=\/LA\/Ledger)";
-
+        private const string regexDTB = "dtb=[^;]+";
+        private const string regexTBL = "tbl=[^;]+";
+        private const string regexLDG = "ldg=[^;]+";
+        private const string regexFIL = "fil=((?!};).)+}";
+        private const string regexOUT = "out=((?!};).)+}";
+        private const string regexFROM = "f=[^;]+";
+        private const string regexTO = "t=[^;]+";
+        private const string regexOPERATOR = "o=[^;]+";
+        private const string regexIS = "i=[^;]+";
+        private const string regexKEY = "k=[^;]+";
+        private const string regexAGGREGATE = "a=[^;]+";
+        private const string regexC = "c=[^;]+";
         ///  <summary>
         ///    Step2 :Parse TTformular to sqlBuilder Object
         ///  </summary>
@@ -283,198 +295,221 @@ namespace QueryBuilder
         }
 
 
-        // Public Shared Sub Formular2SQLBuilder(ByVal ParseString As String, ByRef _SQLBuilder As SQLBuilder)
-        //     If String.IsNullOrEmpty(ParseString) Then Exit Sub
+        public static SQLBuilder TVCFormular2SQLBuilder(string ParseString, ref SQLBuilder _SQLBuilder)
+        {
+            _SQLBuilder.Filters.Clear();
+            _SQLBuilder.SelectedNodes.Clear();
+            if (string.IsNullOrEmpty(ParseString))
+            {
+                return null;
+            }
+            if (Regex.IsMatch(ParseString, @".*(?=TVC_QUERY)"))
+            {
+                ParseString = Regex.Replace(ParseString, ".*(?=TVC_QUERY)", string.Empty);
+                string vParamsString = Regex.Match(ParseString, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
+                vParamsString = vParamsString.Substring(2, vParamsString.Length - 3);
+                string[] arrParam = vParamsString.Split(',');
+                _SQLBuilder.Pos = arrParam[0];
 
-        //     ParseString = Regex.Replace(ParseString, ".*(?=TT_XLB_EB)", String.Empty)
+                //string[] arrParam = new string[arrParam1.Length - 1];
+                //for (int i = 1; i < arrParam1.Length; i++)
+                //    arrParam[i - 1] = arrParam1[i];
 
-        //     Dim vTable As String      ' ex LA,CA
-        //     Dim vDatabase As String
+                string tmp = ParseString.Substring(ParseString.IndexOf('"') + 1);
+                string value = tmp.Substring(0, tmp.IndexOf('"'));
+                if (value != "")
+                {
+                    string formular = value.Substring(1, value.Length - 2);
 
-        //     Dim vFilter As String     'ex part of TTformular , contains filters
-        //     Dim FromTo() As String = New String() {}
-        //     Dim vParamsString As String   ' the string, contains parameters in TTformular
-        //     Dim vParameter() As String = New String() {} ' array of all parameters ex .$H$1,$G14,$H14,J$11,J$11
-        //     Dim vparacount As Integer = 0
-        //     Dim vPosition As String  ' address of the formular
+                    if (Regex.IsMatch(formular, regexDTB))
+                    {
+                        Match m = Regex.Match(formular, regexDTB);
+                        value = m.Value.Replace("dtb=", string.Empty).Replace(";", "");
+                        if (Regex.IsMatch(value, "{P}"))
+                        {
+                            _SQLBuilder.DatabaseP = value;
+                            int indexP = 0;
+                            if (int.TryParse(value.Replace("{P}", ""), out indexP))
+                            {
+                                _SQLBuilder.Database = arrParam[indexP];
+                                _SQLBuilder.DatabaseV = _SQLBuilder.ParaValueList[indexP];
+                            }
+                        }
+                        else
+                            _SQLBuilder.Database = value;
+                    }
+                    if (Regex.IsMatch(formular, regexTBL))
+                    {
+                        Match m = Regex.Match(formular, regexTBL);
+                        value = m.Value.Replace("tbl=", string.Empty).Replace(";", "");
 
-        //     'Return Database, table
-        //     vDatabase = Regex.Match(ParseString, "(?<=0\,2\,)[A-Z0-9\{\}]{1,5}").Value.ToString
-        //     vTable = Regex.Match(ParseString, "(?<=0\,2\,[A-Z0-9\{\}]{1,}\,)[A-Z0-9\{\}]{1,}").Value.ToString
+                        _SQLBuilder.Table = value;
+                    }
+                    if (Regex.IsMatch(formular, regexLDG))
+                    {
+                        Match m = Regex.Match(formular, regexLDG);
+                        value = m.Value.Replace("ldg=", string.Empty).Replace(";", "");
 
-        //     _SQLBuilder.Table = vTable
-
-        //     vFilter = Regex.Match(ParseString, "(?<=\,K\=)[^\,,.]+").Value.ToString
-        //     Dim i As Integer = 0
-        //     Dim n As Integer = 0
-        //     n = Regex.Matches(ParseString, "F.+?,K").Count
-
-        //     'fill FromTo array
-        //     If n > 0 Then
-        //         ReDim FromTo(n)
-        //         For Each ft As Match In Regex.Matches(ParseString, "F.+?,K")
-        //             i = i + 1
-        //             FromTo(i) = ft.Value.ToString
-
-        //         Next
-        //     End If
-        //     n = 0
-        //     i = 0
-
-        //     ' get string , contains parameters
-        //     vParamsString = Regex.Match(ParseString, "\" & Chr(34) & "\,.+?\)").Value.ToString
-
-        //     'fill to parameter Array
-        //     If Not String.IsNullOrEmpty(vParamsString) Then
-        //         vParamsString = Mid(vParamsString, 3)
-        //         vParamsString = Mid(vParamsString, 1, Len(vParamsString) - 1)
-        //         vParamsString = vParamsString & ","  ' them dau , cho de xu ly
-        //         n = Regex.Matches(vParamsString, ".*?,").Count ' cac tham so
-        //         If n > 0 Then
-        //             ReDim vParameter(n - 1)  'tham so dau tien la vi tri cua cong thuc
-        //             For Each p As Match In Regex.Matches(vParamsString, ".*?,")
-        //                 i = i + 1
-        //                 If i = 1 Then
-        //                     vPosition = p.Value.ToString.Replace(",", String.Empty)
-        //                     _SQLBuilder.Pos = vPosition
-        //                 Else
-        //                     vParameter(i - 1) = p.Value.ToString.Replace(",", String.Empty)
-        //                 End If
-
-        //             Next
-        //         End If
-        //     End If
-
-        //     If vDatabase.Contains("{P}") Then
-        //         _SQLBuilder.DatabaseP = vDatabase
-        //         _SQLBuilder.Database = vParameter(vDatabase.Replace("{P}", String.Empty))
-        //         vparacount = vparacount + 1
-        //         _sqlBuilder.Database = _SQLBuilder.ParaValueList(vparacount)
-        //     Else
-        //         _SQLBuilder.Database = vDatabase
-        //         _sqlBuilder.Database = vDatabase
-
-        //     End If
-
-        //     i = 0
-
-        //     Dim vf As String
-        //     Dim vt As String
-        //     Dim vf1 As String = ""
-        //     Dim vt1 As String = ""
-        //     Dim filterf As String
-        //     Dim filtert As String
-
-        //     'identifying filters
-        //     For Each m As Match In Regex.Matches(ParseString, "(?<=\,K\=)[^\,,.]+")
-        //         i = i + 1
-        //         vFilter = m.Value.ToString
-
-        //         vf = Regex.Match(FromTo(i), "F.+?,").Value.ToString
-        //         If Not String.IsNullOrEmpty(vf) Then
-        //             vf = Mid(vf, 3)
-        //             vf = Mid(vf, 1, Len(vf) - 1)
-        //         End If
-
-        //         vt = Regex.Match(FromTo(i), "T.+?,").Value.ToString
-        //         If Not String.IsNullOrEmpty(vt) Then
-        //             vt = Mid(vt, 3)
-        //             vt = Mid(vt, 1, Len(vt) - 1)
-        //         End If
-        //         filterf = ""
-        //         filtert = ""
-
-        //         If Regex.IsMatch(vf, "{P}") Then
-        //             filterf = vParameter(Mid(vf, 4))
-        //         End If
-
-        //         If Regex.IsMatch(vt, "{P}") Then
-        //             filtert = vParameter(Mid(vt, 4))
-        //         End If
-
-        //         If Not String.IsNullOrEmpty(vFilter) Then
-        //             vFilter = Mid(vFilter, 2)
-        //             If String.IsNullOrEmpty(filterf) Then filterf = vf
-        //             If String.IsNullOrEmpty(filtert) Then filtert = vt
-        //             If vFilter.ToUpper = "LA/LEDGER" Then ' ledger lam rieng
-
-        //                 If Regex.IsMatch(vf, "{P}") Then
-        //                     _SQLBuilder.LedgerP = vf
-        //                     _SQLBuilder.Ledger = vParameter(Mid(vf, 4))
-        //                     vparacount = vparacount + 1
-        //                     _SQLBuilder.LedgerV = _SQLBuilder.ParaValueList(vparacount)
-
-        //                 Else
-        //                     _SQLBuilder.Ledger = vf
-        //                     _SQLBuilder.LedgerV = vf
-        //                 End If
-        //             Else
-        //                 If Regex.IsMatch(vf, "{P}") Then
-        //                     vparacount = vparacount + 1
-        //                     vf1 = _SQLBuilder.ParaValueList(vparacount) 'gia tri
-        //                 Else
-        //                     vf1 = vf
-        //                 End If
-
-        //                 If Regex.IsMatch(vt, "{P}") Then
-        //                     vparacount = vparacount + 1
-        //                     vt1 = _SQLBuilder.ParaValueList(vparacount) 'gia tri
-        //                 Else
-        //                     vt1 = vt
-        //                 End If
-
-        //                 For Each _node As Node In SchemaDefinition.GetDecorateTableByCode(vTable, _sqlBuilder.Database)
-        //                     If _node.Code.Contains(vFilter) Then
-        //                         _SQLBuilder.Filters.Add(New Filter(New Node(vFilter, _node.Description), filterf, filtert, vf1, vt1, vf, vt))
-
-        //                         ' _SQLBuilder.SelectedNodes.Add(New Node(vOutputAgr(i), Output, _node.Description, _node.FType))
-        //                     End If
-        //                 Next
-        //                 ' _SQLBuilder.Filters.Add(New Filter(New Node(vFilter, vFilter), filterf, filtert, vf1, vt1, vf, vt))
-
-        //             End If
+                        //value = Regex.Replace(regexLDG, regexLDG, string.Empty);
+                        if (Regex.IsMatch(value, "{P}"))
+                        {
+                            _SQLBuilder.LedgerP = value;
+                            int indexP = 0;
+                            if (int.TryParse(value.Replace("{P}", ""), out indexP))
+                            {
+                                _SQLBuilder.Ledger = arrParam[indexP];
+                                _SQLBuilder.LedgerV = _SQLBuilder.ParaValueList[indexP];
+                            }
+                        }
+                        else
+                            _SQLBuilder.Ledger = value;
 
 
-        //         End If
-        //     Next
+                    }
+                    if (Regex.IsMatch(formular, regexFIL))
+                    {
+                        foreach (Match m in Regex.Matches(formular, regexFIL))
+                        {
+                            Match mtemp = Regex.Match(m.Value, "{.+}");
+                            Filter f = Parse2Filter(mtemp.Value.Substring(1, mtemp.Value.Length - 2), _SQLBuilder.Table, _SQLBuilder.Database, arrParam, _SQLBuilder.ParaValueList);
+                            if (f != null)
+                                _SQLBuilder.Filters.Add(f);
+                        }
+                    }
+                    if (Regex.IsMatch(formular, regexOUT))
+                    {
+                        foreach (Match m in Regex.Matches(formular, regexOUT))
+                        {
+                            Match mtemp = Regex.Match(m.Value, "{.+}");
+                            Node n = Parse2Node(mtemp.Value.Substring(1, mtemp.Value.Length - 2), _SQLBuilder.Table, _SQLBuilder.Database, arrParam, _SQLBuilder.ParaValueList);
+                            if (n != null)
+                                _SQLBuilder.SelectedNodes.Add(n);
+                        }
+                    }
 
-        //     Dim Output As String
-        //     Dim vOutputAgr() As String
 
-        //     n = Regex.Matches(ParseString, "E\=.+?,").Count
-        //     i = 0
-        //     If n > 0 Then
-        //         ReDim vOutputAgr(n)
-        //         For Each oe As Match In Regex.Matches(ParseString, "E\=.+?,")
-        //             i = i + 1
-        //             vOutputAgr(i) = Mid(oe.Value.ToString, 3, 1)
-        //         Next oe
-        //         i = 0
-        //         For Each o As Match In Regex.Matches(ParseString, "O\=.+?,")
-        //             Output = o.Value.ToString
-        //             If Not String.IsNullOrEmpty(Output) Then
-        //                 Output = Output.Replace(",", String.Empty)
-        //             End If
 
-        //             i = i + 1
+                }
 
-        //             vOutputAgr(i) = AgregateN2Code(vOutputAgr(i))
 
-        //             If Not String.IsNullOrEmpty(Output) Then
-        //                 Output = Output.Replace("O=/", String.Empty)
-        //                 For Each _node As Node In SchemaDefinition.GetDecorateTableByCode(vTable, _sqlBuilder.Database)
-        //                     'If Regex.IsMatch(_node.Code, Output & "$") Then
-        //                     If _node.Code.ToUpper = Output.ToUpper Then
-        //                         _SQLBuilder.SelectedNodes.Add(New Node(vOutputAgr(i), Output, _node.Description, _node.FType))
-        //                         Exit For
-        //                     End If
-        //                 Next
-        //             End If
 
-        //         Next
-        //     End If
+            }
+            return _SQLBuilder;
+        }
 
-        // End Sub
+        private static Node Parse2Node(string p, string tbl, string dtb, string[] arrparam, string[] arrvalue)
+        {
+            string key = "";
+            string a = "";
+            string c = "";
+
+            if (Regex.IsMatch(p, regexKEY))
+            {
+                Match m = Regex.Match(p, regexKEY);
+                key = m.Value.Replace("k=", string.Empty);
+            }
+            if (Regex.IsMatch(p, regexAGGREGATE))
+            {
+                Match m = Regex.Match(p, regexAGGREGATE);
+                a = m.Value.Replace("a=", string.Empty);
+            }
+            if (Regex.IsMatch(p, regexC))
+            {
+                Match m = Regex.Match(p, regexC);
+                c = m.Value.Replace("c=", string.Empty);
+            }
+
+
+            if (Regex.IsMatch(c, "{P}"))
+            {
+                int indexP = 0;
+                if (int.TryParse(c.Replace("{P}", ""), out indexP))
+                {
+                    c = arrparam[indexP];
+                }
+            }
+            foreach (Node _node in SchemaDefinition.GetDecorateTableByCode(tbl, dtb))
+            {
+                if (_node.Code.ToUpper() == key.ToUpper())
+                {
+                    return new Node(a, key,_node.Description, _node.FType, _node.NodeDesc);// "", "", "");//
+                }
+            }
+            return null;
+        }
+
+        private static Filter Parse2Filter(string p, string tbl, string dtb, string[] arrparam, string[] arrvalue)
+        {
+            string vFilter = "";
+            string f = "";
+            string t = "";
+            string fp = "";
+            string tp = "";
+            string vf = "";
+            string vt = "";
+            string ai = "";
+            string op = "";
+
+            if (Regex.IsMatch(p, regexKEY))
+            {
+                Match m = Regex.Match(p, regexKEY);
+                vFilter = m.Value.Replace("k=", string.Empty);
+            }
+            if (Regex.IsMatch(p, regexFROM))
+            {
+                Match m = Regex.Match(p, regexFROM);
+                f = m.Value.Replace("f=", string.Empty);
+            }
+            if (Regex.IsMatch(p, regexTO))
+            {
+                Match m = Regex.Match(p, regexTO);
+                t = m.Value.Replace("t=", string.Empty);
+            }
+            if (Regex.IsMatch(p, regexIS))
+            {
+                Match m = Regex.Match(p, regexIS);
+                ai = m.Value.Replace("i=", string.Empty);
+            }
+            if (Regex.IsMatch(p, regexOPERATOR))
+            {
+                Match m = Regex.Match(p, regexOPERATOR);
+                op = m.Value.Replace("o=", string.Empty);
+            }
+
+            if (Regex.IsMatch(f, "{P}"))
+            {
+                int indexP = 0;
+                if (int.TryParse(f.Replace("{P}", ""), out indexP))
+                {
+                    fp = f;
+                    f = arrparam[indexP];
+                    vf = arrvalue[indexP];
+                }
+            }
+            else vf = f;
+            if (Regex.IsMatch(t, "{P}"))
+            {
+                int indexP = 0;
+                if (int.TryParse(t.Replace("{P}", ""), out indexP))
+                {
+                    tp = t;
+                    t = arrparam[indexP];
+                    vt = arrvalue[indexP];
+                }
+            }
+            else vt = t;
+            foreach (Node _node in SchemaDefinition.GetDecorateTableByCode(tbl, dtb))
+            {
+                if (_node.Code == vFilter)
+                {
+                    Filter resuslt = new Filter(new Node(vFilter, _node.Description), f, t, vf, vt, fp, tp);//
+                    resuslt.IsNot = ai;
+                    resuslt.Operate = op;
+                    return resuslt;
+                }
+            }
+            return null;
+        }
 
         private static string AgregateN2Code(string N)
         {

@@ -18,7 +18,7 @@ using System.Drawing.Printing;
 
 using System.Runtime.InteropServices;
 
-namespace QueryDesigner
+namespace dCube
 {
     /// <summary>
     /// Printing / Previewing and Exporting xls files.

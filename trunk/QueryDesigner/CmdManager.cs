@@ -7,7 +7,7 @@ using FlexCel.Core;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace QueryDesigner
+namespace dCube
 {
     public static class CmdManager
     {

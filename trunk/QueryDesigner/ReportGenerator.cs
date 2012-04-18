@@ -18,7 +18,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Data.SqlClient;
 
-namespace QueryDesigner
+namespace dCube
 {
     public class ReportGenerator
     {
@@ -839,15 +839,21 @@ namespace QueryDesigner
                         //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_TO>", x.ValueTo);
                         //}
                         SQLBuilder sqlBuilder = new SQLBuilder(processingMode.Details);
+                        //if (formular.Contains("TVC_QUERY"))
+                        //{
+                        //    string tmp = formular.Replace("USER TABLE(", "");
+                        //    formular = tmp.Substring(0, tmp.Length - 1);
+                        //}
+
                         Parsing.Formular2SQLBuilder(formular, ref sqlBuilder);
 
                         CoreCommonControl commo = new CoreCommonControl();
-                        string[] arrF = formular.Split(';');
+                        string arrF = formular.Substring(formular.Length - 2);
 
-                        if (arrF.Length >= 2 && arrF[1] == "A" && _sqlBuilder.Table == sqlBuilder.Table)
+                        if (arrF.Length >= 2 && arrF == ";A" && _sqlBuilder.Table == sqlBuilder.Table)
                             foreach (Filter x in _sqlBuilder.Filters)
                                 sqlBuilder.Filters.Add(x);
-                        else if (arrF.Length >= 2 && arrF[1] == "S")
+                        else if (arrF.Length >= 2 && arrF == ";S")
                             foreach (Filter x in _sqlBuilder.Filters)
                                 foreach (Filter y in sqlBuilder.Filters)
                                 {

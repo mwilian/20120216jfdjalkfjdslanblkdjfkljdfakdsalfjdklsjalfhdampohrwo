@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Management;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class FrmLicense : Form
     {

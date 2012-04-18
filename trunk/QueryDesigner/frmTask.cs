@@ -9,7 +9,7 @@ using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
 
-namespace QueryDesigner
+namespace dCube
 {
     public partial class frmTask : Form
     {
@@ -176,7 +176,7 @@ namespace QueryDesigner
 
         private string GetDocumentDirec()
         {
-            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\TVC-QD";
+            return System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
         }
 
 
