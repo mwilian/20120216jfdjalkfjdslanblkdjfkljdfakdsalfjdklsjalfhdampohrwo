@@ -1662,6 +1662,7 @@ namespace FlexCel.Render
             int r, int rh, real RowHeight, bool RowAutoHeight, ref int LastUsedCol, ref int cIndex, int c, TExportHtmlCache Cache,
             string HtmlFileName, string RelativeImagePath, bool SaveImages, TFlxFormat DefaultFormat)
         {
+
             if (c < PrintRange.Left) return;
             if (xls.GetColHidden(c)) return;
             int w = xls.GetColWidth(c);
@@ -1774,6 +1775,7 @@ namespace FlexCel.Render
             bool AddedTable = false;
             bool HasImages = Cache.Images.TryGetValue(r, cStart, RowSpan, ColSpan, out ImagesInCell);
 
+
             // This works, but fails in outlook 2007. Other option is not to add a table, but then the images will be aligned as the cell.
             if (HasImages)
             {
@@ -1790,6 +1792,7 @@ namespace FlexCel.Render
 
             bool RenderAsImage = VerticalTextAsImages && (fmt.Rotation == 90 || fmt.Rotation == 180 || fmt.Rotation == 255);
 
+
             string CellComment = GetCellComment(html, xls, r, c);
             string CellCommand = GetCellCommand(html, xls, r, c);
             string MainCellStyle = GetCellStyle(xls, fmt, fmt2, !AddedTable,
@@ -1800,7 +1803,7 @@ namespace FlexCel.Render
             WriteTdTag(html, "  <td " + CellClass + MainCellStyle + SpanStr + CellComment + ">");
 
             //if (HasImages)
-            //	WriteImagesInCell(xls, html, r, cStart, ImagesInCell);
+            //    WriteImagesInCell(xls, html, r, cStart, ImagesInCell);
 
             //we need to add a div to keep IE happy. whitespace:nobreak does not work in td inside ie if column widths are specified.
             //Also, if the row is smaller than one line of text, other browsers will make the row bigger too.
@@ -1845,8 +1848,8 @@ namespace FlexCel.Render
             }
             else if (CellCommand != "")
             {
-                Write(html, FormatStr("<a href=\"{0}\" {1}>",
-                        CellCommand, HyperlinkSuppressBorder));
+                Write(html, FormatStr("<a href=\"#\" onclick=\"{0}\" {1}>",
+                        "tavico_link('LinkInfo','" + CellCommand + "')", HyperlinkSuppressBorder));
                 if (HtmlVersion != THtmlVersion.Html_32)
                 {
                     Write(html, "<span class='" + CellClassStr + "' style='" + GetTextDecoration(xls, fmt.Font, null) + "'>");
@@ -2025,7 +2028,40 @@ namespace FlexCel.Render
             }
         }
 
+        private string GetCellCommand(TextWriter html, ExcelFile xls, int r, int c)
+        {
+            if ((FHidePrintObjects & THidePrintObjects.Comments) != 0) return string.Empty;
+            TRichString Comment = xls.GetComment(r, c);
+            if (Comment.Value.Length == 0) return String.Empty; //Title is not strictly in 3.2, but it doesn't hurt.
+            string command = Comment.Value.Trim();
+            if (command.Contains("TT_XLB_EB"))
+            {
+                return "tavico://ANALYSERUI?tag=" + StringToBase64(command.Replace("=TT_XLB_EB", "TT_XLB_EB"));
+            }
+			else if (command.Contains("TVC_QUERY"))
+            {
+                return "tavico://ANALYSERUI?tag=" + StringToBase64(command.Replace("=TVC_QUERY", "TVC_QUERY"));
+            }			
+            else if (command.Contains("tavico://"))
+            {
+                return command;
+            }
 
+            return "";
+        }
+        public static string StringToBase64(string str)
+        {
+            byte[] b = System.Text.Encoding.UTF8.GetBytes(str);
+            string b64 = Convert.ToBase64String(b);
+            return b64;
+        }
+
+
+        public static string Base64ToString(string b64)
+        {
+            byte[] b = Convert.FromBase64String(b64);
+            return (System.Text.Encoding.UTF8.GetString(b));
+        }
         private string GetCellComment(TextWriter html, ExcelFile xls, int r, int c)
         {
             if ((FHidePrintObjects & THidePrintObjects.Comments) != 0) return string.Empty;
@@ -2033,18 +2069,7 @@ namespace FlexCel.Render
             if (Comment.Value.Length == 0) return String.Empty; //Title is not strictly in 3.2, but it doesn't hurt.
             return FormatStr(" title = \"{0}\"", EncodeAsHtml(html, Comment.Value, TEnterStyle.Char10)); //no rich text here since it is not supported in "title"
         }
-        private string GetCellCommand(TextWriter html, ExcelFile xls, int r, int c)
-        {
-            if ((FHidePrintObjects & THidePrintObjects.Comments) != 0) return string.Empty;
-            TRichString Comment = xls.GetComment(r, c);
-            if (Comment.Value.Length == 0) return String.Empty; //Title is not strictly in 3.2, but it doesn't hurt.
-            string command = EncodeAsHtml(html, Comment.Value, TEnterStyle.Char10);
-            if (command.Contains("TT_XLB_EB"))
-            {
-                return "tvcqd:" + command.Replace("=TT_XLB_EB", "TT_XLB_EB");
-            }
-            return FormatStr(" title = \"{0}\"", EncodeAsHtml(html, Comment.Value, TEnterStyle.Char10)); //no rich text here since it is not supported in "title"
-        }
+
         private void WriteImagesInCell(ExcelFile xls, TextWriter html, int row, int col, THtmlImageCache[,][] ImagesInCell)
         {
             if (ImagesInCell != null)
@@ -2059,7 +2084,8 @@ namespace FlexCel.Render
                         {
                             foreach (THtmlImageCache Img in ImagesInCell[r, c])
                             {
-                                WriteOneImage(html, AcumHeight, AcumWidth, Img);
+
+                                WriteOneImage(xls, html, AcumHeight, AcumWidth, Img);
                             }
                         }
                         AcumWidth += RealColWidth(xls, col + c);
@@ -2069,13 +2095,13 @@ namespace FlexCel.Render
             }
         }
 
-        private void WriteOneImage(TextWriter html, real AcumHeight, real AcumWidth, THtmlImageCache Img)
+        private void WriteOneImage(ExcelFile xls, TextWriter html, real AcumHeight, real AcumWidth, THtmlImageCache Img)
         {
 
             StartImageHyperlink(html, Img.HyperLink);
             if (HtmlVersion == THtmlVersion.Html_32)
             {
-                WriteHtml32Image(html, AcumHeight, AcumWidth, Img);
+                WriteHtml32Image(xls, html, AcumHeight, AcumWidth, Img);
             }
             else
             {
@@ -2085,9 +2111,10 @@ namespace FlexCel.Render
             EndImageHyperlink(html, Img.HyperLink);
         }
 
-        private void WriteHtml32Image(TextWriter html, float AcumHeight, float AcumWidth, THtmlImageCache Img)
+        private void WriteHtml32Image(ExcelFile xls, TextWriter html, float AcumHeight, float AcumWidth, THtmlImageCache Img)
         {
-            WriteLn(html, FormatStr("  <img src='{0}' width='{1}' height='{2}' alt='{3}' border='0' {4}",
+           
+            WriteLn(html, FormatStr("  <img src='{0}' width='{1}' height='{2}' alt='{3}' border='1' {4}",
                 Img.Url, Img.SizePixels.Width, Img.SizePixels.Height, EncodeAsHtml(html, Img.AltText, TEnterStyle.Char10),
                 EndOfTag));
         }
@@ -3182,19 +3209,8 @@ namespace FlexCel.Render
         }
     }
 
-#if (FRAMEWORK20)
     internal class THtmlImageCacheList : Dictionary<long, THtmlImageCache[]>
     {
-#else
-	internal class THtmlImageCacheList: Hashtable
-	{
-		private bool TryGetValue(long key, out THtmlImageCache[] Result)
-		{
-			Result = (THtmlImageCache[])this[key];	
-			return Result != null;
-		}
-#endif
-
         public void Add(int r, int c, THtmlImageCache ImgData)
         {
             long key = FlxHash.MakeHash(r, c);
