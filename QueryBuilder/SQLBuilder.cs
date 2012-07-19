@@ -57,6 +57,10 @@ namespace QueryBuilder
         {
             CoreCommonControl.SetConnection(val);
         }
+        public static string GetConnection()
+        {
+            return CoreCommonControl.GetConnection();
+        }
         string _strConnectDes = "";
 
         public string StrConnectDes
@@ -1253,7 +1257,7 @@ namespace QueryBuilder
                     else if (x.FType == "SDN")
                     {
                         DataColumn col = new DataColumn(x.Code + "_");
-                        col.Expression = CoreCommonControl.GetParseExpressionDate(x.MyCode, "A");
+                        col.Expression = CoreCommonControl.GetParseExpressionDate(x.Description, "A");
                         if (!dt.Columns.Contains(col.ColumnName))
                             dt.Columns.Add(col);
                         //col.Expression = "";
@@ -1261,7 +1265,7 @@ namespace QueryBuilder
                     else if (x.FType == "SPN")
                     {
                         DataColumn col = new DataColumn(x.Code + "_");
-                        col.Expression = CoreCommonControl.GetParseExpressionPeriod(x.MyCode);
+                        col.Expression = CoreCommonControl.GetParseExpressionPeriod(x.Description);
                         if (!dt.Columns.Contains(col.ColumnName))
                             dt.Columns.Add(col);
                         //col.Expression = "";
@@ -1455,14 +1459,14 @@ namespace QueryBuilder
                     else if (x.FType == "SDN")
                     {
                         DataColumn col = new DataColumn(x.Code + "_");
-                        col.Expression = CoreCommonControl.GetParseExpressionDate(x.MyCode, "A");
+                        col.Expression = CoreCommonControl.GetParseExpressionDate(x.Description, "A");
                         dt.Columns.Add(col);
                         //col.Expression = "";
                     }
                     else if (x.FType == "SPN")
                     {
                         DataColumn col = new DataColumn(x.Code + "_");
-                        col.Expression = CoreCommonControl.GetParseExpressionPeriod(x.MyCode);
+                        col.Expression = CoreCommonControl.GetParseExpressionPeriod(x.Description);
                         dt.Columns.Add(col);
                         //col.Expression = "";
                     }

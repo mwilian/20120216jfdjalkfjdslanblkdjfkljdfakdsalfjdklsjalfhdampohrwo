@@ -119,13 +119,15 @@ namespace dCube
             dgvSelect_DesignTimeLayout.LayoutString = resources.GetString("dgvSelect_DesignTimeLayout.LayoutString");
             this.dgvSelect.DesignTimeLayout = dgvSelect_DesignTimeLayout;
             this.dgvSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSelect.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
+            this.dgvSelect.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.dgvSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvSelect.Location = new System.Drawing.Point(0, 0);
             this.dgvSelect.Name = "dgvSelect";
             this.dgvSelect.Size = new System.Drawing.Size(552, 390);
             this.dgvSelect.TabIndex = 5;
-            this.dgvSelect.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvSelect_MouseDoubleClick);
             this.dgvSelect.CellEdited += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvSelect_CellEdited);
+            this.dgvSelect.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvSelect_MouseDoubleClick);
             // 
             // frmFilterSelect
             // 

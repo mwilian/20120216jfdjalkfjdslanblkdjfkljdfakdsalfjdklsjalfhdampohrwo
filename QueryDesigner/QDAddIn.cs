@@ -90,8 +90,12 @@ namespace dCube
             InitializeComponent();
             ////ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
             _sqlBuilder = new QueryBuilder.SQLBuilder(processingMode.Balance);
-            ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DataSource = Parsing.GetListNumberAgregate();
-            ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DisplayMember = "Description";
+            DataTable dtcom = QueryBuilder.Parsing.GetListNumberAgregate();
+            DataRow newrow = dtcom.NewRow();
+            newrow["Code"] = newrow["Description"] = "";
+            dtcom.Rows.Add(newrow);
+            ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DataSource = dtcom;
+            ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DisplayMember = "Code";
             ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).ValueMember = "Code";
             //TopMost = true;
             _strConnect = connect;
@@ -110,7 +114,11 @@ namespace dCube
         public void Init(string Pos, Excel._Application xls, string formular)
         {
             _sqlBuilder = new QueryBuilder.SQLBuilder(processingMode.Balance);
-            ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DataSource = Parsing.GetListNumberAgregate();
+            DataTable dtcom = QueryBuilder.Parsing.GetListNumberAgregate();
+            DataRow newrow = dtcom.NewRow();
+            newrow["Code"] = newrow["Description"] = "";
+            dtcom.Rows.Add(newrow);
+            ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DataSource = dtcom;
             ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DisplayMember = "Description";
             ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).ValueMember = "Code";
             _sqlBuilder.Pos = Pos;
@@ -547,13 +555,6 @@ namespace dCube
             frmMsg frm = new frmMsg();
             frm.SetMsg(query);
             frm.ShowDialog();
-        }
-
-
-
-        private void txtTable_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void GetDescSource()

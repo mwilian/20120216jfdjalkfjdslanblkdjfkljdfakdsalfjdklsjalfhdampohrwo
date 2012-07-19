@@ -244,7 +244,7 @@
             this.txtDB.Location = new System.Drawing.Point(74, 5);
             this.txtDB.Name = "txtDB";
             this.txtDB.Size = new System.Drawing.Size(100, 20);
-            this.txtDB.TabIndex = 35;
+            this.txtDB.TabIndex = 3;
             this.txtDB.TextChanged += new System.EventHandler(this.txtDB_TextChanged);
             this.txtDB.Enter += new System.EventHandler(this.txtDB_Enter);
             this.txtDB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDB_KeyUp);
@@ -256,7 +256,7 @@
             this.txtLedger.Name = "txtLedger";
             this.txtLedger.ReadOnly = true;
             this.txtLedger.Size = new System.Drawing.Size(41, 20);
-            this.txtLedger.TabIndex = 36;
+            this.txtLedger.TabIndex = 4;
             this.txtLedger.Text = "A";
             this.txtLedger.TextChanged += new System.EventHandler(this.txtLedger_TextChanged);
             this.txtLedger.Enter += new System.EventHandler(this.txtLedger_Enter);
@@ -267,8 +267,7 @@
             this.txtTable.Location = new System.Drawing.Point(74, 55);
             this.txtTable.Name = "txtTable";
             this.txtTable.Size = new System.Drawing.Size(100, 20);
-            this.txtTable.TabIndex = 37;
-            this.txtTable.TextChanged += new System.EventHandler(this.txtTable_TextChanged);
+            this.txtTable.TabIndex = 5;
             this.txtTable.Enter += new System.EventHandler(this.txtTable_Enter);
             this.txtTable.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTable_KeyUp);
             this.txtTable.Validated += new System.EventHandler(this.txtTable_Validated);
@@ -283,7 +282,7 @@
             this.txtFilterFrom.Location = new System.Drawing.Point(425, 5);
             this.txtFilterFrom.Name = "txtFilterFrom";
             this.txtFilterFrom.Size = new System.Drawing.Size(162, 20);
-            this.txtFilterFrom.TabIndex = 38;
+            this.txtFilterFrom.TabIndex = 6;
             this.txtFilterFrom.TextChanged += new System.EventHandler(this.txtFilterFrom_TextChanged);
             this.txtFilterFrom.Enter += new System.EventHandler(this.txtFilterFrom_Enter);
             this.txtFilterFrom.Validated += new System.EventHandler(this.txtFilterFrom_Validated);
@@ -299,7 +298,7 @@
             this.txtFilterTo.Location = new System.Drawing.Point(425, 30);
             this.txtFilterTo.Name = "txtFilterTo";
             this.txtFilterTo.Size = new System.Drawing.Size(162, 20);
-            this.txtFilterTo.TabIndex = 39;
+            this.txtFilterTo.TabIndex = 7;
             this.txtFilterTo.TextChanged += new System.EventHandler(this.txtFilterTo_TextChanged);
             this.txtFilterTo.Enter += new System.EventHandler(this.txtFilterTo_Enter);
             this.txtFilterTo.Validated += new System.EventHandler(this.txtFilterTo_Validated);
@@ -329,7 +328,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(934, 82);
-            this.panel1.TabIndex = 40;
+            this.panel1.TabIndex = 0;
             this.panel1.Enter += new System.EventHandler(this.radPanel1_Enter);
             // 
             // dataGridView1
@@ -363,7 +362,7 @@
             this.twSchema1.Location = new System.Drawing.Point(0, 0);
             this.twSchema1.Name = "twSchema1";
             this.twSchema1.Size = new System.Drawing.Size(217, 474);
-            this.twSchema1.TabIndex = 1;
+            this.twSchema1.TabIndex = 0;
             this.twSchema1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.twSchema1_ItemDrag);
             this.twSchema1.Enter += new System.EventHandler(this.radPanel1_Enter);
             this.twSchema1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.twSchema1_KeyUp);
@@ -544,7 +543,7 @@
             this.dgvSelectNodes.Location = new System.Drawing.Point(0, 33);
             this.dgvSelectNodes.Name = "dgvSelectNodes";
             this.dgvSelectNodes.Size = new System.Drawing.Size(713, 209);
-            this.dgvSelectNodes.TabIndex = 2;
+            this.dgvSelectNodes.TabIndex = 0;
             this.dgvSelectNodes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellValueChanged);
             this.dgvSelectNodes.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvSelectNodes_DragDrop);
             this.dgvSelectNodes.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvSelectNodes_DragEnter);

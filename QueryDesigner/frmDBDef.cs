@@ -139,6 +139,21 @@ namespace dCube
             }
             if (sErr == "")
             {
+                if (inf.REPORT_TEMPLATE_DRIVER != "")
+                {
+                    if (!File.Exists(inf.REPORT_TEMPLATE_DRIVER + "\\-.template.xls"))
+                    {
+                        File.Copy(Application.StartupPath + "\\-.template.xls", inf.REPORT_TEMPLATE_DRIVER + "\\-.template.xls");
+                    }
+                    if (!File.Exists(inf.REPORT_TEMPLATE_DRIVER + "\\-.template.xlsx"))
+                    {
+                        File.Copy(Application.StartupPath + "\\-.template.xlsx", inf.REPORT_TEMPLATE_DRIVER + "\\-.template.xlsx");
+                    }
+                    if (!File.Exists(inf.REPORT_TEMPLATE_DRIVER + "\\NODATA.xls"))
+                    {
+                        File.Copy(Application.StartupPath + "\\NODATA.xls", inf.REPORT_TEMPLATE_DRIVER + "\\NODATA.xls");
+                    }
+                }
                 _processStatus = "V";
                 EnableForm(false);
             }

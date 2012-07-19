@@ -285,6 +285,7 @@ namespace QueryBuilder
                         string sp = string.Format("'{0}0{1}'", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString("000"));
                         return sp;
                     }
+                    
 
                     break;
                 default:

@@ -27,7 +27,7 @@ namespace QueryBuilder
         }
         public static string GetParseExpressionPeriod(string columnDate)
         {
-            string result = "SUBSTRING(CONVERT(" + columnDate + ",System.String),5,3)+'/'+SUBSTRING(CONVERT(" + columnDate + ",System.String),1,4)";
+            string result = "IIF("+columnDate+">1900001, SUBSTRING(CONVERT(" + columnDate + ",System.String),5,3)+'/'+SUBSTRING(CONVERT(" + columnDate + ",System.String),1,4),0)";
             return result;
         }
         public IDataReader executeQuery(string sqlString)

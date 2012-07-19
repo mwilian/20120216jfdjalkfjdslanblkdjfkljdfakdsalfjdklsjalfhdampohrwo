@@ -113,6 +113,7 @@ namespace dCube
             _pathLicense = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
             InitializeComponent();
             InitDocument();
+            CmdManager.DocumentDirectory = __documentDirectory;
             //string user = "";
             //string pass = "";
             if (agrs.Length >= 6)
@@ -523,31 +524,46 @@ namespace dCube
         private void InitDocument()
         {
             string filename = _appPath + "\\Configuration\\QDConfig.tvc";
+            string layout = _appPath + "\\Configuration\\layout";
             __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder;
-            if (!Directory.Exists(__documentDirectory))
+            try
             {
-                Directory.CreateDirectory(__documentDirectory);
-            }
-            string configureDirectory = __documentDirectory + "\\Configuration";
-            if (!Directory.Exists(configureDirectory))
-            {
-                Directory.CreateDirectory(configureDirectory);
-            }
-            string layoutDirectory = __documentDirectory + "\\Layout";
-            if (!Directory.Exists(layoutDirectory))
-            {
-                Directory.CreateDirectory(layoutDirectory);
-            }
-            string logFolder = __documentDirectory + "\\Log";
-            if (!Directory.Exists(logFolder))
-            {
-                Directory.CreateDirectory(logFolder);
-            }
+                if (!Directory.Exists(__documentDirectory))
+                {
+                    Directory.CreateDirectory(__documentDirectory);
+                }
+                string configureDirectory = __documentDirectory + "\\Configuration";
+                if (!Directory.Exists(configureDirectory))
+                {
+                    Directory.CreateDirectory(configureDirectory);
+                }
+                string layoutDirectory = __documentDirectory + "\\Layout";
+                if (!Directory.Exists(layoutDirectory))
+                {
+                    Directory.CreateDirectory(layoutDirectory);
+                    string[] layoutFile = Directory.GetFiles(layout);
+                    for (int i = 0; i < layoutFile.Length; i++)
+                    {
+                        File.Copy(layoutFile[i], layoutDirectory + "\\" + Path.GetFileName(layoutFile[i]), true);
+                    }
+                }
 
-            string connectionFile = configureDirectory + "\\QDConfig.tvc";
-            if (!File.Exists(connectionFile))
+
+                string logFolder = __documentDirectory + "\\Log";
+                if (!Directory.Exists(logFolder))
+                {
+                    Directory.CreateDirectory(logFolder);
+                }
+
+                string connectionFile = configureDirectory + "\\QDConfig.tvc";
+                if (!File.Exists(connectionFile))
+                {
+                    File.Copy(filename, connectionFile);
+                }
+            }
+            catch (Exception ex)
             {
-                File.Copy(filename, connectionFile);
+                BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "QD : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace);
             }
             //string tmpLicense = _appPath + "\\license.bin";
             //string fileLicense = configureDirectory + "\\license.bin";
@@ -1067,7 +1083,7 @@ namespace dCube
             //             , Properties.Settings.Default.Pass
             //             , Properties.Settings.Default.DBName);
 
-            ReportGenerator rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
+            ReportGenerator rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT, __documentDirectory);
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
 
@@ -1083,6 +1099,7 @@ namespace dCube
 
                 string filename = _config.DIR[0].RPT + txtdesr.Text + ReportGenerator.Ext;
                 rpGen.Name = txtdesr.Text;
+                rpGen.UserID = _user;
                 if (CheckChange(_xlsFile, _config.DIR[0].TMP, txtqd_id.Text))
                     _xlsFile = rpGen.CreateReport();
                 _xlsFile.Save(filename, ReportGenerator._format);
@@ -2172,7 +2189,7 @@ namespace dCube
             //             , Properties.Settings.Default.Pass
             //             , Properties.Settings.Default.DBName);
             //if (_rpGen == null || _rpGen.IsClose())
-            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
+            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT, __documentDirectory);
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
             if (tempInfo.Code != "")
@@ -2199,6 +2216,7 @@ namespace dCube
                 _rpGen.Name = txtdesr.Text;
                 if (CheckChange(_xlsFile, _config.DIR[0].TMP, txtqd_id.Text))
                 {
+                    _rpGen.UserID = _user;
                     _xlsFile = _rpGen.CreateReport();
 
                     xls.Recalc();
@@ -2470,7 +2488,8 @@ namespace dCube
             //XlsFile xls = new XlsFile();
             //BUS.CommoControl commo = new CommoControl();
             //if (_rpGen == null || _rpGen.IsClose())
-            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
+            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT, __documentDirectory);
+            _rpGen.UserID = _user;
             LIST_TEMPLATEControl tmpCtr = new LIST_TEMPLATEControl();
             LIST_TEMPLATEInfo tempInfo = tmpCtr.Get(_dtb, txtqd_id.Text, ref sErr);
             if (tempInfo.Code != "")
@@ -2516,8 +2535,9 @@ namespace dCube
             //             , Properties.Settings.Default.Pass
             //             , Properties.Settings.Default.DBName);
             //if (_rpGen == null || _rpGen.IsClose())
-            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT);
+            _rpGen = new ReportGenerator(_sqlBuilder, txtqd_id.Text, txt_sql.Text, _strConnectDes, _config.DIR[0].TMP, _config.DIR[0].RPT, __documentDirectory);
             //ExcelFile test = null;
+            _rpGen.UserID = _user;
             try
             {
                 _rpGen.Name = txtdesr.Text;

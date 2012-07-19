@@ -36,6 +36,7 @@
             this.rdDate = new System.Windows.Forms.RadioButton();
             this.btSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.rbD = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // txtMain
@@ -82,7 +83,7 @@
             // 
             this.rdNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rdNum.AutoSize = true;
-            this.rdNum.Location = new System.Drawing.Point(292, 222);
+            this.rdNum.Location = new System.Drawing.Point(312, 222);
             this.rdNum.Name = "rdNum";
             this.rdNum.Size = new System.Drawing.Size(62, 17);
             this.rdNum.TabIndex = 13;
@@ -94,12 +95,12 @@
             // 
             this.rdDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.rdDate.AutoSize = true;
-            this.rdDate.Location = new System.Drawing.Point(193, 222);
+            this.rdDate.Location = new System.Drawing.Point(199, 222);
             this.rdDate.Name = "rdDate";
-            this.rdDate.Size = new System.Drawing.Size(48, 17);
+            this.rdDate.Size = new System.Drawing.Size(107, 17);
             this.rdDate.TabIndex = 14;
             this.rdDate.TabStop = true;
-            this.rdDate.Text = "Date";
+            this.rdDate.Text = "Date(SunSystem)";
             this.rdDate.UseVisualStyleBackColor = true;
             // 
             // btSave
@@ -122,11 +123,24 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
+            // rbD
+            // 
+            this.rbD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbD.AutoSize = true;
+            this.rbD.Location = new System.Drawing.Point(145, 222);
+            this.rbD.Name = "rbD";
+            this.rbD.Size = new System.Drawing.Size(48, 17);
+            this.rbD.TabIndex = 17;
+            this.rbD.TabStop = true;
+            this.rbD.Text = "Date";
+            this.rbD.UseVisualStyleBackColor = true;
+            // 
             // FrmParam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 297);
+            this.Controls.Add(this.rbD);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.txtMain);
@@ -154,5 +168,6 @@
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.RadioButton rdDate;
         private System.Windows.Forms.RadioButton rdNum;
+        private System.Windows.Forms.RadioButton rbD;
     }
 }

@@ -16,6 +16,19 @@ namespace dCube
         private static string _repConnect = "";
         private static string _tempPath = "";
         private static string _reptPath = "";
+        static string __documentDirectory = "";
+        static string _userID = "";
+
+        public static string UserID
+        {
+            get { return CmdManager._userID; }
+            set { CmdManager._userID = value; }
+        }
+        public static string DocumentDirectory
+        {
+            get { return __documentDirectory; }
+            set { __documentDirectory = value; }
+        }
         static string sErr = "";
 
         public static string TempPath
@@ -57,7 +70,7 @@ namespace dCube
             {
                 case "tavico://TASK":
                 case "TASK":
-                    return TaskCmd(valueList);
+                    return TaskCmd(valueList);                
             }
             return sErr;
         }
@@ -97,7 +110,7 @@ namespace dCube
         {
             ReportGenerator rgAtt = null;
             ReportGenerator rgCnt = null;
-           
+
 
 
             string[] emails = infTask.Emails.Split(',');
@@ -114,22 +127,22 @@ namespace dCube
                 if (infTask.AttQD_ID != "")
                 {
                     QueryBuilder.SQLBuilder sqlBuiderA = QueryBuilder.SQLBuilder.LoadSQLBuilderFromDataBase(infTask.AttQD_ID, _db, "");
-                    rgAtt = new ReportGenerator(sqlBuiderA, infTask.AttQD_ID, "", _repConnect, _tempPath, _reptPath);
+                    rgAtt = new ReportGenerator(sqlBuiderA, infTask.AttQD_ID, "", _repConnect, _tempPath, _reptPath, __documentDirectory);
                 }
                 else
                 {
                     DataSet ds = new DataSet();
-                    rgAtt = new ReportGenerator(ds, infTask.AttTmp, _db, _reptPath, _tempPath, _reptPath);
+                    rgAtt = new ReportGenerator(ds, infTask.AttTmp, _db, _reptPath, _tempPath, _reptPath, __documentDirectory);
                 }
                 if (infTask.CntQD_ID != "")
                 {
                     QueryBuilder.SQLBuilder sqlBuiderC = QueryBuilder.SQLBuilder.LoadSQLBuilderFromDataBase(infTask.CntQD_ID, _db, "");
-                    rgCnt = new ReportGenerator(sqlBuiderC, infTask.CntQD_ID, "", _repConnect, _tempPath, _reptPath);
+                    rgCnt = new ReportGenerator(sqlBuiderC, infTask.CntQD_ID, "", _repConnect, _tempPath, _reptPath, __documentDirectory);
                 }
                 else
                 {
                     DataSet ds = new DataSet();
-                    rgCnt = new ReportGenerator(ds, infTask.CntTmp, _db, _repConnect, _tempPath, _reptPath);
+                    rgCnt = new ReportGenerator(ds, infTask.CntTmp, _db, _repConnect, _tempPath, _reptPath, __documentDirectory);
                 }
 
                 if (valueList.ContainsKey("P1"))
@@ -155,6 +168,7 @@ namespace dCube
                 }
 
                 ExcelFile xls = rgAtt.CreateReport();
+                rgAtt.UserID = _userID;
                 rgCnt.Close();
                 bool flagRun = false;
                 string[] arrVRange = infTask.ValidRange.Split(';');
@@ -223,26 +237,27 @@ namespace dCube
             if (infTask.AttQD_ID != "")
             {
                 QueryBuilder.SQLBuilder sqlBuiderA = QueryBuilder.SQLBuilder.LoadSQLBuilderFromDataBase(infTask.AttQD_ID, _db, "");
-                rgAtt = new ReportGenerator(sqlBuiderA, infTask.AttQD_ID, "", _repConnect, _tempPath, _reptPath);
+                rgAtt = new ReportGenerator(sqlBuiderA, infTask.AttQD_ID, "", _repConnect, _tempPath, _reptPath, __documentDirectory);
             }
             else
             {
                 DataSet ds = new DataSet();
-                rgAtt = new ReportGenerator(ds, infTask.AttTmp, _db, _reptPath, _tempPath, _reptPath);
+                rgAtt = new ReportGenerator(ds, infTask.AttTmp, _db, _reptPath, _tempPath, _reptPath, __documentDirectory);
             }
             if (infTask.CntQD_ID != "")
             {
                 QueryBuilder.SQLBuilder sqlBuiderC = QueryBuilder.SQLBuilder.LoadSQLBuilderFromDataBase(infTask.CntQD_ID, _db, "");
-                rgCnt = new ReportGenerator(sqlBuiderC, infTask.CntQD_ID, "", _repConnect, _tempPath, _reptPath);
+                rgCnt = new ReportGenerator(sqlBuiderC, infTask.CntQD_ID, "", _repConnect, _tempPath, _reptPath, __documentDirectory);
             }
             else
             {
                 DataSet ds = new DataSet();
-                rgCnt = new ReportGenerator(ds, infTask.CntTmp, _db, _repConnect, _tempPath, _reptPath);
+                rgCnt = new ReportGenerator(ds, infTask.CntTmp, _db, _repConnect, _tempPath, _reptPath, __documentDirectory);
             }
             rgAtt.ValueList = valueList;
             rgCnt.ValueList = valueList;
             ExcelFile xls = rgAtt.CreateReport();
+            rgAtt.UserID = _userID;
             rgCnt.Close();
             bool flagRun = false;
             string[] arrVRange = infTask.ValidRange.Split(';');
