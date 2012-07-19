@@ -25,7 +25,7 @@ namespace dCube
         {
             InitializeComponent();
             //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
-        }       
+        }
         private void btSave_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -34,7 +34,9 @@ namespace dCube
                 type = "SDN";
             else if (rdNum.Checked)
                 type = "N";
-            QueryBuilder.Node _Node = new QueryBuilder.Node("", "__" + txtName.Text, "__" + txtName.Text, type,"");
+            else if (rbD.Checked)
+                type = "D";
+            QueryBuilder.Node _Node = new QueryBuilder.Node("", "__" + txtName.Text, "__" + txtName.Text, type, "");
             //_Node.Expresstion = txtMain.Text;
             _Filter = new QueryBuilder.Filter(_Node);
             _Filter.FilterFrom = _Filter.ValueFrom = txtMain.Text;
@@ -52,5 +54,5 @@ namespace dCube
 
         }
     }
-       
+
 }

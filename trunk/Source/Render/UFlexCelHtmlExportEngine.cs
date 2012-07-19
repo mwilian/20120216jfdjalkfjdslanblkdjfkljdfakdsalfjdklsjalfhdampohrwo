@@ -1838,8 +1838,17 @@ namespace FlexCel.Render
                 Hlink = xls.GetHyperLink(HLinkPos);
                 if (Hlink != null && Hlink.LinkType == THyperLinkType.URL)
                 {
-                    Write(html, FormatStr("<a href=\"{0}\" {1}>",
-                        EncodeHyperlink(html, Hlink.Text), HyperlinkSuppressBorder));
+                    string strlink = EncodeHyperlink(html, Hlink.Text);
+                    if (!strlink.Contains("tavico://"))
+                    {
+                        Write(html, FormatStr("<a href=\"{0}\" {1}>",
+                            strlink, HyperlinkSuppressBorder));
+                    }
+                    else
+                    {
+                        Write(html, FormatStr("<a href='#' onclick=\"{0}\" {1}>",
+                           "tavico_link('LinkInfo','" + strlink + "')", HyperlinkSuppressBorder));
+                    }
                     if (HtmlVersion != THtmlVersion.Html_32)
                     {
                         Write(html, "<span class='" + CellClassStr + "' style='" + GetTextDecoration(xls, fmt.Font, null) + "'>");
@@ -1848,7 +1857,7 @@ namespace FlexCel.Render
             }
             else if (CellCommand != "")
             {
-                Write(html, FormatStr("<a href=\"#\" onclick=\"{0}\" {1}>",
+                Write(html, FormatStr("<a href='#' onclick=\"{0}\" {1}>",
                         "tavico_link('LinkInfo','" + CellCommand + "')", HyperlinkSuppressBorder));
                 if (HtmlVersion != THtmlVersion.Html_32)
                 {
@@ -2016,7 +2025,18 @@ namespace FlexCel.Render
         {
             if (HyperLink != null && (FHidePrintObjects & THidePrintObjects.Hyperlynks) == 0)
             {
-                Write(html, FormatStr("  <a href=\"{0}\" {1}>", EncodeHyperlink(html, HyperLink), HyperlinkSuppressBorder));
+                string strlink = EncodeHyperlink(html, HyperLink);
+                if (!strlink.Contains("tavico://"))
+                {
+                    Write(html, FormatStr("<a href=\"{0}\" {1}>",
+                        strlink, HyperlinkSuppressBorder));
+                }
+                else
+                {
+                    Write(html, FormatStr("<a href='#' onclick=\"{0}\" {1}>",
+                       "tavico_link('LinkInfo','" + strlink + "')", HyperlinkSuppressBorder));
+                }
+                //Write(html, FormatStr("  <a href=\"{0}\" {1}>", EncodeHyperlink(html, HyperLink), HyperlinkSuppressBorder));
             }
         }
 

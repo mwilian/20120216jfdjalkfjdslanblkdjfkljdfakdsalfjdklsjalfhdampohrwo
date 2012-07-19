@@ -137,6 +137,7 @@
             this.importDefinitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.txtCommand = new System.Windows.Forms.ToolStripTextBox();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
@@ -966,7 +967,8 @@
             this.btnTheme,
             this.btnOperator,
             this.importToolStripMenuItem,
-            this.changePasswordToolStripMenuItem});
+            this.changePasswordToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.mMain.Name = "mMain";
             // 
             // btnSystem
@@ -1092,6 +1094,12 @@
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             resources.ApplyResources(this.changePasswordToolStripMenuItem, "changePasswordToolStripMenuItem");
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // toolStrip1
             // 
@@ -1757,6 +1765,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn myParentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn myAliasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn myFamilyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 
     }
 }

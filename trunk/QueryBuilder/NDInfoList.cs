@@ -101,7 +101,7 @@ namespace QueryBuilder
         {
             RaiseListChangedEvents = false;
 
-            using (SqlConnection cn = new SqlConnection(ConfigurationSettings.AppSettings["strConnect"].ToString()))
+            using (SqlConnection cn = new SqlConnection(SQLBuilder.GetConnection()))
             {
                 cn.Open();
                 ExecuteFetch(cn);

@@ -53,8 +53,8 @@
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 22);
-            this.btnClear.Text = "Clear";
+            this.btnClear.Size = new System.Drawing.Size(66, 22);
+            this.btnClear.Text = "Clear All";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // dataGridView1

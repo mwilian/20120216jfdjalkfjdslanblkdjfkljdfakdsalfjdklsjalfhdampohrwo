@@ -211,54 +211,54 @@ namespace QueryBuilder
             // Dim ANAL_Regex As String = "(?<=ANAL_)[A,T,M,I,C,Q,F][0-9][0-9]|(?<=ANAL)[A,T,M,I,C,Q,F][0-9][0-9]|(?<=[^A-Za-z0-90-9])[A,T,M,I,C,Q,F][0-9][0-9]|(?<=Anal)[A,T,M,I,C,Q,F][0-9][0-9]"
             string ANAL_Regex = "[A,T,M,I,Q,F][0-9][0-9]";
 
-            foreach (Node F in _schema)
-            {
-                // cat = Regex.Match(F.Code, pbs.Helper.pbsRegex.DB_ANAL_HEADER).ToString
-                // catNode = Regex.Match(F.MyCode, pbs.Helper.pbsRegex.DB_ANAL_HEADER).ToString
+            //foreach (Node F in _schema)
+            //{
+            //    // cat = Regex.Match(F.Code, pbs.Helper.pbsRegex.DB_ANAL_HEADER).ToString
+            //    // catNode = Regex.Match(F.MyCode, pbs.Helper.pbsRegex.DB_ANAL_HEADER).ToString
 
-                // cat = Regex.Match(F.Code, ANAL_Regex).ToString
-                cat = Regex.Match(F.Code, ANAL_Regex).ToString();
-                catNode = Regex.Match(F.MyCode, ANAL_Regex).ToString();
+            //    // cat = Regex.Match(F.Code, ANAL_Regex).ToString
+            //    cat = Regex.Match(F.Code, ANAL_Regex).ToString();
+            //    catNode = Regex.Match(F.MyCode, ANAL_Regex).ToString();
+            //    /*
+            //    if (!(string.IsNullOrEmpty(cat)))
+            //    {
+            //        string transTemp0 = F.MyCode;
+            //        if (  transTemp0.Length == 3) // TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace 
+            //        { // tam thoi, day la ma phan tich
 
-                if (!(string.IsNullOrEmpty(cat)))
-                {
-                    string transTemp0 = F.MyCode;
-                    if (  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ transTemp0.Length == 3)
-                    { // tam thoi, day la ma phan tich
+            //            AnalCnt = 0;
+            //            NDInfo info = NDInfo.EmptyNDInfo();
+            //            if (NDInfoList.GetNDInfoList(DB).ContainsCode(cat, ref info))
+            //            {
+            //                // F.DecorateDescriptn(catNode)
+            //                F.DecorateDescriptn(info.Description);
 
-                        AnalCnt = 0;
-                        NDInfo info = NDInfo.EmptyNDInfo();
-                        if (NDInfoList.GetNDInfoList(DB).ContainsCode(cat, ref info))
-                        {
-                            // F.DecorateDescriptn(catNode)
-                            F.DecorateDescriptn(info.Description);
+            //            }
+            //        }
+            //        else
+            //        {
 
-                        }
-                    }
-                    else
-                    {
+            //            // decorate cac analysis code va description ... ben trong tung node analysis
+            //            AnalCnt = AnalCnt + 1;
+            //            if (AnalCnt > 1)
+            //            {
+            //                F.DecorateDescriptn(cat + " " + F.Description);
+            //            }
 
-                        // decorate cac analysis code va description ... ben trong tung node analysis
-                        AnalCnt = AnalCnt + 1;
-                        if (AnalCnt > 1)
-                        {
-                            F.DecorateDescriptn(cat + " " + F.Description);
-                        }
+            //        }
+            //        NDInfo transTemp1 = null;
+            //        if (!(NDInfoList.GetNDInfoList(DB).ContainsCode(cat, ref transTemp1)))
+            //        {
+            //            _unUsedAnalysisCategories.Add(F);
+            //            // If F.Description = "" Or F.Description = "<Blank>" Then
+            //        }
+            //        else
+            //        {
+            //            // F.DecorateDescriptn(ResStr(F.MyCode))
+            //        }
+            //    }*/
 
-                    }
-                    NDInfo transTemp1 = null;
-                    if (!(NDInfoList.GetNDInfoList(DB).ContainsCode(cat, ref transTemp1)))
-                    {
-                        _unUsedAnalysisCategories.Add(F);
-                        // If F.Description = "" Or F.Description = "<Blank>" Then
-                    }
-                    else
-                    {
-                        // F.DecorateDescriptn(ResStr(F.MyCode))
-                    }
-                }
-
-            }
+            //}
             // remove unused analysis code
             foreach (Node _f in _unUsedAnalysisCategories)
             {

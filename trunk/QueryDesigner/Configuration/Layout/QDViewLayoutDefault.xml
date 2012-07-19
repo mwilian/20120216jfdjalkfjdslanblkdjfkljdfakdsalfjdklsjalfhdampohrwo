@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridEXLayoutFile LayoutType="Janus.Windows.GridEX.GridEX" LayoutVersion="1.1">
+  <Layouts Collection="true" ElementName="Layout">
+    <Layout0 ID="dgvQDView">
+      <Key>dgvQDView</Key>
+      <LayoutString>
+        <GridEXLayoutData>
+          <RootTable>
+            <Key>Table</Key>
+            <Caption>Table</Caption>
+            <Columns Collection="true" ElementName="Column">
+              <Column0 ID="DTB">
+                <Caption>DB</Caption>
+                <DataTypeCode>String</DataTypeCode>
+                <DataMember>DTB</DataMember>
+                <Key>DTB</Key>
+                <Position>0</Position>
+				<Visible>False</Visible>
+              </Column0>
+              <Column1 ID="QD_ID">
+                <Caption>Code</Caption>
+                <DataTypeCode>String</DataTypeCode>
+                <DataMember>QD_ID</DataMember>
+                <Key>QD_ID</Key>
+                <Position>1</Position>
+              </Column1>
+              <Column2 ID="DESCRIPTN">
+                <Caption>Description</Caption>
+                <DataTypeCode>String</DataTypeCode>
+                <DataMember>DESCRIPTN</DataMember>
+                <Key>DESCRIPTN</Key>
+                <Position>2</Position>
+              </Column2>
+              <Column3 ID="OWNER">
+                <Caption>Owner</Caption>
+                <DataTypeCode>String</DataTypeCode>
+                <DataMember>OWNER</DataMember>
+                <Key>OWNER</Key>
+                <Position>3</Position>
+              </Column3>
+              <Column4 ID="SHARED">
+                <Caption>Shared</Caption>
+                <DataTypeCode>Boolean</DataTypeCode>
+                <ColumnType>CheckBox</ColumnType>
+                <DataMember>SHARED</DataMember>
+                <EditType>CheckBox</EditType>
+                <Key>SHARED</Key>
+                <Position>4</Position>
+              </Column4>
+              <Column5 ID="ANAL_Q0">
+                <Caption>Data source</Caption>
+                <DataTypeCode>String</DataTypeCode>
+                <DataMember>ANAL_Q0</DataMember>
+                <Key>ANAL_Q0</Key>
+                <Position>5</Position>
+              </Column5>              
+            </Columns>
+            <GroupCondition />
+          </RootTable>
+          <SearchColumnIndex>0</SearchColumnIndex>
+          <RowWithErrorsFormatStyle>
+            <PredefinedStyle>RowWithErrorsFormatStyle</PredefinedStyle>
+          </RowWithErrorsFormatStyle>
+          <LinkFormatStyle>
+            <PredefinedStyle>LinkFormatStyle</PredefinedStyle>
+          </LinkFormatStyle>
+          <CardCaptionFormatStyle>
+            <PredefinedStyle>CardCaptionFormatStyle</PredefinedStyle>
+          </CardCaptionFormatStyle>
+          <GroupByBoxFormatStyle>
+            <PredefinedStyle>GroupByBoxFormatStyle</PredefinedStyle>
+          </GroupByBoxFormatStyle>
+          <GroupByBoxInfoFormatStyle>
+            <PredefinedStyle>GroupByBoxInfoFormatStyle</PredefinedStyle>
+          </GroupByBoxInfoFormatStyle>
+          <GroupRowFormatStyle>
+            <PredefinedStyle>GroupRowFormatStyle</PredefinedStyle>
+          </GroupRowFormatStyle>
+          <HeaderFormatStyle>
+            <PredefinedStyle>HeaderFormatStyle</PredefinedStyle>
+          </HeaderFormatStyle>
+          <PreviewRowFormatStyle>
+            <PredefinedStyle>PreviewRowFormatStyle</PredefinedStyle>
+          </PreviewRowFormatStyle>
+          <RowFormatStyle>
+            <PredefinedStyle>RowFormatStyle</PredefinedStyle>
+          </RowFormatStyle>
+          <SelectedFormatStyle>
+            <PredefinedStyle>SelectedFormatStyle</PredefinedStyle>
+          </SelectedFormatStyle>
+          <SelectedInactiveFormatStyle>
+            <PredefinedStyle>SelectedInactiveFormatStyle</PredefinedStyle>
+          </SelectedInactiveFormatStyle>
+          <WatermarkImage />
+          <Font>Microsoft Sans Serif, 8.25pt</Font>
+          <VisualStyle>Office2007</VisualStyle>
+          <AllowEdit>False</AllowEdit>
+          <FilterMode>Automatic</FilterMode>
+          <FilterRowButtonStyle>ConditionOperatorDropDown</FilterRowButtonStyle>
+        </GridEXLayoutData>
+      </LayoutString>
+      <IsCurrentLayout>True</IsCurrentLayout>
+    </Layout0>
+  </Layouts>
+</GridEXLayoutFile>

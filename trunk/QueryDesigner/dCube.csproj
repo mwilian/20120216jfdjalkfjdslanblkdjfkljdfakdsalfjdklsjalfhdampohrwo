@@ -1,0 +1,1134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97D235CF-2EF5-4CEC-A29A-451CB244CC00}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dCube</RootNamespace>
+    <AssemblyName>dCube</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>1293606505_ColorMSExcel.ico</ApplicationIcon>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>QDKey.snk</AssemblyOriginatorKeyFile>
+    <ManifestCertificateThumbprint>D9102A0FAA793D47B52A35F59CF30D2F6D92EF6C</ManifestCertificateThumbprint>
+    <ManifestKeyFile>QueryDesigner_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <TargetZone>Custom</TargetZone>
+    <StartupObject>
+    </StartupObject>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>C:\Temp\QD\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\192.168.1.83\tavico\qdsetup\</InstallUrl>
+    <UpdateUrl>\\192.168.1.83\tavico\qdsetup\</UpdateUrl>
+    <ProductName>QueryDesigner</ProductName>
+    <PublisherName>Ta Vi Co. Ltd</PublisherName>
+    <SuiteName>Diamond</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>31</ApplicationRevision>
+    <ApplicationVersion>3.4.7.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FlexCel, Version=5.6.2.0, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\FlexCel.dll</HintPath>
+    </Reference>
+    <Reference Include="FlexCelWinforms, Version=5.6.2.0, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\FlexCelWinforms.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral, PublicKeyToken=3c8e198007f9ecf8">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Interops\Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Data.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Janus.Windows.CalendarCombo.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Janus.Windows.Common.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Vbe.Interop, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Interops\Microsoft.Vbe.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Management.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="clsChartProperty.cs" />
+    <Compile Include="clsListValueTT_XLB_EB.cs" />
+    <Compile Include="CmdManager.cs" />
+    <Compile Include="Configuration\clsConfigurarion.cs" />
+    <Compile Include="Configuration\clsControlsInForm.cs" />
+    <Compile Include="Configuration\ConfigDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsStruct.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsStruct.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoginEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginEx.designer.cs">
+      <DependentUpon>frmLoginEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmail.Designer.cs">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOS.Designer.cs">
+      <DependentUpon>frmPOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaskView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaskView.Designer.cs">
+      <DependentUpon>frmTaskView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTask.Designer.cs">
+      <DependentUpon>frmTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDBDef.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDBDef.Designer.cs">
+      <DependentUpon>frmDBDef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetHelper.cs" />
+    <Compile Include="DateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmChangeDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeDB.Designer.cs">
+      <DependentUpon>frmChangeDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFlexPrintPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlexPrintPreview.designer.cs">
+      <DependentUpon>frmFlexPrintPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportDefView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportDefView.Designer.cs">
+      <DependentUpon>frmImportDefView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportDefinition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportDefinition.Designer.cs">
+      <DependentUpon>frmImportDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePass.Designer.cs">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDAView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDAView.Designer.cs">
+      <DependentUpon>frmDAView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDA.Designer.cs">
+      <DependentUpon>frmDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImport.designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMsg.Designer.cs">
+      <DependentUpon>frmMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOP.Designer.cs">
+      <DependentUpon>frmPOP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOPView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOPView.Designer.cs">
+      <DependentUpon>frmPOPView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOGView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOGView.Designer.cs">
+      <DependentUpon>frmPOGView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOG.Designer.cs">
+      <DependentUpon>frmPOG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPODView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPODView.Designer.cs">
+      <DependentUpon>frmPODView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChartPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChartPro.Designer.cs">
+      <DependentUpon>frmChartPro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListReport.Designer.cs">
+      <DependentUpon>FrmListReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPOD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPOD.Designer.cs">
+      <DependentUpon>frmPOD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQDADDView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQDADDView.Designer.cs">
+      <DependentUpon>frmQDADDView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDateFilterSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDateFilterSelect.Designer.cs">
+      <DependentUpon>frmDateFilterSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilterSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilterSelect.Designer.cs">
+      <DependentUpon>frmFilterSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLookup.Designer.cs">
+      <DependentUpon>frmLookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQDADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQDADD.Designer.cs">
+      <DependentUpon>frmQDADD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelation.Designer.cs">
+      <DependentUpon>frmRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSystem.Designer.cs">
+      <DependentUpon>FrmSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConnection.Designer.cs">
+      <DependentUpon>FrmConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLicense.Designer.cs">
+      <DependentUpon>FrmLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmParam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParam.Designer.cs">
+      <DependentUpon>FrmParam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSubField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSubField.Designer.cs">
+      <DependentUpon>FrmSubField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestMail.Designer.cs">
+      <DependentUpon>frmTestMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferIn.Designer.cs">
+      <DependentUpon>FrmTransferIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTransferOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransferOut.Designer.cs">
+      <DependentUpon>FrmTransferOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserFunc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserFunc.Designer.cs">
+      <DependentUpon>FrmUserFunc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmValidatedList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmValidatedList.Designer.cs">
+      <DependentUpon>frmValidatedList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridExDialog\frmFieldChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridExDialog\frmFieldChooser.designer.cs">
+      <DependentUpon>frmFieldChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridExDialog\frmFormatView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridExDialog\frmFormatView.designer.cs">
+      <DependentUpon>frmFormatView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridExDialog\frmShowFields.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridExDialog\frmShowFields.designer.cs">
+      <DependentUpon>frmShowFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridExDialog\frmSort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridExDialog\frmSort.designer.cs">
+      <DependentUpon>frmSort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainQD.cs" />
+    <Compile Include="MyHash.cs" />
+    <Compile Include="NumberToWordsConverter.cs" />
+    <Compile Include="objValidatedList.cs" />
+    <Compile Include="QDAddIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDAddIn.Designer.cs">
+      <DependentUpon>QDAddIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QDAddinDrillDown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDAddinDrillDown.Designer.cs">
+      <DependentUpon>QDAddinDrillDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QDConfig.cs">
+      <DependentUpon>QDConfig.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QDConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QDConfig.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RC2.cs" />
+    <Compile Include="ReadEN.cs" />
+    <Compile Include="Form_QD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_QD.Designer.cs">
+      <DependentUpon>Form_QD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_DTBView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_DTBView.Designer.cs">
+      <DependentUpon>Form_DTBView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_TableView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_TableView.Designer.cs">
+      <DependentUpon>Form_TableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_View.Designer.cs">
+      <DependentUpon>Form_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PdfProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoginEx.resx">
+      <DependentUpon>frmLoginEx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmail.resx">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOS.resx">
+      <DependentUpon>frmPOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaskView.resx">
+      <DependentUpon>frmTaskView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTask.resx">
+      <DependentUpon>frmTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDBDef.resx">
+      <DependentUpon>frmDBDef.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeDB.resx">
+      <DependentUpon>frmChangeDB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFlexPrintPreview.resx">
+      <DependentUpon>frmFlexPrintPreview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportDefView.resx">
+      <DependentUpon>frmImportDefView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportDefinition.resx">
+      <DependentUpon>frmImportDefinition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_QD.vi.resx">
+      <DependentUpon>Form_QD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePass.resx">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDAView.resx">
+      <DependentUpon>frmDAView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDA.resx">
+      <DependentUpon>frmDA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImport.resx">
+      <DependentUpon>frmImport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMsg.resx">
+      <DependentUpon>frmMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOP.resx">
+      <DependentUpon>frmPOP.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOPView.resx">
+      <DependentUpon>frmPOPView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOGView.resx">
+      <DependentUpon>frmPOGView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOG.resx">
+      <DependentUpon>frmPOG.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPODView.resx">
+      <DependentUpon>frmPODView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChartPro.resx">
+      <DependentUpon>frmChartPro.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListReport.resx">
+      <DependentUpon>FrmListReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPOD.resx">
+      <DependentUpon>frmPOD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQDADDView.resx">
+      <DependentUpon>frmQDADDView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDateFilterSelect.resx">
+      <DependentUpon>frmDateFilterSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilterSelect.resx">
+      <DependentUpon>frmFilterSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLookup.resx">
+      <DependentUpon>frmLookup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQDADD.resx">
+      <DependentUpon>frmQDADD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelation.resx">
+      <DependentUpon>frmRelation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSystem.resx">
+      <DependentUpon>FrmSystem.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConnection.resx">
+      <DependentUpon>FrmConnection.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLicense.resx">
+      <DependentUpon>FrmLicense.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmParam.resx">
+      <DependentUpon>FrmParam.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_QD.resx">
+      <DependentUpon>Form_QD.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_DTBView.resx">
+      <DependentUpon>Form_DTBView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_TableView.resx">
+      <DependentUpon>Form_TableView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_TableView.vi.resx">
+      <DependentUpon>Form_TableView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_View.resx">
+      <DependentUpon>Form_View.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSubField.resx">
+      <DependentUpon>FrmSubField.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestMail.resx">
+      <DependentUpon>frmTestMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferIn.resx">
+      <DependentUpon>FrmTransferIn.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransferOut.resx">
+      <DependentUpon>FrmTransferOut.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserFunc.resx">
+      <DependentUpon>FrmUserFunc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmValidatedList.resx">
+      <DependentUpon>frmValidatedList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridExDialog\frmFieldChooser.resx">
+      <DependentUpon>frmFieldChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridExDialog\frmFormatView.resx">
+      <DependentUpon>frmFormatView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridExDialog\frmShowFields.resx">
+      <DependentUpon>frmShowFields.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridExDialog\frmSort.resx">
+      <DependentUpon>frmSort.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PdfProgressDialog.resx">
+      <DependentUpon>PdfProgressDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDAddIn.resx">
+      <DependentUpon>QDAddIn.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDAddinDrillDown.resx">
+      <DependentUpon>QDAddinDrillDown.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="Configuration\Layout\dgvDTBView.gxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\dgvImportDefView.gxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\dgvLIST_DAView.gxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\dgvQDADDView.gxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\dgvQDView.gxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\dgvTableView.gxl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Configuration\Log\cmdlog.log">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Configuration\Log\ErroLog.log">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Configuration\QDConfig.tvc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="dsStruct.xsc">
+      <DependentUpon>dsStruct.xsd</DependentUpon>
+    </None>
+    <None Include="dsStruct.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsStruct.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsStruct.xss">
+      <DependentUpon>dsStruct.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Sendmail.cs" />
+    <Compile Include="TreeViewLoader.cs" />
+    <Compile Include="ReportGenerator.cs" />
+    <Compile Include="XmlEncoder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{1E7358AA-BEBF-4786-8E25-A8F163D29035}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{6B099CCD-68CE-4597-972D-55E85E2C28B5}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlexCelDesigner\TVCDesigner.csproj">
+      <Project>{05B7F1D7-C5F4-4133-B0BE-A5D052779718}</Project>
+      <Name>TVCDesigner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryBuilder\QueryBuilder.csproj">
+      <Project>{0758002C-AA25-4167-92AC-414037CAC5C6}</Project>
+      <Name>QueryBuilder</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app-delete-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app-edit-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Run.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1293606505_ColorMSExcel.ico" />
+    <Content Include="charts.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\ErroCodes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Forms.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Form\Form_QD.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Form\Frm_DTB.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Form\Frm_DTSRC.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Form\Frm_Report.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Form\QueryDesigner.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Form\SelectGrid.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Languages.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Languages\cin.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Languages\vni.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\QDViewLayoutDefault.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Layout\TaskViewLayoutDefault.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Security.xml" />
+    <Content Include="Configuration\xmlConnect.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Area2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Bar2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Bubble.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Column2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Column3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Data.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Doughnut2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Doughnut3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FCExporter.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\firebug-lite.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FusionCharts.HC.Charts.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FusionCharts.HC.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FusionCharts.jqueryplugin.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FusionCharts.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\FusionChartsExportComponent.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\jquery.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Line.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Marimekko.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSArea.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSBar2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSBar3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSColumn3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSColumn3DLineDY.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSColumnLine3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSCombi2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSCombi3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSCombiDY2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSLine.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSStackedColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\MSStackedColumn2DLineDY.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Pareto2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Pareto3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Pie2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Pie3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\Scatter.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ScrollArea2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ScrollColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ScrollCombi2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ScrollCombiDY2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ScrollLine2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ScrollStackedColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\SSGrid.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedArea2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedBar2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedBar3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedColumn2D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedColumn2DLine.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedColumn3D.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedColumn3DLine.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\StackedColumn3DLineDY.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FusionCharts\ZoomLine.swf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Interops\Interop.Excel.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Interops\Microsoft.Vbe.Interop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\1300327616_ParameterReview.png" />
+    <None Include="Resources\1328261867_filter_add.png" />
+    <None Include="Resources\1328262186_database_table.png" />
+    <None Include="Resources\1331104457_gnome-session-reboot.png" />
+    <None Include="Resources\1331113101_addressbook.png" />
+    <None Include="Resources\1333965527_Microsoft Office 2007 Excel.png" />
+    <Content Include="Resources\lightbox_loading.gif" />
+    <Content Include="-.template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="QDConfig.xsc">
+      <DependentUpon>QDConfig.xsd</DependentUpon>
+    </None>
+    <None Include="QDConfig.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QDConfig.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="QDConfig.xss">
+      <DependentUpon>QDConfig.xsd</DependentUpon>
+    </None>
+    <None Include="QDKey.snk" />
+    <None Include="Resources\1307932637_gtk-print-setup.png" />
+    <None Include="Resources\1307932645_preferences-desktop-printer.png" />
+    <None Include="Resources\1307932566_preferences-desktop-printer.png" />
+    <None Include="app.config" />
+    <None Include="Configuration\ConfigDataSet.xsc">
+      <DependentUpon>ConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Configuration\ConfigDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConfigDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Configuration\ConfigDataSet.xss">
+      <DependentUpon>ConfigDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\find.png" />
+    <None Include="Resources\1303882176_search_16.png" />
+    <None Include="Resources\1303702678_application-vnd.ms-excel.png" />
+    <None Include="Resources\1303701366_print_32.png" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Resources\1300847659_package_graphics.png" />
+    <None Include="Resources\1300326419_designer.png" />
+    <None Include="Resources\login.gif" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\connect.png" />
+    <None Include="Resources\Copy.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\excel.png" />
+    <None Include="Resources\run16.png" />
+    <None Include="Properties\DataSources\QueryBuilder.Filter.datasource" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\app-upload-32x32.png" />
+    <Content Include="Folder.png" />
+    <Content Include="Field.png" />
+    <Content Include="Copy.png" />
+    <None Include="Properties\DataSources\QueryBuilder.Node.datasource" />
+    <None Include="Properties\DataSources\QueryBuilder.SQLBuilder.datasource" />
+    <Content Include="-.template.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\run-48x48.png" />
+    <None Include="Resources\app-search-32x32.png" />
+    <Content Include="NODATA.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Document\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

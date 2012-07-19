@@ -31,6 +31,19 @@ namespace dCube
                 return _format == TFileFormats.Xlsx;
             }
         }
+        string __documentDirectory = "";
+        string _userID = "";
+
+        public string UserID
+        {
+            get { return _userID; }
+            set { _userID = value; }
+        }
+        public string _documentDirectory
+        {
+            get { return __documentDirectory; }
+            set { __documentDirectory = value; }
+        }
         public static string Ext
         {
             get { return User2007 ? ".xlsx" : ".xls"; }
@@ -832,48 +845,57 @@ namespace dCube
                 default:
                     if (e.Parameters.ToUpper(CultureInfo.InvariantCulture).Contains("\""))
                     {
-                        string formular = e.Parameters.ToString(CultureInfo.InvariantCulture);
-                        //foreach (QueryBuilder.Filter x in _sqlBuilder.Filters)
-                        //{
-                        //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_FROM>", x.ValueFrom);
-                        //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_TO>", x.ValueTo);
-                        //}
-                        SQLBuilder sqlBuilder = new SQLBuilder(processingMode.Details);
-                        //if (formular.Contains("TVC_QUERY"))
-                        //{
-                        //    string tmp = formular.Replace("USER TABLE(", "");
-                        //    formular = tmp.Substring(0, tmp.Length - 1);
-                        //}
+                        try
+                        {
+                            string formular = e.Parameters.ToString(CultureInfo.InvariantCulture);
+                            //foreach (QueryBuilder.Filter x in _sqlBuilder.Filters)
+                            //{
+                            //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_FROM>", x.ValueFrom);
+                            //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_TO>", x.ValueTo);
+                            //}
+                            SQLBuilder sqlBuilder = new SQLBuilder(processingMode.Details);
+                            if (formular.Contains("TVC_QUERY"))
+                            {
+                                //string tmp = formular.Replace("USER TABLE(", "");
+                                //formular = tmp.Substring(0, tmp.Length - 1);
+                                Parsing.TVCFormular2SQLBuilder(formular, ref sqlBuilder);
+                            }
+                            else
+                                Parsing.Formular2SQLBuilder(formular, ref sqlBuilder);
 
-                        Parsing.Formular2SQLBuilder(formular, ref sqlBuilder);
+                            CoreCommonControl commo = new CoreCommonControl();
+                            string arrF = formular.Substring(formular.Length - 2);
 
-                        CoreCommonControl commo = new CoreCommonControl();
-                        string arrF = formular.Substring(formular.Length - 2);
-
-                        if (arrF.Length >= 2 && arrF == ";A" && _sqlBuilder.Table == sqlBuilder.Table)
-                            foreach (Filter x in _sqlBuilder.Filters)
-                                sqlBuilder.Filters.Add(x);
-                        else if (arrF.Length >= 2 && arrF == ";S")
-                            foreach (Filter x in _sqlBuilder.Filters)
-                                foreach (Filter y in sqlBuilder.Filters)
-                                {
-                                    if (x.Node.MyCode == y.Node.MyCode)
+                            if (arrF.Length >= 2 && arrF == ";A" && _sqlBuilder.Table == sqlBuilder.Table)
+                                foreach (Filter x in _sqlBuilder.Filters)
+                                    sqlBuilder.Filters.Add(x);
+                            else if (arrF.Length >= 2 && arrF == ";S")
+                                foreach (Filter x in _sqlBuilder.Filters)
+                                    foreach (Filter y in sqlBuilder.Filters)
                                     {
-                                        y.Operate = x.Operate;
-                                        y.IsNot = x.IsNot;
-                                        y.ValueFrom = y.FilterFrom = x.ValueFrom;
-                                        y.ValueTo = y.ValueTo = x.ValueTo;
+                                        if (x.Node.MyCode == y.Node.MyCode)
+                                        {
+                                            y.Operate = x.Operate;
+                                            y.IsNot = x.IsNot;
+                                            y.ValueFrom = y.FilterFrom = x.ValueFrom;
+                                            y.ValueTo = y.ValueTo = x.ValueTo;
+                                        }
                                     }
-                                }
 
-                        BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+                            BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
 
-                        DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref _sErr);
-                        string keyconn = schInf.DEFAULT_CONN;
-                        string connectstring = _config.GetConnection(ref keyconn, "AP");
-                        sqlBuilder.ConnID = keyconn;
-                        sqlBuilder.StrConnectDes = connectstring;
-                        dt = sqlBuilder.BuildDataTable("");
+                            DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref _sErr);
+                            string keyconn = schInf.DEFAULT_CONN;
+                            string connectstring = _config.GetConnection(ref keyconn, "AP");
+                            sqlBuilder.ConnID = keyconn;
+                            sqlBuilder.StrConnectDes = connectstring;
+                            dt = sqlBuilder.BuildDataTable("");
+                        }
+                        catch (Exception ex)
+                        {
+
+                            BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "QD : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace);
+                        }
                     }
                     break;
 
@@ -898,7 +920,7 @@ namespace dCube
                 xlsTemp.Save(_pathTemplate + _qdCode + ".template" + ReportGenerator.Ext, _format);
             }
         }
-        public ReportGenerator(SQLBuilder sqlBuilder, string qdCode, string sqlText, string connectString, string pathTemplate, string pathReport)
+        public ReportGenerator(SQLBuilder sqlBuilder, string qdCode, string sqlText, string connectString, string pathTemplate, string pathReport, string documentDirectory)
         {
             _format = User2007 ? TFileFormats.Xlsx : TFileFormats.Xls;
             _sqlBuilder = sqlBuilder;
@@ -908,8 +930,9 @@ namespace dCube
             __connectString = connectString;
             _pathReport = pathReport;
             _pathTemplate = pathTemplate;
+            __documentDirectory = documentDirectory;
         }
-        public ReportGenerator(DataSet dtSet, string qdCode, string database, string connectString, string pathTemplate, string pathReport)
+        public ReportGenerator(DataSet dtSet, string qdCode, string database, string connectString, string pathTemplate, string pathReport, string documentDirectory)
         {
             //_sqlBuilder = sqlBuilder;
             _format = User2007 ? TFileFormats.Xlsx : TFileFormats.Xls;
@@ -919,6 +942,7 @@ namespace dCube
             __connectString = connectString;
             _pathReport = pathReport;
             _pathTemplate = pathTemplate;
+            __documentDirectory = documentDirectory;
         }
         public DataSet GetDataSet()
         {
@@ -1033,10 +1057,16 @@ namespace dCube
         {
             CommonControl ctr = new CommonControl();
             object date = ctr.executeScalar("select GETDATE()");//CURDATE()
-            flexcelreport.SetValue("SysDate", date);
-            flexcelreport.SetValue("QDName", _name);
-            flexcelreport.SetValue("QDCode", _qdCode);
-            flexcelreport.SetValue("DB", _database);
+            if (!_valueList.ContainsKey("SysDate"))
+                flexcelreport.SetValue("SysDate", date);
+            if (!_valueList.ContainsKey("QDName"))
+                flexcelreport.SetValue("QDName", _name);
+            if (!_valueList.ContainsKey("QDCode"))
+                flexcelreport.SetValue("QDCode", _qdCode);
+            if (!_valueList.ContainsKey("DB"))
+                flexcelreport.SetValue("DB", _database);
+            if (!_valueList.ContainsKey("OperatorID"))
+                flexcelreport.SetValue("OperatorID", _userID);
             if (_valueList.Count > 0)
             {
                 foreach (KeyValuePair<string, object> it in _valueList)

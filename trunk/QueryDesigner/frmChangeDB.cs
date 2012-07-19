@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BUS;
+using System.IO;
 
 namespace dCube
 {
@@ -54,6 +55,7 @@ namespace dCube
             BUS.DBAControl dbaCtr = new DBAControl();
             DTO.DBAInfo dbaInf = dbaCtr.Get(txtdatabase.Text, ref sErr);
             reportDir = dbaInf.REPORT_TEMPLATE_DRIVER;
+            
             DialogResult = DialogResult.OK;
             Close();
         }

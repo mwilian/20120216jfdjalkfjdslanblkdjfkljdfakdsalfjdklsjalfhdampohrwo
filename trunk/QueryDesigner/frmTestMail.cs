@@ -12,6 +12,13 @@ namespace dCube
     public partial class frmTestMail : Form
     {
         DTO.LIST_TASKInfo _info = null;
+        string _userID = "";
+
+        public string UserID
+        {
+            get { return _userID; }
+            set { _userID = value; }
+        }
         public frmTestMail(DTO.LIST_TASKInfo info)
         {
             InitializeComponent();
@@ -49,6 +56,7 @@ namespace dCube
 
             toolStripStatusLabel1.Text = kq;
             string[] cmd = kq.Split('?');
+            CmdManager.UserID = _userID;
             string value = CmdManager.RunCmd(cmd[0], cmd[1]);
             if (value != "")
                 toolStripStatusLabel1.Text = value;
