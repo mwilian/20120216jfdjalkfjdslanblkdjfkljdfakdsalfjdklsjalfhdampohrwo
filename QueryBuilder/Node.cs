@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace QueryBuilder
@@ -36,9 +35,9 @@ namespace QueryBuilder
         private string _agregate = string.Empty;
         private string _TreeCode = string.Empty;
         private string _expresstion = string.Empty;
-        private int _idParentTree = 0;
+        private int _idParentTree;
 
-        private int _idTree = 0;
+        private int _idTree;
 
         public string NodeDesc
         {
@@ -199,13 +198,13 @@ namespace QueryBuilder
         {
             get
             {
-                if (Regex.IsMatch(this.MyCode.Trim(), "^[0-9]+$"))
+                if (Regex.IsMatch(MyCode.Trim(), "^[0-9]+$"))
                 {
-                    return "_" + this.MyCode;
+                    return "_" + MyCode;
                 }
                 else
                 {
-                    return " as " + this.MyCode;
+                    return " as " + MyCode;
                 }
 
             }
@@ -238,7 +237,7 @@ namespace QueryBuilder
             }
             else
             {
-                return _agregate + "(" + FormatMe() + ")";
+                return String.Format("{0}({1})", _agregate, FormatMe());
             }
         }
 
@@ -282,7 +281,7 @@ namespace QueryBuilder
                     }
                     else if (param == "C")
                     {
-                        string sp = string.Format("'{0}0{1}'", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString("000"));
+                        string sp = string.Format("'{0}0{1}'", DateTime.Now.Year, DateTime.Now.Month.ToString("000"));
                         return sp;
                     }
                     
@@ -305,8 +304,8 @@ namespace QueryBuilder
         ///  <remarks></remarks>
         public void AddMeToParent(string ParentCode)
         {
-            _Code = ParentCode + @"\" + _Code;
-            _TreeCode = ParentCode + @"\" + _TreeCode;
+            _Code = String.Format(@"{0}\{1}", ParentCode, _Code);
+            _TreeCode = String.Format(@"{0}\{1}", ParentCode, _TreeCode);
         }
 
 
@@ -319,14 +318,7 @@ namespace QueryBuilder
         ///  <remarks></remarks>
         public Node MyChild()
         {
-            Node n = new Node();
-            n._TreeCode = GetChild(_TreeCode);
-            n._Code = _Code;
-            n.Agregate = Agregate;
-            n.Description = _description;
-            n._ftype = _ftype;
-            n._sort = _sort;
-            n.NodeDesc = NodeDesc;
+            Node n = new Node() { _TreeCode = GetChild(_TreeCode), _Code = _Code, Agregate = Agregate, Description = _description, _ftype = _ftype, _sort = _sort, NodeDesc = NodeDesc };
             return n;
         }
 
@@ -524,7 +516,7 @@ namespace QueryBuilder
                 string originOfParent = SchemaDefinition.GetOriginFromAlias(Parent); //  =IR ,   CA
 
                 // LEFT OUTER JOIN (SELECT CA) ICAS ON     , LEFT OUTER JOIN (SELECT NA) NA ON
-                return STR_LEFTOUTERJOIN + SchemaDefinition.GetJoin(dtb, originOfChild) + Space + Child + " ON " + Regex.Replace(SchemaDefinition.GetJoin(dtb, originOfParent + @"\" + Child), "^" + originOfParent, Parent);
+                return String.Format("{0}{1}{2}{3} ON {4}", STR_LEFTOUTERJOIN, SchemaDefinition.GetJoin(dtb, originOfChild), Space, Child, Regex.Replace(SchemaDefinition.GetJoin(dtb, String.Format(@"{0}\{1}", originOfParent, Child)), "^" + originOfParent, Parent));
                 // replace : on "IR.SALES_ACC = ICAS.CODE" to "IR.SALES_ACC = ICAS.CODE"/> 
                 // replace : on "ICAS.ADDR_CODE = NA.ADDR_CODE" to "CA.ADDR_CODE = NA.ADDR_CODE"/>  
             }
@@ -539,7 +531,7 @@ namespace QueryBuilder
             {
                 return string.Empty;
             }
-            return "[" + original.Trim() + "]";
+            return String.Format("[{0}]", original.Trim());
         }
 
         //  Method BoxBracketWithDot
@@ -549,7 +541,7 @@ namespace QueryBuilder
             {
                 return string.Empty;
             }
-            return "[" + original.Trim() + "].";
+            return String.Format("[{0}].", original.Trim());
         }
 
         #endregion
@@ -595,14 +587,7 @@ namespace QueryBuilder
         //  Method CloneNode
         public Node CloneNode()
         {
-            Node n = new Node();
-            n._Code = this._Code;
-            n._description = this._description;
-            n._ftype = this._ftype;
-            n._sort = this._sort;
-            n._agregate = this._agregate;
-            n._TreeCode = this._TreeCode;
-            n.NodeDesc = this.NodeDesc;
+            Node n = new Node() { _Code = _Code, _description = _description, _ftype = _ftype, _sort = _sort, _agregate = _agregate, _TreeCode = this._TreeCode, NodeDesc = this.NodeDesc };
             return n;
         }
 
@@ -653,7 +638,7 @@ namespace QueryBuilder
                         }
                         else if (param == "C")
                         {
-                            param = string.Format("'{0}0{1}'", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString("000"));
+                            param = string.Format("'{0}0{1}'", DateTime.Now.Year, DateTime.Now.Month.ToString("000"));
                         }
 
                         break;
@@ -667,7 +652,7 @@ namespace QueryBuilder
             }
 
             ValueFrom = string.Join(",", arrValueFrom);
-            return "(" + ValueFrom + ")";
+            return String.Format("({0})", ValueFrom);
         }
     }
 }

@@ -1,24 +1,20 @@
 using System.Text.RegularExpressions;
-using System.Data.SqlClient;
 
 using System.Data.OleDb;
 //using SatResources;
 
 
-using Microsoft.VisualBasic;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 //using System.Drawing;
-using System.Diagnostics;
 //using System.Windows.Forms;
 
 
 namespace QueryBuilder
 {
     //  Class SQLBuilder
-    [System.Serializable()]
+    [Serializable()]
     public class SQLBuilder
     {
 
@@ -313,7 +309,7 @@ namespace QueryBuilder
             {
                 return;
             }
-            switch (this.Mode)
+            switch (Mode)
             {
                 case processingMode.Balance:
                     if (_node.FType == "N")
@@ -327,7 +323,7 @@ namespace QueryBuilder
                     break;
             }
 
-            this._nodes.Add(_node);
+            _nodes.Add(_node);
         }
 
 
@@ -337,7 +333,7 @@ namespace QueryBuilder
         private string AddNextCell(string aPos)
         {
             string tmp = null;
-            tmp = Regex.Match(aPos, "[A-Z]{1,4}").Value.ToString();
+            tmp = Regex.Match(aPos, "[A-Z]{1,4}").Value;
             if (!(string.IsNullOrEmpty(tmp)))
             {
                 if (tmp.Length > 1)
@@ -361,12 +357,12 @@ namespace QueryBuilder
                     }
                     else
                     {
-                        tmp = System.Convert.ToString(System.Convert.ToChar(System.Convert.ToInt32(char.Parse(tmp)) + 1));
+                        tmp = Convert.ToString(Convert.ToChar(Convert.ToInt32(char.Parse(tmp)) + 1));
                     }
                 }
             }
 
-            return tmp + Regex.Match(aPos, "[0-9]{1,9}").Value.ToString();
+            return tmp + Regex.Match(aPos, "[0-9]{1,9}").Value;
         }
 
 
@@ -518,17 +514,17 @@ namespace QueryBuilder
                     {
                         TTPara += string.Concat(_filters[i].FilterTo, ",");
                         MaxPara = MaxPara + 1;
-                        TTWhere += string.Format("T={{P}}{0},K=/{1},", MaxPara, _filters[i].Node.ToString());
+                        TTWhere += string.Format("T={{P}}{0},K=/{1},", MaxPara, _filters[i].Node);
                     }
                     else
                     {
-                        TTWhere += string.Format("T={0},K=/{1},", _filters[i].ValueTo.Replace("'", string.Empty), _filters[i].Node.ToString());
+                        TTWhere += string.Format("T={0},K=/{1},", _filters[i].ValueTo.Replace("'", string.Empty), _filters[i].Node);
                     }
 
                 }
                 else if (!(string.IsNullOrEmpty(_filters[i].ValueFrom)))
                 {
-                    TTWhere += string.Format("K=/{0},", _filters[i].Node.ToString());
+                    TTWhere += string.Format("K=/{0},", _filters[i].Node);
                 }
             }
         }
@@ -562,7 +558,7 @@ namespace QueryBuilder
                 Db = DatabaseV;
             }
             // s = "=TT_XLB_EB(" & Chr(34) & " 0,2," & Db & ",LA,V=4," & TTwhere & TTselect & Chr(34) & "," & Pos & "," & TTpara
-            s = "=TT_XLB_EB(" + System.Convert.ToChar(34) + " 0,2," + Db + "," + this.Table + ",V=4," + TTwhere + TTselect + System.Convert.ToChar(34) + "," + Pos + "," + TTpara;
+            s = "=TT_XLB_EB(" + Convert.ToChar(34) + " 0,2," + Db + "," + Table + ",V=4," + TTwhere + TTselect + Convert.ToChar(34) + "," + Pos + "," + TTpara;
             s = s.Substring(0, s.Length - 1) + ")";//Strings.Mid(s, 1, s.Length - 1) + ")";
             return s;
         }
@@ -587,60 +583,60 @@ namespace QueryBuilder
             string result = "TVC_QUERY(\"{";
             if (Regex.IsMatch(DatabaseP, @"\{P\}"))
             {
-                result += "dtb={P}" + indexPara + ";";
+                result += String.Format("dtb={P}{0};", indexPara);
                 param += "," + Database;
                 indexPara++;
             }
             else
-                result += "dtb=" + _DatabaseV + ";";
+                result += String.Format("dtb={0};", _DatabaseV);
 
-            result += "tbl=" + _Table + ";";
+            result += String.Format("tbl={0};", _Table);
 
             if (Regex.IsMatch(_LedgerP, @"\{P\}"))
             {
-                result += "ldg={P}" + indexPara + ";";
+                result += String.Format("ldg={P}{0};", indexPara);
                 param += "," + Ledger;
                 indexPara++;
             }
             else
-                result += "ldg=" + _ledgerV + ";";
+                result += String.Format("ldg={0};", _ledgerV);
             foreach (Filter f in Filters)
             {
                 result += "fil={";
                 if (Regex.IsMatch(f.FilterFromP, @"\{P\}"))
                 {
-                    result += "f={P}" + indexPara + ";";
+                    result += String.Format("f={P}{0};", indexPara);
                     param += "," + f.FilterFrom;
                     indexPara++;
                 }
                 else
                 {
-                    result += "f=" + f.ValueFrom + ";";
+                    result += String.Format("f={0};", f.ValueFrom);
                 }
                 if (Regex.IsMatch(f.FilterToP, @"\{P\}"))
                 {
-                    result += "t={P}" + indexPara + ";";
-                    param += "," + f.FilterTo;
+                    result += String.Format("t={P}{0};", indexPara);
+                    param += String.Format(",{0}", f.FilterTo);
                     indexPara++;
                 }
                 else
                 {
-                    result += "t=" + f.ValueTo + ";";
+                    result += string.Format("t={0};", f.ValueTo);
                 }
-                result += "o=" + f.Operate + ";";
-                result += "i=" + f.IsNot + ";";
-                result += "k=" + f.Node.Code + ";";
+                result += string.Format("o={0};", f.Operate);
+                result += String.Format("i={0};", f.IsNot);
+                result += String.Format("k={0};", f.Node.Code);
                 result += "};";
             }
             foreach (Node n in SelectedNodes)
             {
                 result += "out={";
-                result += "a=" + n.Agregate + ";";
-                result += "k=" + n.Code + ";";
+                result += String.Format("a={0};", n.Agregate);
+                result += String.Format("k={0};", n.Code);
                 result += "};";
             }
 
-            result += "}\"," + Pos + param;
+            result += String.Format("}}\",{0}{1}", Pos, param);
             result += ")";
             return result;
         }
@@ -656,7 +652,7 @@ namespace QueryBuilder
         {
             try
             {
-                return "'" + this.BuildTTformula();
+                return "'" + BuildTTformula();
 
             }
             catch (Exception ex)
@@ -675,7 +671,7 @@ namespace QueryBuilder
         private void BuildSELECT()
         {
 
-            if (this.SelectedNodes.Count == 0)
+            if (SelectedNodes.Count == 0)
             {
                 SelectClause = "SELECT * ";
                 return;
@@ -689,17 +685,17 @@ namespace QueryBuilder
             {
                 return;
             }
-            selectBuilder.Append(System.Environment.NewLine);
+            selectBuilder.Append(Environment.NewLine);
             for (int i = 0; i <= _nodes.Count - 1; i++)
             {
                 if (_nodes[i].Expresstion == "")
-                    selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].Description + "]", System.Environment.NewLine);
+                    selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].Description + "]", Environment.NewLine);
                 //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].MyCode + "]", System.Environment.NewLine);
                 //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), _nodes[i].MyAlias(), System.Environment.NewLine);
                 // SelectClause += String.Concat(Tab, _nodes(i).AgregateMe, _nodes(i).MyAlias, Comma, System.Environment.NewLine)
             }
             // eliminate comma at the end
-            SelectClause = Regex.Replace(selectBuilder.ToString().TrimEnd(), LastComma, System.Environment.NewLine);
+            SelectClause = Regex.Replace(selectBuilder.ToString().TrimEnd(), LastComma, Environment.NewLine);
 
         }
 
@@ -744,7 +740,7 @@ namespace QueryBuilder
                 }
             }
 
-            FromClause += STR_FROM + System.Environment.NewLine;
+            FromClause += STR_FROM + Environment.NewLine;
 
             string currentFamily = string.Empty;
             for (int i = 0; i <= sortedJoins.Count - 1; i++)
@@ -793,18 +789,18 @@ namespace QueryBuilder
                 {
                     if (i == 0)
                     {
-                        WhereBuilder.AppendFormat("{0}{1}{2}", Tab, sortList[i].MyWhereClause(), System.Environment.NewLine);
+                        WhereBuilder.AppendFormat("{0}{1}{2}", Tab, sortList[i].MyWhereClause(), Environment.NewLine);
                     }
                     else
                     {
-                        WhereBuilder.AppendFormat(" ){0} AND ({0} {1}{0}", System.Environment.NewLine, sortList[i].MyWhereClause());
+                        WhereBuilder.AppendFormat(" ){0} AND ({0} {1}{0}", Environment.NewLine, sortList[i].MyWhereClause());
                     }
                     filterItemCode = sortList[i].Node.ToString();
                 }
                 else
                 {
                     // OR
-                    WhereBuilder.AppendFormat(" OR {0}{1}", sortList[i].MyWhereClause(), System.Environment.NewLine);
+                    WhereBuilder.AppendFormat(" OR {0}{1}", sortList[i].MyWhereClause(), Environment.NewLine);
                 }
 
 
@@ -815,7 +811,7 @@ namespace QueryBuilder
                 return;
             }
 
-            WhereClause = string.Format("WHERE {0} ({1}){0}", System.Environment.NewLine, WhereBuilder.ToString());
+            WhereClause = string.Format("WHERE {0} ({1}){0}", Environment.NewLine, WhereBuilder);
 
         }
 
@@ -823,9 +819,9 @@ namespace QueryBuilder
         //  Method BuildGROUPBY
         private void BuildGROUPBY()
         {
-            if (this.Mode == processingMode.Balance || this.Mode == processingMode.Link)
+            if (Mode == processingMode.Balance || Mode == processingMode.Link)
             {
-                foreach (Node o in this.SelectedNodes)
+                foreach (Node o in SelectedNodes)
                 {
                     //if (string.IsNullOrEmpty(o.Agregate))
                     //{
@@ -842,7 +838,7 @@ namespace QueryBuilder
                 if (string.IsNullOrEmpty(_nodes[i].Agregate))
                 {
                     if (_nodes[i].Expresstion == "")
-                        GroupByClause += Tab + _nodes[i].FormatMe() + Comma + System.Environment.NewLine;
+                        GroupByClause += Tab + _nodes[i].FormatMe() + Comma + Environment.NewLine;
                 }
             }
 
@@ -851,9 +847,9 @@ namespace QueryBuilder
                 return;
             }
 
-            GroupByClause = STR_GROUPBY + Space + System.Environment.NewLine + GroupByClause;
+            GroupByClause = STR_GROUPBY + Space + Environment.NewLine + GroupByClause;
             // eliminate comma at the end
-            GroupByClause = Regex.Replace(GroupByClause.Trim(), LastComma, System.Environment.NewLine);
+            GroupByClause = Regex.Replace(GroupByClause.Trim(), LastComma, Environment.NewLine);
 
 
         }
@@ -871,7 +867,7 @@ namespace QueryBuilder
                         if (_nodes[i].Agregate != "")
                         {
                             string sort = _nodes[i].Sort.Trim() == STR_ASC.Trim() ? STR_ASC : STR_DESC;
-                            OrderByClause += Tab + _nodes[i].Agregate + "(" + _nodes[i].FormatMe() + ")" + Space + sort + Comma;
+                            OrderByClause += String.Format("{0}{1}({2}){3}{4}{5}", Tab, _nodes[i].Agregate, _nodes[i].FormatMe(), Space, sort, Comma);
                         }
                         else
                         {
@@ -887,9 +883,9 @@ namespace QueryBuilder
                 return;
             }
 
-            OrderByClause = STR_ORDERBY + Space + System.Environment.NewLine + OrderByClause;
+            OrderByClause = STR_ORDERBY + Space + Environment.NewLine + OrderByClause;
             // eliminate comma at the end
-            OrderByClause = Regex.Replace(OrderByClause.Trim(), LastComma, System.Environment.NewLine);
+            OrderByClause = Regex.Replace(OrderByClause.Trim(), LastComma, Environment.NewLine);
         }
 
         //  Method BuildSQL
@@ -926,7 +922,7 @@ namespace QueryBuilder
         //  Method BuildSQL
         public string BuildSQL()
         {
-            return BuildSQL(this.DatabaseV, this.LedgerV);
+            return BuildSQL(DatabaseV, LedgerV);
         }
 
 
@@ -947,12 +943,12 @@ namespace QueryBuilder
             //    throw new InvalidExpressionException("DatabaseIsEmpty");
             //}
             DBInfo transTemp0 = null;
-            if (!(DBInfoList.ContainsCode(this.Database, ref transTemp0)))
+            if (!(DBInfoList.ContainsCode(Database, ref transTemp0)))
             {
                 // throw new InvalidExpressionException(Localization.ResStr("DatabaseDoesNotExist"));
                 throw new InvalidExpressionException("DatabaseDoesNotExist");
             }
-            foreach (Filter flt in this.Filters)
+            foreach (Filter flt in Filters)
             {
                 if (string.IsNullOrEmpty(flt.FilterFrom))//|| string.IsNullOrEmpty(flt.FilterTo)
                 {
@@ -960,12 +956,12 @@ namespace QueryBuilder
                     throw new InvalidExpressionException("FilterValueIsMissing");
                 }
             }
-            if (this.SelectedNodes.Count == 0)
+            if (SelectedNodes.Count == 0)
             {
                 // throw new InvalidExpressionException(Localization.ResStr("OutputIsEmpty"));
                 throw new InvalidExpressionException("OutputIsEmpty");
             }
-            switch (this.Mode)
+            switch (Mode)
             {
                 case processingMode.Balance:
 
@@ -985,7 +981,7 @@ namespace QueryBuilder
 
         #region '"Evaluate Cell Addresses"'
 
-        [System.NonSerialized()]
+        [NonSerialized()]
         public Delegation.EvaluateCell _eval;
 
         #endregion
@@ -1010,36 +1006,35 @@ namespace QueryBuilder
             CoreQDDControl qddControl = new CoreQDDControl();
             //test
             //  DataTable dt = qddControl.GetAll_CoreQDD_By_QD_ID("DEMO4", "VUS", ref sErr);
-            DataTable dt = qddControl.GetALL_CoreQDD_By_QD_ID(kq.Database, qd_id, ref sErr);
-            foreach (DataRow row in dt.Rows)
+            using (DataTable dt = qddControl.GetALL_CoreQDD_By_QD_ID(kq.Database, qd_id, ref sErr))
             {
-                CoreQDDInfo qddInfo = new CoreQDDInfo(row);
-
-                Node tmp = new Node(qddInfo.AGREGATE.Trim(), qddInfo.CODE.Trim(), qddInfo.DESCRIPTN.Trim(), qddInfo.F_TYPE, "");
-
-                if (qddInfo.IS_FILTER == true)
+                foreach (DataRow row in dt.Rows)
                 {
-                    CoreQDD_FILTERControl filterCtr = new CoreQDD_FILTERControl();
-                    CoreQDD_FILTERInfo filterInf = filterCtr.Get(database, qd_id, qddInfo.QDD_ID, ref sErr);
-
-                    tmp.NodeDesc = qddInfo.EXPRESSION;
-                    Filter tmpFilter = new Filter(tmp);
-                    //tmpFilter.Description = qddInfo.DESCRIPTN;
-                    //tmpFilter.Code = qddInfo.CODE;
-                    if (filterInf.QD_ID != "")
+                    CoreQDDInfo qddInfo = new CoreQDDInfo(row);
+                    Node tmp = new Node(qddInfo.AGREGATE.Trim(), qddInfo.CODE.Trim(), qddInfo.DESCRIPTN.Trim(), qddInfo.F_TYPE, "");
+                    if (qddInfo.IS_FILTER == true)
                     {
-                        tmpFilter.Operate = filterInf.OPERATOR;
-                        tmpFilter.IsNot = filterInf.IS_NOT;
+                        CoreQDD_FILTERControl filterCtr = new CoreQDD_FILTERControl();
+                        CoreQDD_FILTERInfo filterInf = filterCtr.Get(database, qd_id, qddInfo.QDD_ID, ref sErr);
+                        tmp.NodeDesc = qddInfo.EXPRESSION;
+                        Filter tmpFilter = new Filter(tmp);
+                        //tmpFilter.Description = qddInfo.DESCRIPTN;
+                        //tmpFilter.Code = qddInfo.CODE;
+                        if (filterInf.QD_ID != "")
+                        {
+                            tmpFilter.Operate = filterInf.OPERATOR;
+                            tmpFilter.IsNot = filterInf.IS_NOT;
+                        }
+                        tmpFilter.ValueFrom = tmpFilter.FilterFrom = qddInfo.FILTER_FROM;
+                        tmpFilter.ValueTo = tmpFilter.FilterTo = qddInfo.FILTER_TO;
+                        kq.Filters.Add(tmpFilter);
                     }
-                    tmpFilter.ValueFrom = tmpFilter.FilterFrom = qddInfo.FILTER_FROM;
-                    tmpFilter.ValueTo = tmpFilter.FilterTo = qddInfo.FILTER_TO;
-                    kq.Filters.Add(tmpFilter);
-                }
-                else
-                {
-                    tmp.Expresstion = qddInfo.EXPRESSION;
-                    tmp.Sort = qddInfo.SORTING == "DES" ? "DESC" : qddInfo.SORTING;
-                    kq.SelectedNodes.Add(tmp);
+                    else
+                    {
+                        tmp.Expresstion = qddInfo.EXPRESSION;
+                        tmp.Sort = qddInfo.SORTING == "DES" ? "DESC" : qddInfo.SORTING;
+                        kq.SelectedNodes.Add(tmp);
+                    }
                 }
             }
             if (table != "")
@@ -1103,8 +1098,8 @@ namespace QueryBuilder
             if (_SQLDebugMode)
             {
                 //CoreCommonControl log = new CoreCommonControl();
-                string __documentDirectory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + DocumentFolder;
-                CoreCommonControl.AddLog("cmdlog", __documentDirectory + "\\Log", "" + DateTime.Today.ToString("yyyyMMdd") + "" + this.Table + ":" + query);
+                string __documentDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + DocumentFolder;
+                CoreCommonControl.AddLog("cmdlog", __documentDirectory + "\\Log", String.Format("{0:yyyyMMdd}{1}:{2}", DateTime.Today, Table, query));
 
                 //System.Windows.Forms.Clipboard.SetText(query);
             }
@@ -1208,19 +1203,21 @@ namespace QueryBuilder
             //; Everything after this line is an OLE DB initstring
             //Provider=SQLNCLI.1;Persist Security Info=False;User ID=sa;Initial Catalog=TVC_IC;Data Source=.
 
-            OleDbConnection connection = new OleDbConnection(_strConnectDes);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
-            DataSet dSet = new DataSet();
-            if (query != "")
-                try
-                {
-                    adapter.Fill(dSet);
-                    dt = dSet.Tables[0];
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+            using (OleDbConnection connection = new OleDbConnection(_strConnectDes))
+            {
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                DataSet dSet = new DataSet();
+                if (query != "")
+                    try
+                    {
+                        adapter.Fill(dSet);
+                        dt = dSet.Tables[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+            }
             //CommoControl control = new CommoControl();
             //dt = control.executeSelectQuery(query, connectString);
             foreach (Filter x in Filters)
@@ -1272,8 +1269,7 @@ namespace QueryBuilder
                     }
                     //dt.Columns[x.MyCode].Caption = x.Description;
                 }
-            DataTable result = new DataTable("data");
-            result.TableName = dt.TableName;
+            DataTable result = new DataTable("data") { TableName = dt.TableName };
             foreach (DataColumn col in dt.Columns)
             {
                 DataColumn tmp = new DataColumn(col.ColumnName, col.DataType);
@@ -1296,8 +1292,10 @@ namespace QueryBuilder
                 }
                 result.ImportRow(row);
             }
-            DataSet dtSet = new DataSet();
-            dtSet.Tables.Add(result);
+            using (DataSet dtSet = new DataSet())
+            {
+                dtSet.Tables.Add(result);
+            }
             return result;
         }
         #endregion
@@ -1321,7 +1319,7 @@ namespace QueryBuilder
                             year--;
                             month = 12;
                         }
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else if (Regex.IsMatch(m.Value, @"<#PA(.+)>"))
@@ -1337,7 +1335,7 @@ namespace QueryBuilder
                         //    year--;
                         //    month = 12;
                         //}
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else if (Regex.IsMatch(m.Value, @"<#PE(.+)>"))
@@ -1348,7 +1346,7 @@ namespace QueryBuilder
                         int year = Convert.ToInt32(value) / 1000;
                         int month = Convert.ToInt32(value) - year * 1000;
                         month = 12;
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else if (Regex.IsMatch(m.Value, @"<#YA(.+)>"))
@@ -1359,7 +1357,7 @@ namespace QueryBuilder
                         int year = Convert.ToInt32(value) / 1000;
                         int month = Convert.ToInt32(value) - year * 1000;
                         month = 1;
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else if (Regex.IsMatch(m.Value, @"<#YE(.+)>"))
@@ -1371,7 +1369,7 @@ namespace QueryBuilder
                         int month = Convert.ToInt32(value) - year * 1000;
                         year--;
                         month = 1;
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else if (Regex.IsMatch(m.Value, @"<#YH(.+)>"))
@@ -1383,7 +1381,7 @@ namespace QueryBuilder
                         int month = Convert.ToInt32(value) - year * 1000;
                         month = 12;
                         year--;
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else if (Regex.IsMatch(m.Value, @"<#YK(.+)>"))
@@ -1394,7 +1392,7 @@ namespace QueryBuilder
                         int year = Convert.ToInt32(value) / 1000;
                         int month = Convert.ToInt32(value) - year * 1000;
                         month = 12;
-                        value = year.ToString() + month.ToString("000");
+                        value = year + month.ToString("000");
                     }
                 }
                 else
@@ -1412,17 +1410,19 @@ namespace QueryBuilder
             string query = BuildSQLEx(sql_text);
             int index = query.IndexOf(STR_SELECT);
             query.Insert(index + 6, " TOP 0");
-            OleDbConnection connection = new OleDbConnection(connectString);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
-            DataSet dSet = new DataSet();
-            try
+            using (OleDbConnection connection = new OleDbConnection(connectString))
             {
-                adapter.Fill(dSet);
-                dt = dSet.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                DataSet dSet = new DataSet();
+                try
+                {
+                    adapter.Fill(dSet);
+                    dt = dSet.Tables[0];
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
             //CommoControl control = new CommoControl();
             //dt = control.executeSelectQuery(query, connectString);

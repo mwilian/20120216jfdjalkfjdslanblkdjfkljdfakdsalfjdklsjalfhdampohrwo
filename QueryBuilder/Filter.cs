@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace QueryBuilder
@@ -10,16 +9,16 @@ namespace QueryBuilder
     {
         private const string Wildcard_Signature = @"^[\*][=]";
 
-        private Node _node = null;
+        private Node _node;
         private string _filterFrom = string.Empty;
         private string _filterTo = string.Empty;
         private string _filterFromP = string.Empty;
         private string _filterToP = string.Empty;
         private string _ValueFrom = string.Empty;
         private string _ValueTo = string.Empty;
-        private string _insert = "INSERT";
-        private string _update = "UPDATE";
-        private string _delete = "DELETE";
+        private const string _insert = "INSERT";
+        private const string _update = "UPDATE";
+        private const string _delete = "DELETE";
         private string _isNot = "N";
         private string _operate = "-";
 
@@ -205,8 +204,7 @@ namespace QueryBuilder
         //  Method MyWhereClause
         public string do_not(string iput)
         {
-            string kq = " NOT (";
-            kq = kq + iput + " )";
+            string kq = String.Format(" NOT ({0} )", iput);
             return kq;
         }
         public string MyWhereClause()
@@ -250,7 +248,7 @@ namespace QueryBuilder
                     if (_node.FType == "")
                     {
                         tmp = tmp.Substring(0, tmp.Length - 1) + "%'";
-                        kq = "( UPPER(" + _node.FormatMe() + ") LIKE " + tmp.ToUpper() + " )";
+                        kq = String.Format("( UPPER({0}) LIKE {1} )", _node.FormatMe(), tmp.ToUpper());
                     }
                     break;
                 case "END":
@@ -260,8 +258,8 @@ namespace QueryBuilder
                         int tmpIndex = tmp.IndexOf("'");
                         if (tmpIndex >= 0)
                         {
-                            tmp = tmp.Substring(0, tmpIndex + 1) + "%" + tmp.Substring(tmpIndex + 1);
-                            kq = "( UPPER(" + _node.FormatMe() + ") LIKE " + tmp.ToUpper() + " )";
+                            tmp = String.Format("{0}%{1}", tmp.Substring(0, tmpIndex + 1), tmp.Substring(tmpIndex + 1));
+                            kq = String.Format("( UPPER({0}) LIKE {1} )", _node.FormatMe(), tmp.ToUpper());
                         }
                     }
                     break;
@@ -270,21 +268,21 @@ namespace QueryBuilder
                     string[] arrVal = ValueFrom.Split(' ');
                     for (int i = 0; i < arrVal.Length; i++)
                     {
-                        tmp = _node.FormatMyParameter("%" + arrVal[i] + "%");
+                        tmp = _node.FormatMyParameter(String.Format("%{0}%", arrVal[i]));
                         if (_node.FType == "")
                         {
-                            kq += "AND UPPER(" + _node.FormatMe() + ") LIKE " + tmp.ToUpper() + " ";
+                            kq += String.Format("AND UPPER({0}) LIKE {1} ", _node.FormatMe(), tmp.ToUpper());
                         }
                     }
                     if (kq.Length > 3)
-                        kq = "(" + kq.Substring(3) + ")";
+                        kq = String.Format("({0})", kq.Substring(3));
                     break;
                 case "BETWEEN":
                     if (_node.FType == "")
                     {
-                        kq = "( UPPER(" + _node.FormatMe() + ") BETWEEN " + _node.FormatMyParameter(ValueFrom).ToUpper() + " AND " + _node.FormatMyParameter(ValueTo).ToUpper() + " )";
+                        kq = String.Format("( UPPER({0}) BETWEEN {1} AND {2} )", _node.FormatMe(), _node.FormatMyParameter(ValueFrom).ToUpper(), _node.FormatMyParameter(ValueTo).ToUpper());
                     }
-                    else kq = "(" + _node.FormatMe() + " BETWEEN " + _node.FormatMyParameter(ValueFrom) + " AND " + _node.FormatMyParameter(ValueTo) + ")";
+                    else kq = String.Format("({0} BETWEEN {1} AND {2})", _node.FormatMe(), _node.FormatMyParameter(ValueFrom), _node.FormatMyParameter(ValueTo));
 
                     break;
                 case "<":
@@ -294,31 +292,31 @@ namespace QueryBuilder
                 case "<>":
                     if (_node.FType == "")
                     {
-                        kq = "( UPPER(" + _node.FormatMe() + ") " + Operate + " " + _node.FormatMyParameter(ValueFrom).ToUpper() + " )";
+                        kq = String.Format("( UPPER({0}) {1} {2} )", _node.FormatMe(), Operate, _node.FormatMyParameter(ValueFrom).ToUpper());
                     }
                     else
-                        kq = "(" + _node.FormatMe() + " " + Operate + " " + _node.FormatMyParameter(ValueFrom) + ")";
+                        kq = String.Format("({0} {1} {2})", _node.FormatMe(), Operate, _node.FormatMyParameter(ValueFrom));
                     break;
                 case "in":
                     if (_node.FType == "")
                     {
-                        kq = "( UPPER(" + _node.FormatMe() + ") in " + _node.FormatMyArrayParameter(ValueFrom).ToUpper() + ")";
+                        kq = String.Format("( UPPER({0}) in {1})", _node.FormatMe(), _node.FormatMyArrayParameter(ValueFrom).ToUpper());
                     }
-                    else kq = "(" + _node.FormatMe() + " in " + _node.FormatMyArrayParameter(ValueFrom) + ")";
+                    else kq = String.Format("({0} in {1})", _node.FormatMe(), _node.FormatMyArrayParameter(ValueFrom));
                     break;
                 case "SPACE":
                     if (_node.FType == "")
                     {
-                        kq = "(" + _node.FormatMe() + " = '' OR  " + _node.FormatMe() + " is null )";
+                        kq = String.Format("({0} = '' OR  {0} is null )", _node.FormatMe());
                     }
-                    else kq = "(" + _node.FormatMe() + " is null )";
+                    else kq = String.Format("({0} is null )", _node.FormatMe());
                     break;
                 case "EXISTS":
                     if (_node.FType == "")
                     {
-                        kq = "(" + _node.FormatMe() + " <> '' AND  " + _node.FormatMe() + " is not null )";
+                        kq = String.Format("({0} <> '' AND  {0} is not null )", _node.FormatMe());
                     }
-                    else kq = "(" + _node.FormatMe() + " is not null )";
+                    else kq = String.Format("({0} is not null )", _node.FormatMe());
                     break;
                 default:
                     kq = NormalFilter(strW);
@@ -338,9 +336,9 @@ namespace QueryBuilder
         private string NormalFilter(string strW)
         {
             if (_node.FType == "")
-                strW = "( UPPER(" + _node.FormatMe() + ") = " + _node.FormatMyParameter(ValueFrom).ToUpper() + ")";
+                strW = String.Format("( UPPER({0}) = {1})", _node.FormatMe(), _node.FormatMyParameter(ValueFrom).ToUpper());
             else
-                strW = "(" + _node.FormatMe() + " = " + _node.FormatMyParameter(ValueFrom) + ")";
+                strW = String.Format("({0} = {1})", _node.FormatMe(), _node.FormatMyParameter(ValueFrom));
             return strW;
         }
 
@@ -355,7 +353,7 @@ namespace QueryBuilder
                 {
                     if (string.IsNullOrEmpty(ValueTo))
                     {
-                        strW = "(" + _node.FormatMe() + " = " + _node.FormatMyParameter(ValueFrom.Replace("*>", "")) + ")";
+                        strW = String.Format("({0} = {1})", _node.FormatMe(), _node.FormatMyParameter(ValueFrom.Replace("*>", "")));
                     }
                 }
                 else
@@ -387,12 +385,12 @@ namespace QueryBuilder
             }
             // no input in filterTo
             else
-            if (string.IsNullOrEmpty(ValueTo))
-            {
-                strW = "(" + _node.FormatMe() + " = " + _node.FormatMyParameter(ValueFrom) + ")";
-            }
-            else
-                strW = "(" + _node.FormatMe() + " BETWEEN " + _node.FormatMyParameter(ValueFrom) + " AND " + _node.FormatMyParameter(ValueTo) + " )";
+                if (string.IsNullOrEmpty(ValueTo))
+                {
+                    strW = String.Format("({0} = {1})", _node.FormatMe(), _node.FormatMyParameter(ValueFrom));
+                }
+                else
+                    strW = String.Format("({0} BETWEEN {1} AND {2} )", _node.FormatMe(), _node.FormatMyParameter(ValueFrom), _node.FormatMyParameter(ValueTo));
 
 
             return strW;
@@ -431,13 +429,13 @@ namespace QueryBuilder
                 case "!":
                     if (strParam == "!")
                     {
-                        return "((" + _node.FormatMe() + " is null) or ( ltrim (" + _node.FormatMe() + ") = ''))";
+                        return String.Format("(({0} is null) or ( ltrim ({0}) = ''))", _node.FormatMe());
                     }
                     else
-                        return "(" + _node.FormatMe() + " LIKE (N'" + _wildCard + "') )";
+                        return String.Format("({0} LIKE (N'{1}') )", _node.FormatMe(), _wildCard);
                     break;
                 case ">>":
-                    return "(Upper(" + _node.FormatMe() + ") LIKE Upper(N'" + strParam + "') )";
+                    return String.Format("(Upper({0}) LIKE Upper(N'{1}') )", _node.FormatMe(), strParam);
                     break;
                 case "<<":
                     string[] test = strParam.Split(',');
@@ -449,18 +447,18 @@ namespace QueryBuilder
                             result += ",";
                     }
 
-                    return "(" + _node.FormatMe() + " in (" + result + ") )";
+                    return String.Format("({0} in ({1}) )", _node.FormatMe(), result);
                     break;
                 case "like":
                     if (Regex.IsMatch(_wildCard, @"(^*=)"))
-                        return "(" + _node.FormatMe() + " LIKE (N'" + _wildCard.Substring(2) + "') )";
-                    return "(" + _node.FormatMe() + " LIKE (N'" + _wildCard + "') )";
+                        return String.Format("({0} LIKE (N'{1}') )", _node.FormatMe(), _wildCard.Substring(2));
+                    return String.Format("({0} LIKE (N'{1}') )", _node.FormatMe(), _wildCard);
                     break;
                 case "<>":
-                    return "(" + _node.FormatMe() + strOperator + _node.FormatMyParameter(strParam) + " )";
+                    return String.Format("({0}{1}{2} )", _node.FormatMe(), strOperator, _node.FormatMyParameter(strParam));
                     break;
                 default:
-                    return "(" + _node.FormatMe() + strOperator + _node.FormatMyParameter(strParam) + " )";
+                    return String.Format("({0}{1}{2} )", _node.FormatMe(), strOperator, _node.FormatMyParameter(strParam));
                     break;
             }
         }
@@ -483,7 +481,7 @@ namespace QueryBuilder
             {
                 Filter fy = ((Filter)(obj));
 
-                return String.Compare(this.Node.Code, fy.Node.Code);
+                return String.Compare(Node.Code, fy.Node.Code);
                 //{
                 //    return 1;
                 //}

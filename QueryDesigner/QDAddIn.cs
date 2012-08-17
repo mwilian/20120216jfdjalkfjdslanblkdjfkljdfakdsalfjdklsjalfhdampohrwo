@@ -101,7 +101,7 @@ namespace dCube
             _strConnect = connect;
             _strConnectDes = connectDes;
         }
-        public QDAddIn(string Pos, Excel._Application xls, string formular, string connect, string connectDes,string user)
+        public QDAddIn(string Pos, Excel._Application xls, string formular, string connect, string connectDes, string user)
         {
             InitializeComponent();
             ////ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
@@ -373,7 +373,8 @@ namespace dCube
         private void btOK_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            _ttFormular = "=" + _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
+            Status = "F";
+            _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
             Close();
         }
 
@@ -476,7 +477,7 @@ namespace dCube
             Operate.ValueMember = "Code";
             Operate.DisplayMember = "Description";
             DialogResult = DialogResult.Yes;
-            btnUserTable.Visible = ValidateLicense(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\"+Form_QD.DocumentFolder+"\\Configuration\\license.bin");
+            btnUserTable.Visible = ValidateLicense(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + Form_QD.DocumentFolder + "\\Configuration\\license.bin");
             _status = "I";
 
             Text = "TTFomular - " + _sqlBuilder.Pos;
@@ -1200,6 +1201,15 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         private void txtFilterTo_Validated(object sender, EventArgs e)
         {
             UpdateFilterTo(false);
+        }
+
+        private void btnTag_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Status = "T";
+            _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
+
+            Close();
         }
 
     }

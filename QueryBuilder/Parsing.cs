@@ -1,12 +1,8 @@
-using System.ComponentModel;
 using System.Text.RegularExpressions;
-using Microsoft.VisualBasic;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 //using System.Drawing;
-using System.Diagnostics;
 //using System.Windows.Forms;
 namespace QueryBuilder
 {
@@ -62,24 +58,23 @@ namespace QueryBuilder
             // Return Database, table      
             string vTable = null;
             string vDatabase = null;
-            vDatabase = Regex.Match(ParseString, regexDB).Value.ToString();
-            vTable = Regex.Match(ParseString, regexTable).Value.ToString();
+            vDatabase = Regex.Match(ParseString, regexDB).Value;
+            vTable = Regex.Match(ParseString, regexTable).Value;
 
             _SQLBuilder.Table = vTable;
 
             string vFilter = null; // ex part of TTformular , contains filters
-            vFilter = Regex.Match(ParseString, @"(?<=\,K\=)[^\,,.]+").Value.ToString();
+            vFilter = Regex.Match(ParseString, @"(?<=\,K\=)[^\,,.]+").Value;
             int i = 0;
-            int n = 0;
-            n = Regex.Matches(ParseString, @"F\=.*?,K").Count;
+            int n = Regex.Matches(ParseString, @"F\=.*?,K").Count;
 
             // fill FromTo array
             if (n > 0)
             {
                 FromTo = new string[n];
-                foreach (System.Text.RegularExpressions.Match ft in Regex.Matches(ParseString, @"F\=.*?,K"))
+                foreach (Match ft in Regex.Matches(ParseString, @"F\=.*?,K"))
                 {
-                    FromTo[i] = ft.Value.ToString();
+                    FromTo[i] = ft.Value;
                     i = i + 1;
                 }
             }
@@ -87,7 +82,7 @@ namespace QueryBuilder
             i = 0;
 
             //  get string , contains parameters
-            vParamsString = Regex.Match(ParseString, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
+            vParamsString = Regex.Match(ParseString, String.Format(@"\{0}\,.+?\)", System.Convert.ToChar(34))).Value;
 
             // fill to parameter Array
             if (!(string.IsNullOrEmpty(vParamsString)))
@@ -99,17 +94,17 @@ namespace QueryBuilder
                 if (n > 0)
                 {
                     vParameter = new string[n]; // tham so dau tien la vi tri cua cong thuc
-                    foreach (System.Text.RegularExpressions.Match p in Regex.Matches(vParamsString, ".*?,"))
+                    foreach (Match p in Regex.Matches(vParamsString, ".*?,"))
                     {
                         i = i + 1;
                         if (i == 1)
                         {
-                            vPosition = p.Value.ToString().Replace(",", string.Empty);
+                            vPosition = p.Value.Replace(",", string.Empty);
                             _SQLBuilder.Pos = vPosition;
                         }
                         else
                         {
-                            vParameter[i - 1] = p.Value.ToString().Replace(",", string.Empty);
+                            vParameter[i - 1] = p.Value.Replace(",", string.Empty);
                         }
 
                     }
@@ -142,12 +137,12 @@ namespace QueryBuilder
 
             // identifying filters
             MatchCollection matchCollect = Regex.Matches(ParseString, @"(?<=\,K\=)[^\,,.]+");
-            foreach (System.Text.RegularExpressions.Match m in matchCollect)
+            foreach (Match m in matchCollect)
             {
 
-                vFilter = m.Value.ToString();
+                vFilter = m.Value;
 
-                vf = Regex.Match(FromTo[i], "F=.*?,").Value.ToString();
+                vf = Regex.Match(FromTo[i], "F=.*?,").Value;
                 if (!(string.IsNullOrEmpty(vf)))
                 {
                     vf =  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ vf.Substring(2);
@@ -253,14 +248,14 @@ namespace QueryBuilder
             if (n > 0)
             {
                 vOutputAgr = new string[n];
-                foreach (System.Text.RegularExpressions.Match oe in Regex.Matches(ParseString, @"E\=.+?,"))
+                foreach (Match oe in Regex.Matches(ParseString, @"E\=.+?,"))
                 {
 
                     vOutputAgr[i] = oe.Value.ToString().Substring(2, 1);// Strings.Mid(oe.Value.ToString(), 3, 1); 
                     i = i + 1;
                 }
                 i = 0;
-                foreach (System.Text.RegularExpressions.Match o in Regex.Matches(ParseString, @"O\=.+?,"))
+                foreach (Match o in Regex.Matches(ParseString, @"O\=.+?,"))
                 {
                     Output = o.Value.ToString();
                     if (!(string.IsNullOrEmpty(Output)))
@@ -594,7 +589,7 @@ namespace QueryBuilder
             // Build Ouputs ---------------------------------------------------------------------------------------------
             MatchCollection outList = Regex.Matches(ParseString, @"(?<=[Oo]\=)[^\,.]+");
 
-            foreach (System.Text.RegularExpressions.Match output in outList)
+            foreach (Match output in outList)
             {
                 key = output.Value.ToString();
                 string argRegex = @"[0-9](?=\,O\=" + Regex.Replace(key, @"[\/]+|[\\]+", @"\/") + ")";
