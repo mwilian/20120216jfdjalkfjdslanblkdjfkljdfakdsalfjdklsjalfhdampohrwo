@@ -67,8 +67,8 @@ namespace dCube
         public const string _opMode = "CBC";
         public const string DocumentFolder = "TVC-QD";
         string owner = "";
-        string _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
-        string _pathLicense = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
+        string _appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
+        string _pathLicense = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
         string _datePaterm = @"^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{3}|[0-9]{2}|[0-9]{1})$";
         public static string __documentDirectory = string.Empty;
         //public static string __reportPath = "";
@@ -110,7 +110,7 @@ namespace dCube
         //}
         public Form_QD(string[] agrs)
         {
-            _pathLicense = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
+            _pathLicense = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
             InitializeComponent();
             InitDocument();
             CmdManager.DocumentDirectory = __documentDirectory;
@@ -187,10 +187,6 @@ namespace dCube
                     //    //bt_database.Enabled = false;
                     //}
                     flagOpen = true;
-                }
-                else
-                {
-
                 }
                 //return;
 
@@ -499,9 +495,9 @@ namespace dCube
                     Directory.CreateDirectory(_config.DIR[0].RPT);
                 string ext = "";
 
-                if (!File.Exists(_config.DIR[0].TMP + "-.template" + ReportGenerator.Ext))
+                if (!File.Exists(String.Format("{0}-.template{1}", _config.DIR[0].TMP, ReportGenerator.Ext)))
                 {
-                    File.Copy(_appPath + "\\-.template" + ReportGenerator.Ext, _config.DIR[0].TMP + "-.template" + ReportGenerator.Ext);
+                    File.Copy(String.Format("{0}\\-.template{1}", _appPath, ReportGenerator.Ext), String.Format("{0}-.template{1}", _config.DIR[0].TMP, ReportGenerator.Ext));
                 }
             }
             catch (Exception ex)
@@ -515,7 +511,7 @@ namespace dCube
             if (sErr != "")
                 lb_Err.Text = sErr;
             splitContainer3.SplitterDistance = 1124;
-            Text = "dCube - " + _user + "@" + DB;
+            Text = String.Format("dCube - {0}@{1}", _user, DB);
             //frmLoading frm = new frmLoading();
 
             //frm.Show();
@@ -1122,7 +1118,7 @@ namespace dCube
             string str1 = null;
             try
             {
-                using (FileStream rd = new FileStream(path + qdid + ".template" + ext, FileMode.Open, FileAccess.Read, System.IO.FileShare.ReadWrite))
+                using (FileStream rd = new FileStream(path + qdid + ".template" + ext, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     str1 = MyHash.Hash(rd, "MD5");
                 }
@@ -1496,7 +1492,7 @@ namespace dCube
                             {
                                 PdfExport.BeginExport(f);
                                 PdfExport.PageLayout = TPageLayout.Outlines;
-                                PdfExport.ExportAllVisibleSheets(false, System.IO.Path.GetFileNameWithoutExtension(FileName));
+                                PdfExport.ExportAllVisibleSheets(false, Path.GetFileNameWithoutExtension(FileName));
                                 PdfExport.EndExport();
                             }
                         }

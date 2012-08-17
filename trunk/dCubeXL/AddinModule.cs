@@ -559,6 +559,10 @@ namespace dCubeXL
                     catch { }
                     a.get_Range(frm.Pos, type).AddComment(frm.TTFormular);
                 }
+                else if (frm.Status == "T")
+                {
+                    a.get_Range(frm.Pos, type).Value = String.Format("<#{0}>", frm.TTFormular);
+                }
                 else if (frm.Status == "L")
                 {
                     try
@@ -594,8 +598,8 @@ namespace dCubeXL
                     catch (Exception ex) { BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "[Addin] [" + DateTime.Now.ToString() + "] : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace); }
                     //a.get_Range(frm.Pos, type).AddComment(frm.TTFormular);
                 }
-                else
-                    a.get_Range(frm.Pos, type).Value = frm.TTFormular;
+                else if (frm.Status == "F")
+                    a.get_Range(frm.Pos, type).Value = "=" + frm.TTFormular;
             }
         }
 

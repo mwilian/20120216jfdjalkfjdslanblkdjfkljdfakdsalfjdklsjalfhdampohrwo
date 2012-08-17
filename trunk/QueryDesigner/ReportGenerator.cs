@@ -219,6 +219,7 @@ namespace dCube
         }
         private ExcelFile Run_templatereport(FlexCelReport flexcelreport)
         {
+            flexcelreport.SetUserFunction("TVC_QUERY", new TVC_QUERY());
             flexcelreport.SetUserFunction("DBEGIN", new DBEGIN());
             flexcelreport.SetUserFunction("DEND", new DEND());
             flexcelreport.SetUserFunction("STR2NUM", new STR2NUM());
@@ -348,6 +349,47 @@ namespace dCube
                 //    clsListValueTT_XLB_EB.Values.Add(x, result);
                 //}
                 return result;
+            }
+
+        }
+        class TVC_QUERY : TFlexCelUserFunction
+        {
+            public override object Evaluate(object[] parameters)
+            {
+                if (parameters == null || parameters.Length == 0)
+                    throw new ArgumentException("Invalid number of params for user defined function \"MyUserFunction");
+                try
+                {
+                    string sErr = "";
+                    string formular = string.Format("TVC_QUERY(\"{0}\"", parameters[0]);
+                    for (int i = 1; i < parameters.Length; i++)
+                    {
+                        object obj = parameters[i];
+                        formular += String.Format(",{0}", obj);
+                    }
+                    formular += ")";
+
+                    SQLBuilder sqlBuilder = new SQLBuilder(processingMode.Details);
+
+                    Parsing.TVCFormular2SQLBuilder(formular, ref sqlBuilder);
+
+                    CoreCommonControl commo = new CoreCommonControl();
+
+                    BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+
+                    DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref sErr);
+                    string keyconn = schInf.DEFAULT_CONN;
+                    string connectstring = _config.GetConnection(ref keyconn, "AP");
+                    sqlBuilder.ConnID = keyconn;
+                    sqlBuilder.StrConnectDes = connectstring;
+                    return sqlBuilder.BuildObject("", connectstring);
+                }
+                catch (Exception ex)
+                {
+                    //BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "QD : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace);
+                }
+
+                return "";
             }
 
         }

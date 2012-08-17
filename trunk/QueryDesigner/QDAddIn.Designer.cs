@@ -95,6 +95,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnTag = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SQLBuilderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtersBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -679,6 +680,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnTag);
             this.panel3.Controls.Add(this.btnList);
             this.panel3.Controls.Add(this.btnAnalysis);
             this.panel3.Controls.Add(this.btnUserTable);
@@ -717,7 +719,7 @@
             // btnUserTable
             // 
             this.btnUserTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUserTable.Location = new System.Drawing.Point(450, 1);
+            this.btnUserTable.Location = new System.Drawing.Point(379, 1);
             this.btnUserTable.Name = "btnUserTable";
             this.btnUserTable.Size = new System.Drawing.Size(70, 23);
             this.btnUserTable.TabIndex = 4;
@@ -795,6 +797,17 @@
             this.label7.Size = new System.Drawing.Size(126, 19);
             this.label7.TabIndex = 5;
             this.label7.Text = "Node Selectors";
+            // 
+            // btnTag
+            // 
+            this.btnTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTag.Location = new System.Drawing.Point(450, 1);
+            this.btnTag.Name = "btnTag";
+            this.btnTag.Size = new System.Drawing.Size(70, 23);
+            this.btnTag.TabIndex = 7;
+            this.btnTag.Text = "Tag";
+            this.btnTag.UseVisualStyleBackColor = true;
+            this.btnTag.Click += new System.EventHandler(this.btnTag_Click);
             // 
             // QDAddIn
             // 
@@ -901,6 +914,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn filterToPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valueFromDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valueToDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnTag;
 
 
 
