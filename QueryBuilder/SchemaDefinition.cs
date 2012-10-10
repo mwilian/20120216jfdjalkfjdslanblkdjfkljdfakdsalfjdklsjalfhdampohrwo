@@ -78,6 +78,8 @@ namespace QueryBuilder
 
         #region '" Shared service Functions "'
 
+        private static Dictionary<string, string> cachedScheme = null;
+        private static Dictionary<string, string> cachedJoin = null;
         private static BindingList<Node> cachedTable = null;
         private static string cachedTableName = string.Empty;
         //  Method InvalidateTable
@@ -95,7 +97,6 @@ namespace QueryBuilder
         ///  <remarks></remarks>
         private static BindingList<Node> GetTable(string dtb, string table)
         {
-
             // filling new Tabble
             BindingList<Node> _schema = new BindingList<Node>();
 
@@ -104,10 +105,22 @@ namespace QueryBuilder
 
             // Use origin if table is alias.
             string origin = GetOriginFromAlias(table);
+            string tmpScheme = "";
+            if (cachedScheme != null && cachedScheme.ContainsKey(origin))
+            {
+                tmpScheme = cachedScheme[origin];
+            }
             try
             {
                 // read resource file. for ex "LA"
-                stream = new StringReader(GetTableSchema(dtb, origin)); // if table = ICAS - load from origin CA
+                if (tmpScheme == "")
+                {
+                    tmpScheme = GetTableSchema(dtb, origin);
+                    if (cachedScheme == null)
+                        cachedScheme = new Dictionary<string, string>();
+                    cachedScheme.Add(origin, tmpScheme);
+                }
+                stream = new StringReader(tmpScheme); // if table = ICAS - load from origin CA
                 reader = new XmlTextReader(stream);
 
                 while (reader.Read())
@@ -144,7 +157,7 @@ namespace QueryBuilder
                             }
                             //  -----------------------------------finish agregating
 
-                            _schema.Add(new Node(nodeAgregate, table + @"\" + nodeCode, System.Convert.ToString(nodeName), System.Convert.ToString(nodeType), System.Convert.ToString(nodeDesc)));
+                            _schema.Add(new Node(nodeAgregate, String.Format(@"{0}\{1}", table, nodeCode), System.Convert.ToString(nodeName), System.Convert.ToString(nodeType), System.Convert.ToString(nodeDesc)));
 
                             if (System.Convert.ToString(nodeType) == STR_isSubNode)
                             { //  for example "LA\CA"
@@ -404,6 +417,7 @@ namespace QueryBuilder
         {
             _joinsDictionary = null;
             _aliasDictionary = null;
+            cachedScheme = null;
             _list = null;
         }
 
@@ -522,6 +536,9 @@ namespace QueryBuilder
             string sErr = "";
             string result = "";
             CoreQD_SCHEMAControl ctr = new CoreQD_SCHEMAControl();
+            string scheme = ctr.GetField(dtb, origin, ref sErr);
+            if (scheme != "")
+                return scheme;
             CoreQD_SCHEMAInfo inf = ctr.Get(dtb, origin, ref sErr);
             if (inf.SCHEMA_ID == "")
             {
@@ -571,6 +588,8 @@ namespace QueryBuilder
 
 
                 result = doc.InnerXml;
+                //inf.FIELD_TEXT = result;
+                //ctr.Update(inf);
             }
             return result;
         }
@@ -606,10 +625,27 @@ namespace QueryBuilder
             string sErr = "";
             string result = System.Convert.ToString(Properties.Resources.ResourceManager.GetObject(JoinsDefinition));
             CoreQD_SCHEMAControl ctr = new CoreQD_SCHEMAControl();
-            DataTable dt = ctr.GetAll(dtb, ref sErr);
+            DataTable value = ctr.GetJoins(dtb, ref sErr);
+            string tmp = "";
+            if (value.Rows.Count > 0)
+            {
+                foreach (DataRow row in value.Rows)
+                {
+                    if (!row[0].ToString().Contains("schema"))
+                        tmp += row[0].ToString();
+                }
+                //return result;
+            }
+
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(result);
             XmlElement docele = doc.DocumentElement;
+            if (tmp != "")
+            {
+                docele.InnerXml = tmp;
+                return doc.InnerXml;
+            }
+            DataTable dt = ctr.GetAll(dtb, ref sErr);
             foreach (DataRow irow in dt.Rows)
             {
                 //<row fromcode ="Movement" lookup="(SELECT * FROM TVC_MFMOVXXX WHERE Not Hold='Y')"/>
@@ -622,13 +658,21 @@ namespace QueryBuilder
                 StringReader strR = new StringReader(schema);
                 dset.ReadXml(strR);
                 strR.Close();
+                string newValue = "";
                 foreach (DataRow jrow in dtfrom.Rows)
                 {
+                    //newValue += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\"/> ", jrow["fromcode"], jrow["lookup"]);
                     XmlElement ele = doc.CreateElement("row");
                     ele.SetAttribute("fromcode", jrow["fromcode"].ToString());
                     ele.SetAttribute("lookup", jrow["lookup"].ToString());
                     docele.AppendChild(ele);
                 }
+                //CoreQD_SCHEMAInfo info = new CoreQD_SCHEMAInfo(irow);
+                //if (info.FIELD_TEXT != "")
+                //{
+                //    info.FROM_TEXT = newValue;
+                //    ctr.Update(info);
+                //}
 
             }
             result = doc.InnerXml;

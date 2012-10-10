@@ -15,6 +15,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>dCubeXL.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkProfile />
+    <ProjectTypeGuids>{80d85812-7475-4db8-9a61-dd0ef1ebd354};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Loader\adxloader.dll.manifest" />
     <!--<None Include="dCubeXL.snk" /> -->
   </ItemGroup>
@@ -89,6 +92,10 @@
       <Project>{6B099CCD-68CE-4597-972D-55E85E2C28B5}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FlexCelDesigner\TVCDesigner.csproj">
+      <Project>{05B7F1D7-C5F4-4133-B0BE-A5D052779718}</Project>
+      <Name>TVCDesigner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QueryBuilder\QueryBuilder.csproj">
       <Project>{0758002C-AA25-4167-92AC-414037CAC5C6}</Project>
       <Name>QueryBuilder</Name>
@@ -98,4 +105,5 @@
       <Name>dCube</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Gizmox\v10.0\Gizmox.VWGLibrary.targets" />
 </Project>

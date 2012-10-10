@@ -67,19 +67,8 @@ namespace dCube
             txtCode.Text = inf.SCHEMA_ID;
             _code = txtCode.Text.Trim();
             ckbUse.Checked = inf.SCHEMA_STATUS.Trim() == "Y" ? true : false;
-            StringReader strR = new StringReader(inf.FROM_TEXT);
-            try
-            {
-                _data.ReadXml(strR);
-            }
-            catch (Exception ex)
-            {
-                if (MessageBox.Show("Schema structure is erro!\n Do you want to delete it?", "Message", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    btnDelete_Click(null, null);
-                }
-            }
-            strR.Close();
+           
+                _data = ReadScheme(inf);           
 
 
 
@@ -88,6 +77,59 @@ namespace dCube
             //strR.Close();
 
         }
+
+        private DataSet ReadScheme(DTO.LIST_QD_SCHEMAInfo inf)
+        {
+            if (inf.FIELD_TEXT == "")
+            {
+                StringReader strR = new StringReader(inf.FROM_TEXT);
+                try
+                {
+                    _data.ReadXml(strR);
+                }
+                catch (Exception ex)
+                {
+                    if (MessageBox.Show("Schema structure is erro!\n Do you want to delete it?", "Message", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        btnDelete_Click(null, null);
+                    }
+                }
+                strR.Close();
+                return _data;
+            }
+            else
+            {
+                XmlDocument xml = new XmlDocument();
+                string strxml = string.Format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>", inf.FROM_TEXT);
+                xml.LoadXml(strxml);
+                XmlElement doc = xml.DocumentElement; 
+                DataTable dtfrom = _data.Tables["fromcode"];
+                foreach (XmlElement ele in doc.ChildNodes)
+                {
+                    DataRow newRow = dtfrom.NewRow();
+                    newRow["fromcode"] = ele.GetAttribute("fromcode");
+                    newRow["lookup"] = ele.GetAttribute("lookup");
+
+                    dtfrom.Rows.Add(newRow);
+                }
+                xml.LoadXml(inf.FIELD_TEXT);
+                doc = xml.DocumentElement;
+                DataTable dtfield = _data.Tables["field"];
+                foreach (XmlElement ele in doc.ChildNodes)
+                {
+                    
+                    DataRow newRow = dtfield.NewRow();
+                    newRow["node"] = ele.GetAttribute("node");
+                    newRow["name"] = ele.GetAttribute("name");
+                    newRow["table"] = ele.GetAttribute("table");
+                    newRow["nodeDesc"] = ele.GetAttribute("nodeDesc");
+                    newRow["type"] = ele.GetAttribute("type");
+                    dtfield.Rows.Add(newRow);
+                }
+                
+                return _data;
+            }
+        }
         private DTO.LIST_QD_SCHEMAInfo GetDataFromForm(DTO.LIST_QD_SCHEMAInfo inf)
         {
             inf.CONN_ID = _db;
@@ -95,10 +137,37 @@ namespace dCube
             inf.DESCRIPTN = txtDescription.Text;
             inf.LOOK_UP = txtLookup.Text;
             inf.UPDATED = DateTime.Today.Year * 10000 + DateTime.Today.Month * 100 + DateTime.Today.Day;
-            StringBuilder sb = new StringBuilder();
-            StringWriter str = new StringWriter(sb);
-            _data.WriteXml(str);
-            inf.FROM_TEXT = sb.ToString();
+            if (inf.FIELD_TEXT != "")
+            {
+                DataTable dtfield = _data.Tables["field"];
+                string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
+                string tmp = "";
+                string from = "";
+                foreach (DataRow jrow in dtfield.Rows)
+                {
+                    tmp += string.Format("<row table=\"{0}\" node=\"{1}\" name=\"{2}\" nodeDesc=\"{3}\" type=\"{4}\" conn_id=\"{5}\"/>", jrow["table"], jrow["node"], jrow["name"], jrow["nodeDesc"], jrow["type"], inf.DEFAULT_CONN);
+                }
+                DataTable dtfrom = _data.Tables["fromcode"];
+                field = string.Format(field, tmp);
+                tmp = "";
+                foreach (DataRow jrow in dtfrom.Rows)
+                {
+                    tmp += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\" /> ", jrow["fromcode"], jrow["lookup"]);
+                }
+                from = tmp;
+
+                //result = doc.InnerXml;
+                inf.FIELD_TEXT = field;
+                inf.FROM_TEXT = from;
+
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                StringWriter str = new StringWriter(sb);
+                _data.WriteXml(str);
+                inf.FROM_TEXT = sb.ToString();
+            }
             //inf.FIELD_TEXT = GetFieldCode(_data.Tables["field"]);
             inf.SCHEMA_ID = txtCode.Text;
             inf.SCHEMA_STATUS = ckbUse.Checked ? "Y" : "N";
@@ -262,7 +331,7 @@ namespace dCube
                 {
                     try
                     {
-                        string result = "<?xml version='1.0' encoding='utf-8' ?><SUN_SCHEMA></SUN_SCHEMA>";
+                        string result = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA></SUN_SCHEMA>";
                         XmlDocument doc = new XmlDocument();
                         doc.LoadXml(result);
                         XmlElement docele = doc.DocumentElement;
@@ -608,6 +677,51 @@ namespace dCube
             {
                 Group.Text = frm.Code;
             }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            string sErr = "";
+            BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
+            DataTable dt = ctr.GetAll(_db, ref sErr);
+            foreach (DataRow row in dt.Rows)
+            {
+                DTO.LIST_QD_SCHEMAInfo inf = new DTO.LIST_QD_SCHEMAInfo(row);
+                try
+                {
+                    _data.Tables["field"].Rows.Clear();
+                    _data.Tables["fromcode"].Rows.Clear();
+                    _data= ReadScheme(inf);
+                    DataTable dtfield = _data.Tables["field"];
+                    string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
+                    string tmp = "";
+                    string from = "";
+                    foreach (DataRow jrow in dtfield.Rows)
+                    {
+                        tmp += string.Format("<row table=\"{0}\" node=\"{1}\" name=\"{2}\" nodeDesc=\"{3}\" type=\"{4}\" conn_id=\"{5}\"/>", jrow["table"], jrow["node"], jrow["name"], jrow["nodeDesc"], jrow["type"], inf.DEFAULT_CONN);
+                    }
+                    DataTable dtfrom = _data.Tables["fromcode"];
+                    field = string.Format(field, tmp);
+                    tmp = "";
+                    foreach (DataRow jrow in dtfrom.Rows)
+                    {
+                        tmp += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\"/> ", jrow["fromcode"], jrow["lookup"]);
+                    }
+                    from = tmp;
+
+                    //result = doc.InnerXml;
+                    inf.FIELD_TEXT = field;
+                    inf.FROM_TEXT = from;
+                    ctr.Update(inf);
+                }
+                catch (Exception ex)
+                { }
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            QueryBuilder.SchemaDefinition.InvalidateCache();
         }
 
 

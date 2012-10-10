@@ -16,6 +16,9 @@ namespace QueryBuilder
         private string _strSPUpdateName = "dbo.[procLIST_QD_SCHEMA_update]";
         private string _strSPDeleteName = "dbo.[procLIST_QD_SCHEMA_delete]";
         private string _strSPGetName = "dbo.[procLIST_QD_SCHEMA_get]";
+        private string _strSPGetFieldName = "dbo.[procLIST_QD_SCHEMA_getfield]";
+        private string _strSPGetDefaultDBName = "procLIST_QD_SCHEMA_getdb";
+        private string _strSPGetJoinsName = "procLIST_QD_SCHEMA_getjoins";
         private string _strSPGetAllName = "dbo.[procLIST_QD_SCHEMA_getall]";
         private string _strSPGetPages = "dbo.[procLIST_QD_SCHEMA_getpaged]";
         private string _strSPIsExist = "dbo.[procLIST_QD_SCHEMA_isexist]";
@@ -50,29 +53,15 @@ namespace QueryBuilder
             }
 
             if (list.Rows.Count > 0)
-                objEntr = (CoreQD_SCHEMAInfo)GetDataFromDataRow(list, 0);
+                objEntr = new CoreQD_SCHEMAInfo(list.Rows[0]);
             //if (dr != null) list = CBO.FillCollection(dr, ref list);
             if (sErr != "") CoreErrorLog.SetLog(sErr);
             return objEntr;
         }
 
-        protected override object GetDataFromDataRow(DataTable dt, int i)
-        {
-            CoreQD_SCHEMAInfo result = new CoreQD_SCHEMAInfo();
-            result.CONN_ID = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.CONN_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.CONN_ID.ToString()]));
-            result.SCHEMA_ID = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString()]));
-            result.LOOK_UP = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.LOOK_UP.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.LOOK_UP.ToString()]));
-            result.DESCRIPTN = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.DESCRIPTN.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.DESCRIPTN.ToString()]));
-            result.FIELD_TEXT = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.FIELD_TEXT.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.FIELD_TEXT.ToString()]));
-            result.FROM_TEXT = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.FROM_TEXT.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.FROM_TEXT.ToString()]));
-            result.DAG = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.DAG.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.DAG.ToString()]));
-            result.SCHEMA_STATUS = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.SCHEMA_STATUS.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.SCHEMA_STATUS.ToString()]));
-            result.UPDATED = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.UPDATED.ToString()] == DBNull.Value ? 0 : Convert.ToInt32(dt.Rows[i][CoreQD_SCHEMAInfo.Field.UPDATED.ToString()]));
-            result.ENTER_BY = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.ENTER_BY.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.ENTER_BY.ToString()]));
-            result.DEFAULT_CONN = (dt.Rows[i][CoreQD_SCHEMAInfo.Field.DEFAULT_CONN.ToString()] == DBNull.Value ? "" : Convert.ToString(dt.Rows[i][CoreQD_SCHEMAInfo.Field.DEFAULT_CONN.ToString()]));
+     
 
-            return result;
-        }
+
 
         public DataTable GetAll(string conn,
         ref string sErr)
@@ -297,5 +286,79 @@ namespace QueryBuilder
         }
         #endregion Method
 
+        public DataTable    GetJoins(string dtb, ref string sErr)
+        {
+            DataTable list = new DataTable();
+            try
+            {
+                InitConnect();
+                InitSPCommand(_strSPGetJoinsName);
+                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), dtb);
+
+
+                list = executeSelectSP();
+            }
+            catch (Exception ex)
+            {
+                sErr = ex.Message;
+            }
+
+
+            if (sErr != "") CoreErrorLog.SetLog(sErr);            
+
+            return list;
+        }
+        public string GetField(String CONN_ID, String SCHEMA_ID, ref string sErr)
+        {
+            object objEntr = null;
+            try
+            {
+                connect();
+                InitSPCommand(_strSPGetFieldName);
+                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
+                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
+
+                objEntr = executeSPScalar();
+            }
+            catch (Exception ex)
+            {
+                sErr = ex.Message;
+            }
+            finally
+            {
+                disconnect();
+            }
+
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
+            if (objEntr != null)
+                return objEntr.ToString();
+            else return "";
+        }
+        public string GetDefaultDB(string db, string table, ref string sErr)
+        {
+            object objEntr = null;
+            try
+            {
+                connect();
+                InitSPCommand(_strSPGetDefaultDBName);
+                AddParameter(CoreQD_SCHEMAInfo.Field.CONN_ID.ToString(), db);
+                AddParameter(CoreQD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), table);
+
+                objEntr = executeSPScalar();
+            }
+            catch (Exception ex)
+            {
+                sErr = ex.Message;
+            }
+            finally
+            {
+                disconnect();
+            }
+
+            if (sErr != "") CoreErrorLog.SetLog(sErr);
+            if (objEntr != null)
+                return objEntr.ToString();
+            else return "";
+        }
     }
 }

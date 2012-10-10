@@ -301,7 +301,7 @@ namespace QueryBuilder
             if (Regex.IsMatch(ParseString, @".*(?=TVC_QUERY)"))
             {
                 ParseString = Regex.Replace(ParseString, ".*(?=TVC_QUERY)", string.Empty);
-                string vParamsString = Regex.Match(ParseString, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
+                string vParamsString = Regex.Match(ParseString, String.Format(@"\{0}\,.+?\)", System.Convert.ToChar(34))).Value;  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */
                 vParamsString = vParamsString.Substring(2, vParamsString.Length - 3);
                 string[] arrParam = vParamsString.Split(',');
                 _SQLBuilder.Pos = arrParam[0];
@@ -361,26 +361,26 @@ namespace QueryBuilder
 
 
                     }
-                    if (Regex.IsMatch(formular, regexFIL))
+                    //if (Regex.IsMatch(formular, regexFIL))
+                    //{
+                    foreach (Match m in Regex.Matches(formular, regexFIL))
                     {
-                        foreach (Match m in Regex.Matches(formular, regexFIL))
-                        {
-                            Match mtemp = Regex.Match(m.Value, "{.+}");
-                            Filter f = Parse2Filter(mtemp.Value.Substring(1, mtemp.Value.Length - 2), _SQLBuilder.Table, _SQLBuilder.Database, arrParam, _SQLBuilder.ParaValueList);
-                            if (f != null)
-                                _SQLBuilder.Filters.Add(f);
-                        }
+                        Match mtemp = Regex.Match(m.Value, "{.+}");
+                        Filter f = Parse2Filter(mtemp.Value.Substring(1, mtemp.Value.Length - 2), _SQLBuilder.Table, _SQLBuilder.Database, arrParam, _SQLBuilder.ParaValueList);
+                        if (f != null)
+                            _SQLBuilder.Filters.Add(f);
                     }
-                    if (Regex.IsMatch(formular, regexOUT))
+                    //}
+                    //if (Regex.IsMatch(formular, regexOUT))
+                    //{
+                    foreach (Match m in Regex.Matches(formular, regexOUT))
                     {
-                        foreach (Match m in Regex.Matches(formular, regexOUT))
-                        {
-                            Match mtemp = Regex.Match(m.Value, "{.+}");
-                            Node n = Parse2Node(mtemp.Value.Substring(1, mtemp.Value.Length - 2), _SQLBuilder.Table, _SQLBuilder.Database, arrParam, _SQLBuilder.ParaValueList);
-                            if (n != null)
-                                _SQLBuilder.SelectedNodes.Add(n);
-                        }
+                        Match mtemp = Regex.Match(m.Value, "{.+}");
+                        Node n = Parse2Node(mtemp.Value.Substring(1, mtemp.Value.Length - 2), _SQLBuilder.Table, _SQLBuilder.Database, arrParam, _SQLBuilder.ParaValueList);
+                        if (n != null)
+                            _SQLBuilder.SelectedNodes.Add(n);
                     }
+                    //}
 
 
 
@@ -427,7 +427,7 @@ namespace QueryBuilder
             {
                 if (_node.Code.ToUpper() == key.ToUpper())
                 {
-                    return new Node(a, key,_node.Description, _node.FType, _node.NodeDesc);// "", "", "");//
+                    return new Node(a, key, _node.Description, _node.FType, _node.NodeDesc);// "", "", "");//
                 }
             }
             return null;

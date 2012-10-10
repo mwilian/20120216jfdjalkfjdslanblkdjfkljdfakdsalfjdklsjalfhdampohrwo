@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvFrom_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQDADD));
             Janus.Windows.GridEX.GridEXLayout dgvField_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQDADD));
             this.ddlQD = new System.Windows.Forms.ComboBox();
             this.lbCON_ID = new System.Windows.Forms.Label();
             this.txtConnect = new System.Windows.Forms.TextBox();
@@ -53,6 +53,9 @@
             this.btnTransferOut = new System.Windows.Forms.ToolStripButton();
             this.lbErr = new System.Windows.Forms.ToolStripLabel();
             this.panelControl = new System.Windows.Forms.Panel();
+            this.btnQD = new System.Windows.Forms.PictureBox();
+            this.Group = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnXML = new System.Windows.Forms.Button();
             this.txtConectEx = new System.Windows.Forms.TextBox();
             this.txtModule = new System.Windows.Forms.TextBox();
@@ -73,11 +76,11 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dgvAddRow = new System.Windows.Forms.ToolStripMenuItem();
             this.bsField = new System.Windows.Forms.BindingSource(this.components);
-            this.Group = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnQD = new System.Windows.Forms.PictureBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panelControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQD)).BeginInit();
             this.panelTab.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabTable.SuspendLayout();
@@ -87,7 +90,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvField)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsField)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnQD)).BeginInit();
             this.SuspendLayout();
             // 
             // ddlQD
@@ -176,6 +178,8 @@
             this.toolStripSeparator2,
             this.btnTransferIn,
             this.btnTransferOut,
+            this.btnRefresh,
+            this.toolStripButton1,
             this.lbErr});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -313,6 +317,35 @@
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(912, 144);
             this.panelControl.TabIndex = 8;
+            // 
+            // btnQD
+            // 
+            this.btnQD.BackColor = System.Drawing.Color.Transparent;
+            this.btnQD.Image = global::dCube.Properties.Resources._1303882176_search_16;
+            this.btnQD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnQD.Location = new System.Drawing.Point(197, 117);
+            this.btnQD.Name = "btnQD";
+            this.btnQD.Size = new System.Drawing.Size(16, 16);
+            this.btnQD.TabIndex = 47;
+            this.btnQD.TabStop = false;
+            this.btnQD.Click += new System.EventHandler(this.btnQD_Click);
+            // 
+            // Group
+            // 
+            this.Group.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Group.Location = new System.Drawing.Point(91, 114);
+            this.Group.Name = "Group";
+            this.Group.Size = new System.Drawing.Size(100, 22);
+            this.Group.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 115);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Group";
             // 
             // btnXML
             // 
@@ -469,9 +502,9 @@
             this.dgvFrom.Size = new System.Drawing.Size(898, 349);
             this.dgvFrom.TabIndex = 1;
             this.dgvFrom.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgvFrom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvFrom_MouseDown);
-            this.dgvFrom.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvFrom_DragEnter);
             this.dgvFrom.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvFrom_DragDrop);
+            this.dgvFrom.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvFrom_DragEnter);
+            this.dgvFrom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvFrom_MouseDown);
             // 
             // tabField
             // 
@@ -479,7 +512,7 @@
             this.tabField.Location = new System.Drawing.Point(4, 25);
             this.tabField.Name = "tabField";
             this.tabField.Padding = new System.Windows.Forms.Padding(3);
-            this.tabField.Size = new System.Drawing.Size(904, 360);
+            this.tabField.Size = new System.Drawing.Size(904, 355);
             this.tabField.TabIndex = 1;
             this.tabField.Text = "Field";
             this.tabField.UseVisualStyleBackColor = true;
@@ -502,9 +535,9 @@
             this.dgvField.Size = new System.Drawing.Size(898, 354);
             this.dgvField.TabIndex = 1;
             this.dgvField.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgvField.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvField_MouseDown);
-            this.dgvField.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvField_DragEnter);
             this.dgvField.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvField_DragDrop);
+            this.dgvField.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvField_DragEnter);
+            this.dgvField.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvField_MouseDown);
             // 
             // contextMenuStrip1
             // 
@@ -520,34 +553,25 @@
             this.dgvAddRow.Text = "Add Row";
             this.dgvAddRow.Click += new System.EventHandler(this.dgvAddRow_Click);
             // 
-            // Group
+            // toolStripButton1
             // 
-            this.Group.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.Group.Location = new System.Drawing.Point(91, 114);
-            this.Group.Name = "Group";
-            this.Group.Size = new System.Drawing.Size(100, 22);
-            this.Group.TabIndex = 14;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton1.Text = "Upgrade";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // label2
+            // btnRefresh
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 115);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Group";
-            // 
-            // btnQD
-            // 
-            this.btnQD.BackColor = System.Drawing.Color.Transparent;
-            this.btnQD.Image = global::dCube.Properties.Resources._1303882176_search_16;
-            this.btnQD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnQD.Location = new System.Drawing.Point(197, 117);
-            this.btnQD.Name = "btnQD";
-            this.btnQD.Size = new System.Drawing.Size(16, 16);
-            this.btnQD.TabIndex = 47;
-            this.btnQD.TabStop = false;
-            this.btnQD.Click += new System.EventHandler(this.btnQD_Click);
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(36, 36);
+            this.btnRefresh.Text = "Refresh Schema";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmQDADD
             // 
@@ -567,6 +591,7 @@
             this.toolStrip1.PerformLayout();
             this.panelControl.ResumeLayout(false);
             this.panelControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQD)).EndInit();
             this.panelTab.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabTable.ResumeLayout(false);
@@ -576,7 +601,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvField)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bsField)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnQD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -628,5 +652,7 @@
         private System.Windows.Forms.TextBox Group;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox btnQD;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
     }
 }

@@ -79,8 +79,8 @@ namespace dCube
 
         private void frmDateFilterSelect_Load(object sender, EventArgs e)
         {
-            txtFilterFrom.SetToNullValue();
-            txtFilterTo.SetToNullValue();
+            //txtFilterFrom.SetToNullValue();
+            //txtFilterTo.SetToNullValue();
             if (Regex.IsMatch(FilterFrom, @"^[0-9]{8}$"))
             {
                 txtFilterFrom.Value = DateTime.Parse(FilterFrom.Substring(0, 4) + "-" + FilterFrom.Substring(4, 2) + "-" + FilterFrom.Substring(6, 2));

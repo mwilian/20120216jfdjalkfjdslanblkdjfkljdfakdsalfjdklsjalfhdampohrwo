@@ -150,8 +150,8 @@ namespace QueryBuilder
             get { return _connID; }
             set
             {
-                if (_connID != value)
-                    SchemaDefinition.JoinsDictionary = null;
+                //if (_connID != value)
+                //    SchemaDefinition.JoinsDictionary = null;
                 _connID = value;
             }
         }
@@ -558,7 +558,7 @@ namespace QueryBuilder
                 Db = DatabaseV;
             }
             // s = "=TT_XLB_EB(" & Chr(34) & " 0,2," & Db & ",LA,V=4," & TTwhere & TTselect & Chr(34) & "," & Pos & "," & TTpara
-            s = "=TT_XLB_EB(" + Convert.ToChar(34) + " 0,2," + Db + "," + Table + ",V=4," + TTwhere + TTselect + Convert.ToChar(34) + "," + Pos + "," + TTpara;
+            s = String.Format("=TT_XLB_EB({0} 0,2,{1},{2},V=4,{3}{4}{0},{5},{6}", Convert.ToChar(34), Db, Table, TTwhere, TTselect, Pos, TTpara);
             s = s.Substring(0, s.Length - 1) + ")";//Strings.Mid(s, 1, s.Length - 1) + ")";
             return s;
         }
@@ -689,7 +689,7 @@ namespace QueryBuilder
             for (int i = 0; i <= _nodes.Count - 1; i++)
             {
                 if (_nodes[i].Expresstion == "")
-                    selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].Description + "]", Environment.NewLine);
+                    selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), String.Format(" as [{0}]", _nodes[i].Description), Environment.NewLine);
                 //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), " as [" + _nodes[i].MyCode + "]", System.Environment.NewLine);
                 //selectBuilder.AppendFormat("{0}{1} {2},{3}", Tab, _nodes[i].AgregateMe(), _nodes[i].MyAlias(), System.Environment.NewLine);
                 // SelectClause += String.Concat(Tab, _nodes(i).AgregateMe, _nodes(i).MyAlias, Comma, System.Environment.NewLine)
@@ -1098,7 +1098,7 @@ namespace QueryBuilder
             if (_SQLDebugMode)
             {
                 //CoreCommonControl log = new CoreCommonControl();
-                string __documentDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + DocumentFolder;
+                string __documentDirectory = String.Format("{0}\\{1}", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), DocumentFolder);
                 CoreCommonControl.AddLog("cmdlog", __documentDirectory + "\\Log", String.Format("{0:yyyyMMdd}{1}:{2}", DateTime.Today, Table, query));
 
                 //System.Windows.Forms.Clipboard.SetText(query);
@@ -1229,7 +1229,7 @@ namespace QueryBuilder
                     if (Regex.IsMatch(x.ValueFrom, @"^\d$"))
                         col.Expression = x.ValueFrom;
                     else
-                        col.Expression = "'" + x.ValueFrom + "'";
+                        col.Expression = String.Format("'{0}'", x.ValueFrom);
                     dt.Columns.Add(col);
                 }
             }
@@ -1435,7 +1435,7 @@ namespace QueryBuilder
                     if (Regex.IsMatch(x.ValueFrom, @"^\d$"))
                         col.Expression = x.ValueFrom;
                     else
-                        col.Expression = "'" + x.ValueFrom + "'";
+                        col.Expression = String.Format("'{0}'", x.ValueFrom);
                     dt.Columns.Add(col);
                 }
             }

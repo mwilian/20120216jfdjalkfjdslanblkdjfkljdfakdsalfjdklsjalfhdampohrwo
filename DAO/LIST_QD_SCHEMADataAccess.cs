@@ -17,6 +17,9 @@ namespace DAO
         private string _strSPUpdateName = "dbo.[procLIST_QD_SCHEMA_update]";
         private string _strSPDeleteName = "dbo.[procLIST_QD_SCHEMA_delete]";
         private string _strSPGetName = "dbo.[procLIST_QD_SCHEMA_get]";
+        private string _strSPGetFieldName = "dbo.[procLIST_QD_SCHEMA_getfield]";
+        private string _strSPGetDefaultDBName = "procLIST_QD_SCHEMA_getdb";
+        private string _strSPGetJoinsName = "procLIST_QD_SCHEMA_getjoins";
         private string _strSPGetAllName = "dbo.[procLIST_QD_SCHEMA_getall]";
         private string _strSPGetPages = "dbo.[procLIST_QD_SCHEMA_getpaged]";
         private string _strSPIsExist = "dbo.[procLIST_QD_SCHEMA_isexist]";
@@ -297,6 +300,80 @@ namespace DAO
             return list;
         }
         #endregion Method
+        public DataTable GetJoins(string dtb, ref string sErr)
+        {
+            DataTable list = new DataTable();
+            try
+            {
+                InitConnect();
+                InitSPCommand(_strSPGetJoinsName);
+                AddParameter(LIST_QD_SCHEMAInfo.Field.CONN_ID.ToString(), dtb);
 
+
+                list = executeSelectSP();
+            }
+            catch (Exception ex)
+            {
+                sErr = ex.Message;
+            }
+
+
+            if (sErr != "") ErrorLog.SetLog(sErr);
+
+            return list;
+        }
+        public string GetField(String CONN_ID, String SCHEMA_ID, ref string sErr)
+        {
+            object objEntr = null;
+            try
+            {
+                connect();
+                InitSPCommand(_strSPGetFieldName);
+                AddParameter(LIST_QD_SCHEMAInfo.Field.CONN_ID.ToString(), CONN_ID);
+                AddParameter(LIST_QD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), SCHEMA_ID);
+
+                objEntr = executeSPScalar();
+            }
+            catch (Exception ex)
+            {
+                sErr = ex.Message;
+            }
+            finally
+            {
+                disconnect();
+            }
+
+            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (objEntr != null)
+                return objEntr.ToString();
+            else return "";
+        }
+
+        public string GetDefaultDB(string db, string table, ref string sErr)
+        {
+            object objEntr = null;
+            try
+            {
+                connect();
+                InitSPCommand(_strSPGetDefaultDBName);
+                AddParameter(LIST_QD_SCHEMAInfo.Field.CONN_ID.ToString(), db);
+                AddParameter(LIST_QD_SCHEMAInfo.Field.SCHEMA_ID.ToString(), table);
+
+                objEntr = executeSPScalar();
+            }
+            catch (Exception ex)
+            {
+                sErr = ex.Message;
+            }
+            finally
+            {
+                disconnect();
+            }
+
+            if (sErr != "") ErrorLog.SetLog(sErr);
+            if (objEntr != null)
+                return objEntr.ToString();
+            else return "";
+        }
     }
 }
