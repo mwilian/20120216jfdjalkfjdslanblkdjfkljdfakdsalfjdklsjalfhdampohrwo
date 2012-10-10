@@ -148,13 +148,13 @@ namespace dCube
                         //dt.Columns.Add(_sqlBuilder.Filters[i].Code + "_From" + i);
                         //dt.Columns.Add(_sqlBuilder.Filters[i].Code + "_To" + i);
 
-                        string code = _sqlBuilder.Filters[i].Description + "_From" + i;
+                        string code = String.Format("{0}_From{1}", _sqlBuilder.Filters[i].Description, i);
                         string value = _sqlBuilder.Filters[i].FilterFrom;
                         string type = _sqlBuilder.Filters[i].Node.FType;
 
                         SetParameter(dt, code, value, type);
 
-                        code = _sqlBuilder.Filters[i].Description + "_To" + i;
+                        code = String.Format("{0}_To{1}", _sqlBuilder.Filters[i].Description, i);
                         value = _sqlBuilder.Filters[i].FilterTo;
 
                         SetParameter(dt, code, value, type);
@@ -405,7 +405,7 @@ namespace dCube
                 {
                     kq = Convert.ToDecimal(chuoi);
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -427,7 +427,7 @@ namespace dCube
 
                     kq = BUS.CommonControl.ToRoman(chuoi);
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -450,10 +450,10 @@ namespace dCube
                     string day = chuoi.Substring(6, 2);
                     if (chuoi != "19000101")
                     {
-                        kq = day + "/" + month + "/" + year;
+                        kq = String.Format("{0}/{1}/{2}", day, month, year);
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -474,10 +474,10 @@ namespace dCube
                 try
                 {
 
-                    kq = chuoi.Substring(5, 2) + "/" + chuoi.Substring(0, 4);
+                    kq = String.Format("{0}/{1}", chuoi.Substring(5, 2), chuoi.Substring(0, 4));
 
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -502,17 +502,17 @@ namespace dCube
                     {
                         case ".,":
                         case ",":
-                            System.Globalization.CultureInfo a = new System.Globalization.CultureInfo("de-DE");
+                            CultureInfo a = new CultureInfo("de-DE");
                             kq = para.ToString(chuoi.Replace(",", "_").Replace(".", ",").Replace("_", "."), a);
                             break;
                         case ",.":
                         case ".":
-                            System.Globalization.CultureInfo b = new System.Globalization.CultureInfo("en-US");
+                            CultureInfo b = new CultureInfo("en-US");
                             kq = para.ToString(chuoi, b);
                             break;
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
                     throw new ArgumentException("Invalid number of params for user defined function \"NUM2STR");
                 }
@@ -537,7 +537,7 @@ namespace dCube
                     kq = readtv.Convert(chuoi.Trim(), '.', " lẻ ");
                     kq[0].ToString().ToUpper();
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -561,12 +561,12 @@ namespace dCube
                     ReadEN readtv = new ReadEN();
                     kq = readtv.NumberToWords(chuoi);
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
 
-                return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(kq);
+                return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(kq);
             }
 
         }
@@ -600,7 +600,7 @@ namespace dCube
                         return new DateTime(year, month, 1);
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -641,7 +641,7 @@ namespace dCube
                         return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -675,7 +675,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -708,7 +708,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -736,7 +736,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -768,7 +768,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -797,7 +797,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -826,7 +826,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -854,7 +854,7 @@ namespace dCube
                         kq = year.ToString() + month.ToString("000");
                     }
                 }
-                catch (System.Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -925,9 +925,9 @@ namespace dCube
                                     }
 
                             BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
-
-                            DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(sqlBuilder.Database, sqlBuilder.Table, ref _sErr);
-                            string keyconn = schInf.DEFAULT_CONN;
+                            //DTO.LIST_QD_SCHEMAInfo schInf 
+                            string keyconn = schCtr.GetDefaultDB(sqlBuilder.Database, sqlBuilder.Table, ref _sErr);
+                            //string keyconn = schInf.DEFAULT_CONN;
                             string connectstring = _config.GetConnection(ref keyconn, "AP");
                             sqlBuilder.ConnID = keyconn;
                             sqlBuilder.StrConnectDes = connectstring;
@@ -936,7 +936,7 @@ namespace dCube
                         catch (Exception ex)
                         {
 
-                            BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "QD : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace);
+                            BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", String.Format("QD : {0}\n\t{1}\n\t{2}", ex.Message, ex.Source, ex.StackTrace));
                         }
                     }
                     break;
@@ -952,14 +952,14 @@ namespace dCube
         #region Method
         public void GenTemplate()
         {
-            if (!File.Exists(_pathTemplate + _qdCode + ".template" + ReportGenerator.Ext))
+            if (!File.Exists(String.Format("{0}{1}.template{2}", _pathTemplate, _qdCode, ReportGenerator.Ext)))
             {
-                XlsFile xlsTemp = new XlsFile(_pathTemplate + "-.template" + ReportGenerator.Ext);
+                XlsFile xlsTemp = new XlsFile(String.Format("{0}-.template{1}", _pathTemplate, ReportGenerator.Ext));
                 xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 10, 2, _qdCode, 0);
                 xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
                 xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
 
-                xlsTemp.Save(_pathTemplate + _qdCode + ".template" + ReportGenerator.Ext, _format);
+                xlsTemp.Save(String.Format("{0}{1}.template{2}", _pathTemplate, _qdCode, ReportGenerator.Ext), _format);
             }
         }
         public ReportGenerator(SQLBuilder sqlBuilder, string qdCode, string sqlText, string connectString, string pathTemplate, string pathReport, string documentDirectory)
@@ -1015,7 +1015,7 @@ namespace dCube
         public string ExportExcelToPath(string path)
         {
             String filename = "";
-            filename = path + "\\" + _qdCode + ReportGenerator.Ext;
+            filename = String.Format("{0}\\{1}{2}", path, _qdCode, ReportGenerator.Ext);
             _xlsFile = CreateReport();
             _xlsFile.Save(filename, _format);
             return filename;
@@ -1100,7 +1100,7 @@ namespace dCube
             CommonControl ctr = new CommonControl();
             object date = ctr.executeScalar("select GETDATE()");//CURDATE()
             if (!_valueList.ContainsKey("SysDate"))
-                flexcelreport.SetValue("SysDate", date);
+                flexcelreport.SetValue("SysDate", ((DateTime)date).ToString("yyyy-MM-dd"));
             if (!_valueList.ContainsKey("QDName"))
                 flexcelreport.SetValue("QDName", _name);
             if (!_valueList.ContainsKey("QDCode"))
@@ -1164,7 +1164,7 @@ namespace dCube
         }
         public string ExportPDFToPath(string path)
         {
-            String filename = path + "\\" + _qdCode + ".pdf";
+            String filename = String.Format("{0}\\{1}.pdf", path, _qdCode);
             //FileStream file = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             //if (_xlsFile == null)
             _xlsFile = CreateReport();
@@ -1193,7 +1193,7 @@ namespace dCube
         }
         public string ExportHTMLToPath(string path)
         {
-            String filename = path + _qdCode + ".htm";
+            String filename = String.Format("{0}{1}.htm", path, _qdCode);
             //TextWriter file = new StringWriter(); ;
             if (_xlsFile == null)
                 _xlsFile = CreateReport();
@@ -1243,7 +1243,7 @@ namespace dCube
                     html.AllowOverwritingFiles = true;
                     html.SavedImagesFormat = THtmlImageFormat.Png;
                     //html.HtmlVersion = THtmlVersion.XHTML_10;
-                    html.Export(filehtml, "images", "css\\" + _qdCode + ".css");
+                    html.Export(filehtml, "images", String.Format("css\\{0}.css", _qdCode));
                 }
                 return filehtml;
             }
@@ -1254,7 +1254,7 @@ namespace dCube
         }
         public TextWriter ExportHTML(string path)
         {
-            String filename = path + _qdCode + ".html";
+            String filename = String.Format("{0}{1}.html", path, _qdCode);
             TextWriter file = new StringWriter(); ;
             //if (_xlsFile == null)
             _xlsFile = CreateReport();
@@ -1388,12 +1388,12 @@ namespace dCube
             int i = 0;
             do
             {
-                string FileName = Path.GetDirectoryName(filename)
-                    + Path.DirectorySeparatorChar
-                    + Path.GetFileNameWithoutExtension(filename)
-                    + "_" + ImgExport.Workbook.SheetName
-                    + String.Format("_{0}", i) +
-                    Path.GetExtension(filename);
+                string FileName = String.Format("{0}{1}{2}_{3}{4}{5}"
+                    , Path.GetDirectoryName(filename)
+                    , Path.DirectorySeparatorChar
+                    , Path.GetFileNameWithoutExtension(filename), ImgExport.Workbook.SheetName
+                    , String.Format("_{0}", i)
+                    , Path.GetExtension(filename));
                 using (FileStream ImageStream = new FileStream(FileName, FileMode.Create))
                 {
                     CreateImg(ImageStream, ImgExport, ImgFormat, ColorDepth, ref ExportInfo);
@@ -1447,13 +1447,13 @@ namespace dCube
             {
                 if (strA.Substring(0, 1) == "0")
                 {
-                    return strDonViNho[0] + " " + Len1(strA.Substring(1, 1));
+                    return String.Format("{0} {1}", strDonViNho[0], Len1(strA.Substring(1, 1)));
                 }
                 else if (strA.Substring(0, 1) == "1")
                 {
                     if (strA.Substring(1, 1) == "5")
                     {
-                        return strDonViNho[2] + " " + strDonViNho[1];
+                        return String.Format("{0} {1}", strDonViNho[2], strDonViNho[1]);
                     }
                     else if (strA.Substring(1, 1) == "0")
                     {
@@ -1461,26 +1461,26 @@ namespace dCube
                     }
                     else
                     {
-                        return strDonViNho[2] + " " + Len1(strA.Substring(1, 1));
+                        return String.Format("{0} {1}", strDonViNho[2], Len1(strA.Substring(1, 1)));
                     }
                 }
                 else
                 {
                     if (strA.Substring(1, 1) == "5")
                     {
-                        return Len1(strA.Substring(0, 1)) + " " + strDonViNho[3] + " " + strDonViNho[1];
+                        return String.Format("{0} {1} {2}", Len1(strA.Substring(0, 1)), strDonViNho[3], strDonViNho[1]);
                     }
                     else if (strA.Substring(1, 1) == "0")
                     {
-                        return Len1(strA.Substring(0, 1)) + " " + strDonViNho[3];
+                        return String.Format("{0} {1}", Len1(strA.Substring(0, 1)), strDonViNho[3]);
                     }
                     else if (strA.Substring(1, 1) == "1")
                     {
-                        return Len1(strA.Substring(0, 1)) + " " + strDonViNho[3] + " " + strDonViNho[4];
+                        return String.Format("{0} {1} {2}", Len1(strA.Substring(0, 1)), strDonViNho[3], strDonViNho[4]);
                     }
                     else
                     {
-                        return Len1(strA.Substring(0, 1)) + " " + strDonViNho[3] + " " + Len1(strA.Substring(1, 1));
+                        return String.Format("{0} {1} {2}", Len1(strA.Substring(0, 1)), strDonViNho[3], Len1(strA.Substring(1, 1)));
                     }
                 }
             }
@@ -1492,11 +1492,11 @@ namespace dCube
                 }
                 else if ((strA.Substring(1, 2) == "00"))
                 {
-                    return Len1(strA.Substring(0, 1)) + " " + strDonViNho[5];
+                    return String.Format("{0} {1}", Len1(strA.Substring(0, 1)), strDonViNho[5]);
                 }
                 else
                 {
-                    return Len1(strA.Substring(0, 1)) + " " + strDonViNho[5] + " " + Len2(strA.Substring(1, strA.Length - 1));
+                    return String.Format("{0} {1} {2}", Len1(strA.Substring(0, 1)), strDonViNho[5], Len2(strA.Substring(1, strA.Length - 1)));
                 }
             }
             /////////////////////
@@ -1657,11 +1657,11 @@ namespace dCube
                     {
                         if (!boKTNull)
                         {
-                            strKQ = strKQ.Substring(0, strKQ.Length - 1) + strDonViLon[3] + " ";
+                            strKQ = String.Format("{0}{1} ", strKQ.Substring(0, strKQ.Length - 1), strDonViLon[3]);
                         }
                         else
                         {
-                            strKQ = strKQ.Substring(0, strKQ.Length - 1) + " " + strDonViLon[3] + " ";
+                            strKQ = String.Format("{0} {1} ", strKQ.Substring(0, strKQ.Length - 1), strDonViLon[3]);
                         }
                     }
                 }
@@ -1715,7 +1715,7 @@ namespace dCube
                         }
 
 
-                        return FullLen(strTmp[0]) + " " + strOutSeparator + " " + strRight.TrimEnd();
+                        return String.Format("{0} {1} {2}", FullLen(strTmp[0]), strOutSeparator, strRight.TrimEnd());
                     }
                     else
                     {
@@ -1783,7 +1783,7 @@ namespace dCube
                     if (digitGroups[i] != 0)
                     {
                         // Build the string to add as a prefix
-                        string prefix = groupText[i] + " " + _scaleNumbers[i];
+                        string prefix = String.Format("{0} {1}", groupText[i], _scaleNumbers[i]);
 
                         if (combined.Length != 0)
                             prefix += appendAnd ? " and " : ", ";

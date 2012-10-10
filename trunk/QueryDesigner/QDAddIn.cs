@@ -630,6 +630,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
             DialogResult = DialogResult.OK;
             _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
             _ttFormular = string.Format("USER TABLE({0})", _ttFormular);
+            Status = "U";
             Close();
         }
 
@@ -654,7 +655,11 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             DialogResult = DialogResult.OK;
             Status = "L";
-
+            BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+            //DTO.LIST_QD_SCHEMAInfo schInf 
+            string key = schCtr.GetDefaultDB(_sqlBuilder.Database, _sqlBuilder.Table, ref _sErr);
+            _strConnectDes = _sqlBuilder.StrConnectDes = _config.GetConnection(ref key, "AP");
+            _sqlBuilder.ConnID = key;
             BUS.CommonControl commo = new BUS.CommonControl();
             _sqlBuilder.StrConnectDes = _strConnectDes;
             _dataReturn = _sqlBuilder.BuildDataTable("");
@@ -667,14 +672,16 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
 
         void frm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //TopMost = true;
-            if (_status == "I")
-                _status = "F";
+
         }
 
         private void btnAnalysis_Click(object sender, EventArgs e)
         {
-            string key = _sqlBuilder.ConnID;
+            BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+            //DTO.LIST_QD_SCHEMAInfo schInf 
+            string key = schCtr.GetDefaultDB(_sqlBuilder.Database, _sqlBuilder.Table, ref _sErr);
+
+            //string key = _sqlBuilder.ConnID;
             _strConnectDes = _sqlBuilder.StrConnectDes = _config.GetConnection(ref key, "AP");
             _sqlBuilder.ConnID = key;
             QDAddinDrillDown frmD = new QDAddinDrillDown(_sqlBuilder.Pos, _xlsApp, _sqlBuilder, _strConnectDes);

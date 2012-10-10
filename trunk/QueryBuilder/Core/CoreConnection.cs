@@ -22,6 +22,12 @@ namespace QueryBuilder
         {
             connection = new SqlConnection(_connectionString + ";Connect Timeout=500");
         }
+        public void InitConnect()
+        {
+            connection = new SqlConnection(_connectionString);
+            command = new SqlCommand();
+            command.Connection = connection;
+        }
         public static string ConnectionString
         {
             get

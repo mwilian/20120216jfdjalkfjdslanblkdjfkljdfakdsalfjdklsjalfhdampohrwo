@@ -86,6 +86,7 @@
             this.colSort = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.selectedNodesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnTag = new System.Windows.Forms.Button();
             this.btnList = new System.Windows.Forms.Button();
             this.btnAnalysis = new System.Windows.Forms.Button();
             this.btnUserTable = new System.Windows.Forms.Button();
@@ -95,7 +96,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnTag = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SQLBuilderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filtersBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -409,6 +409,7 @@
             this.dgvFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFilter.Location = new System.Drawing.Point(0, 33);
             this.dgvFilter.Name = "dgvFilter";
+            this.dgvFilter.RowHeadersWidth = 25;
             this.dgvFilter.Size = new System.Drawing.Size(713, 169);
             this.dgvFilter.TabIndex = 0;
             this.dgvFilter.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellValueChanged);
@@ -543,6 +544,7 @@
             this.dgvSelectNodes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSelectNodes.Location = new System.Drawing.Point(0, 33);
             this.dgvSelectNodes.Name = "dgvSelectNodes";
+            this.dgvSelectNodes.RowHeadersWidth = 25;
             this.dgvSelectNodes.Size = new System.Drawing.Size(713, 209);
             this.dgvSelectNodes.TabIndex = 0;
             this.dgvSelectNodes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellValueChanged);
@@ -694,6 +696,17 @@
             this.panel3.TabIndex = 1;
             this.panel3.Enter += new System.EventHandler(this.radPanel1_Enter);
             // 
+            // btnTag
+            // 
+            this.btnTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTag.Location = new System.Drawing.Point(450, 1);
+            this.btnTag.Name = "btnTag";
+            this.btnTag.Size = new System.Drawing.Size(70, 23);
+            this.btnTag.TabIndex = 7;
+            this.btnTag.Text = "Tag";
+            this.btnTag.UseVisualStyleBackColor = true;
+            this.btnTag.Click += new System.EventHandler(this.btnTag_Click);
+            // 
             // btnList
             // 
             this.btnList.Location = new System.Drawing.Point(64, 1);
@@ -797,17 +810,6 @@
             this.label7.Size = new System.Drawing.Size(126, 19);
             this.label7.TabIndex = 5;
             this.label7.Text = "Node Selectors";
-            // 
-            // btnTag
-            // 
-            this.btnTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTag.Location = new System.Drawing.Point(450, 1);
-            this.btnTag.Name = "btnTag";
-            this.btnTag.Size = new System.Drawing.Size(70, 23);
-            this.btnTag.TabIndex = 7;
-            this.btnTag.Text = "Tag";
-            this.btnTag.UseVisualStyleBackColor = true;
-            this.btnTag.Click += new System.EventHandler(this.btnTag_Click);
             // 
             // QDAddIn
             // 

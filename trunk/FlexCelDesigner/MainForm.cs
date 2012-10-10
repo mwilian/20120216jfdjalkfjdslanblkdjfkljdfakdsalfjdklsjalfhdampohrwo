@@ -236,20 +236,21 @@ namespace TVCDesigner
                     string[] sc = { dt_Params.TableName, row["Code"].ToString(), temp.Text };
                     temp.Tag = sc;
                 }
-            }
-            tmp = rootParams.Nodes.Add("#ROWPOS");
-            tmp.Text = "#ROWPOS";
-            tmp.ImageIndex = imgColumn;
-            tmp.SelectedImageIndex = tmp.ImageIndex;
-            src = new string[] { dt_Params.TableName, tmp.Text, tmp.Text };
-            tmp.Tag = src;
 
-            tmp = rootParams.Nodes.Add("#ROWCOUNT");
-            tmp.Text = "#ROWCOUNT";
-            tmp.ImageIndex = imgColumn;
-            tmp.SelectedImageIndex = tmp.ImageIndex;
-            src = new string[] { dt_Params.TableName, tmp.Text, tmp.Text };
-            tmp.Tag = src;
+                tmp = rootParams.Nodes.Add("#ROWPOS");
+                tmp.Text = "#ROWPOS";
+                tmp.ImageIndex = imgColumn;
+                tmp.SelectedImageIndex = tmp.ImageIndex;
+                src = new string[] { dt_Params.TableName, tmp.Text, tmp.Text };
+                tmp.Tag = src;
+
+                tmp = rootParams.Nodes.Add("#ROWCOUNT");
+                tmp.Text = "#ROWCOUNT";
+                tmp.ImageIndex = imgColumn;
+                tmp.SelectedImageIndex = tmp.ImageIndex;
+                src = new string[] { dt_Params.TableName, tmp.Text, tmp.Text };
+                tmp.Tag = src;
+            }
             #endregion
             #region Function
 

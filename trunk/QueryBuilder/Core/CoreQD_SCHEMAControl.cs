@@ -30,6 +30,7 @@ namespace QueryBuilder
             SCHEMA_ID,
 			ref sErr);
         }
+      
 		
         public DataTable GetAll(string conn,
         ref string sErr)
@@ -110,6 +111,28 @@ namespace QueryBuilder
             return InsertUpdate(inf);
         }
 		#endregion Method
+        public string GetField(
+      String CONN_ID,
+      String SCHEMA_ID,
+      ref string sErr)
+        {
+            return _objDAO.GetField(
+            CONN_ID,
+            SCHEMA_ID,
+            ref sErr);
+        }
 
+        public DataTable GetJoins(string dtb, ref string sErr)
+        {
+            return _objDAO.GetJoins(
+           dtb,           
+           ref sErr);
+        }
+        public string GetDefaultDB(string db, string table, ref string sErr)
+        {
+            return _objDAO.GetDefaultDB(
+            db, table,
+            ref sErr);
+        }
     }
 }

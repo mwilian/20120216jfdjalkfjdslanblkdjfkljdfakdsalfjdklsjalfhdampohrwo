@@ -6,6 +6,8 @@ using AddinExpress.MSO;
 using dCube;
 using System.IO;
 using BUS;
+using QueryBuilder;
+using System.Data;
 
 namespace dCubeXL
 {
@@ -41,6 +43,11 @@ namespace dCubeXL
         private ADXCommandBarButton btnLogin;
         private ADXRibbonButton adxLogin;
         string _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
+        private ADXRibbonButton btnView;
+        private ADXRibbonButton adxRibbonButton1;
+        private ADXRibbonButton adxRibbonButton2;
+        private ADXRibbonButton adxRibbonButton3;
+        private ADXCommandBarButton btnViewCol;
         string _user = "";
         private void InitDocument()
         {
@@ -150,6 +157,11 @@ namespace dCubeXL
             this.btnRDesign = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRComment = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRAnalysis = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.adxRibbonButton1 = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.adxRibbonButton2 = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.adxRibbonButton3 = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.btnView = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.btnViewCol = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             // 
             // QDCommandBar
             // 
@@ -160,6 +172,7 @@ namespace dCubeXL
             this.QDCommandBar.Controls.Add(this.btnDesign);
             this.QDCommandBar.Controls.Add(this.btnComment);
             this.QDCommandBar.Controls.Add(this.btnAnalysis);
+            this.QDCommandBar.Controls.Add(this.btnViewCol);
             this.QDCommandBar.Description = "Tavicosoft Addin";
             this.QDCommandBar.SupportedApps = AddinExpress.MSO.ADXOfficeHostApp.ohaExcel;
             this.QDCommandBar.UpdateCounter = 18;
@@ -184,6 +197,7 @@ namespace dCubeXL
             this.ilMain.Images.SetKeyName(2, "1334120016_pie_chart.png");
             this.ilMain.Images.SetKeyName(3, "comment.png");
             this.ilMain.Images.SetKeyName(4, "design.png");
+            this.ilMain.Images.SetKeyName(5, "columns.png");
             // 
             // btnSetting
             // 
@@ -249,6 +263,7 @@ namespace dCubeXL
             this.adxRibbonGroup1.Controls.Add(this.btnRDesign);
             this.adxRibbonGroup1.Controls.Add(this.btnRComment);
             this.adxRibbonGroup1.Controls.Add(this.btnRAnalysis);
+            this.adxRibbonGroup1.Controls.Add(this.btnView);
             this.adxRibbonGroup1.Id = "adxRibbonGroup_81754909ad5e45eb9ea84f07866d115e";
             this.adxRibbonGroup1.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.adxRibbonGroup1.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
@@ -307,6 +322,58 @@ namespace dCubeXL
             this.btnRAnalysis.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
             this.btnRAnalysis.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
             this.btnRAnalysis.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRAnalysis_OnClick);
+            // 
+            // adxRibbonButton1
+            // 
+            this.adxRibbonButton1.Caption = "Analysis";
+            this.adxRibbonButton1.Id = "adxRibbonButton_d1d6b2c5c61b4c97aaae713ea9547164";
+            this.adxRibbonButton1.Image = 2;
+            this.adxRibbonButton1.ImageList = this.ilMain;
+            this.adxRibbonButton1.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.adxRibbonButton1.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.adxRibbonButton1.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            // 
+            // adxRibbonButton2
+            // 
+            this.adxRibbonButton2.Caption = "Analysis";
+            this.adxRibbonButton2.Id = "adxRibbonButton_d1d6b2c5c61b4c97aaae713ea9547164";
+            this.adxRibbonButton2.Image = 2;
+            this.adxRibbonButton2.ImageList = this.ilMain;
+            this.adxRibbonButton2.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.adxRibbonButton2.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.adxRibbonButton2.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            // 
+            // adxRibbonButton3
+            // 
+            this.adxRibbonButton3.Caption = "Analysis";
+            this.adxRibbonButton3.Id = "adxRibbonButton_d1d6b2c5c61b4c97aaae713ea9547164";
+            this.adxRibbonButton3.Image = 2;
+            this.adxRibbonButton3.ImageList = this.ilMain;
+            this.adxRibbonButton3.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.adxRibbonButton3.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.adxRibbonButton3.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            // 
+            // btnView
+            // 
+            this.btnView.Caption = "Columns";
+            this.btnView.Id = "adxRibbonButton_4738252f541f462daea013d0309a0eb1";
+            this.btnView.Image = 5;
+            this.btnView.ImageList = this.ilMain;
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnView.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.btnView.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            this.btnView.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnView_OnClick);
+            // 
+            // btnViewCol
+            // 
+            this.btnViewCol.Caption = "Fields";
+            this.btnViewCol.ControlTag = "5a27efb9-c965-4baa-b0fb-fcb546fcf171";
+            this.btnViewCol.Image = 5;
+            this.btnViewCol.ImageList = this.ilMain;
+            this.btnViewCol.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnViewCol.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
+            this.btnViewCol.UpdateCounter = 8;
+            this.btnViewCol.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnViewCol_Click);
             // 
             // AddinModule
             // 
@@ -368,6 +435,66 @@ namespace dCubeXL
             frmConnect = new FrmSystem();
             if (frmConnect.ShowDialog() == DialogResult.OK)
                 LoadConfig("");
+        }
+        public void ShowFields()
+        {
+            Excel._Worksheet sheet = (Excel._Worksheet)ExcelApp.ActiveSheet;
+            _xlsCell = (Excel.Range)ExcelApp.ActiveCell;
+            string _address = _xlsCell.get_AddressLocal(1, 1, Excel.XlReferenceStyle.xlA1, 0, 0).ToString();
+            _address = _address.Replace("$", "");
+            string formular = _xlsCell.Formula.ToString();
+            if (formular.Contains("TVC_QUERY") && formular.Contains("USER TABLE"))
+            {
+                string tmp = formular.Replace("USER TABLE(", "");
+                formular = tmp.Substring(0, tmp.Length - 1);
+                SQLBuilder _sqlBuilder = new SQLBuilder(processingMode.Details);
+
+                if (!formular.Contains("TVC_QUERY"))
+                    Parsing.Formular2SQLBuilder(formular, ref _sqlBuilder);
+                else
+                {
+                    Parsing.TVCFormular2SQLBuilder(formular, ref _sqlBuilder);
+                }
+
+                DataTable dt_list = new DataTable();
+                if (_sqlBuilder.SelectedNodes.Count > 0)
+                {
+                    //CommoControl commo = new CommoControl();
+                    //string connnectString = commo.CreateConnectString(Properties.Settings.Default.Server
+                    //         , Properties.Settings.Default.User
+                    //         , Properties.Settings.Default.Pass
+                    //         , Properties.Settings.Default.DBName);
+
+                    //a.THEME = this.THEME;
+                    dt_list.TableName = "data";
+                    dt_list.Columns.Add("Name");
+                    dt_list.Columns.Add("Code");
+
+                    for (int i = 0; i < _sqlBuilder.SelectedNodes.Count; i++)
+                    {
+                        Node colum = _sqlBuilder.SelectedNodes[i];
+                        string desc = colum.Description;
+                        int dem = 0;
+                        for (int j = i - 1; j >= 0; j--)
+                        {
+                            Node node = _sqlBuilder.SelectedNodes[j];
+                            if (node.Description == colum.Description)
+                            {
+                                dem++;
+                            }
+                        }
+                        if (dem > 0)
+                        {
+                            desc = colum.Description + dem;
+                        }
+                        dt_list.Rows.Add(new string[] { colum.Description, desc });
+                    }                    
+                    TVCDesigner.MainForm frm = new TVCDesigner.MainForm(dt_list, null, null);
+                    frm.Show(new WindowWrapper((IntPtr)ExcelApp.DDEAppReturnCode));
+                }
+
+
+            }
         }
         private void ShowDesign()
         {
@@ -600,6 +727,8 @@ namespace dCubeXL
                 }
                 else if (frm.Status == "F")
                     a.get_Range(frm.Pos, type).Value = "=" + frm.TTFormular;
+                else if (frm.Status == "U")
+                    a.get_Range(frm.Pos, type).Value = frm.TTFormular;
             }
         }
 
@@ -779,6 +908,18 @@ namespace dCubeXL
         {
             ShowLogin();
         }
+
+        private void btnView_OnClick(object sender, IRibbonControl control, bool pressed)
+        {
+            ShowFields();
+        }
+
+        private void btnViewCol_Click(object sender)
+        {
+            ShowFields();
+        }
+
+        
 
     }
 }

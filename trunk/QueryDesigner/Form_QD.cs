@@ -2685,7 +2685,7 @@ namespace dCube
                 reader.Close();
                 string PathScript = _appPath + "\\FusionCharts\\FusionCharts.js";
                 PathScript = PathScript.Replace("\\", "/");
-                string PathChart = _appPath + "\\FusionCharts\\" + propertyChart.ChartName + ".swf";
+                string PathChart = String.Format("{0}\\FusionCharts\\{1}.swf", _appPath, propertyChart.ChartName);
                 PathChart = PathChart.Replace("\\", "/");
 
                 //DataXML = DataXML.Replace("<", "%3C")

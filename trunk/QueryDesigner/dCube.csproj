@@ -16,8 +16,8 @@
     <ApplicationIcon>1293606505_ColorMSExcel.ico</ApplicationIcon>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>QDKey.snk</AssemblyOriginatorKeyFile>
-    <ManifestCertificateThumbprint>D9102A0FAA793D47B52A35F59CF30D2F6D92EF6C</ManifestCertificateThumbprint>
-    <ManifestKeyFile>QueryDesigner_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>B066F3E2C1CDB34E0626DC49BFA64D080FB58ACF</ManifestCertificateThumbprint>
+    <ManifestKeyFile>dCube_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <TargetZone>Custom</TargetZone>
@@ -44,7 +44,7 @@
     <SuiteName>Diamond</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>32</ApplicationRevision>
+    <ApplicationRevision>34</ApplicationRevision>
     <ApplicationVersion>3.4.7.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -748,6 +748,7 @@
     <Content Include="Configuration\QDConfig.tvc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="dCube_TemporaryKey.pfx" />
     <None Include="dsStruct.xsc">
       <DependentUpon>dsStruct.xsd</DependentUpon>
     </None>
@@ -792,6 +793,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="QDKey.snk" />
     <None Include="Resources\app-32x32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1037,7 +1039,6 @@
     <None Include="QDConfig.xss">
       <DependentUpon>QDConfig.xsd</DependentUpon>
     </None>
-    <None Include="QDKey.snk" />
     <None Include="Resources\1307932637_gtk-print-setup.png" />
     <None Include="Resources\1307932645_preferences-desktop-printer.png" />
     <None Include="Resources\1307932566_preferences-desktop-printer.png" />

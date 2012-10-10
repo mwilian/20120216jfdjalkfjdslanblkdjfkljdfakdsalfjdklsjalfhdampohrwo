@@ -29,8 +29,8 @@ namespace dCube
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtFilterTo = new UIComponent.DateTimePicker();
-            this.txtFilterFrom = new UIComponent.DateTimePicker();
+            this.txtFilterTo = new System.Windows.Forms.DateTimePicker();
+            this.txtFilterFrom = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -151,8 +151,8 @@ namespace dCube
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private UIComponent.DateTimePicker txtFilterFrom;
-        private UIComponent.DateTimePicker txtFilterTo;
+        private System.Windows.Forms.DateTimePicker txtFilterFrom;
+        private System.Windows.Forms.DateTimePicker txtFilterTo;
 
     }
 }
