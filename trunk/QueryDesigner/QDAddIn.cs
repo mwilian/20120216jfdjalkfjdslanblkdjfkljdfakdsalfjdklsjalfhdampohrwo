@@ -414,10 +414,22 @@ namespace dCube
             {
                 _sqlBuilder.Table = txtTable.Text.Trim();
                 BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(_sqlBuilder.Table, _sqlBuilder.Database);
-                //twSchema = RadTreeViewLoader.LoadTree(ref twSchema, list, txtTable.Text.Trim(), "");
+                foreach (Node x in list)
+                    if (Regex.IsMatch(x.MyCode, @"^@"))
+                    {
+                        bool flag = false;
+                        foreach (Filter f in _sqlBuilder.Filters)
+                            if (x.MyCode == f.Code)
+                            {
+                                flag = true;
+                                break;
+                            }
+                        if (!flag)
+                            _sqlBuilder.Filters.Add(new QueryBuilder.Filter(x));
+                    }
+
+
                 twSchema1 = TreeViewLoader.LoadTree(ref twSchema1, list, _sqlBuilder.Table, "");
-                //_sqlBuilder.SelectedNodes.Clear();
-                //_sqlBuilder.Filters.Clear();
             }
         }
 
@@ -1217,6 +1229,16 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
             _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
 
             Close();
+        }
+
+        private void dgvFilter_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Filter x = e.Row.DataBoundItem as Filter;
+            if (x != null)
+            {
+                if (Regex.IsMatch(x.Code, @"^@"))
+                    e.Cancel = true;
+            }
         }
 
     }

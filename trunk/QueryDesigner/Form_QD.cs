@@ -110,8 +110,11 @@ namespace dCube
         //}
         public Form_QD(string[] agrs)
         {
+            
+
             _pathLicense = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
             InitializeComponent();
+            InitGrid();
             InitDocument();
             CmdManager.DocumentDirectory = __documentDirectory;
             //string user = "";
@@ -208,6 +211,31 @@ namespace dCube
                 if (dbaInf.REPORT_TEMPLATE_DRIVER != "")
                     _config.DIR[0].TMP = dbaInf.REPORT_TEMPLATE_DRIVER;
             }
+        }
+
+        private void InitGrid()
+        {
+            System.Windows.Forms.BindingSource filterBindingSource;
+            System.Windows.Forms.BindingSource nodeBindingSource;
+            filterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            nodeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(filterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(nodeBindingSource)).BeginInit();
+            // 
+            // filterBindingSource
+            // 
+            filterBindingSource.DataMember = "Filters";
+            filterBindingSource.DataSource = this.sqlbindingSource;
+            // 
+            // nodeBindingSource
+            // 
+            nodeBindingSource.DataMember = "SelectedNodes";
+            nodeBindingSource.DataSource = this.sqlbindingSource;
+            this.dgvFilter.AutoGenerateColumns = this.dgvSelectNodes.AutoGenerateColumns = false;
+            this.dgvFilter.DataSource = filterBindingSource;
+            this.dgvSelectNodes.DataSource = nodeBindingSource;
+            ((System.ComponentModel.ISupportInitialize)(filterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(nodeBindingSource)).EndInit();
         }
 
         //void SqlBuilder_Change()
@@ -399,11 +427,9 @@ namespace dCube
                 config.GetDataTableDictionary(_appPath + "/Configuration/Languages.xml");
                 //cboLanguage.Items. = config.DtDictionary;
                 //cboLanguage.ValueMember = "Value";
-                //cboLanguage.DisplayMember = "Code";
-                dgvSelectNodes.AutoGenerateColumns = false;
-                dgvFilter.AutoGenerateColumns = false;
-                nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
-                filterBindingSource.DataSource = _sqlBuilder.Filters;
+                //cboLanguage.DisplayMember = "Code";                
+                //nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
+                //filterBindingSource.DataSource = _sqlBuilder.Filters;
                 DataTable dtcom = QueryBuilder.Parsing.GetListNumberAgregate();
                 DataRow newrow = dtcom.NewRow();
                 newrow["Code"] = newrow["Description"] = "";
@@ -458,6 +484,8 @@ namespace dCube
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //dgvFilter.DataSource = filterBindingSource;
+            //dgvSelectNodes.DataSource = nodeBindingSource;
             tsMain.TabPages.Remove(tabItemSQLText);
 
             webGadget.AllowNavigation = wbChart.AllowNavigation = true;
@@ -474,18 +502,9 @@ namespace dCube
             if (_user != "TVC" || _pass != "TVCSYS")
             {
                 SetPermissionSetup(_user);
-
-                //dgvSelectNodes.Visible = false;
-                //btUserFunc.Enabled = btnSave.Enabled = btnTemplate.Enabled = btnDelete.Enabled = false;
             }
             if (flagOpen == false)
                 Close();
-            //SQLBuilder.SQLDebugMode = Properties.Settings.Default.SQLDebugMode;
-            //ThemeResolutionService.ApplicationThemeName = "Office2007Blue";          
-            //TopMost = true;
-            //ResetForm();
-
-
 
             try
             {
@@ -512,9 +531,7 @@ namespace dCube
                 lb_Err.Text = sErr;
             splitContainer3.SplitterDistance = 1124;
             Text = String.Format("dCube - {0}@{1}", _user, DB);
-            //frmLoading frm = new frmLoading();
-
-            //frm.Show();
+            sqlbindingSource.DataSource = _sqlBuilder;
         }
 
         private void InitDocument()
@@ -602,18 +619,19 @@ namespace dCube
 
         private void LoadQD(LIST_QDInfo info)
         {
-            _sqlBuilder.Filters.Clear();
-            _sqlBuilder.SelectedNodes.Clear();
+
             txt_sql.Text = "";
             Load_QDinfo(info);
+            LoadTree();
+            _sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(_sqlBuilder, txtqd_id.Text.Trim(), DB.Trim(), txtdatasource.Text.Trim());
             tsMain.SelectedTab = tabItemGeneral;
             //radTabStrip1.Se
             //txtdatabase.Focus();
             tabItemGeneral.Select();
             tsMain.Enabled = true;
-            _sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text.Trim(), DB.Trim(), txtdatasource.Text.Trim());
-            nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
-            filterBindingSource.DataSource = _sqlBuilder.Filters;
+
+            //nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
+            //filterBindingSource.DataSource = _sqlBuilder.Filters;
             _propertyChart.ReadProperty(info.FOOTER_TEXT);
             _xlsFile = null;
         }
@@ -642,7 +660,7 @@ namespace dCube
             {
                 txtdatasource.Text = a.Code_DTB;
                 txt_datasource.Text = a.Description_DTB;
-                txt_datasource.Focus();
+                LoadTree();
             }
         }
 
@@ -777,33 +795,6 @@ namespace dCube
 
         private void LoadSQLBuilderFromDataBase()
         {
-            foreach (DataGridViewRow row in dgvFilter.Rows)
-            {
-                if (row.DataBoundItem is QueryBuilder.Filter)
-                {
-                    QueryBuilder.Filter a = (QueryBuilder.Filter)row.DataBoundItem;
-                    if (txt_sql.Text != "" && !Regex.IsMatch(a.Code, @"^@"))
-                        row.Visible = false;
-                    else
-                        row.Visible = true;
-                }
-            }
-            foreach (DataGridViewRow row in dgvSelectNodes.Rows)
-            {
-                if (row.DataBoundItem is QueryBuilder.Node)
-                {
-                    //QueryBuilder.Node a = (QueryBuilder.Node)row.DataBoundItem;
-                    if (txt_sql.Text != "")
-                        row.Visible = false;
-                    else
-                        row.Visible = true;
-                }
-
-            }
-            dgvSelectNodes.AutoGenerateColumns = false;
-            dgvFilter.AutoGenerateColumns = false;
-            nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
-            filterBindingSource.DataSource = _sqlBuilder.Filters;
         }
 
         public string get_para(string x)
@@ -901,7 +892,7 @@ namespace dCube
                 if (a.ShowDialog() == DialogResult.OK)
                 {
                     LoadQD(a.qdinfo);
-                    txtdatasource_Validated(null, null);
+                    //txtdatasource_Validated(null, null);
                     _processStatus = "V";
                 }
             }
@@ -1729,10 +1720,35 @@ namespace dCube
 
         private void txtdatasource_TextChanged(object sender, EventArgs e)
         {
+            LoadTree();
+        }
+
+        private void LoadTree()
+        {
             try
             {
-                _sqlBuilder.Database = DB;
+                _sqlBuilder.Database = DB.Trim();
+                _sqlBuilder.Table = txtdatasource.Text.Trim();
+                _sqlBuilder.Filters.Clear();
+                _sqlBuilder.SelectedNodes.Clear();
                 BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
+                foreach (Node x in list)
+                {
+                    if (Regex.IsMatch(x.MyCode, @"^@"))
+                    {
+                        bool flag = false;
+                        foreach (Filter f in _sqlBuilder.Filters)
+                            if (x.MyCode == f.Code)
+                            {
+                                flag = true;
+                                break;
+                            }
+                        if (!flag)
+                            _sqlBuilder.Filters.Add(new QueryBuilder.Filter(x));
+                    }
+                }
+
+
                 twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
                 BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
                 DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(DB, txtdatasource.Text, ref sErr);
@@ -1988,50 +2004,16 @@ namespace dCube
             if (CheckError_TabGeneral())
             {
                 tsMain.SelectedTab = tabItemGeneral;
-                //radTabStrip1.Se
-                //txtdatabase.Focus();
                 tabItemGeneral.Select();
-                //bt_Err.Enabled = true;
+
             }
             else
             {
                 if (txt_sql.Text == "")
                 {
-                    //dgvSelectNodes.CellBeginEdit += new GridViewCellCancelEventHandler(dgvSelectNodes_CellBeginEdit);
-
-                    _sqlBuilder.Database = DB.Trim();
-                    if (txtdatasource.Text.Trim() != "" && (txtdatasource.Text.ToString().Trim() != _sqlBuilder.Table.Trim() || twSchema.Nodes.Count == 0))
-                    {
-                        if (txtdatasource.Text.ToString().Trim() != _sqlBuilder.Table.Trim())
-                        {
-                            _sqlBuilder.Filters.Clear();
-                            _sqlBuilder.SelectedNodes.Clear();
-                        }
-
-                    }
-                    //if (flag_view)
-                    //{
-                    //twSchema.Enabled = false;
-                    //dgvFilter.Enabled = false;
-                    //dgvSelectNodes.Enabled = false;
-                    //_sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text, DB, txtdatasource.Text);
-                    //LoadSQLBuilderFromDataBase();
-                    //}
-                    _sqlBuilder.Table = txtdatasource.Text.Trim();
-
                 }
                 else
                 {
-                    //if (flag_view)
-                    //{
-                    //twSchema.Enabled = false;
-                    //dgvFilter.Enabled = false;
-                    //dgvSelectNodes.Enabled = false;
-                    //_sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(txtqd_id.Text, DB, txtdatasource.Text);
-                    //LoadSQLBuilderFromDataBase();
-                    //}
-                    //_sqlBuilder.Filters.Clear();
-                    //_sqlBuilder.SelectedNodes.Clear();
 
                     String query = txt_sql.Text + " ";
                     String[] array_filter = query.Split('@');
@@ -2047,10 +2029,6 @@ namespace dCube
                                 _sqlBuilder.Filters.Add(tmp);
                         }
                     }
-                    //twSchema.Enabled = false;
-
-
-                    //     dgvFilter.AllowDrop = false;
                 }
 
 
@@ -3296,17 +3274,7 @@ namespace dCube
 
         private void txtdatasource_Validated(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    _sqlBuilder.Database = DB;
-            //    BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(txtdatasource.Text.Trim(), _sqlBuilder.Database);
-            //    twSchema = TreeViewLoader.LoadTree(ref twSchema, list, txtdatasource.Text.Trim(), "");
-            //    BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
-            //    DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(DB, txtdatasource.Text, ref sErr);
-            //    string key = inf.DEFAULT_CONN;
-            //    _strConnectDes = Form_QD._config.GetConnection(ref key, "AP");
-            //}
-            //catch (Exception ex) { lb_Err.Text = ex.Message; }
+            LoadTree();
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -3397,6 +3365,23 @@ namespace dCube
                 if (sErr == "")
                     txtTmp.Text = info.Code;
             }
+        }
+
+        private void dgvFilter_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Filter x = e.Row.DataBoundItem as Filter;
+            if (x != null)
+            {
+                if (Regex.IsMatch(x.Code, @"^@"))
+                    e.Cancel = true;
+            }
+        }
+
+        private void txtdatasource_Validated_1(object sender, EventArgs e)
+        {
+            _sqlBuilder.Filters.Clear();
+            _sqlBuilder.SelectedNodes.Clear();
+            LoadTree();
         }
 
 

@@ -46,7 +46,8 @@ namespace dCube
         {
             if (desTreeNode.Name == Node.GetFamily(srcNode.Code))
             {
-                desTreeNode.Nodes.Add(GetTreeNode(srcNode));
+                if (srcNode.MyCode.Substring(0, 1) != "@")
+                    desTreeNode.Nodes.Add(GetTreeNode(srcNode));
                 return;
             }
             else
@@ -66,7 +67,8 @@ namespace dCube
                     if (TreeNodeParent != null)
                     {
                         //TreeNodeParent.SelectedImageKey = TreeNodeParent.ImageKey = "Folder";
-                        TreeNodeParent.Nodes.Add(GetTreeNode(srcNode));
+                        if (srcNode.MyCode.Substring(0, 1) != "@")
+                            TreeNodeParent.Nodes.Add(GetTreeNode(srcNode));
                         return;
                     }
                     else

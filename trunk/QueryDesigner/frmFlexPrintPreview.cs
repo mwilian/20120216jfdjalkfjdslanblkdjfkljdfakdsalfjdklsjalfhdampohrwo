@@ -17,6 +17,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 
 using System.Runtime.InteropServices;
+using FlexCel.Draw;
 
 namespace dCube
 {
@@ -356,12 +357,21 @@ namespace dCube
         #endregion
 
         #region Common methods to Export with FlexCelImgExport
-        private Bitmap CreateBitmap(float Resolution, TPaperDimensions pd, PixelFormat PxFormat)
+        private Bitmap CreateBitmap(double Resolution, TPaperDimensions pd, PixelFormat PxFormat)
         {
             Bitmap Result =
                 new Bitmap((int)Math.Ceiling(pd.Width / 96F * Resolution),
                 (int)Math.Ceiling(pd.Height / 96F * Resolution), PxFormat);
-            Result.SetResolution(Resolution, Resolution);
+            float result = (float)Resolution;
+            if (float.IsPositiveInfinity(result))
+            {
+                result = float.MaxValue;
+            }
+            else if (float.IsNegativeInfinity(result))
+            {
+                result = float.MinValue;
+            }
+            Result.SetResolution(result, result);
             return Result;
 
         }

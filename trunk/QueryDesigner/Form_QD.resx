@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="sqlbindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>714, 65</value>
+  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -216,51 +219,6 @@
   <data name="FilterTo.Width" type="System.Int32, mscorlib">
     <value>150</value>
   </data>
-  <data name="descriptionDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="filterFromDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>FilterFrom</value>
-  </data>
-  <data name="filterFromDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="filterToDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>FilterTo</value>
-  </data>
-  <data name="filterToDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="filterFromPDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>FilterFromP</value>
-  </data>
-  <data name="filterFromPDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="filterToPDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>FilterToP</value>
-  </data>
-  <data name="filterToPDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="valueFromDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>ValueFrom</value>
-  </data>
-  <data name="valueFromDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="valueToDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>ValueTo</value>
-  </data>
-  <data name="valueToDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <metadata name="filterBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>703, 16</value>
-  </metadata>
   <data name="dgvFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -450,99 +408,6 @@
   <data name="nodeSort.Width" type="System.Int32, mscorlib">
     <value>60</value>
   </data>
-  <data name="nodeDescDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>NodeDesc</value>
-  </data>
-  <data name="nodeDescDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="expresstionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Expresstion</value>
-  </data>
-  <data name="expresstionDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="idTreeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>IdTree</value>
-  </data>
-  <data name="idTreeDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="idParentTreeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>IdParentTree</value>
-  </data>
-  <data name="idParentTreeDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="treeCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>TreeCode</value>
-  </data>
-  <data name="treeCodeDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="fTypeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>FType</value>
-  </data>
-  <data name="fTypeDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="fTypeFullDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>FTypeFull</value>
-  </data>
-  <data name="fTypeFullDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="indexDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="indexDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="lengthDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Length</value>
-  </data>
-  <data name="lengthDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="descriptionDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="sortDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Sort</value>
-  </data>
-  <data name="sortDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="agregateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Agregate</value>
-  </data>
-  <data name="agregateDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="myParentDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>MyParent</value>
-  </data>
-  <data name="myParentDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="myAliasDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>MyAlias</value>
-  </data>
-  <data name="myAliasDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="myFamilyDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>MyFamily</value>
-  </data>
-  <data name="myFamilyDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <metadata name="nodeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>858, 13</value>
-  </metadata>
   <data name="dgvSelectNodes.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -748,7 +613,7 @@
     <value>0</value>
   </data>
   <metadata name="ilTree.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>478, 17</value>
+    <value>441, 3</value>
   </metadata>
   <data name="ilTree.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -928,14 +793,14 @@
     <value>0</value>
   </data>
   <metadata name="imageList2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>368, 17</value>
+    <value>296, -1</value>
   </metadata>
   <data name="imageList2.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACG
-        CgAAAk1TRnQBSQFMAgEBAwEAAUwBDwFMAQ8BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CgAAAk1TRnQBSQFMAgEBAwEAAdQBDwHUAQ8BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1144,17 +1009,14 @@
   <data name="&gt;&gt;txt_sql.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="flexCelPreview1.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="flexCelPreview1.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>40, 10</value>
+    <value>20, 326</value>
   </data>
   <data name="flexCelPreview1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <metadata name="flexCelImgExport1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>559, 17</value>
+    <value>533, 0</value>
   </metadata>
   <data name="flexCelPreview1.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 0</value>
@@ -1164,9 +1026,6 @@
   </data>
   <data name="flexCelPreview1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="thumbs.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="thumbs.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 10</value>
@@ -1187,7 +1046,7 @@
     <value>thumbs</value>
   </data>
   <data name="&gt;&gt;thumbs.Type" xml:space="preserve">
-    <value>FlexCel.Winforms.FlexCelPreview, FlexCelWinforms, Version=5.6.2.0, Culture=neutral, PublicKeyToken=715fffa4490770b0</value>
+    <value>FlexCel.Winforms.FlexCelPreview, FlexCelWinforms, Version=5.9.0.2, Culture=neutral, PublicKeyToken=715fffa4490770b0</value>
   </data>
   <data name="&gt;&gt;thumbs.Parent" xml:space="preserve">
     <value>panelLeft</value>
@@ -1199,7 +1058,7 @@
     <value>flexCelPreview1</value>
   </data>
   <data name="&gt;&gt;flexCelPreview1.Type" xml:space="preserve">
-    <value>FlexCel.Winforms.FlexCelPreview, FlexCelWinforms, Version=5.6.2.0, Culture=neutral, PublicKeyToken=715fffa4490770b0</value>
+    <value>FlexCel.Winforms.FlexCelPreview, FlexCelWinforms, Version=5.9.0.2, Culture=neutral, PublicKeyToken=715fffa4490770b0</value>
   </data>
   <data name="&gt;&gt;flexCelPreview1.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1426,7 +1285,7 @@
     <value>MiddleRight</value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>586, 56</value>
+    <value>452, 63</value>
   </metadata>
   <data name="btnRecalc.ToolTip" xml:space="preserve">
     <value>Recalculates the file. Use this button if the file was not originally calculated by Excel.</value>
@@ -1603,14 +1462,14 @@
     <value>MiddleLeft</value>
   </data>
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>343, 56</value>
+    <value>299, 28</value>
   </metadata>
   <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        EAAAAk1TRnQBSQFMAgEBBQEAAbABEQGwAREBGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        EAAAAk1TRnQBSQFMAgEBBQEAATgBEgE4ARIBGAEAARgBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABYAMAATADAAEBAQABCAYAARIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1911,7 +1770,7 @@
     <value>Excel Files|*.xls</value>
   </data>
   <metadata name="PdfSaveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>661, 56</value>
+    <value>554, 58</value>
   </metadata>
   <data name="PdfSaveFileDialog.Filter" xml:space="preserve">
     <value>Pdf Files|*.pdf</value>
@@ -1920,7 +1779,7 @@
     <value>Select the file to export to:</value>
   </data>
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>453, 56</value>
+    <value>426, 26</value>
   </metadata>
   <data name="openFileDialog.Filter" xml:space="preserve">
     <value>Excel Files|*.xls|All files|*.*</value>
@@ -1929,7 +1788,7 @@
     <value>Select a file to preview</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 447</value>
+    <value>139, 28</value>
   </metadata>
   <data name="lb_Err.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2827,7 +2686,7 @@
     <value>1</value>
   </data>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>961, 44</value>
+    <value>699, 6</value>
   </metadata>
   <data name="expandedAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 22</value>
@@ -3118,7 +2977,7 @@
     <value>2</value>
   </data>
   <metadata name="gridEXExporter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1009, 17</value>
+    <value>861, 40</value>
   </metadata>
   <metadata name="gridEXPrintDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>2, 52</value>
@@ -3154,16 +3013,16 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="printDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>800, 56</value>
+    <value>743, 39</value>
   </metadata>
   <metadata name="IsNotbindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 93</value>
+    <value>586, 30</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>123</value>
+    <value>94</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -4560,6 +4419,12 @@
   <data name="$this.Text" xml:space="preserve">
     <value>dCube</value>
   </data>
+  <data name="&gt;&gt;sqlbindingSource.Name" xml:space="preserve">
+    <value>sqlbindingSource</value>
+  </data>
+  <data name="&gt;&gt;sqlbindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Description.Name" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -4590,54 +4455,6 @@
   <data name="&gt;&gt;FilterTo.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterFromDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>filterFromDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;filterFromDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterToDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>filterToDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;filterToDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterFromPDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>filterFromPDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;filterFromPDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterToPDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>filterToPDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;filterToPDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;valueFromDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>valueFromDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;valueFromDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;valueToDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>valueToDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;valueToDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterBindingSource.Name" xml:space="preserve">
-    <value>filterBindingSource</value>
-  </data>
-  <data name="&gt;&gt;filterBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;nodeDescription.Name" xml:space="preserve">
     <value>nodeDescription</value>
   </data>
@@ -4662,102 +4479,6 @@
   <data name="&gt;&gt;nodeSort.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewComboBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;nodeDescDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>nodeDescDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;nodeDescDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;expresstionDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>expresstionDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;expresstionDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;idTreeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>idTreeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;idTreeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;idParentTreeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>idParentTreeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;idParentTreeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;treeCodeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>treeCodeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;treeCodeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fTypeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>fTypeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;fTypeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fTypeFullDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>fTypeFullDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;fTypeFullDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;indexDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>indexDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;indexDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lengthDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>lengthDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;lengthDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>descriptionDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;descriptionDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sortDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>sortDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;sortDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;agregateDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>agregateDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;agregateDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;myParentDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>myParentDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;myParentDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;myAliasDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>myAliasDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;myAliasDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;myFamilyDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>myFamilyDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;myFamilyDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;nodeBindingSource.Name" xml:space="preserve">
-    <value>nodeBindingSource</value>
-  </data>
-  <data name="&gt;&gt;nodeBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ilTree.Name" xml:space="preserve">
     <value>ilTree</value>
   </data>
@@ -4774,7 +4495,7 @@
     <value>flexCelImgExport1</value>
   </data>
   <data name="&gt;&gt;flexCelImgExport1.Type" xml:space="preserve">
-    <value>FlexCel.Render.FlexCelImgExport, FlexCel, Version=5.6.2.0, Culture=neutral, PublicKeyToken=715fffa4490770b0</value>
+    <value>FlexCel.Render.FlexCelImgExport, FlexCel, Version=5.9.0.2, Culture=neutral, PublicKeyToken=715fffa4490770b0</value>
   </data>
   <data name="&gt;&gt;imageList1.Name" xml:space="preserve">
     <value>imageList1</value>

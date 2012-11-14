@@ -9,9 +9,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-using FlexCel.Core;
-using FlexCel.XlsAdapter;
-using FlexCel.Report;
+
 namespace TVCDesigner
 {
 	public partial class MainForm : System.Windows.Forms.Form
