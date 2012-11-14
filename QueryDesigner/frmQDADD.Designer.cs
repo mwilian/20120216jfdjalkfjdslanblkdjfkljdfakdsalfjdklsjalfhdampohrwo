@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQDADD));
             Janus.Windows.GridEX.GridEXLayout dgvFrom_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvField_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQDADD));
             this.ddlQD = new System.Windows.Forms.ComboBox();
             this.lbCON_ID = new System.Windows.Forms.Label();
             this.txtConnect = new System.Windows.Forms.TextBox();
@@ -51,6 +51,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnTransferIn = new System.Windows.Forms.ToolStripButton();
             this.btnTransferOut = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.lbErr = new System.Windows.Forms.ToolStripLabel();
             this.panelControl = new System.Windows.Forms.Panel();
             this.btnQD = new System.Windows.Forms.PictureBox();
@@ -76,8 +78,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dgvAddRow = new System.Windows.Forms.ToolStripMenuItem();
             this.bsField = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panelControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnQD)).BeginInit();
@@ -150,7 +150,7 @@
             this.txtCode.Location = new System.Drawing.Point(91, 3);
             this.txtCode.MaxLength = 15;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 22);
+            this.txtCode.Size = new System.Drawing.Size(122, 22);
             this.txtCode.TabIndex = 5;
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
@@ -283,6 +283,26 @@
             this.btnTransferOut.Size = new System.Drawing.Size(36, 36);
             this.btnTransferOut.Text = "Transfer Out";
             this.btnTransferOut.Click += new System.EventHandler(this.btnTransferOut_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(36, 36);
+            this.btnRefresh.Text = "Refresh Schema";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton1.Text = "Upgrade";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // lbErr
             // 
@@ -552,26 +572,6 @@
             this.dgvAddRow.Size = new System.Drawing.Size(117, 22);
             this.dgvAddRow.Text = "Add Row";
             this.dgvAddRow.Click += new System.EventHandler(this.dgvAddRow_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton1.Text = "Upgrade";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(36, 36);
-            this.btnRefresh.Text = "Refresh Schema";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmQDADD
             // 

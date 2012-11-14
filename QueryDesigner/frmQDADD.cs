@@ -67,9 +67,10 @@ namespace dCube
             txtCode.Text = inf.SCHEMA_ID;
             _code = txtCode.Text.Trim();
             ckbUse.Checked = inf.SCHEMA_STATUS.Trim() == "Y" ? true : false;
-           
-                _data = ReadScheme(inf);           
 
+            _data = ReadScheme(inf);
+            bsFROMCODE.DataSource = _data.Tables["fromcode"];
+            bsField.DataSource = _data.Tables["field"];
 
 
             //strR = new StringReader(inf.FROM_TEXT);
@@ -80,12 +81,13 @@ namespace dCube
 
         private DataSet ReadScheme(DTO.LIST_QD_SCHEMAInfo inf)
         {
+            DataSet ds = _data.Clone();
             if (inf.FIELD_TEXT == "")
             {
                 StringReader strR = new StringReader(inf.FROM_TEXT);
                 try
                 {
-                    _data.ReadXml(strR);
+                    ds.ReadXml(strR);
                 }
                 catch (Exception ex)
                 {
@@ -95,15 +97,15 @@ namespace dCube
                     }
                 }
                 strR.Close();
-                return _data;
+                return ds;
             }
             else
             {
                 XmlDocument xml = new XmlDocument();
                 string strxml = string.Format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>", inf.FROM_TEXT);
                 xml.LoadXml(strxml);
-                XmlElement doc = xml.DocumentElement; 
-                DataTable dtfrom = _data.Tables["fromcode"];
+                XmlElement doc = xml.DocumentElement;
+                DataTable dtfrom = ds.Tables["fromcode"];
                 foreach (XmlElement ele in doc.ChildNodes)
                 {
                     DataRow newRow = dtfrom.NewRow();
@@ -114,10 +116,10 @@ namespace dCube
                 }
                 xml.LoadXml(inf.FIELD_TEXT);
                 doc = xml.DocumentElement;
-                DataTable dtfield = _data.Tables["field"];
+                DataTable dtfield = ds.Tables["field"];
                 foreach (XmlElement ele in doc.ChildNodes)
                 {
-                    
+
                     DataRow newRow = dtfield.NewRow();
                     newRow["node"] = ele.GetAttribute("node");
                     newRow["name"] = ele.GetAttribute("name");
@@ -126,8 +128,8 @@ namespace dCube
                     newRow["type"] = ele.GetAttribute("type");
                     dtfield.Rows.Add(newRow);
                 }
-                
-                return _data;
+
+                return ds;
             }
         }
         private DTO.LIST_QD_SCHEMAInfo GetDataFromForm(DTO.LIST_QD_SCHEMAInfo inf)
@@ -137,42 +139,42 @@ namespace dCube
             inf.DESCRIPTN = txtDescription.Text;
             inf.LOOK_UP = txtLookup.Text;
             inf.UPDATED = DateTime.Today.Year * 10000 + DateTime.Today.Month * 100 + DateTime.Today.Day;
-            if (inf.FIELD_TEXT != "")
+            //if (inf.FIELD_TEXT != "")
+            //{
+            DataTable dtfield = _data.Tables["field"];
+            string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
+            string tmp = "";
+            string from = "";
+            foreach (DataRow jrow in dtfield.Rows)
             {
-                DataTable dtfield = _data.Tables["field"];
-                string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
-                string tmp = "";
-                string from = "";
-                foreach (DataRow jrow in dtfield.Rows)
-                {
-                    tmp += string.Format("<row table=\"{0}\" node=\"{1}\" name=\"{2}\" nodeDesc=\"{3}\" type=\"{4}\" conn_id=\"{5}\"/>", jrow["table"], jrow["node"], jrow["name"], jrow["nodeDesc"], jrow["type"], inf.DEFAULT_CONN);
-                }
-                DataTable dtfrom = _data.Tables["fromcode"];
-                field = string.Format(field, tmp);
-                tmp = "";
-                foreach (DataRow jrow in dtfrom.Rows)
-                {
-                    tmp += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\" /> ", jrow["fromcode"], jrow["lookup"]);
-                }
-                from = tmp;
-
-                //result = doc.InnerXml;
-                inf.FIELD_TEXT = field;
-                inf.FROM_TEXT = from;
-
+                tmp += string.Format("<row table=\"{0}\" node=\"{1}\" name=\"{2}\" nodeDesc=\"{3}\" type=\"{4}\" conn_id=\"{5}\"/>", jrow["table"], jrow["node"], jrow["name"], jrow["nodeDesc"], jrow["type"], inf.DEFAULT_CONN);
             }
-            else
+            DataTable dtfrom = _data.Tables["fromcode"];
+            field = string.Format(field, tmp);
+            tmp = "";
+            foreach (DataRow jrow in dtfrom.Rows)
             {
-                StringBuilder sb = new StringBuilder();
-                StringWriter str = new StringWriter(sb);
-                _data.WriteXml(str);
-                inf.FROM_TEXT = sb.ToString();
+                tmp += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\" /> ", jrow["fromcode"], XmlEncode(jrow["lookup"].ToString()));
             }
-            //inf.FIELD_TEXT = GetFieldCode(_data.Tables["field"]);
+            from = tmp;
+
+            inf.FIELD_TEXT = field;
+            inf.FROM_TEXT = from;
+
             inf.SCHEMA_ID = txtCode.Text;
             inf.SCHEMA_STATUS = ckbUse.Checked ? "Y" : "N";
             inf.DAG = Group.Text;
             return inf;
+        }
+        public static string XmlDecode(string value)
+        {
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(String.Format("<root>{0}</root>", value));
+            return xmlDoc.DocumentElement.InnerText;
+        }
+        public static string XmlEncode(string value)
+        {
+            return value.Replace("&", "&amp;").Replace("<", "&lt;").Replace("'", "&apos;").Replace(">", "&gt;").Replace("\"", "&quot;");          
         }
         private void InitConnection()
         {
@@ -331,32 +333,34 @@ namespace dCube
                 {
                     try
                     {
-                        string result = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA></SUN_SCHEMA>";
-                        XmlDocument doc = new XmlDocument();
-                        doc.LoadXml(result);
-                        XmlElement docele = doc.DocumentElement;
 
-                        //<row table="M5" node="Lookup" name="Lookup" type=""/>  	
-                        string schema = inf.FROM_TEXT;
-                        DataSet dset = new DataSet("Schema");
+                        ////string result = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA></SUN_SCHEMA>";
+                        //XmlDocument doc = new XmlDocument();
+                        //doc.LoadXml(inf.FIELD_TEXT);
+                        //XmlElement docele = doc.DocumentElement;
+
+                        ////<row table="M5" node="Lookup" name="Lookup" type=""/>  	
+                        //string schema = inf.FROM_TEXT;
+                        DataSet dset = ReadScheme(inf);
+                        //dset = ReadScheme(inf);
                         //DataTable dtfrom = new DataTable("fromcode");
                         //DataColumn[] colfrom = new DataColumn[] { new DataColumn("fromcode"), new DataColumn("lookup") };
                         //dtfrom.Columns.AddRange(colfrom);
 
-                        DataTable dtfield = new DataTable("field");
-                        DataColumn[] colfield = new DataColumn[] { new DataColumn("node")
-                    , new DataColumn("table")
-                    , new DataColumn("name")
-                    , new DataColumn("nodeDesc")
-                    , new DataColumn("type")};
-                        dtfield.Columns.AddRange(colfield);
+                        //    DataTable dtfield = new DataTable("field");
+                        //    DataColumn[] colfield = new DataColumn[] { new DataColumn("node")
+                        //, new DataColumn("table")
+                        //, new DataColumn("name")
+                        //, new DataColumn("nodeDesc")
+                        //, new DataColumn("type")};
+                        //    dtfield.Columns.AddRange(colfield);
 
-                        //dset.Tables.Add(dtfrom);
-                        dset.Tables.Add(dtfield);
-                        //DataRelation relation = new DataRelation("R_field", dtfrom.Columns["fromcode"], dtfield.Columns["table"], true);
-                        //dset.Relations.Add(relation);
-                        StringReader strR = new StringReader(schema);
-                        dset.ReadXml(strR);
+                        //    //dset.Tables.Add(dtfrom);
+                        //    dset.Tables.Add(dtfield);
+                        //    //DataRelation relation = new DataRelation("R_field", dtfrom.Columns["fromcode"], dtfield.Columns["table"], true);
+                        //    //dset.Relations.Add(relation);
+                        //    StringReader strR = new StringReader(schema);
+                        //    dset.ReadXml(strR);
                         frm.DTLooup = dset.Tables["field"];
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
@@ -367,15 +371,15 @@ namespace dCube
                             fieldRow["name"] = frmview.ReturnCode + "Record";
                             fieldRow["type"] = "S";
                             fieldRow["table"] = txtCode.Text.Trim();
-                            fromRow["fromcode"] = txtCode.Text.Trim() + "\\" + frmview.ReturnCode;
+                            fromRow["fromcode"] = String.Format("{0}\\{1}", txtCode.Text.Trim(), frmview.ReturnCode);
                             string lookup = "";
                             foreach (DataRow row in dtR.Rows)
                             {
                                 if (row["Original"].ToString().Contains(" "))
-                                    row["Original"] = "[" + row["Original"].ToString() + "]";
+                                    row["Original"] = String.Format("[{0}]", row["Original"]);
                                 if (row["lookup"].ToString().Contains(" "))
-                                    row["lookup"] = "[" + row["lookup"].ToString() + "]";
-                                lookup += " and " + txtCode.Text.Trim() + "." + row["Original"].ToString() + " = " + frmview.ReturnCode + "." + row["lookup"].ToString();
+                                    row["lookup"] = String.Format("[{0}]", row["lookup"]);
+                                lookup += String.Format(" and {0}.{1} = {2}.{3}", txtCode.Text.Trim(), row["Original"], frmview.ReturnCode, row["lookup"]);
                             }
                             fromRow["lookup"] = lookup.Substring(5);
                             _data.Tables["fromcode"].Rows.Add(fromRow);
@@ -691,7 +695,7 @@ namespace dCube
                 {
                     _data.Tables["field"].Rows.Clear();
                     _data.Tables["fromcode"].Rows.Clear();
-                    _data= ReadScheme(inf);
+                    _data = ReadScheme(inf);
                     DataTable dtfield = _data.Tables["field"];
                     string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
                     string tmp = "";

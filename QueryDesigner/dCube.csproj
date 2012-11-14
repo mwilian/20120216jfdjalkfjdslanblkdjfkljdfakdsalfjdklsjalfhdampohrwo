@@ -44,7 +44,7 @@
     <SuiteName>Diamond</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>34</ApplicationRevision>
+    <ApplicationRevision>44</ApplicationRevision>
     <ApplicationVersion>3.4.7.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -90,11 +90,11 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FlexCel, Version=5.6.2.0, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
+    <Reference Include="FlexCel, Version=5.9.0.2, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\FlexCel.dll</HintPath>
     </Reference>
-    <Reference Include="FlexCelWinforms, Version=5.6.2.0, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
+    <Reference Include="FlexCelWinforms, Version=5.9.0.2, Culture=neutral, PublicKeyToken=cb8f6080e6d5a4d6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\FlexCelWinforms.dll</HintPath>
     </Reference>

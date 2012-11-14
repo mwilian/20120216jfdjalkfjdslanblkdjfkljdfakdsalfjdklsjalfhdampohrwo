@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Data.SqlClient;
+using FlexCel.Draw;
 
 namespace dCube
 {
@@ -1335,12 +1336,21 @@ namespace dCube
             }
 
         }
-        private Bitmap CreateBitmap(float Resolution, TPaperDimensions pd, PixelFormat PxFormat)
+        private Bitmap CreateBitmap(double Resolution, TPaperDimensions pd, PixelFormat PxFormat)
         {
             Bitmap Result =
                 new Bitmap((int)Math.Ceiling(pd.Width / 96F * Resolution),
                 (int)Math.Ceiling(pd.Height / 96F * Resolution), PxFormat);
-            Result.SetResolution(Resolution, Resolution);
+            float result = (float)Resolution;
+            if (float.IsPositiveInfinity(result))
+            {
+                result = float.MaxValue;
+            }
+            else if (float.IsNegativeInfinity(result))
+            {
+                result = float.MinValue;
+            }
+            Result.SetResolution(result, result);
             return Result;
 
         }

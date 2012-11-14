@@ -783,8 +783,6 @@ namespace QueryBuilder
             /* L:424 */
             for (int i = 0; i <= sortList.Count - 1; i++)
             {
-
-
                 if (filterItemCode.ToString() != sortList[i].Node.ToString())
                 {
                     if (i == 0)
@@ -904,6 +902,11 @@ namespace QueryBuilder
 
             // Combine all together
             string retSQL = Regex.Replace(string.Concat(SelectClause, FromClause, WhereClause, GroupByClause, OrderByClause), "XXX", XXX);
+            foreach (Filter x in Filters)
+            {
+                if (x.Node.MyCode.Substring(0, 1) == "@")
+                    retSQL = retSQL.Replace(x.Code, x.ValueFrom);
+            }
             //retSQL = Regex.Replace(retSQL, @"\/|\\", "_");
 
             return Regex.Replace(retSQL, "LLL", aLedger);
@@ -987,6 +990,67 @@ namespace QueryBuilder
         #endregion
 
         #region Method
+        public static SQLBuilder LoadSQLBuilderFromDataBase(SQLBuilder kq, string qd_id, string database, string table)
+        {
+            string sErr = "";
+            CoreQD_SCHEMAControl schCtr = new CoreQD_SCHEMAControl();
+            if (table != "")
+                kq.Table = table.Trim();
+            else
+            {
+                CoreQDControl qdCtr = new CoreQDControl();
+                CoreQDInfo qdInf = qdCtr.Get_CoreQD(database, qd_id, ref sErr);
+                table = kq.Table = qdInf.ANAL_Q0;
+            }
+            CoreQD_SCHEMAInfo schInf = schCtr.Get(database, table, ref sErr);
+            kq._connID = schInf.DEFAULT_CONN;
+            kq.Database = database;
+            CoreQDDControl qddControl = new CoreQDDControl();
+            //test
+            //  DataTable dt = qddControl.GetAll_CoreQDD_By_QD_ID("DEMO4", "VUS", ref sErr);
+            using (DataTable dt = qddControl.GetALL_CoreQDD_By_QD_ID(kq.Database, qd_id, ref sErr))
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    CoreQDDInfo qddInfo = new CoreQDDInfo(row);
+                    Node tmp = new Node(qddInfo.AGREGATE.Trim(), qddInfo.CODE.Trim(), qddInfo.DESCRIPTN.Trim(), qddInfo.F_TYPE, "");
+                    if (qddInfo.IS_FILTER == true)
+                    {
+                        CoreQDD_FILTERControl filterCtr = new CoreQDD_FILTERControl();
+                        CoreQDD_FILTERInfo filterInf = filterCtr.Get(database, qd_id, qddInfo.QDD_ID, ref sErr);
+                        tmp.NodeDesc = qddInfo.EXPRESSION;
+                        Filter tmpFilter = new Filter(tmp);
+                        //tmpFilter.Description = qddInfo.DESCRIPTN;
+                        //tmpFilter.Code = qddInfo.CODE;
+                        if (filterInf.QD_ID != "")
+                        {
+                            tmpFilter.Operate = filterInf.OPERATOR;
+                            tmpFilter.IsNot = filterInf.IS_NOT;
+                        }
+                        tmpFilter.ValueFrom = tmpFilter.FilterFrom = qddInfo.FILTER_FROM;
+                        tmpFilter.ValueTo = tmpFilter.FilterTo = qddInfo.FILTER_TO;
+                        kq.Filters.Add(tmpFilter);
+                    }
+                    else
+                    {
+                        tmp.Expresstion = qddInfo.EXPRESSION;
+                        tmp.Sort = qddInfo.SORTING == "DES" ? "DESC" : qddInfo.SORTING;
+                        kq.SelectedNodes.Add(tmp);
+                    }
+                }
+            }
+            if (table != "")
+                kq.Table = table.Trim();
+            else
+            {
+                CoreQDControl qdCtr = new CoreQDControl();
+                CoreQDInfo qdInf = qdCtr.Get_CoreQD(database, qd_id, ref sErr);
+                kq.Table = qdInf.ANAL_Q0;
+            }
+            return kq;
+
+        }
+
         public static SQLBuilder LoadSQLBuilderFromDataBase(string qd_id, string database, string table)
         {
             string sErr = "";

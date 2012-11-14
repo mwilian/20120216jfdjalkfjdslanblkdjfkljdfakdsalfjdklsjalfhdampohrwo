@@ -445,6 +445,13 @@ namespace dCubeXL
             string formular = _xlsCell.Formula.ToString();
             if (formular.Contains("TVC_QUERY") && formular.Contains("USER TABLE"))
             {
+                string tablename = "data";
+                try
+                {
+                    Excel.Range rangeTableName = ExcelApp.get_Range("A" + _xlsCell.Row);
+                    tablename = rangeTableName.Value.ToString();
+                }
+                catch { }
                 string tmp = formular.Replace("USER TABLE(", "");
                 formular = tmp.Substring(0, tmp.Length - 1);
                 SQLBuilder _sqlBuilder = new SQLBuilder(processingMode.Details);
@@ -466,7 +473,7 @@ namespace dCubeXL
                     //         , Properties.Settings.Default.DBName);
 
                     //a.THEME = this.THEME;
-                    dt_list.TableName = "data";
+                    dt_list.TableName = tablename;
                     dt_list.Columns.Add("Name");
                     dt_list.Columns.Add("Code");
 
@@ -488,7 +495,7 @@ namespace dCubeXL
                             desc = colum.Description + dem;
                         }
                         dt_list.Rows.Add(new string[] { colum.Description, desc });
-                    }                    
+                    }
                     TVCDesigner.MainForm frm = new TVCDesigner.MainForm(dt_list, null, null);
                     frm.Show(new WindowWrapper((IntPtr)ExcelApp.DDEAppReturnCode));
                 }
@@ -919,7 +926,7 @@ namespace dCubeXL
             ShowFields();
         }
 
-        
+
 
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_QD));
+            this.sqlbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.twSchema = new System.Windows.Forms.TreeView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -39,14 +40,6 @@
             this.Operate = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.FilterFrom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FilterTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filterFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filterToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filterFromPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filterToPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valueToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,22 +49,6 @@
             this.nodeMyFamily = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nodeAgregate = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nodeSort = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.nodeDescDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expresstionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idParentTreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.treeCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fTypeFullDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.indexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sortDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agregateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.myParentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.myAliasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.myFamilyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nodeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -195,6 +172,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.IsNotbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.sqlbindingSource)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -202,11 +180,9 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filterBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectNodes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nodeBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -237,6 +213,10 @@
             this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IsNotbindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sqlbindingSource
+            // 
+            this.sqlbindingSource.DataSource = typeof(QueryBuilder.SQLBuilder);
             // 
             // splitContainer1
             // 
@@ -278,7 +258,6 @@
             // 
             this.dgvFilter.AllowDrop = true;
             this.dgvFilter.AllowUserToAddRows = false;
-            this.dgvFilter.AutoGenerateColumns = false;
             this.dgvFilter.BackgroundColor = System.Drawing.Color.White;
             this.dgvFilter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFilter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -286,21 +265,14 @@
             this.IsNot,
             this.Operate,
             this.FilterFrom,
-            this.FilterTo,
-            this.descriptionDataGridViewTextBoxColumn1,
-            this.filterFromDataGridViewTextBoxColumn,
-            this.filterToDataGridViewTextBoxColumn,
-            this.filterFromPDataGridViewTextBoxColumn,
-            this.filterToPDataGridViewTextBoxColumn,
-            this.valueFromDataGridViewTextBoxColumn,
-            this.valueToDataGridViewTextBoxColumn});
-            this.dgvFilter.DataSource = this.filterBindingSource;
+            this.FilterTo});
             resources.ApplyResources(this.dgvFilter, "dgvFilter");
             this.dgvFilter.Name = "dgvFilter";
             this.dgvFilter.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellDoubleClick);
             this.dgvFilter.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilter_CellValueChanged);
             this.dgvFilter.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvFilter_DataError);
             this.dgvFilter.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvSelectNodes_RowsRemoved);
+            this.dgvFilter.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvFilter_UserDeletingRow);
             this.dgvFilter.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvFilter_DragDrop);
             this.dgvFilter.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvFilter_DragEnter);
             // 
@@ -337,54 +309,6 @@
             resources.ApplyResources(this.FilterTo, "FilterTo");
             this.FilterTo.Name = "FilterTo";
             // 
-            // descriptionDataGridViewTextBoxColumn1
-            // 
-            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn1, "descriptionDataGridViewTextBoxColumn1");
-            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
-            this.descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // filterFromDataGridViewTextBoxColumn
-            // 
-            this.filterFromDataGridViewTextBoxColumn.DataPropertyName = "FilterFrom";
-            resources.ApplyResources(this.filterFromDataGridViewTextBoxColumn, "filterFromDataGridViewTextBoxColumn");
-            this.filterFromDataGridViewTextBoxColumn.Name = "filterFromDataGridViewTextBoxColumn";
-            // 
-            // filterToDataGridViewTextBoxColumn
-            // 
-            this.filterToDataGridViewTextBoxColumn.DataPropertyName = "FilterTo";
-            resources.ApplyResources(this.filterToDataGridViewTextBoxColumn, "filterToDataGridViewTextBoxColumn");
-            this.filterToDataGridViewTextBoxColumn.Name = "filterToDataGridViewTextBoxColumn";
-            // 
-            // filterFromPDataGridViewTextBoxColumn
-            // 
-            this.filterFromPDataGridViewTextBoxColumn.DataPropertyName = "FilterFromP";
-            resources.ApplyResources(this.filterFromPDataGridViewTextBoxColumn, "filterFromPDataGridViewTextBoxColumn");
-            this.filterFromPDataGridViewTextBoxColumn.Name = "filterFromPDataGridViewTextBoxColumn";
-            // 
-            // filterToPDataGridViewTextBoxColumn
-            // 
-            this.filterToPDataGridViewTextBoxColumn.DataPropertyName = "FilterToP";
-            resources.ApplyResources(this.filterToPDataGridViewTextBoxColumn, "filterToPDataGridViewTextBoxColumn");
-            this.filterToPDataGridViewTextBoxColumn.Name = "filterToPDataGridViewTextBoxColumn";
-            // 
-            // valueFromDataGridViewTextBoxColumn
-            // 
-            this.valueFromDataGridViewTextBoxColumn.DataPropertyName = "ValueFrom";
-            resources.ApplyResources(this.valueFromDataGridViewTextBoxColumn, "valueFromDataGridViewTextBoxColumn");
-            this.valueFromDataGridViewTextBoxColumn.Name = "valueFromDataGridViewTextBoxColumn";
-            // 
-            // valueToDataGridViewTextBoxColumn
-            // 
-            this.valueToDataGridViewTextBoxColumn.DataPropertyName = "ValueTo";
-            resources.ApplyResources(this.valueToDataGridViewTextBoxColumn, "valueToDataGridViewTextBoxColumn");
-            this.valueToDataGridViewTextBoxColumn.Name = "valueToDataGridViewTextBoxColumn";
-            // 
-            // filterBindingSource
-            // 
-            this.filterBindingSource.DataSource = typeof(QueryBuilder.Filter);
-            this.filterBindingSource.DataSourceChanged += new System.EventHandler(this.filterBindingSource_DataSourceChanged);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
@@ -418,30 +342,13 @@
             // 
             this.dgvSelectNodes.AllowDrop = true;
             this.dgvSelectNodes.AllowUserToAddRows = false;
-            this.dgvSelectNodes.AutoGenerateColumns = false;
             this.dgvSelectNodes.BackgroundColor = System.Drawing.Color.White;
             this.dgvSelectNodes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelectNodes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nodeDescription,
             this.nodeMyFamily,
             this.nodeAgregate,
-            this.nodeSort,
-            this.nodeDescDataGridViewTextBoxColumn,
-            this.expresstionDataGridViewTextBoxColumn,
-            this.idTreeDataGridViewTextBoxColumn,
-            this.idParentTreeDataGridViewTextBoxColumn,
-            this.treeCodeDataGridViewTextBoxColumn,
-            this.fTypeDataGridViewTextBoxColumn,
-            this.fTypeFullDataGridViewTextBoxColumn,
-            this.indexDataGridViewTextBoxColumn,
-            this.lengthDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.sortDataGridViewTextBoxColumn,
-            this.agregateDataGridViewTextBoxColumn,
-            this.myParentDataGridViewTextBoxColumn,
-            this.myAliasDataGridViewTextBoxColumn,
-            this.myFamilyDataGridViewTextBoxColumn});
-            this.dgvSelectNodes.DataSource = this.nodeBindingSource;
+            this.nodeSort});
             resources.ApplyResources(this.dgvSelectNodes, "dgvSelectNodes");
             this.dgvSelectNodes.Name = "dgvSelectNodes";
             this.dgvSelectNodes.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSelectNodes_CellBeginEdit);
@@ -481,108 +388,6 @@
             "ASC",
             "DESC"});
             this.nodeSort.Name = "nodeSort";
-            // 
-            // nodeDescDataGridViewTextBoxColumn
-            // 
-            this.nodeDescDataGridViewTextBoxColumn.DataPropertyName = "NodeDesc";
-            resources.ApplyResources(this.nodeDescDataGridViewTextBoxColumn, "nodeDescDataGridViewTextBoxColumn");
-            this.nodeDescDataGridViewTextBoxColumn.Name = "nodeDescDataGridViewTextBoxColumn";
-            // 
-            // expresstionDataGridViewTextBoxColumn
-            // 
-            this.expresstionDataGridViewTextBoxColumn.DataPropertyName = "Expresstion";
-            resources.ApplyResources(this.expresstionDataGridViewTextBoxColumn, "expresstionDataGridViewTextBoxColumn");
-            this.expresstionDataGridViewTextBoxColumn.Name = "expresstionDataGridViewTextBoxColumn";
-            // 
-            // idTreeDataGridViewTextBoxColumn
-            // 
-            this.idTreeDataGridViewTextBoxColumn.DataPropertyName = "IdTree";
-            resources.ApplyResources(this.idTreeDataGridViewTextBoxColumn, "idTreeDataGridViewTextBoxColumn");
-            this.idTreeDataGridViewTextBoxColumn.Name = "idTreeDataGridViewTextBoxColumn";
-            // 
-            // idParentTreeDataGridViewTextBoxColumn
-            // 
-            this.idParentTreeDataGridViewTextBoxColumn.DataPropertyName = "IdParentTree";
-            resources.ApplyResources(this.idParentTreeDataGridViewTextBoxColumn, "idParentTreeDataGridViewTextBoxColumn");
-            this.idParentTreeDataGridViewTextBoxColumn.Name = "idParentTreeDataGridViewTextBoxColumn";
-            // 
-            // treeCodeDataGridViewTextBoxColumn
-            // 
-            this.treeCodeDataGridViewTextBoxColumn.DataPropertyName = "TreeCode";
-            resources.ApplyResources(this.treeCodeDataGridViewTextBoxColumn, "treeCodeDataGridViewTextBoxColumn");
-            this.treeCodeDataGridViewTextBoxColumn.Name = "treeCodeDataGridViewTextBoxColumn";
-            this.treeCodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fTypeDataGridViewTextBoxColumn
-            // 
-            this.fTypeDataGridViewTextBoxColumn.DataPropertyName = "FType";
-            resources.ApplyResources(this.fTypeDataGridViewTextBoxColumn, "fTypeDataGridViewTextBoxColumn");
-            this.fTypeDataGridViewTextBoxColumn.Name = "fTypeDataGridViewTextBoxColumn";
-            this.fTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fTypeFullDataGridViewTextBoxColumn
-            // 
-            this.fTypeFullDataGridViewTextBoxColumn.DataPropertyName = "FTypeFull";
-            resources.ApplyResources(this.fTypeFullDataGridViewTextBoxColumn, "fTypeFullDataGridViewTextBoxColumn");
-            this.fTypeFullDataGridViewTextBoxColumn.Name = "fTypeFullDataGridViewTextBoxColumn";
-            // 
-            // indexDataGridViewTextBoxColumn
-            // 
-            this.indexDataGridViewTextBoxColumn.DataPropertyName = "Index";
-            resources.ApplyResources(this.indexDataGridViewTextBoxColumn, "indexDataGridViewTextBoxColumn");
-            this.indexDataGridViewTextBoxColumn.Name = "indexDataGridViewTextBoxColumn";
-            this.indexDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lengthDataGridViewTextBoxColumn
-            // 
-            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
-            resources.ApplyResources(this.lengthDataGridViewTextBoxColumn, "lengthDataGridViewTextBoxColumn");
-            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
-            this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            resources.ApplyResources(this.descriptionDataGridViewTextBoxColumn, "descriptionDataGridViewTextBoxColumn");
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // sortDataGridViewTextBoxColumn
-            // 
-            this.sortDataGridViewTextBoxColumn.DataPropertyName = "Sort";
-            resources.ApplyResources(this.sortDataGridViewTextBoxColumn, "sortDataGridViewTextBoxColumn");
-            this.sortDataGridViewTextBoxColumn.Name = "sortDataGridViewTextBoxColumn";
-            // 
-            // agregateDataGridViewTextBoxColumn
-            // 
-            this.agregateDataGridViewTextBoxColumn.DataPropertyName = "Agregate";
-            resources.ApplyResources(this.agregateDataGridViewTextBoxColumn, "agregateDataGridViewTextBoxColumn");
-            this.agregateDataGridViewTextBoxColumn.Name = "agregateDataGridViewTextBoxColumn";
-            // 
-            // myParentDataGridViewTextBoxColumn
-            // 
-            this.myParentDataGridViewTextBoxColumn.DataPropertyName = "MyParent";
-            resources.ApplyResources(this.myParentDataGridViewTextBoxColumn, "myParentDataGridViewTextBoxColumn");
-            this.myParentDataGridViewTextBoxColumn.Name = "myParentDataGridViewTextBoxColumn";
-            this.myParentDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // myAliasDataGridViewTextBoxColumn
-            // 
-            this.myAliasDataGridViewTextBoxColumn.DataPropertyName = "MyAlias";
-            resources.ApplyResources(this.myAliasDataGridViewTextBoxColumn, "myAliasDataGridViewTextBoxColumn");
-            this.myAliasDataGridViewTextBoxColumn.Name = "myAliasDataGridViewTextBoxColumn";
-            this.myAliasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // myFamilyDataGridViewTextBoxColumn
-            // 
-            this.myFamilyDataGridViewTextBoxColumn.DataPropertyName = "MyFamily";
-            resources.ApplyResources(this.myFamilyDataGridViewTextBoxColumn, "myFamilyDataGridViewTextBoxColumn");
-            this.myFamilyDataGridViewTextBoxColumn.Name = "myFamilyDataGridViewTextBoxColumn";
-            this.myFamilyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nodeBindingSource
-            // 
-            this.nodeBindingSource.DataSource = typeof(QueryBuilder.Node);
-            this.nodeBindingSource.DataSourceChanged += new System.EventHandler(this.filterBindingSource_DataSourceChanged);
             // 
             // panel4
             // 
@@ -695,7 +500,6 @@
             // 
             resources.ApplyResources(this.txtdatasource, "txtdatasource");
             this.txtdatasource.Name = "txtdatasource";
-            this.txtdatasource.TextChanged += new System.EventHandler(this.txtdatasource_TextChanged);
             this.txtdatasource.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtdatasource_KeyUp);
             this.txtdatasource.Validated += new System.EventHandler(this.txtdatasource_Validated);
             // 
@@ -734,19 +538,14 @@
             // flexCelPreview1
             // 
             resources.ApplyResources(this.flexCelPreview1, "flexCelPreview1");
-            this.flexCelPreview1.BackColor = System.Drawing.Color.Gray;
-            this.flexCelPreview1.CacheSize = 64;
-            this.flexCelPreview1.CenteredPreview = false;
             this.flexCelPreview1.Document = this.flexCelImgExport1;
             this.flexCelPreview1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.flexCelPreview1.Name = "flexCelPreview1";
             this.flexCelPreview1.PageXSeparation = 20;
-            this.flexCelPreview1.PageYSeparation = 10;
             this.flexCelPreview1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.flexCelPreview1.StartPage = 1;
             this.flexCelPreview1.ThumbnailLarge = null;
             this.flexCelPreview1.ThumbnailSmall = this.thumbs;
-            this.flexCelPreview1.Zoom = 1F;
             this.flexCelPreview1.StartPageChanged += new System.EventHandler(this.flexCelPreview1_StartPageChanged);
             this.flexCelPreview1.ZoomChanged += new System.EventHandler(this.flexCelPreview1_ZoomChanged);
             // 
@@ -755,25 +554,18 @@
             this.flexCelImgExport1.AllVisibleSheets = false;
             this.flexCelImgExport1.PageSize = null;
             this.flexCelImgExport1.ResetPageNumberOnEachSheet = false;
-            this.flexCelImgExport1.Resolution = 96F;
+            this.flexCelImgExport1.Resolution = 96D;
             this.flexCelImgExport1.Workbook = null;
             // 
             // thumbs
             // 
             resources.ApplyResources(this.thumbs, "thumbs");
-            this.thumbs.BackColor = System.Drawing.Color.Gray;
-            this.thumbs.CacheSize = 64;
-            this.thumbs.CenteredPreview = false;
             this.thumbs.Document = this.flexCelImgExport1;
-            this.thumbs.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Default;
             this.thumbs.Name = "thumbs";
-            this.thumbs.PageXSeparation = 10;
-            this.thumbs.PageYSeparation = 10;
-            this.thumbs.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
             this.thumbs.StartPage = 1;
             this.thumbs.ThumbnailLarge = this.flexCelPreview1;
             this.thumbs.ThumbnailSmall = null;
-            this.thumbs.Zoom = 0.1F;
+            this.thumbs.Zoom = 0.10000000149011612D;
             // 
             // splitter1
             // 
@@ -1546,6 +1338,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_QD_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form_QD_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.sqlbindingSource)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
@@ -1553,12 +1346,10 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFilter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.filterBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectNodes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nodeBindingSource)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1625,8 +1416,6 @@
         private System.Windows.Forms.TextBox edPage;
         private System.Windows.Forms.SaveFileDialog PdfSaveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.BindingSource filterBindingSource;
-        private System.Windows.Forms.BindingSource nodeBindingSource;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.TextBox txtqd_id;
         private System.Windows.Forms.TextBox txtdatasource;
@@ -1734,38 +1523,19 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTmp;
         private System.Windows.Forms.PictureBox btnTmpClear;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.BindingSource sqlbindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewComboBoxColumn IsNot;
         private System.Windows.Forms.DataGridViewComboBoxColumn Operate;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilterFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilterTo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn filterFromDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn filterToDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn filterFromPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn filterToPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valueFromDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valueToDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodeDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodeMyFamily;
         private System.Windows.Forms.DataGridViewComboBoxColumn nodeAgregate;
-        private System.Windows.Forms.DataGridViewComboBoxColumn nodeSort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nodeDescDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expresstionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTreeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idParentTreeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn treeCodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fTypeFullDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn indexDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sortDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn agregateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn myParentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn myAliasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn myFamilyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn nodeSort;     
+
+    
 
     }
 }

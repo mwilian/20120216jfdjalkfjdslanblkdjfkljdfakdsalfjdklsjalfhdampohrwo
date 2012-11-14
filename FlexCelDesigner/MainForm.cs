@@ -9,10 +9,10 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml;
-
 using FlexCel.Core;
-using FlexCel.XlsAdapter;
 using FlexCel.Report;
+using FlexCel.XlsAdapter;
+
 
 namespace TVCDesigner
 {
