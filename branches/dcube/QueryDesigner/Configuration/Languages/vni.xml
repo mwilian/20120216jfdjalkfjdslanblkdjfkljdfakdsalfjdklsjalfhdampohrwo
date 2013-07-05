@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ROOT>
+  <ITEM Code="Description" Value="Diễn giải"/>
+  <ITEM Code="dCube" Value="Thiết kế Truy Vấn"/>
+  <ITEM Code="Database" Value="Cơ sở dữ liệu"/>
+  <ITEM Code="Select Database" Value="Chọn Database"/>
+  <ITEM Code="Select Datasource" Value="Chọn Datasource"/>
+  <ITEM Code="Insert query" Value="Nhập truy vấn"/>
+  <ITEM Code="Inquiry Result" Value="Xem kết quả truy vấn"/>
+  <ITEM Code="SQL Text" Value="Chuỗi SQL"/>
+  <ITEM Code="Inquiry Code" Value="Mã truy vấn"/>  
+  <ITEM Code="Open Template" Value="Mở mẫu báo cáo"/>
+  <ITEM Code="Owner" Value="Chủ sở hữu"/>
+  <ITEM Code="Query Data Source" Value="Bảng truy vấn"/>
+  <ITEM Code="Group" Value="Nhóm"/>
+  <ITEM Code="General" Value="Chung"/>
+  <ITEM Code="Query Designer" Value="Thiết kế Truy Vấn"/>
+  <ITEM Code="Preview Report" Value="Xem báo cáo"/>
+  <ITEM Code="Filter To" Value="Lọc đến"/>
+  <ITEM Code="Filter From" Value="Lọc từ"/>
+  <ITEM Code="Language" Value="Ngôn ngữ"/>
+  <ITEM Code="Sort" Value="Sắp xếp"/>
+  <ITEM Code="My Family" Value="Họ"/>  
+  <ITEM Code="Agregate" Value="Hàm"/>
+  <ITEM Code="Successful" Value="Thành công"/>
+  <ITEM Code="Missing Database" Value="Thiếu Database"/>
+  <ITEM Code="Missing Inquiry Code" Value="Thiếu mã truy vấn"/>
+  <ITEM Code="Missing Owner" Value="Thiếu Chủ sở hữu"/>
+  <ITEM Code="Missing Query Data Source" Value="Thiếu bảng truy vấn"/>
+  <ITEM Code="Missing Group" Value="Thiếu nhóm"/>
+  <ITEM Code="Account Code" Value="Mã tài khoản"/>
+  <ITEM Code="Charts of Accounts" Value="Danh sách tài khoản"/>
+  <ITEM Code="Period" Value="Kỳ"/>
+  <ITEM Code="Transaction Date" Value="Ngày giao dịch"/>
+  <ITEM Code="Journal Number" Value="Số journal"/>
+  <ITEM Code="Journal Line" Value="Dòng journal"/>
+  <ITEM Code="Amount" Value="Bản tệ"/>
+  <ITEM Code="Transaction Amount" Value="Giao dịch bản tệ"/>
+  <ITEM Code="Conversion Code" Value="Mã Conversion"/>
+  <ITEM Code="Conversion Rate" Value="điểm Conversion"/>
+  <ITEM Code="Description 1" Value="Diễn Giải 1"/>
+  <ITEM Code="Description 2" Value="Diễn Giải 2"/>
+  <ITEM Code="Description 3" Value="Diễn Giải 3"/>
+  <ITEM Code="Description 4" Value="Diễn Giải 4"/>
+  <ITEM Code="DTB" Value="CSDL"/>
+  <ITEM Code="QD_ID" Value="Mã truy vấn"/>
+  <ITEM Code="CODE" Value="Mã"/>
+  <ITEM Code="SELECT" Value="CHỌN"/>
+  <ITEM Code="DESCRIPTION" Value="DIỄN GIẢI"/>
+  <ITEM Code="LOOK UP" Value="TÌM THEO"/>
+  <ITEM Code="NOT DATA,Please choose again !!!" Value="Không có dữ liệu! Vui lòng chọn lại"/>
+
+  <ITEM Code="Change Theme" Value="Đổi giao diện"/>
+  <ITEM Code="Connection" Value="Kết nối"/>
+  <!--<ITEM Code="Insure Value" Value=""/>
+  <ITEM Code="Insure Due Period" Value=""/>
+  <ITEM Code="Insure Diễn Giải" Value=""/>
+  <ITEM Code="Decommision Date" Value=""/>
+  <ITEM Code="Disposal Date" Value=""/>
+  <ITEM Code="Disposal Price" Value=""/>
+  <ITEM Code="Disposal Reference" Value=""/>
+  <ITEM Code="Maintenance Freq" Value=""/>
+  <ITEM Code="Maintenance Descr" Value=""/>
+  <ITEM Code="Lookup Code" Value=""/>
+  <ITEM Code="Updated On" Value=""/>
+  <ITEM Code="Asset Name" Value=""/>
+  <ITEM Code="Status" Value=""/>
+  <ITEM Code="Start using Period" Value=""/>
+  <ITEM Code="End-Using Period" Value=""/>
+  <ITEM Code="Last Period" Value=""/>
+  <ITEM Code="Disposal Period" Value=""/>
+  <ITEM Code="BS Depn Account" Value=""/>
+  <ITEM Code="PL Depn Account" Value=""/>
+  <ITEM Code="Disposed" Value=""/>
+  <ITEM Code="Trans Present" Value=""/>
+  <ITEM Code="Last Trans Date" Value=""/>
+  <ITEM Code="Gross Amount" Value=""/>
+  <ITEM Code="Accumulated Depn" Value=""/>
+  <ITEM Code="Net Amount" Value=""/>
+  <ITEM Code="Depn Method" Value=""/>
+  <ITEM Code="Depn Rate" Value=""/>
+  <ITEM Code="Final Amount" Value=""/>
+  <ITEM Code="Table Code" Value=""/>
+  <ITEM Code="Table Column" Value=""/>
+  <ITEM Code="Gross in Other Amount" Value=""/>
+  <ITEM Code="Accumulated Depn Other" Value=""/>
+  <ITEM Code="Net Amount Other" Value=""/>
+  <ITEM Code="Depn Method Other" Value=""/>
+  <ITEM Code="Depn Rate Other" Value=""/>
+  <ITEM Code="Final Amount Other" Value=""/>
+  <ITEM Code="Table Code Other" Value=""/>
+  <ITEM Code="Table Column Other" Value=""/>
+  <ITEM Code="Analysis F0" Value=""/>
+  <ITEM Code="F0 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F1" Value=""/>
+  <ITEM Code="F1 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F2" Value=""/>
+  <ITEM Code="F2 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F3" Value=""/>
+  <ITEM Code="F3 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F4" Value=""/>
+  <ITEM Code="F4 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F5" Value=""/>
+  <ITEM Code="F5 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F6" Value=""/>
+  <ITEM Code="F6 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F7" Value=""/>
+  <ITEM Code="F7 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F8" Value=""/>
+  <ITEM Code="F8 Analysis Table" Value=""/>
+  <ITEM Code="Analysis F9" Value=""/>
+  <ITEM Code="F9 Analysis Table" Value=""/>
+  <ITEM Code="Days of First Period" Value=""/>
+  <ITEM Code="Active Days per Period" Value=""/>
+  <ITEM Code="Days of First Period Other" Value=""/>
+  <ITEM Code="Active Days per Period Other" Value=""/>
+  <ITEM Code="Last Depn Amount" Value=""/>
+  <ITEM Code="Last Depn Other Amount" Value=""/>
+  <ITEM Code="Post Final Amount" Value=""/>
+  <ITEM Code="Post Final Other Amount" Value=""/>
+  <ITEM Code="Account Name" Value=""/>
+  <ITEM Code="Account Type" Value=""/>
+  <ITEM Code="Balance Option" Value=""/>
+  <ITEM Code="Conversion Control" Value=""/>
+  <ITEM Code="Suppress Revaluation" Value=""/>
+  <ITEM Code="Commitment Account" Value=""/>
+  <ITEM Code="Comments" Value=""/>
+  <ITEM Code="T- code Masking" Value=""/>
+  <ITEM Code="Address Code" Value=""/>
+  <ITEM Code="Address Record" Value=""/>
+  <ITEM Code="Direct Debit" Value=""/>
+  <ITEM Code="Priority" Value=""/>
+  <ITEM Code="Payment Method" Value=""/>
+  <ITEM Code="Credit Limit" Value=""/>
+  <ITEM Code="Payment Day" Value=""/>
+  <ITEM Code="Payment Term" Value=""/>
+  <ITEM Code="Discount term 1" Value=""/>
+  <ITEM Code="Discount 1" Value=""/>
+  <ITEM Code="Discount term 2" Value=""/>
+  <ITEM Code="Discount 2" Value=""/>
+  <ITEM Code="Last transaction" Value=""/>
+  <ITEM Code="Transaction present" Value=""/>
+  <ITEM Code="Account Balance" Value=""/>
+  <ITEM Code="Order Balance" Value=""/>
+  <ITEM Code="Analysis A0" Value=""/>
+  <ITEM Code="A0 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A1" Value=""/>
+  <ITEM Code="A1 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A2" Value=""/>
+  <ITEM Code="A2 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A3" Value=""/>
+  <ITEM Code="A3 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A4" Value=""/>
+  <ITEM Code="A4 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A5" Value=""/>
+  <ITEM Code="A5 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A6" Value=""/>
+  <ITEM Code="A6 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A7" Value=""/>
+  <ITEM Code="A7 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A8" Value=""/>
+  <ITEM Code="A8 Analysis Table" Value=""/>
+  <ITEM Code="Analysis A9" Value=""/>
+  <ITEM Code="A9 Analysis Table" Value=""/>
+  
+  <ITEM Code="Tax code" Value=""/>
+  <ITEM Code="Link Account" Value=""/>
+  <ITEM Code="Client Code" Value=""/>
+  <ITEM Code="Client Address Code" Value=""/>
+  <ITEM Code="Updated" Value=""/>
+  <ITEM Code="Ledger Account" Value=""/>
+  <ITEM Code="Analysis Address" Value=""/>
+  <ITEM Code="Picking Method" Value=""/>
+  <ITEM Code="Minimum Order" Value=""/>
+  <ITEM Code="Analysis C0" Value=""/>
+  <ITEM Code="C0 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C1" Value=""/>
+  <ITEM Code="C1 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C2" Value=""/>
+  <ITEM Code="C2 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C3" Value=""/>
+  <ITEM Code="C3 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C4" Value=""/>
+  <ITEM Code="C4 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C5" Value=""/>
+  <ITEM Code="C5 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C6" Value=""/>
+  <ITEM Code="C6 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C7" Value=""/>
+  <ITEM Code="C7 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C8" Value=""/>
+  <ITEM Code="C8 Analysis Table" Value=""/>
+  <ITEM Code="Analysis C9" Value=""/>
+  <ITEM Code="C9 Analysis Table" Value=""/>
+  <ITEM Code="Credit Limit Block" Value=""/>
+  <ITEM Code="Address Line 1" Value=""/>
+  <ITEM Code="Address Line 2" Value=""/>
+  <ITEM Code="Address Line 3" Value=""/>
+  <ITEM Code="Address Line 4" Value=""/>
+  <ITEM Code="Address Line 5" Value=""/>
+  <ITEM Code="Address Line 6" Value=""/>
+  <ITEM Code="Telephone" Value=""/>
+  <ITEM Code="Contact" Value=""/>
+  <ITEM Code="Telex" Value=""/>
+  <ITEM Code="Comment 1" Value=""/>  
+  <ITEM Code="Comment 2" Value=""/>
+  <ITEM Code="Email" Value=""/>
+  <ITEM Code="Web Page" Value=""/>
+  <ITEM Code="Item Code" Value=""/>
+  <ITEM Code="Item Record" Value=""/>
+  <ITEM Code="Location" Value=""/>
+  <ITEM Code="Location Record" Value=""/>
+  <ITEM Code="Physical Balance" Value=""/>
+  <ITEM Code="On Order Balance" Value=""/>
+  <ITEM Code="Allocated" Value=""/>
+  <ITEM Code="Picked" Value=""/>
+  <ITEM Code="Unapproved" Value=""/>
+  <ITEM Code="Min Quantity" Value=""/>
+  <ITEM Code="Max Quantity" Value=""/>
+  <ITEM Code="Bin Name" Value=""/>
+  <ITEM Code="Last Stock Take No" Value=""/>
+  <ITEM Code="Last Stock Take Date" Value=""/>
+  <ITEM Code="Current Stock Take No" Value=""/>
+  <ITEM Code="Current Stock TakeDate" Value=""/>
+  <ITEM Code="Customer Address Code" Value=""/>
+  <ITEM Code="Address Records" Value=""/>
+  <ITEM Code="Analysis Category" Value=""/>
+  <ITEM Code="Record Number" Value=""/>
+  <ITEM Code="OPENING" Value=""/>
+  <ITEM Code="ID Item Diễn Giải" Value=""/>
+  <ITEM Code="Stock Unit" Value=""/>
+  <ITEM Code="Sales Unit" Value=""/>
+  <ITEM Code="Base Price 1" Value=""/>
+  <ITEM Code="Base Price 2" Value=""/>
+  <ITEM Code="Base Price 3" Value=""/>
+  <ITEM Code="Base Price 4" Value=""/>
+  <ITEM Code="Next Price 1" Value=""/>
+  <ITEM Code="Next Price 2" Value=""/>
+  <ITEM Code="Next Price 3" Value=""/>
+  <ITEM Code="Next Price 4" Value=""/>
+  <ITEM Code="Applying Date 1" Value=""/>
+  <ITEM Code="Applying Date 2" Value=""/>
+  <ITEM Code="Applying Date 3" Value=""/>
+  <ITEM Code="Applying Date 4" Value=""/>
+  <ITEM Code="Weight of Unit" Value=""/>
+  <ITEM Code="Standard Cost" Value=""/>
+  <ITEM Code="Latest Cost" Value=""/>
+  <ITEM Code="Average Cost" Value=""/>
+  <ITEM Code="Whole Unit Only" Value=""/>
+  <ITEM Code="Whole Unit for Sales" Value=""/>
+  <ITEM Code="Allocation Method" Value=""/>
+  <ITEM Code="Item Special Process" Value=""/>
+  <ITEM Code="Supplier Control" Value=""/>
+  <ITEM Code="Customer Control" Value=""/>
+  <ITEM Code="Sales Account" Value=""/>
+  <ITEM Code="CA Sales Accounts" Value=""/>
+  <ITEM Code="Purchase Account" Value=""/>
+  <ITEM Code="CA Purchase Accounts" Value=""/>
+  <ITEM Code="Stock Take Freq" Value=""/>
+  <ITEM Code="Alternate Item Code" Value=""/>
+  <ITEM Code="Item Analysis 0" Value=""/>
+  <ITEM Code="Item Analysis 1" Value=""/>
+  <ITEM Code="Item Analysis 2" Value=""/>
+  <ITEM Code="Item Analysis 3" Value=""/>
+  <ITEM Code="Item Analysis 4" Value=""/>
+  <ITEM Code="Item Analysis 5" Value=""/>
+  <ITEM Code="Item Analysis 6" Value=""/>
+  <ITEM Code="Item Analysis 7" Value=""/>
+  <ITEM Code="Item Analysis 8" Value=""/>
+  <ITEM Code="Item Analysis 9" Value=""/>
+  <ITEM Code="Commodity Code" Value=""/>
+  <ITEM Code="Assembly Level" Value=""/>
+  <ITEM Code="Process Component" Value=""/>
+  <ITEM Code="SOP Extended Diễn Giải" Value=""/>
+  <ITEM Code="POP Extended Diễn Giải" Value=""/>
+  <ITEM Code="Account 1" Value=""/>
+  <ITEM Code="Account 2" Value=""/>
+  <ITEM Code="Account 3" Value=""/>
+  <ITEM Code="Account 4" Value=""/>
+  <ITEM Code="Account 5" Value=""/>
+  <ITEM Code="Account 6" Value=""/>
+  <ITEM Code="Account 7" Value=""/>
+  <ITEM Code="Account 8" Value=""/>
+  <ITEM Code="Update Purchase Price" Value=""/>
+  <ITEM Code="Default Purchase Price" Value=""/>
+  <ITEM Code="Set Purchase Price" Value=""/>
+  <ITEM Code="Pick by Expiry Date" Value=""/>
+  <ITEM Code="Item Quantity" Value=""/>
+  <ITEM Code="O_STD_VALUE" Value=""/>
+  <ITEM Code="O_LAT_VALUE" Value=""/>
+  <ITEM Code="O_AVE_VALUE" Value=""/>
+  <ITEM Code="RECEIPT" Value=""/>
+  <ITEM Code="R_STD_VALUE" Value=""/>
+  <ITEM Code="R_LAT_VALUE" Value=""/>
+  <ITEM Code="R_AVE_VALUE" Value=""/>
+  <ITEM Code="ISSUE" Value=""/>
+  <ITEM Code="I_STD_VALUE" Value=""/>
+  <ITEM Code="I_LAT_VALUE" Value=""/>
+  <ITEM Code="I_AVE_VALUE" Value=""/>
+  <ITEM Code="NET" Value=""/>
+  <ITEM Code="N_STD_VALUE" Value=""/>
+  <ITEM Code="N_LAT_VALUE" Value=""/>
+  <ITEM Code="N_AVE_VALUE" Value=""/>
+  <ITEM Code="BALANCE" Value=""/>
+  <ITEM Code="B_STD_VALUE" Value=""/>
+  <ITEM Code="B_LAT_VALUE" Value=""/>
+  <ITEM Code="B_AVE_VALUE" Value=""/>
+  <ITEM Code="PERIOD" Value=""/>-->  
+</ROOT>

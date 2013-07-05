@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DocumentElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<POP>
+		<ID>1</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD</Address>
+	</POP>
+	<POP>
+		<ID>2</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD.C</Address>
+		<Action>New</Action>
+	</POP>
+	<POP>
+		<ID>3</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD.A</Address>
+		<Action>Edit</Action>
+	</POP>
+	<POP>
+		<ID>4</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD.D</Address>
+		<Action>Delete</Action>
+	</POP>
+	<POP>
+		<ID>5</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD.TI</Address>
+		<Action>Transfer In</Action>
+	</POP>
+	<POP>
+		<ID>6</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD.TO</Address>
+		<Action>Transfer Out</Action>
+	</POP>
+	<POP>
+		<ID>7</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Designer</Function>
+		<Address>QD.RD</Address>
+		<Action>Template</Action>
+	</POP>
+	<POP>
+		<ID>8</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>System</Function>
+	</POP>
+	<POP>
+		<ID>9</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Query Address</Function>
+	</POP>
+	<POP>
+		<ID>10</ID>
+		<Module>Universal Query Designer</Module>
+		<Function>Operator</Function>
+	</POP>
+  <POP>
+    <ID>11</ID>
+    <Module>Import</Module>
+    <Function>Import Definition</Function>
+  </POP>
+  <POP>
+    <ID>12</ID>
+    <Module>Import</Module>
+    <Function>Import</Function>
+  </POP>
+  <POP>
+    <ID>13</ID>
+    <Module>Task manager</Module>
+    <Function>Input</Function>
+  </POP>
+</DocumentElement>

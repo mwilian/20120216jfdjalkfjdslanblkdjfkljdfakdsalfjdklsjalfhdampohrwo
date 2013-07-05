@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<data name="ErrInvalidCellValue">
+		<value>Valor de celda inválido: "{0}"</value>
+	</data>
+	<data name="ErrNotConnected">
+		<value>No hay ningún archivo abierto.</value>
+	</data>
+	<data name="ErrInvalidColumn">
+		<value>Indice de columna inválido: {0}</value>
+	</data>
+	<data name="ErrInvalidRow">
+		<value>Indice de fila inválido: {0}</value>
+	</data>
+	<data name="ErrInvalidValue">
+		<value>Valor inválido para el parámetro "{0}": {1} no está en el rango {2} - {3}</value>
+	</data>
+  <data name="ErrInvalidValue2">
+    <value>Valor inválido para el parámetro "{0}": {1} No hay elementos en la lista.</value>
+  </data>
+
+  <data name="ErrDataSetNotFound">
+		<value>El rango "{1}" en el archivo Excel hace referencia a la tabla "{0}" que no ha sido definida. Verifique que ha llamado al método FlexCelReport.AddTable.</value>
+	</data>
+	<data name="ErrDataSetNotFoundInConfig">
+		<value>En la hoja de configuración, celda "{1}", se hace referencia a la tabla "{0}" que no ha sido definida. Verifique que ha llamado al método FlexCelReport.AddTable.</value>
+	</data>
+	<data name="ErrDataSetNotFoundInExpression">
+		<value>En la expresión "{1}" se hace referencia a la tabla "{0}" que no ha sido definida. Verifique que la celda en el archivo Excel está dentro de un nombre "__{0}__" o similar.</value>
+	</data>
+	<data name="ErrInvalidSheet">
+		<value>La hoja no existe: "{0}"</value>
+	</data>
+	<data name="ErrFormulaTooLong">
+		<value>Fórmula demasiado larga.</value>
+	</data>
+	<data name="ErrNotAString">
+		<value>Se esperaba una cadena en la fórmula: "{0}"</value>
+	</data>
+	<data name="ErrUnterminatedString">
+		<value>Hay una cadena sin terminar en la fórmula: "{0}"</value>
+	</data>
+	<data name="ErrUnexpectedId">
+		<value>Identificador no esperado: "{0}" en la fórmula "{1}"</value>
+	</data>
+	<data name="ErrUnexpectedChar">
+		<value>Carácter "{0}" inválido, en la posición "{1}" de la fórmula "{2}" </value>
+	</data>
+	<data name="ErrMissingParen">
+		<value>Falta un paréntesis de cierre en la fórmula: "{0}"</value>
+	</data>
+	<data name="ErrInvalidNumberOfParams">
+		<value>Número de parámetros iniválido para la función "{0}": Se esperaban entre {1} y {2} parametros y se encontraron {3}</value>
+	</data>
+	<data name="ErrUnexpectedEof">
+		<value>Fórmula incompleta: "{0}"</value>
+	</data>
+	<data name="ErrFormulaStart">
+		<value>La fórmula debe empezar con "=" o "{{=": "{0}"</value>
+	</data>
+	<data name="ErrFormulaInvalid">
+		<value>La fórmula no se puede evaluar: "{0}"</value>
+	</data>
+	<data name="ErrInternal">
+		<value>FlexCel: Error en la lógica del programa.</value>
+	</data>
+	<data name="ErrFunctionNotFound">
+		<value>La función "{0}" en la fórmula "{1}" no existe</value>
+		<comment></comment>
+	</data>
+	<data name="ErrCircularReference">
+		<value>La función en la celda "{0}" tiene una referencia circular con ella misma.</value>
+	</data>
+	<data name="ErrInvalidRef">
+		<value>Celda Inválida: "{0}"</value>
+	</data>
+	<data name="ErrMissingEOT">
+		<value>Falta un identificador de cierre de Tag en la formula: "{0}"</value>
+	</data>
+	<data name="ErrMissingArgs">
+		<value>Faltan argumentos para la función: "{0}"</value>
+	</data>
+	<data name="ErrTooMuchArgs">
+		<value>Demasiados argumentos en la función: "{0}"</value>
+	</data>
+	<data name="ErrReadAfterEOF">
+		<value>Se ha intentado leer un registro luego del último de la tabla.</value>
+	</data>
+	<data name="ErrReadBeforeBOF">
+		<value>Se ha intentado leer un registro antes del primero de la tabla.</value>
+	</data>
+	<data name="ErrIntersectingRanges">
+		<value>Los rangos "{0}" y "{1}" se intersectan.</value>
+	</data>
+	<data name="ErrUndefinedFunction">
+		<value>La función con índice {0} no está definida. Verique la versión localizada de FunctionNames.resx</value>
+	</data>
+	<data name="ErrInvalidFormat">
+		<value>El formato "{0}" no está definido en la hoja de configuración.</value>
+	</data>
+	<data name="ErrColumNotFound">
+		<value>La columna "{0}" no existe en la tabla "{1}"</value>
+	</data>
+	<data name="ErrPropertyNotFound">
+		<value>La variable "{0}" no ha sido definida.</value>
+	</data>
+	<data name="ErrMemberNotFound">
+		<value>El Dataset "{0}" no tiene un campo definido.</value>
+	</data>
+	<data name="ErrDataSetNotInRange">
+		<value>El dataset "{0}" no está dentro de ningún rango en la hoja de cálculo.</value>
+	</data>
+	<data name="ErrInvalidImage">
+		<value>La imagen no es válida</value>
+	</data>
+	<data name="ErrUndefinedId">
+		<value>El identificador "{0}" no está definido. Verique la versión localizada de {1}</value>
+	</data>
+	<data name="ErrOnIncludeReport">
+		<value>Error mientras se procesaba el reporte incluido (&lt;#include&gt;) "{0}": {1}</value>
+	</data>
+	<data name="ErrCantFindNamedRange">
+		<value>No se puede encontrar el rango "{0}"</value>
+	</data>
+	<data name="ErrTooManyNestedIncludes">
+		<value>Demasiados &lt;#include&gt; anidados. Probablemente un archivo se está incluyendo a si mismo, o a otro archivo que lo incluye: "{0}"</value>
+	</data>
+	<data name="ErrUnknownRangeType">
+		<value>Tipo de rango inválido en include: "{1}". Debe ser "__", "_", "II_" o "I_".</value>
+	</data>
+	<data name="ErrInvalidRange">
+		<value>Rango inválido: "{0}". Un rango válido es por ejemplo A1:A2</value>
+	</data>
+  <data name="ErrInvalidRangeRef">
+    <value>El nombre de rango que define a la banda "{0}" tiene un número negativo de filas o columnas. Verique que usa referencias absolutas ($A$1:$B$2) en vez de relativas ($A$1:B2).</value>
+  </data>
+  <data name="ErrNotSupportedOnTrial">
+		<value>Abrir un archivo sin propiedades (autor, descripcion, etc) no está soportado en la versión no comercial de FlexCel.</value>
+	</data>
+	<data name="ErrUndefinedUserFunction">
+		<value>La función definida por el usuario "{0}" es null. Verifique que en el código "SetUserFunction({0}, functionImp)", functionImp no es nulo.</value>
+	</data>
+	<data name="ErrCantChangeRecalcMode">
+		<value>La propiedad RecalcMode solo puede cambiarse antes de abrir ningún archivo</value>
+	</data>
+	<data name="ErrWorkbookNull">
+		<value>El parámetro "Workbook" no puede ser null en este método.</value>
+	</data>
+	<data name="CustomPageSize">
+		<value>Custom</value>
+	</data>
+	<data name="TxtSeries">
+		<value>Series</value>
+	</data>
+	<data name="ErrCompression">
+		<value>Error en las rutinas de compresión.</value>
+	</data>
+	<data name="ErrInvalidRelationshipNullValues">
+		<value>Relationship no válida en la celda "{0}" de la hoja de configuración. Se debe especificar las tablas y los campos relacionados.</value>
+	</data>
+	<data name="ErrInvalidRelationship2Tables">
+		<value>Relationship no válida en la celda "{0}" de la hoja de configuración. "{1}" debe especificar 2 y solo 2 tablas para la relación.</value>
+	</data>
+	<data name="ErrInvalidRelationshipFields">
+		<value>Relationship no válida en la celda "{0}" de la hoja de configuración. "{1}" no es una definición correcta de relación entre campos.</value>
+	</data>
+  <data name="ErrInvalidRelationshipDatasetNull">
+    <value>Relationship no válida en la celda "{0}" de la hoja de configuración. La tabla "{1}" no pertenece a un Dataset.</value>
+  </data>
+  <data name="ErrInvalidManualRelationshipDatasetNull">
+    <value>La tabla "{0}" no existe.</value>
+  </data>
+  <data name="ErrInvalidManualRelationshipFieldCount">
+    <value>EL numero de campos en el maestro y en el detalle debe ser el mismo.</value>
+  </data>
+  <data name="ErrInvalidRelationship2Fields">
+		<value>Relationship no válida en la celda "{0}" de la hoja de configuración. Las relación "{1}" debe relacionar 2 y solamente 2 campos.</value>
+	</data>
+	<data name="ErrInvalidSql2Params">
+		<value>Las llamadas SQL en la hoja de configuración deben tener 2 parámetros (Connection y SQL string). "{0}" no es una lista de parámetros válida.</value>
+	</data>
+	<data name="ErrInvalidSplit2Params">
+		<value>Las llamadas a SPLIT en la hoja de configuración deben tener 2 parámetros (Tabla de origen y número de filas). "{0}" no es una lista de parámetros válida.</value>
+	</data>
+	<data name="ErrInvalidSplitCount">
+		<value>El segundo parámetro de SPLIT debe ser un número mayor que 0 especificando el número de filas en que se desea dividir la tabla. "{0}" no es un parámetro válido.</value>
+	</data>
+	<data name="ErrInvalidTop2Params">
+		<value>Las llamadas a TOP en la hoja de configuración deben tener 2 parámetros (Tabla de origen y número de filas). "{0}" no es una lista de parámetros válida.</value>
+	</data>
+	<data name="ErrInvalidTopCount">
+		<value>El segundo parámetro de Top debe ser un número mayor que 0 especificando el número de filas en que se desea limitar la tabla. "{0}" no es un parámetro válido.</value>
+	</data>
+  <data name="ErrInvalidNRows1Param">
+    <value>Las llamadas a ROWS en la hoja de configuración deben tener 1 parámetro (número de filas). "{0}" no es una lista de parámetros válida.</value>
+  </data>
+  <data name="ErrInvalidNRowsCount">
+    <value>El parámetro de ROWS debe ser un número mayor o igual que 0 especificando el número de filas que tendrá la tabla. "{0}" no es un parámetro válido.</value>
+  </data>
+  <data name="ErrInvalidColumns1Param">
+    <value>Las llamadas a COLUMNS en la hoja de configuración deben tener 1 parámetro (nombre de la tabla). "{0}" no es una lista de parámetros válida.</value>
+  </data>
+  <data name="ErrInvalidSqlAdapterNotFound">
+		<value>El adapter "{0}" utilizado en un DIRECT SQL en la hoja de configuración no existe. Verique que se llamó a FlexCelReport.AddConnection();</value>
+	</data>
+	<data name="ErrInvalidSqlAdapterNoSelect">
+		<value>El adapter "{0}" no tiene Select Command definido. Edite el adapter y agregue un comando SQL al mismo.</value>
+	</data>
+	<data name="ErrDataSetNull">
+		<value>DataSet no debe ser null.</value>
+	</data>
+	<data name="ErrAdapterNull">
+		<value>Adapter no debe ser null.</value>
+	</data>
+	<data name="ErrInvalidSqlParen">
+		<value>Falta un paréntesis de cierre en el DIRECT SQL: "{0}".</value>
+	</data>
+  <data name="ErrInvalidSplitParen">
+    <value>Falta un paréntesis de cierre en el tag SPLIT: "{0}".</value>
+  </data>
+  <data name="ErrInvalidTopParen">
+    <value>Falta un paréntesis de cierre en el tag TOP: "{0}".</value>
+  </data>
+  <data name="ErrInvalidNRowsParen">
+    <value>Falta un paréntesis de cierre en el tag ROWS: "{0}".</value>
+  </data>
+  <data name="ErrInvalidColumnsParen">
+    <value>Falta un paréntesis de cierre en el tag COLUMNS: "{0}".</value>
+  </data>
+  <data name="ErrInvalidUserTableParen">
+		<value>Falta un paréntesis de cierre en el tag USER TABLE: "{0}".</value>
+	</data>
+	<data name="ErrInvalidFilterParen">
+		<value>Falta un paréntesis de cierre en el Filtro: "{0}".</value>
+	</data>
+	<data name="ErrOnConfigTables">
+		<value>Error leyendo la hoja de configuración en la fila {0}: "{1}".</value>
+	</data>
+	<data name="ErrInvalidDistinctParams">
+		<value>El filtro "DISTINCT" necesita una lista de campos como parámetros.</value>
+	</data>
+	<data name="ErrInvalidSqlString">
+		<value>El comando SQL "{0}" es inválido. Por razones de seguridad no puede contener caracteres especiales como ";" y debe comenzar con "SELECT"</value>
+	</data>
+	<data name="ErrInvalidSqlParams">
+		<value>El parametro SQL no puede ser NULL</value>
+	</data>
+	<data name="ErrSqlParameterNotFound">
+		<value>No se puede encontrar el parámetro "{0}" para un comando Direct SQL. Para agregar el parámetro al reporte, utilice FlexCelReport.AddSqlParameter().</value>
+	</data>
+	<data name="ErrEofReached">
+		<value>Se encontró el final del stream cuando faltaban {0} bytes para leer.</value>
+	</data>
+	<data name="ErrArrayNotSquared">
+		<value>Error en la fórmula "{0}" Los Arrays deben tener el mismo número de columnas para cada fila.</value>
+	</data>
+	<data name="ErrInvalidCols">
+		<value>Número de columnas en array inválido: "{0}" Debe de ser un valor entre 1 y {1}.</value>
+	</data>
+	<data name="ErrInvalidRows">
+		<value>Número de filas en array inválido: "{0}" Debe de ser un valor entre 1 y {1}.</value>
+	</data>
+	<data name="ErrInvalidErrorCode">
+		<value>Código de error inválido: "{0}".</value>
+	</data>
+	<data name="ErrEmptyFolder">
+		<value>La carpeta "{0}" no contiene ningún archivo del tipo "{1}".</value>
+	</data>
+	<data name="ErrTiffEncoderNotFound">
+		<value>No se puede encontrar un codificador de formato Tiff.</value>
+	</data>
+	<data name="ErrInvalidImageFormat">
+		<value>El formato de la imagen no es válido.</value>
+	</data>
+	<data name="ErrInvalidHtmlParam">
+		<value>El valor "{0}" es inválido para el tag &lt;#HTML&gt;: Los valores permitidos son: "&lt;#HTML({1})&gt;" y "&lt;#HTML({2})&gt;"</value>
+	</data>
+	<data name="ErrInvalidRowColParameters">
+		<value>El valor "{0}" es inválido para los tags &lt;#ROW HEIGHT&gt; o &lt;#COLUMN WIDTH&gt;: Los valores permitidos son: "{1}", "{2}", "{3}", o un número indicando el ancho de la columna o alto de la fila.</value>
+	</data>
+	<data name="ErrInvalidRowColParameters2">
+		<value>El valor "{0}" es inválido como segundo parámetro para los tags &lt;#ROW HEIGHT&gt; o &lt;#COLUMN WIDTH&gt;: Debe ser un número indicando el porcentaje de ajuste.</value>
+	</data>
+	<data name="ErrInvalidRowColParameters3">
+		<value>El valor "{0}" es inválido como tercer parámetro para los tags &lt;#ROW HEIGHT&gt; o &lt;#COLUMN WIDTH&gt;: Debe ser un número indicando el ajuste absoluto.</value>
+	</data>
+	<data name="ErrInvalidRowColParameters4">
+		<value>El valor "{0}" es inválido como cuarto o quinto parámetro para los tags &lt;#ROW HEIGHT&gt; o &lt;#COLUMN WIDTH&gt;: Debe ser "{1}", "{2}", o un número indicando el máximo o mínimo tamaño de la fila o columna.</value>
+	</data>
+	<data name="ErrInvalidRefTag">
+		<value>El valor "{0}" es inválido para el tag &lt;#REF&gt;: Cuando &lt;#REF&gt; se llama con uno o tres parámetros, el primer parámetro debe ser un nombre de rango.</value>
+	</data>
+	<data name="ErrInvalidRefTag2">
+		<value>El valor "{0}" es inválido para el tag &lt;#REF&gt;: Cuando &lt;#REF&gt; se llama con dos parámetros, estos deben ser números con los desplazamientos relativos de la celda.</value>
+	</data>
+	<data name="ErrInvalidRefTag3">
+		<value>El valor "{0}" es inválido para el tag &lt;#REF&gt;: Cuando &lt;#REF&gt; se llama con tres parámetros, el segundo y tercer parámetro deben ser "{1}" o "{2}".</value>
+	</data>
+	<data name="ErrInvalidGlobalAutofit">
+		<value>El valor "{0}" es inválido para el tag &lt;#AUTOFIT SETTINGS&gt;: Debe ser "{1}" o "{2}".</value>
+	</data>
+	<data name="ErrInvalidGlobalAdjustment">
+		<value>El valor "{0}" es inválido para el tag &lt;#AUTOFIT SETTINGS&gt;: Debe ser un número mayor que 0 indicando el ajuste. (use 100 para el valor por defecto)".</value>
+	</data>
+	<data name="ErrInvalidGlobalAdjustmentFixed">
+		<value>El valor "{0}" es inválido para el tag &lt;#AUTOFIT SETTINGS&gt;: Debe ser un número mayor que 0 indicando el ajuste. (use 0 para el valor por defecto)".</value>
+	</data>
+	<data name="ErrInvalidAutoFitMerged">
+		<value>El valor "{0}" es inválido para el tag &lt;#AUTOFIT SETTINGS&gt;: Debe ser "{1}", "{2}", "{3}" o "{4}".</value>
+	</data>
+	<data name="ErrSplitNeedsOneAndOnlyOneDetail">
+		<value>La tabla "{0}" ha sido creada mediante un tag "SPLIT", y por ello debe tener una tabla detalle "{1}" como hijo directo. No es válido tampoco tener más de una tabla "{1}" como hijo.</value>
+	</data>
+	<data name="ErrSplitNeedsOnlyOneMaster">
+		<value>La tabla "{0}" tiene más de un SPLIT asignado ("{1}" y "{2}"). Solo puede haber un tag SPLIT por tabla.</value>
+	</data>
+	<data name="ErrUserTableEventNotAssigned">
+		<value>El template tiene tags del tipo USER TABLE, pero el reporte no tiene un evento UserTable asignado.</value>
+	</data>
+	<data name="ErrTableDoesNotSupportFilter">
+		<value>La tabla "{0}" no soporta filtros en la hoja de configuración.</value>
+	</data>
+	<data name="ErrTableDoesNotSupportTag">
+		<value>La tabla "{0}" no puede ser usada con el tag "{1}" en la hoja de configuración.</value>
+	</data>
+	<data name="ErrTableDoesNotSupportMasterDetail">
+		<value>La tabla "{0}" no puede ser usada en una relación maestro-detalle.</value>
+	</data>
+	<data name="ErrTableDoesNotSupportLookup">
+		<value>La tabla "{0}" no puede ser usada como fuente de datos en un tag "Lookup".</value>
+	</data>
+	<data name="TxtDefaultTimeAMString">
+		<value>AM</value>
+	</data>
+	<data name="TxtDefaultTimePMString">
+		<value>PM</value>
+	</data>
+	<data name="ErrInvalidEncodingForMIME">
+		<value>La codificación "{0}" no puede ser usada para un archivo MIME. Utilice UTF-8, ASCII u otra codificación compatible.</value>
+	</data>
+	<data name="ErrBeginExportNotCalled">
+		<value>Antes de exportar una hoja es necesario llamar al método BeginExport.</value>
+	</data>
+	<data name="ErrNoDuplicatedPreprocess">
+		<value>El tag "preprocess" no se puede anidar recursivamente.</value>
+	</data>
+	<data name="ErrInvalidDefinedGlobal">
+		<value>El valor "{0}" es inválido para el tag &lt;#DEFINED&gt;: Debe ser "{1}" or "{2}".</value>
+	</data>
+	<data name="ErrInvalidRowColDelete">
+		<value>El valor "{0}" es inválido para el tag &lt;#DELETE ROW/COL&gt;: Debe ser "{1}" or "{2}".</value>
+	</data>
+	<data name="ErrNeedsUnmanaged">
+		<value>Se está intentado efectuar una operación que requiere permisos de UNMANAGED, pero FlexCel ha sido compilado con la constante "FULLYMANAGED" definida. Para acceder a esta funcionalidad, compile FlexCel sin definir FULLYMANAGED.</value>
+	</data>
+	<data name="ErrInvalidApplyTag">
+		<value>El nombre "{0}" en la definición de formato "{1}" en la hoja Config no es válido. Debe ser un identificador válido, como "Border" o "Font".</value>
+	</data>
+	<data name="ErrAtCell">
+		<value>Error en celda {0}: "{1}"</value>
+	</data>
+	<data name="CellError">
+		<value>ERROR: {0}</value>
+	</data>
+	<data name="ErrInvalidIncludeStatic">
+		<value>ERROR: El parámetro "{0}" es inválido para un include. Debe ser "{1}" o "{2}"</value>
+	</data>
+	<data name="ErrInvalidIncludeRowCol">
+		<value>ERROR: El parámetro "{0}" es inválido para un include. Debe ser "{1}", "{2}" o "{3}"</value>
+	</data>
+  <data name="ErrInvalidAutoPageBreaksPercent">
+    <value>El valor "{0}" es inválido para el tag &lt;#AUTO PAGE BREAKS&gt;: Debe ser un número entre 0 y 100 indicando porcentaje de página que es necesario usar como mínimo antes de aplicar un salto de página.</value>
+  </data>
+  <data name="ErrInvalidAutoPageBreaksPageScale">
+    <value>El valor "{0}" es inválido para el tag &lt;#AUTO PAGE BREAKS&gt;: Debe ser un número entre 50 y 100 indicando porcentaje de página que se utilizará como valor real al calcular los saltos de página.</value>
+  </data>
+  <data name="ErrInvalidImgPosParameter">
+    <value>El parámetro "{0}" es inválido para el tag &lt;#IMGPOS&gt;: Debe ser vacío, "{1}", "{2}" o "{3}".</value>
+  </data>
+  <data name="ErrInvalidImgFitParameter">
+    <value>El parámetro "{0}" es inválido para el tag &lt;#IMGFIT&gt;: Debe ser vacío o "{1}".</value>
+  </data>
+  <data name="ErrDuplicatedLinkedFile">
+    <value>No se puede añadir el ExcelFile "{0}" al Workspace, porque el workspace ya tiene una referencia al mismo. Los ExcelFiles en un Workspace
+    deben ser todos referencias únicas.</value>
+  </data>
+  <data name="ErrInvalidAggParameter">
+    <value>El primer parámetro para un tag &lt;#Aggregate&gt; es inválido. Es "{0}" y debe ser "Max", "Min", "Sum" o "Avg".</value>
+  </data>
+  <data name="ErrFilterMustReturnABooleanValue">
+    <value>El filtro "{0}" en el tag &lt;#Aggregate&gt; es inválido. Debe retornar un valor booleano.</value>
+  </data>
+  <data name="ErrFontNotFound">
+    <value>El tipo de letra "{0}" no esta instalado. Se utilizará el tipo "{1}" como substituto.</value>
+  </data>
+  <data name="ErrGlyphNotFound">
+    <value>El tipo de letra "{0}" no tiene el carácter "{1}" ("{2}") y se mostrará como un cuadrado blanco. Utilice otro tipo de letra que lo contenga, o establezca una fuente de "fallback".</value>
+  </data>
+  <data name="ErrUsedFallbackFont">
+    <value>El tipo de letra "{0}" ha sido reemplazado por "{1}" en los carácteres que no contiene.</value>
+  </data>
+  <data name="ErrFauxBoldOrItalic">
+    <value>El tipo de letra "{0}" no contiene la variante {1}. FlexCel intentará simularla, pero no será tan exacto ni funcionará si los tipos de letra estan embebidos en el PDF.</value>
+  </data>
+  <data name="ErrInvalidEmptyName">
+    <value>El nombre no puede ser vacío.</value>
+  </data>
+  <data name="ErrNameTooLong">
+    <value>El nombre no puede tener más de {0} caracteres.</value>
+  </data>
+  <data name="ErrStyleDoesntExists">
+    <value>El estilo "{0}" no existe.</value>
+  </data>
+  <data name="ErrStyleAlreadyExists">
+    <value>El estilo "{0}" ya está definido.</value>
+  </data>
+  <data name="ErrCantRenameBuiltInStyle">
+    <value>El estilo "{0}" is interno y no se puede renombrar.</value>
+  </data>
+  <data name="ErrCantDeleteBuiltInStyle">
+    <value>El estilo "{0}" is interno y no se puede borrar.</value>
+  </data>
+  <data name="ErrCantAddStyleFormats">
+    <value>Los formatos de Estilo no se pueden añadir con AddFormat. Si desea crear un estilo, use SetStyle. 
+    Si desea crear un formato de celda, haga TFlxFormat.IsStyle = false y TFlxFormat.Parent = Estilo antes de llamar a AddFormat.</value>
+  </data>
+  <data name="ErrCantMixCellAndStyleFormats">
+    <value>No se puede reemplazar un formato de Estilo por uno de Celda or viceversa. Cuando se reemplazan formatos, se deben reemplazar por formatos del mismo tipo.</value>
+  </data>
+  <data name="ErrInvalidColorType">
+    <value>No se puede leer la propiedad "{0}". La clase contiene un color de tipo "{1}" y la propiedad "{0}" solo es válida si el color es del tipo "{2}".</value>
+  </data>
+  <data name="ErrInvalidColorValue">
+    <value>El valor "{1}" es inválido para TExcelColor.{0}. Debe estar entre "{2}" y "{3}".</value>
+  </data>
+  <data name="ErrInvalidColorEnum">
+    <value>El valor es inválido para TExcelColor.{0}. Debe ser un miembro de la enumeración y no ser "None".</value>
+  </data>
+  <data name="ErrStringConstantInFormulaTooLong">
+    <value>La cadena "{0}" en la fórmula "{1}" es demasiado larga. (max 255 carácteres).</value>
+  </data>
+  <data name="ErrNoBorderColorSet">
+    <value>
+      Una celda en este archivo tiene un tipo de borde definido, pero no un color. Esto podría causar que Excel falle al recuperar este archivo. Si está asignando un tipo de borde con TFlxBorders.Style,
+      asegúrese de asignar un color también con TFlxBorders.Color.
+    </value>
+  </data>
+  <data name ="ErrCreatingImage">
+    <value>
+      Error intentando crear una imagen vacía de {0} x {1} y PixelFormat "{2}". Probablemente sin memoria.
+    </value>
+  </data>
+  <data name ="ErrCantUseThemeColorsInsideATheme">
+    <value>
+      No se puede utilizar un color de tema para definir un color de tema.
+    </value>
+  </data>
+  <data name="ErrFontNotSupported" xml:space="preserve">
+    <value>El tipo de letra ("{0}" tamaño="{1}" y estilo="{2}") no se puede crear. El error es: "{3}"</value>
+  </data>
+  <data name="ErrNullParameter" xml:space="preserve">
+    <value>El parámetro "{0}" no puede ser null.</value>
+  </data>
+  <data name="ErrNullOrEmptyParameter" xml:space="preserve">
+    <value>El parámetro "{0}" no puede ser null o vacio.</value>
+  </data>
+
+  <data name="ErrRangeNameAlreadyExists" xml:space="preserve">
+    <value>El nombre de rango "{0}" ya existe.</value>
+  </data>
+  <data name="ErrInvalidName" xml:space="preserve">
+    <value>El nombre de rango "{0}" es inválido. Debe contener sólo números, letras y espacios, y debe comenzar con una letra. Tampoco puede ser una referencia de celda.</value>
+  </data>
+
+  <data name="ErrInvalidEnum" xml:space="preserve">
+    <value>El enum no está definido.</value>
+  </data>
+  <data name="ErrInvalidLinQDetail" xml:space="preserve">
+    <value>Error en la tabla detalle "{0}". No se puede encontrar el maestro.</value>
+  </data>
+
+  <data name="ErrInvalidSortString" xml:space="preserve">
+    <value>Error en la tabla "{0}". La expresión "{1}" no es una cadena para ordenar valida.</value>
+  </data>
+
+  <data name="ErrEmptyKeyNames" xml:space="preserve">
+    <value>Las claves en un tag "Loockup" no pueden ser nulas.</value>
+  </data>
+  <data name="ErrValuesAndKeysMismatch" xml:space="preserve">
+    <value>Error en el tag "Loockup". Las claves y los valores deben tener el mismo numero de elementos.</value>
+  </data>
+
+  <data name="ErrDatasetDoesntSupportWhere" xml:space="preserve">
+    <value>La tabla "{0}" no soporta filtros. Para soportarlos debe implementar un metodo "Where(string)"</value>
+  </data>
+
+  <data name="ErrInvalidReportRowCount" xml:space="preserve">
+    <value>La cuenta de registros en una tabla es distinta del número real de registros al leer la tabla.
+    Esto significa que algún otro proceso añadió o eliminó registros mientras el reporte se ejecutaba.
+    Para evitar este error, asegúrese de que el reporte se ejecuta con una transacción en modo SNAPSHOT.</value>
+  </data>
+
+  <data name="ErrInvalidFilterDateTime" xml:space="preserve">
+    <value>El formato de la fecha "{0}" en el filtro "{1}" es inválido. Debe ser escrito como "{2}".</value>
+  </data>
+
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader></root>

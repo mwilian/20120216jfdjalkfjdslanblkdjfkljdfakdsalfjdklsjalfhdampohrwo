@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<data name="DONT_TRANSLATE_THIS_FILE">
+		<value>If you translate it, your code will become dependant on the translation</value>
+	</data>
+	<data name="fmErrNull">
+		<value>#NULL!</value>
+	</data>
+	<data name="fmErrDiv0">
+		<value>#DIV/0!</value>
+	</data>
+	<data name="fmErrValue">
+		<value>#VALUE!</value>
+	</data>
+	<data name="fmErrRef">
+		<value>#REF!</value>
+	</data>
+	<data name="fmErrName">
+		<value>#NAME?</value>
+	</data>
+	<data name="fmErrNum">
+		<value>#NUM!</value>
+	</data>
+	<data name="fmErrNA">
+		<value>#N/A</value>
+	</data>
+	<data name="fmErrUnknown">
+		<value>#FLEXCEL_UNKNOWN</value>
+	</data>
+	<data name="fmErrStart">
+		<value>#</value>
+	</data>
+	<data name="fmTrue">
+		<value>TRUE</value>
+	</data>
+	<data name="fmFalse">
+		<value>FALSE</value>
+	</data>
+	<data name="fmStartFormula">
+		<value>=</value>
+		<comment>as in =a1*2 or {=1+2}</comment>
+	</data>
+	<data name="fmFormulaDecimal">
+		<value>.</value>
+		<comment>as in '1.2'</comment>
+	</data>
+	<data name="fmFormulaThousands">
+		<value>,</value>
+		<comment>as in '1,300'</comment>
+	</data>
+	<data name="fmFunctionSep">
+		<value>,</value>
+		<comment>Argument separator on a function.
+                       For example, if fmFunctionSep=';' we should
+                       write "Max(a1;a2)"
+                       If you want to localize this, you could use fmFunctionSep=ListSeparator
+</comment>
+	</data>
+	<data name="fmUnion">
+		<value>,</value>
+		<comment>as in "=a1, b2"</comment>
+	</data>
+	<data name="fmIntersect">
+		<value></value>
+		<comment>as in a1 a2</comment>
+	</data>
+	<data name="fmOpenArray">
+		<value>{</value>
+	</data>
+	<data name="fmCloseArray">
+		<value>}</value>
+	</data>
+	<data name="fmOpenParen">
+		<value>(</value>
+	</data>
+	<data name="fmCloseParen">
+		<value>)</value>
+	</data>
+	<data name="fmArrayRowSep">
+		<value>;</value>
+		<comment> Separates 2 rows on an array. It is '\' in spanish</comment>
+	</data>
+	<data name="fmArrayColSep">
+		<value>,</value>
+		<comment> Separates 2 columns on an array. Ex: {1,2}. It is ';' in spanish
+                        //If you want to localize this, you could use fmArrayColSep=ListSeparator</comment>
+	</data>
+	<data name="fmAbsoluteRef">
+		<value>$</value>
+		<comment>as in $A$3</comment>
+	</data>
+	<data name="fmRangeSep">
+		<value>:</value>
+		<comment>as in A1:A3</comment>
+	</data>
+	<data name="fmExternalRef">
+		<value>!</value>
+		<comment>as in Sheet1!a1</comment>
+	</data>
+	<data name="fmWorkbookOpen">
+		<value>[</value>
+		<comment>as in c:\[book1.xls]Sheet1!a1</comment>
+	</data>
+	<data name="fmWorkbookClose">
+		<value>]</value>
+	</data>
+	<data name="fmTableText">
+		<value>TABLE</value>
+	</data>
+	<data name="fmPlus">
+		<value>+</value>
+	</data>
+	<data name="fmMinus">
+		<value>-</value>
+	</data>
+	<data name="fmMul">
+		<value>*</value>
+	</data>
+	<data name="fmDiv">
+		<value>/</value>
+	</data>
+	<data name="fmPower">
+		<value>^</value>
+	</data>
+	<data name="fmPercent">
+		<value>%</value>
+	</data>
+	<data name="fmStr">
+		<value>"</value>
+	</data>
+	<data name="fmAnd">
+		<value>&amp;</value>
+	</data>
+	<data name="fmLT">
+		<value>&lt;</value>
+	</data>
+	<data name="fmLE">
+		<value>&lt;=</value>
+	</data>
+	<data name="fmEQ">
+		<value>=</value>
+	</data>
+	<data name="fmGE">
+		<value>&gt;=</value>
+	</data>
+	<data name="fmGT">
+		<value>&gt;</value>
+	</data>
+	<data name="fmNE">
+		<value>&lt;&gt;</value>
+	</data>
+  <data name="fmSingleQuote">
+    <value>'</value>
+  </data>
+  <data name="fmR1C1_R">
+    <value>R</value>
+  </data>
+  <data name="fmR1C1_C">
+    <value>C</value>
+  </data>
+  <data name="fmR1C1RelativeRefStart">
+    <value>[</value>
+  </data>
+  <data name="fmR1C1RelativeRefEnd">
+    <value>]</value>
+  </data>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader></root>

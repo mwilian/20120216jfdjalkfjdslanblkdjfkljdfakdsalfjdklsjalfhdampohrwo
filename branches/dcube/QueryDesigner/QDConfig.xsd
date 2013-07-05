@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="QDConfig" targetNamespace="http://tempuri.org/QDConfig.xsd" xmlns:mstns="http://tempuri.org/QDConfig.xsd" xmlns="http://tempuri.org/QDConfig.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="QDConfig" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="QDConfig" msprop:Generator_UserDSName="QDConfig" msprop:EnableTableAdapterManager="True">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ITEM" msprop:Generator_UserTableName="ITEM" msprop:Generator_RowDeletedName="ITEMRowDeleted" msprop:Generator_TableClassName="ITEMDataTable" msprop:Generator_RowChangedName="ITEMRowChanged" msprop:Generator_RowClassName="ITEMRow" msprop:Generator_RowChangingName="ITEMRowChanging" msprop:Generator_RowEvArgName="ITEMRowChangeEvent" msprop:Generator_RowEvHandlerName="ITEMRowChangeEventHandler" msprop:Generator_TablePropName="ITEM" msprop:Generator_TableVarName="tableITEM" msprop:Generator_RowDeletingName="ITEMRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KEY" msprop:Generator_UserColumnName="KEY" msprop:Generator_ColumnPropNameInRow="KEY" msprop:Generator_ColumnVarNameInTable="columnKEY" msprop:Generator_ColumnPropNameInTable="KEYColumn" type="xs:string" />
+              <xs:element name="DEFAULT" msprop:Generator_UserColumnName="DEFAULT" msprop:Generator_ColumnPropNameInRow="DEFAULT" msprop:Generator_ColumnVarNameInTable="columnDEFAULT" msprop:Generator_ColumnPropNameInTable="DEFAULTColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CONTENT" msprop:Generator_UserColumnName="CONTENT" msprop:Generator_ColumnPropNameInRow="CONTENT" msprop:Generator_ColumnVarNameInTable="columnCONTENT" msprop:Generator_ColumnPropNameInTable="CONTENTColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CONTENTEX" msprop:Generator_UserColumnName="CONTENTEX" msprop:Generator_ColumnPropNameInRow="CONTENTEX" msprop:Generator_ColumnVarNameInTable="columnCONTENTEX" msprop:Generator_ColumnPropNameInTable="CONTENTEXColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="TEST" msprop:Generator_UserColumnName="TEST" msprop:Generator_ColumnPropNameInRow="TEST" msprop:Generator_ColumnVarNameInTable="columnTEST" msprop:Generator_ColumnPropNameInTable="TESTColumn" type="xs:string" default="Unknow" minOccurs="0" />
+              <xs:element name="BUTTON" msprop:Generator_UserColumnName="BUTTON" msprop:Generator_ColumnPropNameInRow="BUTTON" msprop:Generator_ColumnVarNameInTable="columnBUTTON" msprop:Generator_ColumnPropNameInTable="BUTTONColumn" type="xs:string" default="Build" minOccurs="0" />
+              <xs:element name="TYPE" msprop:Generator_UserColumnName="TYPE" msprop:Generator_ColumnPropNameInRow="TYPE" msprop:Generator_ColumnVarNameInTable="columnTYPE" msprop:Generator_ColumnPropNameInTable="TYPEColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DTB" msprop:Generator_UserTableName="DTB" msprop:Generator_RowDeletedName="DTBRowDeleted" msprop:Generator_TableClassName="DTBDataTable" msprop:Generator_RowChangedName="DTBRowChanged" msprop:Generator_RowClassName="DTBRow" msprop:Generator_RowChangingName="DTBRowChanging" msprop:Generator_RowEvArgName="DTBRowChangeEvent" msprop:Generator_RowEvHandlerName="DTBRowChangeEventHandler" msprop:Generator_TablePropName="DTB" msprop:Generator_TableVarName="tableDTB" msprop:Generator_RowDeletingName="DTBRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QD" msprop:Generator_UserColumnName="QD" msprop:Generator_ColumnPropNameInRow="QD" msprop:Generator_ColumnVarNameInTable="columnQD" msprop:Generator_ColumnPropNameInTable="QDColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="AP" msprop:Generator_UserColumnName="AP" msprop:Generator_ColumnPropNameInRow="AP" msprop:Generator_ColumnVarNameInTable="columnAP" msprop:Generator_ColumnPropNameInTable="APColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DIR" msprop:Generator_UserTableName="DIR" msprop:Generator_RowDeletedName="DIRRowDeleted" msprop:Generator_TableClassName="DIRDataTable" msprop:Generator_RowChangedName="DIRRowChanged" msprop:Generator_RowClassName="DIRRow" msprop:Generator_RowChangingName="DIRRowChanging" msprop:Generator_RowEvArgName="DIRRowChangeEvent" msprop:Generator_RowEvHandlerName="DIRRowChangeEventHandler" msprop:Generator_TablePropName="DIR" msprop:Generator_TableVarName="tableDIR" msprop:Generator_RowDeletingName="DIRRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TMP" msprop:Generator_UserColumnName="TMP" msprop:Generator_ColumnPropNameInRow="TMP" msprop:Generator_ColumnVarNameInTable="columnTMP" msprop:Generator_ColumnPropNameInTable="TMPColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="RPT" msprop:Generator_UserColumnName="RPT" msprop:Generator_ColumnPropNameInRow="RPT" msprop:Generator_ColumnVarNameInTable="columnRPT" msprop:Generator_ColumnPropNameInTable="RPTColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SYS" msprop:Generator_UserTableName="SYS" msprop:Generator_RowDeletedName="SYSRowDeleted" msprop:Generator_TableClassName="SYSDataTable" msprop:Generator_RowChangedName="SYSRowChanged" msprop:Generator_RowClassName="SYSRow" msprop:Generator_RowChangingName="SYSRowChanging" msprop:Generator_RowEvArgName="SYSRowChangeEvent" msprop:Generator_RowEvHandlerName="SYSRowChangeEventHandler" msprop:Generator_TablePropName="SYS" msprop:Generator_TableVarName="tableSYS" msprop:Generator_RowDeletingName="SYSRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FONT" msprop:Generator_UserColumnName="FONT" msprop:Generator_ColumnPropNameInRow="FONT" msprop:Generator_ColumnVarNameInTable="columnFONT" msprop:Generator_ColumnPropNameInTable="FONTColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FORCECOLOR" msprop:Generator_UserColumnName="FORCECOLOR" msprop:Generator_ColumnPropNameInRow="FORCECOLOR" msprop:Generator_ColumnVarNameInTable="columnFORCECOLOR" msprop:Generator_ColumnPropNameInTable="FORCECOLORColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="BACKCOLOR" msprop:Generator_UserColumnName="BACKCOLOR" msprop:Generator_ColumnPropNameInRow="BACKCOLOR" msprop:Generator_ColumnVarNameInTable="columnBACKCOLOR" msprop:Generator_ColumnPropNameInTable="BACKCOLORColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="USE2007" msprop:Generator_UserColumnName="USE2007" msprop:Generator_ColumnPropNameInRow="USE2007" msprop:Generator_ColumnVarNameInTable="columnUSE2007" msprop:Generator_ColumnPropNameInTable="USE2007Column" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

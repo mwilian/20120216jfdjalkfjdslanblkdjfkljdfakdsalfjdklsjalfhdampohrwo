@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string"/>
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="mimetype" type="xsd:string"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<data name="StrOpen">
+		<value>&lt;#</value>
+	</data>
+	<data name="StrClose">
+		<value>&gt;</value>
+	</data>
+	<data name="DbSeparator">
+		<value>.</value>
+	</data>
+	<data name="ParamDelim">
+		<value>;</value>
+	</data>
+	<data name="StrOpenParen">
+		<value>(</value>
+	</data>
+	<data name="StrCloseParen">
+		<value>)</value>
+	</data>
+	<data name="StrQuote">
+		<value>"</value>
+	</data>
+	<data name="RowRange1">
+		<value>_</value>
+	</data>
+	<data name="RowFull1">
+		<value>__</value>
+	</data>
+	<data name="RowRange2">
+		<value>_</value>
+	</data>
+	<data name="RowFull2">
+		<value>__</value>
+	</data>
+	<data name="ColRange1">
+		<value>I_</value>
+	</data>
+	<data name="ColRange2">
+		<value>_I</value>
+	</data>
+	<data name="ColFull1">
+		<value>II_</value>
+	</data>
+	<data name="ColFull2">
+		<value>_II</value>
+	</data>
+	<data name="CrossTabRange1">
+		<value>X_</value>
+	</data>
+	<data name="CrossTabRange2">
+		<value>_X</value>
+	</data>
+	<data name="CrossTabFull1">
+		<value>XX_</value>
+	</data>
+	<data name="CrossTabFull2">
+		<value>_XX</value>
+	</data>
+	<data name="StrFullDs">
+		<value>*</value>
+	</data>
+	<data name="StrFullDsCaptions">
+		<value>**</value>
+	</data>
+	<data name="StrOpenHLink">
+		<value>&lt;.</value>
+	</data>
+	<data name="StrOpenHLink2">
+		<value>*.</value>
+	</data>
+	<data name="StrCloseHLink">
+		<value>.*</value>
+	</data>
+	<data name="StrDeleteLastRow">
+		<value>X</value>
+	</data>
+	<data name="StrDontInsertRanges">
+		<value>FIXED</value>
+	</data>
+	<data name="StrExcludeSheet">
+		<value>.</value>
+	</data>
+	<data name="RelationshipSeparator">
+		<value>-&gt;</value>
+	</data>
+	<data name="InternalDB">
+		<value>##INT_RNAL_</value>
+	</data>
+	<data name="StrRowCountColumn">
+		<value>#ROWCOUNT</value>
+	</data>
+	<data name="StrRowPosColumn">
+		<value>#ROWPOS</value>
+	</data>
+	<data name="StrHide">
+		<value>HIDE</value>
+	</data>
+	<data name="StrShow">
+		<value>SHOW</value>
+	</data>
+	<data name="StrAutofit">
+		<value>AUTOFIT</value>
+	</data>
+	<data name="StrAutofitOn">
+		<value>ALL</value>
+	</data>
+	<data name="StrAutofitOff">
+		<value>SELECTED</value>
+	</data>
+	<data name="StrKeepAutofit">
+		<value>KEEP</value>
+	</data>
+	<data name="StrDontKeepAutofit">
+		<value>FIXED</value>
+	</data>
+	<data name="StrAutofitModeFirst">
+		<value>FIRST</value>
+	</data>
+	<data name="StrAutofitModeLast">
+		<value>LAST</value>
+	</data>
+	<data name="StrAutofitModeNone">
+		<value>NONE</value>
+	</data>
+	<data name="StrAutofitModeBalanced">
+		<value>BALANCED</value>
+	</data>
+	<data name="StrDefinedLocal">
+		<value>LOCAL</value>
+	</data>
+	<data name="StrDefinedGlobal">
+		<value>GLOBAL</value>
+	</data>
+	<data name="StrRelativeDelete">
+		<value>RELATIVE</value>
+	</data>
+	<data name="StrFullDelete">
+		<value>FULL</value>
+	</data>
+	<data name="StrStaticInclude">
+		<value>STATIC</value>
+	</data>
+	<data name="StrDynamicInclude">
+		<value>DYNAMIC</value>
+	</data>
+	<data name="StrCopyRows">
+		<value>R</value>
+	</data>
+	<data name="StrCopyCols">
+		<value>C</value>
+	</data>
+	<data name="StrCopyRowsAndCols">
+		<value>RC</value>
+	</data>
+  <data name="StrKeepRowsTogether">
+    <value>KEEPROWS_</value>
+  </data>
+  <data name="StrKeepColsTogether">
+    <value>KEEPCOLUMNS_</value>
+  </data>
+  <data name="StrEndKeepTogether">
+    <value>_</value>
+  </data>
+  <data name="StrAlignLeft">
+	<value>LEFT</value>
+  </data>
+  <data name="StrAlignCenter">
+	<value>CENTER</value>
+  </data>
+  <data name="StrAlignRight">
+	<value>RIGHT</value>
+  </data>
+  <data name="StrAlignTop">
+	<value>TOP</value>
+  </data>
+  <data name="StrAlignBottom">
+	<value>BOTTOM</value>
+  </data>
+  <data name="StrInRow">
+	<value>INROW</value>
+  </data>
+  <data name="StrInCol">
+	<value>INCOLUMN</value>
+  </data>
+  <data name="StrDontGrow">
+	<value>DONT GROW</value>
+  </data>
+  <data name="StrDontShrink">
+	<value>DONT SHRINK</value>
+  </data>
+  <data name="StrAggSum">
+	<value>SUM</value>
+  </data>
+  <data name="StrAggAvg">
+	<value>AVG</value>
+  </data>
+  <data name="StrAggMax">
+	<value>MAX</value>
+  </data>
+  <data name="StrAggMin">
+	<value>MIN</value>
+  </data>
+
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader></root>
