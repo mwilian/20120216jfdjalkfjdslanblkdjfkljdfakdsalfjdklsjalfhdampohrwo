@@ -166,7 +166,7 @@ namespace dCube
             {
                 foreach (DataRow row in dtU.Rows)
                 {
-                    kq += ",\"" + row["Name"].ToString() + "\" <" + row["Mail"].ToString() + ">";
+                    kq += ",\"" + row["_Name"].ToString() + "\" <" + row["Mail"].ToString() + ">";
                 }
             }
             if (kq.Length > 0)
@@ -298,7 +298,7 @@ namespace dCube
             ////DTO.LIST_TASKInfo inf = new DTO.LIST_TASKInfo();
             ////inf = GetDataFromForm(inf);
             //SaveFileDialog sfd = new SaveFileDialog();
-            //sfd.Filter = "XML file(*.xml)|*.xml";
+            //sfd._Filter = "XML file(*.xml)|*.xml";
             //string sErr = "";
             //if (sfd.ShowDialog() == DialogResult.OK)
             //{

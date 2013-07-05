@@ -115,7 +115,7 @@ namespace dCube
             GridEXColumn column = null;
             int i = 0;
 
-            //combo.DisplayMember = "Name"
+            //combo.DisplayMember = "_Name"
             combo.Items.Clear();
             combo.Items.Add(new object[] { "(None)", null });
             for (i = 0; i < columns.Count; i++)
@@ -140,7 +140,7 @@ namespace dCube
                 {
                     object[] a = item as object[];
                     if (a.Length == 2)
-                        if (a[1] == column)//item.Value
+                        if (a[1] == column)//item._Value
                         {
                             combo.SelectedItem = item;
                             break;

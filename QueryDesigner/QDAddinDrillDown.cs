@@ -78,18 +78,20 @@ namespace dCube
             get { return _sqlBuilder.Pos; }
             set { _sqlBuilder.Pos = value; }
         }
-        public QDAddinDrillDown(string connectDesc)
+        public QDAddinDrillDown(QDConfig config, string connectDesc)
         {
             InitializeComponent();
             //_strConnectDes = connectDesc;
+            _config = config;
             _sqlBuilder = new QueryBuilder.SQLBuilder(processingMode.Balance);
             _sqlBuilder.StrConnectDes = connectDesc;
             //TopMost = true;
             //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
         }
-        public QDAddinDrillDown(string Pos, Excel._Application xls, string formular, string connectDesc,string user)
+        public QDAddinDrillDown(QDConfig config, string Pos, Excel._Application xls, string formular, string connectDesc, string user)
         {
             InitializeComponent();
+            _config = config;
             _user = user;
             //_strConnectDes = connectDesc;
             Init(Pos, xls, formular);
@@ -105,12 +107,25 @@ namespace dCube
             _xlsApp = xls;
             //TopMost = true;
             GetQueryBuilderFromFomular(formular);
+            GetConnectString();
             if (xls == null)
                 btPivotTable.Visible = false;
         }
-        public QDAddinDrillDown(string Pos, Excel._Application xls, QueryBuilder.SQLBuilder sqBuilder, string connectDesc)
+        private void GetConnectString()
+        {
+            BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+
+            DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(_sqlBuilder.Database, _sqlBuilder.Table, ref sErr);
+            string keyconn = schInf.DEFAULT_CONN;
+            string connectstring = _config.GetConnection(ref keyconn, "AP");
+            _sqlBuilder.ConnID = keyconn;
+            _sqlBuilder.StrConnectDes = connectstring;
+            //_ = connectstring;
+        }
+        public QDAddinDrillDown(QDConfig config, string Pos, Excel._Application xls, QueryBuilder.SQLBuilder sqBuilder, string connectDesc)
         {
             InitializeComponent();
+            _config = config;
             Init(Pos, xls, sqBuilder);
             //_strConnectDes = sqBuilder.StrConnectDes;
             //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
@@ -185,7 +200,7 @@ namespace dCube
                                         {
                                         }
                                     }
-                                //vParameter[i - 1] = p.Value.ToString().Replace(",", string.Empty);
+                                //vParameter[i - 1] = p._Value.ToString().Replace(",", string.Empty);
                             }
 
                         }
@@ -227,7 +242,7 @@ namespace dCube
                 //lbValueFrom.Text = value;
                 //if (dgvFilter.CurrentRow != null)
                 //{
-                //    QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                //    QueryBuilder._Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
                 //    filter.FilterFrom = address;
                 //    filter.ValueFrom = value;
                 //    filter.FilterFromP = "{P}";
@@ -239,7 +254,7 @@ namespace dCube
                 //lbValueTo.Text = value;
                 //if (dgvFilter.CurrentRow != null)
                 //{
-                //    QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                //    QueryBuilder._Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
                 //    filter.FilterTo = address;
                 //    filter.ValueTo = value;
                 //    filter.FilterToP = "{P}";
@@ -279,10 +294,7 @@ namespace dCube
                 BindingList<Node> list = SchemaDefinition.GetDecorateTableByCode(_sqlBuilder.Table, _sqlBuilder.Database);
                 //twSchema = RadTreeViewLoader.LoadTree(ref twSchema, list, _sqlBuilder.Table, "");
                 twSchema1 = TreeViewLoader.LoadTree(ref twSchema1, list, _sqlBuilder.Table, "");
-                //BUS.LIST_QD_SCHEMAControl ctr = new LIST_QD_SCHEMAControl();
-                //DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(_sqlBuilder.Database, _sqlBuilder.Table, ref sErr);
-                //string key = inf.DEFAULT_CONN;
-                //_strConnectDes = _sqlBuilder.StrConnectDes = _config.GetConnection(ref key, "AP");
+                GetConnectString();
                 LoadDataGrid();
             }
             catch (Exception ex) { lbErr.Text = ex.Message; }
@@ -434,7 +446,7 @@ namespace dCube
                 if (dragNode.Nodes.Count == 0)
                 {
                     string[] arrNode = dragNode.Tag.ToString().Split(';');
-                    _arrNodes[i] = new Node(arrNode[0], dragNode.Name, dragNode.Text, arrNode[1], arrNode[2]);
+                    _arrNodes[i] = new Node(arrNode[0], dragNode._Name, dragNode.Text, arrNode[1], arrNode[2]);
                     i++;
                 }
             }
@@ -449,7 +461,7 @@ namespace dCube
             {
                 bool flag = true;
                 string[] arrNode = tmpNode.Tag.ToString().Split(';');
-                Node a = new Node(arrNode[0], tmpNode.Name, tmpNode.Text, arrNode[1], arrNode[2]);
+                Node a = new Node(arrNode[0], tmpNode._Name, tmpNode.Text, arrNode[1], arrNode[2]);
                 for (int i = 0; i < _sqlBuilder.SelectedNodes.Count; i++)
                     if (_sqlBuilder.SelectedNodes[i].Code == a.Code)
                     {

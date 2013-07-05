@@ -39,11 +39,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Server = new System.Windows.Forms.ComboBox();
             this.Database = new System.Windows.Forms.ComboBox();
+            this.txtGeneralTimeOut = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGeneralTimeOut)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOKQD
             // 
-            this.btnOKQD.Location = new System.Drawing.Point(176, 155);
+            this.btnOKQD.Location = new System.Drawing.Point(175, 183);
             this.btnOKQD.Name = "btnOKQD";
             this.btnOKQD.Size = new System.Drawing.Size(124, 24);
             this.btnOKQD.TabIndex = 5;
@@ -53,7 +56,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(46, 155);
+            this.button1.Location = new System.Drawing.Point(45, 183);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 24);
             this.button1.TabIndex = 4;
@@ -63,14 +66,14 @@
             // 
             // User
             // 
-            this.User.Location = new System.Drawing.Point(109, 46);
+            this.User.Location = new System.Drawing.Point(126, 46);
             this.User.Name = "User";
             this.User.Size = new System.Drawing.Size(100, 20);
             this.User.TabIndex = 1;
             // 
             // Pass
             // 
-            this.Pass.Location = new System.Drawing.Point(109, 79);
+            this.Pass.Location = new System.Drawing.Point(126, 77);
             this.Pass.Name = "Pass";
             this.Pass.PasswordChar = '*';
             this.Pass.Size = new System.Drawing.Size(100, 20);
@@ -80,7 +83,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 115);
+            this.label6.Location = new System.Drawing.Point(22, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 50;
@@ -98,7 +101,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 81);
+            this.label3.Location = new System.Drawing.Point(22, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 48;
@@ -107,7 +110,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 15);
+            this.label2.Location = new System.Drawing.Point(22, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 47;
@@ -116,28 +119,51 @@
             // Server
             // 
             this.Server.FormattingEnabled = true;
-            this.Server.Location = new System.Drawing.Point(109, 12);
+            this.Server.Location = new System.Drawing.Point(126, 14);
             this.Server.Name = "Server";
             this.Server.Size = new System.Drawing.Size(164, 21);
             this.Server.TabIndex = 0;
-            this.Server.Enter += new System.EventHandler(this.Server_Enter);
             this.Server.DropDown += new System.EventHandler(this.Server_DropDown);
+            this.Server.Enter += new System.EventHandler(this.Server_Enter);
             // 
             // Database
             // 
             this.Database.FormattingEnabled = true;
-            this.Database.Location = new System.Drawing.Point(109, 112);
+            this.Database.Location = new System.Drawing.Point(126, 108);
             this.Database.Name = "Database";
             this.Database.Size = new System.Drawing.Size(164, 21);
             this.Database.TabIndex = 3;
-            this.Database.Enter += new System.EventHandler(this.Database_Enter);
             this.Database.DropDown += new System.EventHandler(this.Database_DropDown);
+            this.Database.Enter += new System.EventHandler(this.Database_Enter);
+            // 
+            // txtGeneralTimeOut
+            // 
+            this.txtGeneralTimeOut.Location = new System.Drawing.Point(126, 140);
+            this.txtGeneralTimeOut.Maximum = new decimal(new int[] {
+            60000,
+            0,
+            0,
+            0});
+            this.txtGeneralTimeOut.Name = "txtGeneralTimeOut";
+            this.txtGeneralTimeOut.Size = new System.Drawing.Size(120, 20);
+            this.txtGeneralTimeOut.TabIndex = 51;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 142);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "General Timeout (s)";
             // 
             // FrmConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 191);
+            this.ClientSize = new System.Drawing.Size(341, 219);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtGeneralTimeOut);
             this.Controls.Add(this.Database);
             this.Controls.Add(this.Server);
             this.Controls.Add(this.User);
@@ -154,6 +180,7 @@
             this.Name = "FrmConnection";
             this.Text = "Connection";
             this.Load += new System.EventHandler(this.FrmConnection_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtGeneralTimeOut)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +198,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Server;
         private System.Windows.Forms.ComboBox Database;
+        private System.Windows.Forms.NumericUpDown txtGeneralTimeOut;
+        private System.Windows.Forms.Label label1;
     }
 }

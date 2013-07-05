@@ -20,6 +20,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using TVCDesigner;
 //using Excel = Microsoft.Office.Interop.Excel;
 
 namespace dCube
@@ -110,8 +111,6 @@ namespace dCube
         //}
         public Form_QD(string[] agrs)
         {
-            
-
             _pathLicense = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\License.bin";
             InitializeComponent();
             InitGrid();
@@ -140,7 +139,7 @@ namespace dCube
                 {
                     BUS.PODControl podCtr = new PODControl();
                     DTO.PODInfo podInf = podCtr.Get(_user, ref sErr);
-                    if (podInf.DB_DEFAULT != "")
+                    if (podInf.DB_DEFAULT != "" && dtb == "ZZZ")
                     {
                         DB = podInf.DB_DEFAULT;
 
@@ -426,7 +425,7 @@ namespace dCube
                 Configuration.clsConfigurarion config = new Configuration.clsConfigurarion();
                 config.GetDataTableDictionary(_appPath + "/Configuration/Languages.xml");
                 //cboLanguage.Items. = config.DtDictionary;
-                //cboLanguage.ValueMember = "Value";
+                //cboLanguage.ValueMember = "_Value";
                 //cboLanguage.DisplayMember = "Code";                
                 //nodeBindingSource.DataSource = _sqlBuilder.SelectedNodes;
                 //filterBindingSource.DataSource = _sqlBuilder.Filters;
@@ -619,8 +618,8 @@ namespace dCube
 
         private void LoadQD(LIST_QDInfo info)
         {
-
             txt_sql.Text = "";
+
             Load_QDinfo(info);
             LoadTree();
             _sqlBuilder = SQLBuilder.LoadSQLBuilderFromDataBase(_sqlBuilder, txtqd_id.Text.Trim(), DB.Trim(), txtdatasource.Text.Trim());
@@ -1060,7 +1059,7 @@ namespace dCube
             DTO.POSInfo infPOS = new POSInfo(_user, DB, "Query Designer", "QD", DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
             posCtr.InsertUpdate(infPOS);
             //SaveFileDialog frm = new SaveFileDialog();
-            //frm.Filter = "Excel file (*.xls)|*.xls";
+            //frm._Filter = "Excel file (*.xls)|*.xls";
             //if (frm.ShowDialog() == DialogResult.OK)
             //{
             //XlsFile xls = new XlsFile();
@@ -1134,7 +1133,51 @@ namespace dCube
             try
             {
                 btnEdit_Click(null, null);
+                string fields = "";
+                dExcelConfig xlsConfig = new dExcelConfig();
+                foreach (Node n in _sqlBuilder.SelectedNodes)
+                {
+                    string tmp = n.Description;
+                    int demx = 0;
+                    while (fields.Contains(tmp))
+                    {
+                        demx++;
+                        tmp = n.Description + demx;
+                    }
+                    fields += ";" + tmp;
+                }
+                if (fields.Length > 0)
+                    fields = fields.Substring(1);
 
+                string strparam = "";
+                string strparam1 = "";
+                if (_sqlBuilder.Filters.Count > 0)
+                {
+                    strparam1 = "Code;Description;ValueFrom;ValueTo;IsNot;Operate";
+                }
+                foreach (Filter n in _sqlBuilder.Filters)
+                {
+                    string tmp = n.Description + "_From";
+                    int demx = 0;
+                    while (strparam.Contains(tmp))
+                    {
+                        demx++;
+                        tmp += tmp + demx;
+                    }
+                    strparam += ";" + tmp;
+
+                    tmp = n.Description + "_To";
+                    demx = 0;
+                    while (strparam.Contains(tmp))
+                    {
+                        demx++;
+                        tmp += tmp + demx;
+                    }
+                    strparam += ";" + tmp;
+                }
+                if (strparam.Length > 0)
+                    strparam = strparam.Substring(1);
+                string filename = _config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext;
                 if (txtTmp.Text == "")
                 {
                     //      File.Delete(saveFileDialog1.FileName);
@@ -1142,32 +1185,47 @@ namespace dCube
 
                     if (!File.Exists(_config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext))
                     {
-                        XlsFile xlsTemp = new XlsFile(currentPath + "-.template" + ReportGenerator.Ext);
+                        XlsFile xlsTemp = new XlsFile(currentPath + "-.template" + ReportGenerator.Ext, true);
                         xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 10, 2, txtqd_id.Text.Trim(), 0);
-                        xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
-                        xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
-
-                        xlsTemp.Save(_config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+                        //xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 11, 2, "FilterPara", 0);
+                        //xlsTemp.SetCellValue(xlsTemp.GetSheetIndex("<#Config>"), 12, 2, "params", 0);
+                        xlsTemp.Save(filename);
                     }
-                    Process.Start(_config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext);
+
+
 
                 }
                 else if (File.Exists(txtTmp.Text))
                 {
-                    Process.Start(txtTmp.Text);
+                    filename = txtTmp.Text;
                 }
                 else
                 {
                     LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
                     LIST_TEMPLATEInfo info = ctr.Get(_dtb, txtqd_id.Text, ref sErr);
-                    string filename = _config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext;
+
                     using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write))
                     {
                         fs.Write(info.Data, 0, info.Data.Length);
                     }
                     txtTmp.Text = filename;
-                    Process.Start(filename);
+                    //Process.Start(filename);
                 }
+                XlsFile xlsTemp1 = new XlsFile(filename, true);
+                if (fields != "") xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 1, 1, txtqd_id.Text.Trim(), 0);
+                else xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 1, 1, "", 0);
+                if (strparam != "") xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 2, 1, "FilterPara", 0);
+                else xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 2, 1, "", 0);
+                if (strparam1 != "") xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 3, 1, "params", 0);
+                else xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 3, 1, "", 0);
+
+                xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 1, 2, fields, 0);
+                xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 2, 2, strparam, 0);
+                xlsTemp1.SetCellValue(xlsTemp1.GetSheetIndex("<#Config>"), 3, 2, strparam1, 0);
+
+                xlsTemp1.Save(filename);
+                xlsConfig.LoadConfigSheet(xlsTemp1);
+                Process.Start(filename);
                 //flexCelReport1.AddTable(temp);
                 //AutoRun(temp.Tables[0], flag_filter);
                 //Set_TT_XLB_EB(path_template);
@@ -1180,96 +1238,96 @@ namespace dCube
 
 
                 //ListFieldData a = new ListFieldData();
-                #region Parameter
-                DataTable dt_filter = new DataTable();
-                dt_filter.TableName = "parameter";
-                dt_filter.Columns.Add("Name");
-                dt_filter.Columns.Add("Code");
-
-                if (_sqlBuilder.Filters.Count > 0)
-                {
-                    for (int i = 0; i < _sqlBuilder.Filters.Count; i++)
-                    {
-                        dt_filter.Rows.Add(new string[] { _sqlBuilder.Filters[i].Description + "_From", "parameter." + _sqlBuilder.Filters[i].Description + "_From" });
-                        dt_filter.Rows.Add(new string[] { _sqlBuilder.Filters[i].Description + "_To", "parameter." + _sqlBuilder.Filters[i].Description + "_To" });
-                    }
-                    //a.dt_Filter = dt_filter;
-                }
-                DataTable dt_param = new DataTable();
-                DataColumn[] cols = new DataColumn[] { new DataColumn("Code")
-                    , new DataColumn("Name")};
-                dt_param.Columns.AddRange(cols);
-                dt_param.TableName = "params";
-
-                dt_param.Rows.Add("Code", "Code");
-                dt_param.Rows.Add("Description", "Description");
-                dt_param.Rows.Add("ValueFrom", "ValueFrom");
-                dt_param.Rows.Add("ValueTo", "ValueTo");
-                dt_param.Rows.Add("IsNot", "IsNot");
-                dt_param.Rows.Add("Operate", "Operate");
-
-                #endregion Parameter
-                #region Field
-                DataTable dt_list = new DataTable();
-                if (_sqlBuilder.SelectedNodes.Count > 0)
-                {
-                    //CommoControl commo = new CommoControl();
-                    //string connnectString = commo.CreateConnectString(Properties.Settings.Default.Server
-                    //         , Properties.Settings.Default.User
-                    //         , Properties.Settings.Default.Pass
-                    //         , Properties.Settings.Default.DBName);
-                    DataTable rs = _sqlBuilder.BuildDataTableStruct(txt_sql.Text, _strConnectDes);
-
-                    //a.THEME = this.THEME;
-                    dt_list.TableName = "data";
-                    dt_list.Columns.Add("Name");
-                    dt_list.Columns.Add("Code");
-
-                    foreach (DataColumn colum in rs.Columns)
-                    {
-                        string desc = colum.ColumnName;
-                        foreach (Node node in _sqlBuilder.SelectedNodes)
-                        {
-                            if (node.MyCode == colum.ColumnName)
-                            {
-                                desc = node.Description;
-                                break;
-                            }
-                        }
-                        dt_list.Rows.Add(new string[] { desc, colum.ColumnName });
-                    }
+                /*         #region Parameter
+                         DataTable dt_filter = new DataTable();
+                         dt_filter.TableName = "parameter";
+                         dt_filter.Columns.Add("_Name");
+                         dt_filter.Columns.Add("Code");
 
 
-                    //a.dt_list = dt;
+                         for (int i = 0; i < _sqlBuilder.Filters.Count; i++)
+                         {
+                             dt_filter.Rows.Add(new string[] { _sqlBuilder.Filters[i].Description + "_From", "parameter." + _sqlBuilder.Filters[i].Description + "_From" });
+                             dt_filter.Rows.Add(new string[] { _sqlBuilder.Filters[i].Description + "_To", "parameter." + _sqlBuilder.Filters[i].Description + "_To" });
+                         }
+                         //a.dt_Filter = dt_filter;
+
+                         DataTable dt_param = new DataTable();
+                         DataColumn[] cols = new DataColumn[] { new DataColumn("Code")
+                             , new DataColumn("_Name")};
+                         dt_param.Columns.AddRange(cols);
+                         dt_param.TableName = "params";
+
+                         dt_param.Rows.Add("Code", "Code");
+                         dt_param.Rows.Add("Description", "Description");
+                         dt_param.Rows.Add("ValueFrom", "ValueFrom");
+                         dt_param.Rows.Add("ValueTo", "ValueTo");
+                         dt_param.Rows.Add("IsNot", "IsNot");
+                         dt_param.Rows.Add("Operate", "Operate");
+
+                         #endregion Parameter
+                         #region Field
+                         DataTable dt_list = new DataTable();
+                         if (_sqlBuilder.SelectedNodes.Count > 0)
+                         {
+                             //CommoControl commo = new CommoControl();
+                             //string connnectString = commo.CreateConnectString(Properties.Settings.Default.Server
+                             //         , Properties.Settings.Default.User
+                             //         , Properties.Settings.Default.Pass
+                             //         , Properties.Settings.Default.DBName);
+                             DataTable rs = _sqlBuilder.BuildDataTableStruct(txt_sql.Text, _strConnectDes);
+
+                             //a.THEME = this.THEME;
+                             dt_list.TableName = "data";
+                             dt_list.Columns.Add("_Name");
+                             dt_list.Columns.Add("Code");
+
+                             foreach (DataColumn colum in rs.Columns)
+                             {
+                                 string desc = colum.ColumnName;
+                                 foreach (Node node in _sqlBuilder.SelectedNodes)
+                                 {
+                                     if (node.MyCode == colum.ColumnName)
+                                     {
+                                         desc = node.Description;
+                                         break;
+                                     }
+                                 }
+                                 dt_list.Rows.Add(new string[] { desc, colum.ColumnName });
+                             }
 
 
-                }
-                else
-                {
-
-                    //a.THEME = this.ThemeName;
-
-                    dt_list.Columns.Add("Name");
-                    dt_list.Columns.Add("Code");
+                             //a.dt_list = dt;
 
 
-                    ArrayList arr = GetFieldName();
-                    if (arr.Count > 0)
-                    {
+                         }
+                         else
+                         {
 
-                        for (int i = 0; i < arr.Count; i++)
-                        {
-                            dt_list.Rows.Add(new string[] { arr[i].ToString(), arr[i].ToString() });
-                        }
-                        //a.dt_list = dt;
+                             //a.THEME = this.ThemeName;
+
+                             dt_list.Columns.Add("_Name");
+                             dt_list.Columns.Add("Code");
 
 
-                    }
+                             ArrayList arr = GetFieldName();
+                             if (arr.Count > 0)
+                             {
 
-                }
-                #endregion Field
-                TVCDesigner.MainForm frm = new TVCDesigner.MainForm(dt_list, dt_filter, dt_param);
+                                 for (int i = 0; i < arr.Count; i++)
+                                 {
+                                     dt_list.Rows.Add(new string[] { arr[i].ToString(), arr[i].ToString() });
+                                 }
+                                 //a.dt_list = dt;
 
+
+                             }
+
+                         }
+                         #endregion Field
+                         */
+                TVCDesigner.MainForm frm = new TVCDesigner.MainForm();//dt_list, dt_filter, dt_param
+                frm.LoadExcelConfig(xlsConfig);
                 //frm.BringToFront();
 
                 frm.Show();
@@ -1301,6 +1359,12 @@ namespace dCube
                     }
                     if (sErr == "")
                     {
+                        string filename = _config.DIR[0].TMP + txtqd_id.Text.Trim() + ".template" + ReportGenerator.Ext;
+                        if (File.Exists(txtTmp.Text))
+                            filename = txtTmp.Text;
+
+                        try { if (File.Exists(filename)) File.Delete(filename); }
+                        catch { }
                         DeleteTemplateToDB();
                     }
                     lb_Err.Text = sErr;
@@ -1738,7 +1802,7 @@ namespace dCube
                     {
                         bool flag = false;
                         foreach (Filter f in _sqlBuilder.Filters)
-                            if (x.MyCode == f.Code)
+                            if (x.MyCode == f.Node.MyCode)
                             {
                                 flag = true;
                                 break;
@@ -1787,7 +1851,7 @@ namespace dCube
             if (formular.Contains("USER TABLE"))
             {
                 //Excel._Worksheet sheet = (Excel._Worksheet)_xlsApp.ActiveWorkbook.ActiveSheet;
-                //string vParamsString = Regex.Match(formular, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)").Value.ToString();
+                //string vParamsString = Regex.Match(formular, @"\" +  /* TRANSINFO: .NET Equivalent of Microsoft.VisualBasic NameSpace */ System.Convert.ToChar(34) + @"\,.+?\)")._Value.ToString();
 
                 //// fill to parameter Array
                 //int i = 0, n = 0;
@@ -1806,13 +1870,13 @@ namespace dCube
                 //            i = i + 1;
                 //            if (i == 1)
                 //            {
-                //                _sqlBuilder.Pos = p.Value.ToString().Replace(",", string.Empty);
+                //                _sqlBuilder._Pos = p._Value.ToString().Replace(",", string.Empty);
 
                 //            }
                 //            else
                 //            {
 
-                //                string address = p.Value.ToString().Replace(",", string.Empty);
+                //                string address = p._Value.ToString().Replace(",", string.Empty);
                 //                string value = "";
                 //                try
                 //                {
@@ -1822,7 +1886,7 @@ namespace dCube
                 //                catch
                 //                {
                 //                }
-                //                //vParameter[i - 1] = p.Value.ToString().Replace(",", string.Empty);
+                //                //vParameter[i - 1] = p._Value.ToString().Replace(",", string.Empty);
                 //            }
 
                 //        }
@@ -2797,18 +2861,18 @@ namespace dCube
             }
             else lb_Err.Text = "Required Database!";
 
-            if (txtCommand.Text == "QDS")
-            {
-                try
-                {
-                    Form1 frm = new Form1(_config);
-                    frm.Show();
-                }
-                catch (Exception ex)
-                {
-                    lb_Err.Text = ex.Message;
-                }
-            }
+            //if (txtCommand.Text == "QDS")
+            //{
+            //    try
+            //    {
+            //        Form1 frm = new Form1(_config);
+            //        frm.Show();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        lb_Err.Text = ex.Message;
+            //    }
+            //}
         }
 
         private void btnChartPropety_Click(object sender, EventArgs e)
@@ -2856,7 +2920,7 @@ namespace dCube
                             try
                             {
                                 //function = XmlEncoder.Decode(function);
-                                QDAddinDrillDown frm = new QDAddinDrillDown("A1", null, Base64ToString(arry[1].Replace("tag=", "")), _strConnectDes, _user);
+                                QDAddinDrillDown frm = new QDAddinDrillDown(_config, "A1", null, Base64ToString(arry[1].Replace("tag=", "")), _strConnectDes, _user);
                                 frm.Config = _config;
                                 frm.Show(this);
                             }
@@ -3344,7 +3408,6 @@ namespace dCube
         {
             LIST_TEMPLATEControl ctr = new LIST_TEMPLATEControl();
             sErr = ctr.Delete(_dtb, txtqd_id.Text);
-
         }
 
         private void UpdateTemplateToDB()
@@ -3382,6 +3445,46 @@ namespace dCube
             _sqlBuilder.Filters.Clear();
             _sqlBuilder.SelectedNodes.Clear();
             LoadTree();
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            BindingSource bs = ((BindingSource)dgvSelectNodes.DataSource);
+            int position = bs.Position;
+            if (position == 0) return;  // already at top
+
+            bs.RaiseListChangedEvents = false;
+
+            QueryBuilder.Node current = (QueryBuilder.Node)bs.Current;
+            bs.Remove(current);
+
+            position--;
+
+            bs.Insert(position, current);
+            bs.Position = position;
+
+            bs.RaiseListChangedEvents = true;
+            bs.ResetBindings(false);
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            BindingSource bs = ((BindingSource)dgvSelectNodes.DataSource);
+            int position = bs.Position;
+            if (position == bs.Count - 1) return;  // already at bottom
+
+            bs.RaiseListChangedEvents = false;
+
+            QueryBuilder.Node current = (QueryBuilder.Node)bs.Current;
+            bs.Remove(current);
+
+            position++;
+
+            bs.Insert(position, current);
+            bs.Position = position;
+
+            bs.RaiseListChangedEvents = true;
+            bs.ResetBindings(false);
         }
 
 

@@ -213,7 +213,7 @@ namespace dCube
             this.grbSort1.Size = new System.Drawing.Size(296, 64);
             this.grbSort1.TabIndex = 16;
             this.grbSort1.TabStop = false;
-            this.grbSort1.Text = "Sort Items By";
+            this.grbSort1.Text = "_Sort Items By";
             // 
             // cboColumn0
             // 
@@ -305,7 +305,7 @@ namespace dCube
             this.MinimizeBox = false;
             this.Name = "frmSort";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sort";
+            this.Text = "_Sort";
             this.grbBackground.ResumeLayout(false);
             this.grbSort4.ResumeLayout(false);
             this.grbSort2.ResumeLayout(false);

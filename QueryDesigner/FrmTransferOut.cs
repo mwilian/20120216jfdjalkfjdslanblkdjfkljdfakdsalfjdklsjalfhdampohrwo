@@ -92,8 +92,11 @@ namespace dCube
             sfd.DefaultExt = "xml";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-
-                dtEnd.WriteXml(sfd.FileName);
+                //if (_type != "QDADD")
+                //{
+                //}
+                //else
+                    dtEnd.WriteXml(sfd.FileName);
             }
             Close();
         }

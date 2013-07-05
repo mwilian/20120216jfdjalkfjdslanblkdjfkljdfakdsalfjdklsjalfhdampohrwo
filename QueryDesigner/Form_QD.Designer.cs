@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_QD));
-            this.sqlbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.twSchema = new System.Windows.Forms.TreeView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -50,6 +49,8 @@
             this.nodeAgregate = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nodeSort = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btUserFunc = new System.Windows.Forms.Button();
@@ -172,7 +173,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.IsNotbindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.sqlbindingSource)).BeginInit();
+            this.sqlbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -212,11 +213,8 @@
             this.tabChart.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IsNotbindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sqlbindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // sqlbindingSource
-            // 
-            this.sqlbindingSource.DataSource = typeof(QueryBuilder.SQLBuilder);
             // 
             // splitContainer1
             // 
@@ -365,6 +363,7 @@
             resources.ApplyResources(this.nodeDescription, "nodeDescription");
             this.nodeDescription.Name = "nodeDescription";
             this.nodeDescription.ReadOnly = true;
+            this.nodeDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // nodeMyFamily
             // 
@@ -372,6 +371,7 @@
             resources.ApplyResources(this.nodeMyFamily, "nodeMyFamily");
             this.nodeMyFamily.Name = "nodeMyFamily";
             this.nodeMyFamily.ReadOnly = true;
+            this.nodeMyFamily.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // nodeAgregate
             // 
@@ -381,7 +381,7 @@
             // 
             // nodeSort
             // 
-            this.nodeSort.DataPropertyName = "Sort";
+            this.nodeSort.DataPropertyName = "_Sort";
             resources.ApplyResources(this.nodeSort, "nodeSort");
             this.nodeSort.Items.AddRange(new object[] {
             "",
@@ -392,11 +392,29 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.btnUp);
+            this.panel4.Controls.Add(this.btnDown);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.btUserFunc);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
+            // 
+            // btnUp
+            // 
+            resources.ApplyResources(this.btnUp, "btnUp");
+            this.btnUp.Image = global::dCube.Properties.Resources.up;
+            this.btnUp.Name = "btnUp";
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnDown
+            // 
+            resources.ApplyResources(this.btnDown, "btnDown");
+            this.btnDown.Image = global::dCube.Properties.Resources.down;
+            this.btnDown.Name = "btnDown";
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // pictureBox2
             // 
@@ -1322,6 +1340,10 @@
             this.printDialog1.Document = this.gridEXPrintDocument1;
             this.printDialog1.UseEXDialog = true;
             // 
+            // sqlbindingSource
+            // 
+            this.sqlbindingSource.DataSource = typeof(QueryBuilder.SQLBuilder);
+            // 
             // Form_QD
             // 
             resources.ApplyResources(this, "$this");
@@ -1338,7 +1360,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_QD_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form_QD_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.sqlbindingSource)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
@@ -1385,6 +1406,7 @@
             this.tabChart.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.IsNotbindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sqlbindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1530,6 +1552,8 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Operate;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilterFrom;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilterTo;
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodeDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn nodeMyFamily;
         private System.Windows.Forms.DataGridViewComboBoxColumn nodeAgregate;

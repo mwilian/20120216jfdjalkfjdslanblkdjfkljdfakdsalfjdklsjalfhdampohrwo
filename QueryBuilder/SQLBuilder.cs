@@ -993,6 +993,7 @@ namespace QueryBuilder
         public static SQLBuilder LoadSQLBuilderFromDataBase(SQLBuilder kq, string qd_id, string database, string table)
         {
             string sErr = "";
+            kq.Filters.Clear();
             CoreQD_SCHEMAControl schCtr = new CoreQD_SCHEMAControl();
             if (table != "")
                 kq.Table = table.Trim();
@@ -1157,7 +1158,6 @@ namespace QueryBuilder
                     if (Regex.IsMatch(x.Code, @"^@"))
                         query = query.Replace(x.Code, x.FilterFrom);
                 }
-
             }
             if (_SQLDebugMode)
             {
@@ -1242,10 +1242,24 @@ namespace QueryBuilder
             string query = BuildSQLEx(sql_text);
             OleDbConnection connection = new OleDbConnection(connectString);
             OleDbCommand adapter = new OleDbCommand(query, connection);
+            int timeout = 0;
             object result = null;
             try
             {
                 connection.Open();
+                string[] arr = _strConnectDes.Split(';');
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    string[] arrP = arr[i].Split('=');
+                    if (arrP.Length == 2)
+                    {
+                        if (arrP[0] == "General Timeout")
+                        {
+                            timeout = Convert.ToInt32(arrP[1]);
+                        }
+                    }
+                }
+                adapter.CommandTimeout = timeout;
                 result = adapter.ExecuteScalar();
             }
             catch (Exception ex)
@@ -1266,7 +1280,7 @@ namespace QueryBuilder
             //[oledb]
             //; Everything after this line is an OLE DB initstring
             //Provider=SQLNCLI.1;Persist Security Info=False;User ID=sa;Initial Catalog=TVC_IC;Data Source=.
-
+            int timeout = 0;
             using (OleDbConnection connection = new OleDbConnection(_strConnectDes))
             {
                 OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
@@ -1274,6 +1288,19 @@ namespace QueryBuilder
                 if (query != "")
                     try
                     {
+                        string[] arr = _strConnectDes.Split(';');
+                        for (int i = 0; i < arr.Length; i++)
+                        {
+                            string[] arrP = arr[i].Split('=');
+                            if (arrP.Length == 2)
+                            {
+                                if (arrP[0] == "General Timeout")
+                                {
+                                    timeout = Convert.ToInt32(arrP[1]);
+                                }
+                            }
+                        }
+                        adapter.SelectCommand.CommandTimeout = timeout;
                         adapter.Fill(dSet);
                         dt = dSet.Tables[0];
                     }

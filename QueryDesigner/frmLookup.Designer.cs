@@ -93,7 +93,7 @@
             this.Controls.Add(this.dgvLookup);
             this.Controls.Add(this.panel1);
             this.Name = "frmLookup";
-            this.Text = "Name";
+            this.Text = "_Name";
             this.Load += new System.EventHandler(this.frmLookup_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLookup)).EndInit();

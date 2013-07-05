@@ -31,105 +31,88 @@ namespace dCube
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmImport));
-            Janus.Windows.GridEX.GridEXLayout ddlImport_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.ofdImport = new System.Windows.Forms.OpenFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dgvList = new Janus.Windows.GridEX.GridEX();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnBrowse = new Button();
+            this.textBox1 = new TextBox();
+            this.btnImport = new Button();
+            this.ofdImport = new OpenFileDialog();
+            this.btnPreview = new Button();
+            this.imageList1 = new ImageList(this.components);
+            this.label1 = new Label();
             this.ddlImport = new ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new CheckBox();
+            this.checkBox2 = new CheckBox();
             this.cboConvertor = new ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lbErr = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnGroup = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.label2 = new Label();
+            this.statusStrip1 = new StatusStrip();
+            this.lbErr = new ToolStripStatusLabel();
+            this.btnGroup = new Button();
+            this.groupBox1 = new GroupBox();
+            this.btnClear = new Button();
+            this.btnAdd = new Button();
+            this.tcMain = new TabControl();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnBrowse
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(997, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Browse";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBrowse.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            this.btnBrowse.Location = new System.Drawing.Point(925, 46);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 0;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(0, 32);
+            this.textBox1.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
+                        | AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(6, 46);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(991, 48);
+            this.textBox1.Size = new System.Drawing.Size(913, 48);
             this.textBox1.TabIndex = 1;
             // 
             // btnImport
             // 
-            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnImport.Anchor = AnchorStyles.Top;
             this.btnImport.Enabled = false;
-            this.btnImport.Location = new System.Drawing.Point(538, 86);
+            this.btnImport.Location = new System.Drawing.Point(168, 17);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 23);
             this.btnImport.TabIndex = 2;
             this.btnImport.Text = "Import >>";
             this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.button2_Click);
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // ofdImport
             // 
             this.ofdImport.Filter = "Excel File (*.xls)|*.xls";
             // 
-            // button3
+            // btnPreview
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Location = new System.Drawing.Point(376, 86);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Preview >>";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // dgvList
-            // 
-            this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvList.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvList.GroupTotals = Janus.Windows.GridEX.GroupTotals.Always;
-            this.dgvList.ImageList = this.imageList1;
-            this.dgvList.Location = new System.Drawing.Point(0, 115);
-            this.dgvList.Name = "dgvList";
-            this.dgvList.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom;
-            this.dgvList.Office2007CustomColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(225)))), ((int)(((byte)(208)))));
-            this.dgvList.Size = new System.Drawing.Size(1075, 360);
-            this.dgvList.TabIndex = 5;
-            this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007;
-            this.dgvList.LoadingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.dgvList_LoadingRow);
+            this.btnPreview.Anchor = AnchorStyles.Top;
+            this.btnPreview.Location = new System.Drawing.Point(6, 17);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 4;
+            this.btnPreview.Text = "Preview >>";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // imageList1
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.ImageStream = ((ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "1307436862_alert.png");
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(5, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 6;
@@ -137,23 +120,22 @@ namespace dCube
             // 
             // ddlImport
             // 
-            ddlImport_DesignTimeLayout.LayoutString = resources.GetString("ddlImport_DesignTimeLayout.LayoutString");
             this.ddlImport.DisplayMember = "SCHEMA_ID";
-            this.ddlImport.Location = new System.Drawing.Point(85, 6);
+            this.ddlImport.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.ddlImport.Location = new System.Drawing.Point(78, 100);
             this.ddlImport.Name = "ddlImport";
-            this.ddlImport.SelectedIndex = -1;
-            this.ddlImport.SelectedItem = null;
-            this.ddlImport.Size = new System.Drawing.Size(253, 20);
+            this.ddlImport.Size = new System.Drawing.Size(179, 21);
             this.ddlImport.TabIndex = 7;
             this.ddlImport.ValueMember = "SCHEMA_ID";
-            this.ddlImport.SelectedValueChanged += new System.EventHandler(this.multiColumnCombo1_ValueChanged);
+            this.ddlImport.SelectedValueChanged += new System.EventHandler(this.dllImport_ValueChanged);
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(366, 8);
+            this.checkBox1.CheckState = CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(518, 102);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(52, 17);
             this.checkBox1.TabIndex = 8;
@@ -162,25 +144,32 @@ namespace dCube
             // 
             // checkBox2
             // 
+            this.checkBox2.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(446, 8);
+            this.checkBox2.Location = new System.Drawing.Point(598, 102);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(61, 17);
             this.checkBox2.TabIndex = 9;
             this.checkBox2.Text = "Update";
             this.checkBox2.UseVisualStyleBackColor = true;
-            
-            cboConvertor.Items.AddRange(new object[] { "Unicode", "VNI", "TVCN3" });
-            this.cboConvertor.Location = new System.Drawing.Point(610, 6);
+            // 
+            // cboConvertor
+            // 
+            this.cboConvertor.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            this.cboConvertor.Items.AddRange(new object[] {
+            "Unicode",
+            "VNI",
+            "TVCN3"});
+            this.cboConvertor.Location = new System.Drawing.Point(762, 100);
             this.cboConvertor.Name = "cboConvertor";
-            this.cboConvertor.Size = new System.Drawing.Size(157, 20);
+            this.cboConvertor.Size = new System.Drawing.Size(157, 21);
             this.cboConvertor.TabIndex = 10;
             this.cboConvertor.Text = "None";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(535, 10);
+            this.label2.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            this.label2.Location = new System.Drawing.Point(687, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 11;
@@ -188,7 +177,7 @@ namespace dCube
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip1.Items.AddRange(new ToolStripItem[] {
             this.lbErr});
             this.statusStrip1.Location = new System.Drawing.Point(0, 486);
             this.statusStrip1.Name = "statusStrip1";
@@ -208,9 +197,9 @@ namespace dCube
             // 
             // btnGroup
             // 
-            this.btnGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGroup.Anchor = AnchorStyles.Top;
             this.btnGroup.Enabled = false;
-            this.btnGroup.Location = new System.Drawing.Point(457, 86);
+            this.btnGroup.Location = new System.Drawing.Point(87, 17);
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.Size = new System.Drawing.Size(75, 23);
             this.btnGroup.TabIndex = 13;
@@ -218,30 +207,72 @@ namespace dCube
             this.btnGroup.UseVisualStyleBackColor = true;
             this.btnGroup.Click += new System.EventHandler(this.btnGroup_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Controls.Add(this.btnBrowse);
+            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnGroup);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.btnImport);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.btnPreview);
+            this.groupBox1.Controls.Add(this.cboConvertor);
+            this.groupBox1.Controls.Add(this.ddlImport);
+            this.groupBox1.Controls.Add(this.checkBox2);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Dock = DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1072, 129);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "General";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(344, 98);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 15;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(263, 98);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 14;
+            this.btnAdd.Text = "Add >>";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // tcMain
+            // 
+            this.tcMain.Dock = DockStyle.Fill;
+            this.tcMain.Location = new System.Drawing.Point(0, 129);
+            this.tcMain.Name = "tcMain";
+            this.tcMain.SelectedIndex = 0;
+            this.tcMain.Size = new System.Drawing.Size(1072, 357);
+            this.tcMain.TabIndex = 15;
+            // 
             // frmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1072, 508);
-            this.Controls.Add(this.btnGroup);
+            this.Controls.Add(this.tcMain);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cboConvertor);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.ddlImport);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvList);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Name = "frmImport";
             this.Text = "Import";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,22 +280,25 @@ namespace dCube
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.OpenFileDialog ofdImport;
-        private System.Windows.Forms.Button button3;
-        private Janus.Windows.GridEX.GridEX dgvList;
-        private System.Windows.Forms.Label label1;
+        private Button btnBrowse;
+        private TextBox textBox1;
+        private Button btnImport;
+        private OpenFileDialog ofdImport;
+        private Button btnPreview;
+        private Label label1;
         private ComboBox ddlImport;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.ImageList imageList1;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private ImageList imageList1;
         private ComboBox cboConvertor;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lbErr;
-        private System.Windows.Forms.Button btnGroup;
+        private Label label2;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel lbErr;
+        private Button btnGroup;
+        private GroupBox groupBox1;
+        private Button btnAdd;
+        private Button btnClear;
+        private TabControl tcMain;
     }
 }
 

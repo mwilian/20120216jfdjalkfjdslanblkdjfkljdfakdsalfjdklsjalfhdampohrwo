@@ -50,7 +50,7 @@ namespace dCube.Configuration
                     if (reader.NodeType == XmlNodeType.Element & reader.Name == "ITEM")
                     {
                         aliascode = reader.GetAttribute("Code");
-                        origin = reader.GetAttribute("Value");
+                        origin = reader.GetAttribute("_Value");
                         _dictionary.Add(aliascode, origin);
                     }
                 }
@@ -70,7 +70,7 @@ namespace dCube.Configuration
         }
         public void GetDataTableDictionary(string filename)
         {
-            DataColumn[] col = new DataColumn[] { new DataColumn("Code"), new DataColumn("Value") };
+            DataColumn[] col = new DataColumn[] { new DataColumn("Code"), new DataColumn("_Value") };
             _dtDictionary.Columns.Clear();
             _dtDictionary.Rows.Clear();
             _dtDictionary.Columns.AddRange(col);
@@ -88,7 +88,7 @@ namespace dCube.Configuration
                     {
                         DataRow row = _dtDictionary.NewRow();
                         row["Code"] = reader.GetAttribute("Code");
-                        row["Value"] = reader.GetAttribute("Value");
+                        row["_Value"] = reader.GetAttribute("_Value");
 
                         _dtDictionary.Rows.Add(row);
                     }

@@ -44,7 +44,7 @@
     <SuiteName>Diamond</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>44</ApplicationRevision>
+    <ApplicationRevision>65</ApplicationRevision>
     <ApplicationVersion>3.4.7.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -61,6 +61,7 @@
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -98,10 +99,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\FlexCelWinforms.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral, PublicKeyToken=3c8e198007f9ecf8">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Interop.Excel">
+      <HintPath>C:\Program Files\Add-in Express\Add-in Express for .NET\Redistributables\Interop Assemblies\VersionNeutral\Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>Interops\Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v4, Version=4.0.14.0, Culture=neutral, PublicKeyToken=21d5517571b185bf">
       <Private>True</Private>
@@ -139,7 +139,6 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -147,6 +146,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="clsChartProperty.cs" />
     <Compile Include="clsListValueTT_XLB_EB.cs" />
+    <Compile Include="clsTransfer.cs" />
     <Compile Include="CmdManager.cs" />
     <Compile Include="Configuration\clsConfigurarion.cs" />
     <Compile Include="Configuration\clsControlsInForm.cs" />
@@ -159,12 +159,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsStruct.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLoginEx.cs">
       <SubType>Form</SubType>
@@ -496,9 +490,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="Resources\up.png" />
     <EmbeddedResource Include="frmLoginEx.resx">
       <DependentUpon>frmLoginEx.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -748,7 +740,6 @@
     <Content Include="Configuration\QDConfig.tvc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="dCube_TemporaryKey.pfx" />
     <None Include="dsStruct.xsc">
       <DependentUpon>dsStruct.xsd</DependentUpon>
     </None>
@@ -871,46 +862,13 @@
     <Content Include="FusionCharts\Column3D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="FusionCharts\Data.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="FusionCharts\Doughnut2D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FusionCharts\Doughnut3D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="FusionCharts\FCExporter.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\firebug-lite.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\FusionCharts.HC.Charts.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\FusionCharts.HC.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\FusionCharts.jqueryplugin.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="FusionCharts\FusionCharts.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\FusionChartsExportComponent.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\jquery.min.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\Line.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\Marimekko.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\MSArea.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FusionCharts\MSBar2D.swf">
@@ -934,9 +892,6 @@
     <Content Include="FusionCharts\MSCombi2D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="FusionCharts\MSCombi3D.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="FusionCharts\MSCombiDY2D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -947,12 +902,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FusionCharts\MSStackedColumn2DLineDY.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\Pareto2D.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\Pareto3D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FusionCharts\Pie2D.swf">
@@ -997,33 +946,22 @@
     <Content Include="FusionCharts\StackedColumn2D.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="FusionCharts\StackedColumn2DLine.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="FusionCharts\StackedColumn3D.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FusionCharts\StackedColumn3DLine.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="FusionCharts\StackedColumn3DLineDY.swf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="FusionCharts\ZoomLine.swf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Interops\Interop.Excel.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Interops\Microsoft.Vbe.Interop.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Interops\Interop.ADODB.dll" />
+    <Content Include="Interops\Interop.Excel.dll" />
+    <Content Include="Interops\Interop.VBIDE.dll" />
     <Content Include="Resources\1300327616_ParameterReview.png" />
     <None Include="Resources\1328261867_filter_add.png" />
     <None Include="Resources\1328262186_database_table.png" />
     <None Include="Resources\1331104457_gnome-session-reboot.png" />
     <None Include="Resources\1331113101_addressbook.png" />
     <None Include="Resources\1333965527_Microsoft Office 2007 Excel.png" />
+    <None Include="Resources\down.png" />
     <Content Include="Resources\lightbox_loading.gif" />
     <Content Include="-.template.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1081,11 +1019,13 @@
     </Content>
     <None Include="Resources\run-48x48.png" />
     <None Include="Resources\app-search-32x32.png" />
-    <Content Include="NODATA.xls">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -1109,7 +1049,7 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>

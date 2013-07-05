@@ -620,6 +620,11 @@ namespace QueryBuilder
             result = doc.InnerXml;
             return result;
         }
+        public static string Base64ToString(string b64)
+        {
+            byte[] b = Convert.FromBase64String(b64);
+            return (System.Text.Encoding.UTF8.GetString(b));
+        }
         private static string GetJoinSchema(string dtb)
         {
             string sErr = "";
@@ -632,11 +637,16 @@ namespace QueryBuilder
                 foreach (DataRow row in value.Rows)
                 {
                     if (!row[0].ToString().Contains("schema"))
-                        tmp += row[0].ToString();
+                    {
+                        if (row[0].ToString()[0] == '<')
+                            tmp += row[0].ToString();
+                        else
+                            tmp += Base64ToString(row[0].ToString());
+                    }
                 }
                 //return result;
             }
-
+            //tmp = Base64ToString(tmp);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(result);
             XmlElement docele = doc.DocumentElement;

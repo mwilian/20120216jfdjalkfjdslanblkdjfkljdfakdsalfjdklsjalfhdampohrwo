@@ -338,7 +338,7 @@ namespace dCube
                 arguments.Xls.SetComment(DescCell.Top, DescCell.Left, formular);
                 arguments.Xls.SetCellValue(DescCell.Top, DescCell.Left, result);
                 //TPoint x = new TPoint(DescCell.Top, DescCell.Left);
-                //if (result != DBNull.Value)
+                //if (result != DBNull._Value)
                 //{
                 //    clsListValueTT_XLB_EB.Values.Add(x, result);
                 //    //arguments.Xls.SetCellValue(DescCell.Top, DescCell.Left, result.ToString());
@@ -891,7 +891,7 @@ namespace dCube
                         try
                         {
                             string formular = e.Parameters.ToString(CultureInfo.InvariantCulture);
-                            //foreach (QueryBuilder.Filter x in _sqlBuilder.Filters)
+                            //foreach (QueryBuilder._Filter x in _sqlBuilder.Filters)
                             //{
                             //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_FROM>", x.ValueFrom);
                             //    formular = formular.Replace("<#PARAMETER." + x.Code.ToUpper() + "_TO>", x.ValueTo);
@@ -1203,7 +1203,36 @@ namespace dCube
                 using (FlexCelHtmlExport html = new FlexCelHtmlExport())
                 {
                     html.Workbook = _xlsFile;
-                    //html.HtmlFileFormat = THtmlFileFormat.MHtml;
+                    html.ExtraInfo.HeadStart = new string[] { @"<script src='Resources.Gizmox.WebGUI.Forms.Skins.CommonSkin.Interfaces.js.wgx' type='text/javascript'></script>
+<script language='javascript' type='text/javascript'>
+function getVWGcontrolID() {
+                            var objCurNode = this.window;
+
+                            if (objCurNode.frames) {
+                                if (objCurNode.frames.frameElement) {
+                                    if (objCurNode.frames.frameElement.id) {
+                                        var strID = objCurNode.frames.frameElement.id;
+                                        if (strID.substring(0, 4) == 'TRG_')
+                                            return strID.substring(4);
+                                    }
+                                }
+                            }
+
+                            return 'undefined';
+                        }
+function tavico_link(cmd,args) {
+    var strID = getVWGcontrolID();
+    if (strID != 'undefined') {
+        var objEvent = VWG.Events.CreateEvent(strID, 'TaViCo_Link');
+        VWG.Events.SetEventAttribute(objEvent, cmd, args);
+        VWG.Events.RaiseEvents();
+    }
+    else {
+        document.location = args;
+    }
+ }
+</script>
+<script language='JavaScript' src='/FusionCharts/FusionCharts.js'></script>"};
                     html.AllowOverwritingFiles = true;
                     html.SavedImagesFormat = THtmlImageFormat.Png;
                     //html.HtmlVersion = THtmlVersion.XHTML_10;
@@ -1239,7 +1268,36 @@ namespace dCube
                 using (FlexCelHtmlExport html = new FlexCelHtmlExport())
                 {
                     html.Workbook = _xlsFile;
-                    html.Workbook = _xlsFile;
+                    html.ExtraInfo.HeadStart = new string[] { @"<script src='Resources.Gizmox.WebGUI.Forms.Skins.CommonSkin.Interfaces.js.wgx' type='text/javascript'></script>
+<script language='javascript' type='text/javascript'>
+function getVWGcontrolID() {
+                            var objCurNode = this.window;
+
+                            if (objCurNode.frames) {
+                                if (objCurNode.frames.frameElement) {
+                                    if (objCurNode.frames.frameElement.id) {
+                                        var strID = objCurNode.frames.frameElement.id;
+                                        if (strID.substring(0, 4) == 'TRG_')
+                                            return strID.substring(4);
+                                    }
+                                }
+                            }
+
+                            return 'undefined';
+                        }
+function tavico_link(cmd,args) {
+    var strID = getVWGcontrolID();
+    if (strID != 'undefined') {
+        var objEvent = VWG.Events.CreateEvent(strID, 'TaViCo_Link');
+        VWG.Events.SetEventAttribute(objEvent, cmd, args);
+        VWG.Events.RaiseEvents();
+    }
+    else {
+        document.location = args;
+    }
+ }
+</script>
+<script language='JavaScript' src='/FusionCharts/FusionCharts.js'></script>"};
                     //html.HtmlFileFormat = THtmlFileFormat.MHtml;
                     html.AllowOverwritingFiles = true;
                     html.SavedImagesFormat = THtmlImageFormat.Png;
@@ -1267,7 +1325,36 @@ namespace dCube
                     using (MemoryStream ms = new MemoryStream())
                     {
                         html.Workbook = _xlsFile;
-                        html.Workbook = _xlsFile;
+                        html.ExtraInfo.HeadStart = new string[] { @"<script src='Resources.Gizmox.WebGUI.Forms.Skins.CommonSkin.Interfaces.js.wgx' type='text/javascript'></script>
+<script language='javascript' type='text/javascript'>
+function getVWGcontrolID() {
+                            var objCurNode = this.window;
+
+                            if (objCurNode.frames) {
+                                if (objCurNode.frames.frameElement) {
+                                    if (objCurNode.frames.frameElement.id) {
+                                        var strID = objCurNode.frames.frameElement.id;
+                                        if (strID.substring(0, 4) == 'TRG_')
+                                            return strID.substring(4);
+                                    }
+                                }
+                            }
+
+                            return 'undefined';
+                        }
+function tavico_link(cmd,args) {
+    var strID = getVWGcontrolID();
+    if (strID != 'undefined') {
+        var objEvent = VWG.Events.CreateEvent(strID, 'TaViCo_Link');
+        VWG.Events.SetEventAttribute(objEvent, cmd, args);
+        VWG.Events.RaiseEvents();
+    }
+    else {
+        document.location = args;
+    }
+ }
+</script>
+<script language='JavaScript' src='/FusionCharts/FusionCharts.js'></script>"};
                         //html.HtmlFileFormat = THtmlFileFormat.MHtml;
                         html.AllowOverwritingFiles = true;
                         html.SavedImagesFormat = THtmlImageFormat.Png;
@@ -1296,8 +1383,36 @@ namespace dCube
                     html.Workbook = xlsFile;
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        //if (File.Exists(filename))
-                        //    File.Delete(filename);
+                        html.ExtraInfo.HeadStart = new string[] { @"<script src='Resources.Gizmox.WebGUI.Forms.Skins.CommonSkin.Interfaces.js.wgx' type='text/javascript'></script>
+<script language='javascript' type='text/javascript'>
+function getVWGcontrolID() {
+                            var objCurNode = this.window;
+
+                            if (objCurNode.frames) {
+                                if (objCurNode.frames.frameElement) {
+                                    if (objCurNode.frames.frameElement.id) {
+                                        var strID = objCurNode.frames.frameElement.id;
+                                        if (strID.substring(0, 4) == 'TRG_')
+                                            return strID.substring(4);
+                                    }
+                                }
+                            }
+
+                            return 'undefined';
+                        }
+function tavico_link(cmd,args) {
+    var strID = getVWGcontrolID();
+    if (strID != 'undefined') {
+        var objEvent = VWG.Events.CreateEvent(strID, 'TaViCo_Link');
+        VWG.Events.SetEventAttribute(objEvent, cmd, args);
+        VWG.Events.RaiseEvents();
+    }
+    else {
+        document.location = args;
+    }
+ }
+</script>
+<script language='JavaScript' src='/FusionCharts/FusionCharts.js'></script>"};
                         html.Export(file, "", null);
                         //file.ToString();
                     }

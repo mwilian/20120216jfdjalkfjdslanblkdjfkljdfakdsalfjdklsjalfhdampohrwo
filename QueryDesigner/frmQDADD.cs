@@ -37,7 +37,7 @@ namespace dCube
             _code = str;
             txtDescription.Text = str;
             txtLookup.Text = str;
-            _data.Tables["field"].Rows.Clear();
+            _data.Tables["_TableName"].Rows.Clear();
             _data.Tables["fromcode"].Rows.Clear();
             Group.Text = str;
 
@@ -70,7 +70,7 @@ namespace dCube
 
             _data = ReadScheme(inf);
             bsFROMCODE.DataSource = _data.Tables["fromcode"];
-            bsField.DataSource = _data.Tables["field"];
+            bsField.DataSource = _data.Tables["_TableName"];
 
 
             //strR = new StringReader(inf.FROM_TEXT);
@@ -102,7 +102,10 @@ namespace dCube
             else
             {
                 XmlDocument xml = new XmlDocument();
-                string strxml = string.Format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>", inf.FROM_TEXT);
+                string content = inf.FROM_TEXT;
+                if (content.Length > 0 && content[0] != '<')
+                    content = Form_QD.Base64ToString(content);
+                string strxml = string.Format("<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>", content);
                 xml.LoadXml(strxml);
                 XmlElement doc = xml.DocumentElement;
                 DataTable dtfrom = ds.Tables["fromcode"];
@@ -116,7 +119,7 @@ namespace dCube
                 }
                 xml.LoadXml(inf.FIELD_TEXT);
                 doc = xml.DocumentElement;
-                DataTable dtfield = ds.Tables["field"];
+                DataTable dtfield = ds.Tables["_TableName"];
                 foreach (XmlElement ele in doc.ChildNodes)
                 {
 
@@ -141,7 +144,7 @@ namespace dCube
             inf.UPDATED = DateTime.Today.Year * 10000 + DateTime.Today.Month * 100 + DateTime.Today.Day;
             //if (inf.FIELD_TEXT != "")
             //{
-            DataTable dtfield = _data.Tables["field"];
+            DataTable dtfield = _data.Tables["_TableName"];
             string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
             string tmp = "";
             string from = "";
@@ -159,7 +162,7 @@ namespace dCube
             from = tmp;
 
             inf.FIELD_TEXT = field;
-            inf.FROM_TEXT = from;
+            inf.FROM_TEXT = Form_QD.StringToBase64(from);
 
             inf.SCHEMA_ID = txtCode.Text;
             inf.SCHEMA_STATUS = ckbUse.Checked ? "Y" : "N";
@@ -174,7 +177,7 @@ namespace dCube
         }
         public static string XmlEncode(string value)
         {
-            return value.Replace("&", "&amp;").Replace("<", "&lt;").Replace("'", "&apos;").Replace(">", "&gt;").Replace("\"", "&quot;");          
+            return value.Replace("&", "&amp;").Replace("<", "&lt;").Replace("'", "&apos;").Replace(">", "&gt;").Replace("\"", "&quot;");
         }
         private void InitConnection()
         {
@@ -191,7 +194,7 @@ namespace dCube
             DataColumn[] colfrom = new DataColumn[] { new DataColumn("fromcode"), new DataColumn("lookup") };
             dtfrom.Columns.AddRange(colfrom);
 
-            DataTable dtfield = new DataTable("field");
+            DataTable dtfield = new DataTable("_TableName");
             DataColumn[] colfield = new DataColumn[] { new DataColumn("node")
             , new DataColumn("table")
             , new DataColumn("name")
@@ -243,21 +246,21 @@ namespace dCube
                         conn.Open();
                         kq = conn.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Columns, new Object[] { null, null, tableName, null });
                         //dgvField.AutoGenerateColumns = true;
-                        _data.Tables["field"].Clear();
+                        _data.Tables["_TableName"].Clear();
                         _data.Tables["fromcode"].Clear();
                         DataRow rowtable = _data.Tables["fromcode"].NewRow();
                         rowtable["fromcode"] = rowtable["lookup"] = tableName;
                         _data.Tables["fromcode"].Rows.Add(rowtable);
                         foreach (DataRow row in kq.Rows)
                         {
-                            DataRow newRow = _data.Tables["field"].NewRow();
+                            DataRow newRow = _data.Tables["_TableName"].NewRow();
                             newRow["table"] = tableName;
                             newRow["node"] = newRow["name"] = row["COLUMN_NAME"];
                             if (row["DATA_TYPE"].ToString() == "135")
                                 newRow["type"] = "D";
                             else if (row["DATA_TYPE"].ToString() == "5")
                                 newRow["type"] = "N";
-                            _data.Tables["field"].Rows.Add(newRow);
+                            _data.Tables["_TableName"].Rows.Add(newRow);
                         }
                         //dgvField.DataSource = kq;
                     }
@@ -290,17 +293,17 @@ namespace dCube
             //            conn.Open();
             //            kq = conn.GetOleDbSchemaTable(System.Data.OleDb.OleDbSchemaGuid.Columns, new Object[] { null, null, tableName, null });
             //            //dgvField.AutoGenerateColumns = true;
-            //            _data.Tables["field"].Clear();
+            //            _data.Tables["_TableName"].Clear();
             //            _data.Tables["fromcode"].Clear();
             //            DataRow rowtable = _data.Tables["fromcode"].NewRow();
             //            rowtable["fromcode"] = rowtable["lookup"] = tableName;
             //            _data.Tables["fromcode"].Rows.Add(rowtable);
             //            foreach (DataRow row in kq.Rows)
             //            {
-            //                DataRow newRow = _data.Tables["field"].NewRow();
+            //                DataRow newRow = _data.Tables["_TableName"].NewRow();
             //                newRow["table"] = tableName;
             //                newRow["node"] = newRow["name"] = row["COLUMN_NAME"];
-            //                _data.Tables["field"].Rows.Add(newRow);
+            //                _data.Tables["_TableName"].Rows.Add(newRow);
             //            }
             //            //dgvField.DataSource = kq;
             //        }
@@ -326,7 +329,7 @@ namespace dCube
             if (frmview.ShowDialog() == DialogResult.OK && frmview.ReturnCode != "")
             {
                 frmRelation frm = new frmRelation();
-                frm.DTOriginal = _data.Tables["field"];
+                frm.DTOriginal = _data.Tables["_TableName"];
                 BUS.LIST_QD_SCHEMAControl ctr = new BUS.LIST_QD_SCHEMAControl();
                 DTO.LIST_QD_SCHEMAInfo inf = ctr.Get(_db, frmview.ReturnCode, ref sErr);
                 if (inf.SCHEMA_ID != "")
@@ -347,7 +350,7 @@ namespace dCube
                         //DataColumn[] colfrom = new DataColumn[] { new DataColumn("fromcode"), new DataColumn("lookup") };
                         //dtfrom.Columns.AddRange(colfrom);
 
-                        //    DataTable dtfield = new DataTable("field");
+                        //    DataTable dtfield = new DataTable("_TableName");
                         //    DataColumn[] colfield = new DataColumn[] { new DataColumn("node")
                         //, new DataColumn("table")
                         //, new DataColumn("name")
@@ -361,12 +364,12 @@ namespace dCube
                         //    //dset.Relations.Add(relation);
                         //    StringReader strR = new StringReader(schema);
                         //    dset.ReadXml(strR);
-                        frm.DTLooup = dset.Tables["field"];
+                        frm.DTLooup = dset.Tables["_TableName"];
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
                             DataTable dtR = frm.Relation;
                             DataRow fromRow = _data.Tables["fromcode"].NewRow();
-                            DataRow fieldRow = _data.Tables["field"].NewRow();
+                            DataRow fieldRow = _data.Tables["_TableName"].NewRow();
                             fieldRow["node"] = frmview.ReturnCode;
                             fieldRow["name"] = frmview.ReturnCode + "Record";
                             fieldRow["type"] = "S";
@@ -385,10 +388,10 @@ namespace dCube
                             _data.Tables["fromcode"].Rows.Add(fromRow);
                             if (dgvField.CurrentRow != null && dgvField.CurrentRow.RowIndex >= 0)
                             {
-                                _data.Tables["field"].Rows.InsertAt(fieldRow, dgvField.CurrentRow.RowIndex);
+                                _data.Tables["_TableName"].Rows.InsertAt(fieldRow, dgvField.CurrentRow.RowIndex);
                             }
                             else
-                                _data.Tables["field"].Rows.Add(fieldRow);
+                                _data.Tables["_TableName"].Rows.Add(fieldRow);
                         }
                     }
                     catch (Exception ex) { lbErr.Text = ex.Message; }
@@ -511,7 +514,7 @@ namespace dCube
             ////DTO.LIST_QD_SCHEMAInfo inf = new DTO.LIST_QD_SCHEMAInfo();
             ////inf = GetDataFromForm(inf);
             //SaveFileDialog sfd = new SaveFileDialog();
-            //sfd.Filter = "XML file(*.xml)|*.xml";
+            //sfd._Filter = "XML file(*.xml)|*.xml";
             //string sErr = "";
             //if (sfd.ShowDialog() == DialogResult.OK)
             //{
@@ -585,10 +588,10 @@ namespace dCube
                 int rowIndex = dgvField.RowPositionFromPoint(p.X, p.Y);
                 if (rowIndex >= 0 && rowIndex < dgvField.RowCount && indexSource != rowIndex)
                 {
-                    DataRow rowmove = _data.Tables["field"].NewRow();
-                    rowmove.ItemArray = _data.Tables["field"].Rows[indexSource].ItemArray;
-                    _data.Tables["field"].Rows.RemoveAt(indexSource);
-                    _data.Tables["field"].Rows.InsertAt(rowmove, rowIndex);
+                    DataRow rowmove = _data.Tables["_TableName"].NewRow();
+                    rowmove.ItemArray = _data.Tables["_TableName"].Rows[indexSource].ItemArray;
+                    _data.Tables["_TableName"].Rows.RemoveAt(indexSource);
+                    _data.Tables["_TableName"].Rows.InsertAt(rowmove, rowIndex);
                 }
             }
         }
@@ -671,7 +674,7 @@ namespace dCube
 
         private void dgvAddRow_Click(object sender, EventArgs e)
         {
-            _data.Tables["field"].Rows.InsertAt(_data.Tables["field"].NewRow(), dgvField.CurrentRow.RowIndex);
+            _data.Tables["_TableName"].Rows.InsertAt(_data.Tables["_TableName"].NewRow(), dgvField.CurrentRow.RowIndex);
         }
 
         private void btnQD_Click(object sender, EventArgs e)
@@ -693,10 +696,13 @@ namespace dCube
                 DTO.LIST_QD_SCHEMAInfo inf = new DTO.LIST_QD_SCHEMAInfo(row);
                 try
                 {
-                    _data.Tables["field"].Rows.Clear();
+                    if (inf.FROM_TEXT[0] == '<')
+                    {
+                    }
+                    _data.Tables["_TableName"].Rows.Clear();
                     _data.Tables["fromcode"].Rows.Clear();
                     _data = ReadScheme(inf);
-                    DataTable dtfield = _data.Tables["field"];
+                    DataTable dtfield = _data.Tables["_TableName"];
                     string field = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><SUN_SCHEMA>{0}</SUN_SCHEMA>";
                     string tmp = "";
                     string from = "";
@@ -709,13 +715,14 @@ namespace dCube
                     tmp = "";
                     foreach (DataRow jrow in dtfrom.Rows)
                     {
-                        tmp += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\"/> ", jrow["fromcode"], jrow["lookup"]);
+
+                        tmp += string.Format("<row fromcode=\"{0}\" lookup=\"{1}\"/> ", jrow["fromcode"], frmQDADD.XmlEncode(jrow["lookup"].ToString()));
                     }
                     from = tmp;
 
                     //result = doc.InnerXml;
                     inf.FIELD_TEXT = field;
-                    inf.FROM_TEXT = from;
+                    inf.FROM_TEXT = Form_QD.StringToBase64(from);
                     ctr.Update(inf);
                 }
                 catch (Exception ex)

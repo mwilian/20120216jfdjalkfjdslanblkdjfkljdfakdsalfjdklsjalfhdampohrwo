@@ -82,5 +82,14 @@ namespace dCube.Properties {
                 this["SQLDebugMode"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        public string connectString {
+            get {
+                return ((string)(this["connectString"]));
+            }
+        }
     }
 }

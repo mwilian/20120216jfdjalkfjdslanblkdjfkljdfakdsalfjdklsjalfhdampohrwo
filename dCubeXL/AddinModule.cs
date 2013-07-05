@@ -9,10 +9,10 @@ using BUS;
 using QueryBuilder;
 using System.Data;
 
-namespace dCubeXL
+namespace dCubeXL1
 {
     /// <summary>
-    ///   Add-in Express Add-in Module
+    /// Add-in Express Add-in Module
     /// </summary>
     [GuidAttribute("6214C6CA-20D4-4219-9E14-535B88699FD0"), ProgId("dCubeXL.AddinModule")]
     public class AddinModule : AddinExpress.MSO.ADXAddinModule
@@ -39,7 +39,6 @@ namespace dCubeXL
         private ADXRibbonButton btnRSetting;
         private ADXRibbonButton btnRDesign;
         private ADXRibbonButton btnRComment;
-        private ADXRibbonButton btnRAnalysis;
         private ADXCommandBarButton btnLogin;
         private ADXRibbonButton adxLogin;
         string _appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase).Replace("file:\\", "");
@@ -48,6 +47,8 @@ namespace dCubeXL
         private ADXRibbonButton adxRibbonButton2;
         private ADXRibbonButton adxRibbonButton3;
         private ADXCommandBarButton btnViewCol;
+        private ADXRibbonButton btbR1Analysis;
+        private ADXCommandBarButton btnAnalysis1;
         string _user = "";
         private void InitDocument()
         {
@@ -125,7 +126,6 @@ namespace dCubeXL
         private ImageList ilMain;
         private ADXCommandBarButton btnDesign;
         private ADXCommandBarButton btnComment;
-        private ADXCommandBarButton btnAnalysis;
         private ADXExcelAppEvents adxExcelEvents;
 
         #region Component Designer generated code
@@ -148,7 +148,8 @@ namespace dCubeXL
             this.btnSetting = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.btnDesign = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.btnComment = new AddinExpress.MSO.ADXCommandBarButton(this.components);
-            this.btnAnalysis = new AddinExpress.MSO.ADXCommandBarButton(this.components);
+            this.btnAnalysis1 = new AddinExpress.MSO.ADXCommandBarButton(this.components);
+            this.btnViewCol = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             this.adxExcelEvents = new AddinExpress.MSO.ADXExcelAppEvents(this.components);
             this.adxRibbonTab1 = new AddinExpress.MSO.ADXRibbonTab(this.components);
             this.adxRibbonGroup1 = new AddinExpress.MSO.ADXRibbonGroup(this.components);
@@ -156,12 +157,11 @@ namespace dCubeXL
             this.btnRSetting = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRDesign = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.btnRComment = new AddinExpress.MSO.ADXRibbonButton(this.components);
-            this.btnRAnalysis = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.btbR1Analysis = new AddinExpress.MSO.ADXRibbonButton(this.components);
+            this.btnView = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.adxRibbonButton1 = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.adxRibbonButton2 = new AddinExpress.MSO.ADXRibbonButton(this.components);
             this.adxRibbonButton3 = new AddinExpress.MSO.ADXRibbonButton(this.components);
-            this.btnView = new AddinExpress.MSO.ADXRibbonButton(this.components);
-            this.btnViewCol = new AddinExpress.MSO.ADXCommandBarButton(this.components);
             // 
             // QDCommandBar
             // 
@@ -171,7 +171,7 @@ namespace dCubeXL
             this.QDCommandBar.Controls.Add(this.btnSetting);
             this.QDCommandBar.Controls.Add(this.btnDesign);
             this.QDCommandBar.Controls.Add(this.btnComment);
-            this.QDCommandBar.Controls.Add(this.btnAnalysis);
+            this.QDCommandBar.Controls.Add(this.btnAnalysis1);
             this.QDCommandBar.Controls.Add(this.btnViewCol);
             this.QDCommandBar.Description = "Tavicosoft Addin";
             this.QDCommandBar.SupportedApps = AddinExpress.MSO.ADXOfficeHostApp.ohaExcel;
@@ -181,11 +181,11 @@ namespace dCubeXL
             // 
             this.btnLogin.Caption = "Login";
             this.btnLogin.ControlTag = "3e334944-80b5-4d31-beab-e482e1ea4463";
-            this.btnLogin.Image = 0;
+            this.btnLogin.Image = 9;
             this.btnLogin.ImageList = this.ilMain;
             this.btnLogin.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnLogin.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
-            this.btnLogin.UpdateCounter = 8;
+            this.btnLogin.UpdateCounter = 9;
             this.btnLogin.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnLogin_Click);
             // 
             // ilMain
@@ -198,50 +198,67 @@ namespace dCubeXL
             this.ilMain.Images.SetKeyName(3, "comment.png");
             this.ilMain.Images.SetKeyName(4, "design.png");
             this.ilMain.Images.SetKeyName(5, "columns.png");
+            this.ilMain.Images.SetKeyName(6, "toolbox.png");
+            this.ilMain.Images.SetKeyName(7, "setting.png");
+            this.ilMain.Images.SetKeyName(8, "comment-edit.png");
+            this.ilMain.Images.SetKeyName(9, "logon.png");
+            this.ilMain.Images.SetKeyName(10, "analysis.png");
+            this.ilMain.Images.SetKeyName(11, "data_table.png");
             // 
             // btnSetting
             // 
             this.btnSetting.Caption = "Setting";
             this.btnSetting.ControlTag = "045b2d4c-d402-4971-951d-e680641c70e7";
-            this.btnSetting.Image = 1;
+            this.btnSetting.Image = 7;
             this.btnSetting.ImageList = this.ilMain;
             this.btnSetting.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnSetting.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndWrapCaption;
-            this.btnSetting.UpdateCounter = 21;
+            this.btnSetting.UpdateCounter = 22;
             this.btnSetting.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnSetting_Click);
             // 
             // btnDesign
             // 
             this.btnDesign.Caption = "Design";
             this.btnDesign.ControlTag = "65808cf7-fbba-400e-954c-7ae93e214ae9";
-            this.btnDesign.Image = 4;
+            this.btnDesign.Image = 11;
             this.btnDesign.ImageList = this.ilMain;
             this.btnDesign.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnDesign.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndWrapCaption;
-            this.btnDesign.UpdateCounter = 12;
+            this.btnDesign.UpdateCounter = 13;
             this.btnDesign.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnDesign_Click);
             // 
             // btnComment
             // 
             this.btnComment.Caption = "Comment";
             this.btnComment.ControlTag = "628d01ab-07cd-4377-b5d7-851d931ec005";
-            this.btnComment.Image = 3;
+            this.btnComment.Image = 8;
             this.btnComment.ImageList = this.ilMain;
             this.btnComment.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnComment.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
-            this.btnComment.UpdateCounter = 8;
+            this.btnComment.UpdateCounter = 9;
             this.btnComment.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnComment_Click);
             // 
-            // btnAnalysis
+            // btnAnalysis1
             // 
-            this.btnAnalysis.Caption = "Analysis";
-            this.btnAnalysis.ControlTag = "a44bc5bb-d924-44ab-8827-7974ce11ee49";
-            this.btnAnalysis.Image = 2;
-            this.btnAnalysis.ImageList = this.ilMain;
-            this.btnAnalysis.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.btnAnalysis.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
-            this.btnAnalysis.UpdateCounter = 9;
-            this.btnAnalysis.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnAnalysis_Click);
+            this.btnAnalysis1.Caption = "Analysis";
+            this.btnAnalysis1.ControlTag = "3abd8d65-8e67-4d42-b337-60db8666c0e8";
+            this.btnAnalysis1.Image = 10;
+            this.btnAnalysis1.ImageList = this.ilMain;
+            this.btnAnalysis1.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnAnalysis1.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
+            this.btnAnalysis1.UpdateCounter = 10;
+            this.btnAnalysis1.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnAnalysis1_Click);
+            // 
+            // btnViewCol
+            // 
+            this.btnViewCol.Caption = "ToolBox";
+            this.btnViewCol.ControlTag = "5a27efb9-c965-4baa-b0fb-fcb546fcf171";
+            this.btnViewCol.Image = 6;
+            this.btnViewCol.ImageList = this.ilMain;
+            this.btnViewCol.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnViewCol.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
+            this.btnViewCol.UpdateCounter = 10;
+            this.btnViewCol.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnViewCol_Click);
             // 
             // adxExcelEvents
             // 
@@ -262,7 +279,7 @@ namespace dCubeXL
             this.adxRibbonGroup1.Controls.Add(this.btnRSetting);
             this.adxRibbonGroup1.Controls.Add(this.btnRDesign);
             this.adxRibbonGroup1.Controls.Add(this.btnRComment);
-            this.adxRibbonGroup1.Controls.Add(this.btnRAnalysis);
+            this.adxRibbonGroup1.Controls.Add(this.btbR1Analysis);
             this.adxRibbonGroup1.Controls.Add(this.btnView);
             this.adxRibbonGroup1.Id = "adxRibbonGroup_81754909ad5e45eb9ea84f07866d115e";
             this.adxRibbonGroup1.ImageTransparentColor = System.Drawing.Color.Transparent;
@@ -272,7 +289,7 @@ namespace dCubeXL
             // 
             this.adxLogin.Caption = "Login";
             this.adxLogin.Id = "adxRibbonButton_0505baae132e43b499c301bb7bf26d13";
-            this.adxLogin.Image = 0;
+            this.adxLogin.Image = 9;
             this.adxLogin.ImageList = this.ilMain;
             this.adxLogin.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.adxLogin.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
@@ -283,7 +300,7 @@ namespace dCubeXL
             // 
             this.btnRSetting.Caption = "Setting";
             this.btnRSetting.Id = "adxRibbonButton_78c501bd03b741d88605e8a2439aaa50";
-            this.btnRSetting.Image = 1;
+            this.btnRSetting.Image = 7;
             this.btnRSetting.ImageList = this.ilMain;
             this.btnRSetting.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnRSetting.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
@@ -294,7 +311,7 @@ namespace dCubeXL
             // 
             this.btnRDesign.Caption = "Design";
             this.btnRDesign.Id = "adxRibbonButton_adea41b72bc74ee2afa29109733273ee";
-            this.btnRDesign.Image = 4;
+            this.btnRDesign.Image = 11;
             this.btnRDesign.ImageList = this.ilMain;
             this.btnRDesign.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnRDesign.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
@@ -305,23 +322,34 @@ namespace dCubeXL
             // 
             this.btnRComment.Caption = "Comment";
             this.btnRComment.Id = "adxRibbonButton_38eb5c511e4544c5adb5875c2a99edf0";
-            this.btnRComment.Image = 3;
+            this.btnRComment.Image = 8;
             this.btnRComment.ImageList = this.ilMain;
             this.btnRComment.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnRComment.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
             this.btnRComment.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
             this.btnRComment.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRComment_OnClick);
             // 
-            // btnRAnalysis
+            // btbR1Analysis
             // 
-            this.btnRAnalysis.Caption = "Analysis";
-            this.btnRAnalysis.Id = "adxRibbonButton_d1d6b2c5c61b4c97aaae713ea9547164";
-            this.btnRAnalysis.Image = 2;
-            this.btnRAnalysis.ImageList = this.ilMain;
-            this.btnRAnalysis.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.btnRAnalysis.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
-            this.btnRAnalysis.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
-            this.btnRAnalysis.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnRAnalysis_OnClick);
+            this.btbR1Analysis.Caption = "Analysis";
+            this.btbR1Analysis.Id = "adxRibbonButton_308c8acbaddc414e81ce21f8d7d66082";
+            this.btbR1Analysis.Image = 10;
+            this.btbR1Analysis.ImageList = this.ilMain;
+            this.btbR1Analysis.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btbR1Analysis.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.btbR1Analysis.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            this.btbR1Analysis.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btbR1Analysis_OnClick);
+            // 
+            // btnView
+            // 
+            this.btnView.Caption = "ToolBox";
+            this.btnView.Id = "adxRibbonButton_4738252f541f462daea013d0309a0eb1";
+            this.btnView.Image = 6;
+            this.btnView.ImageList = this.ilMain;
+            this.btnView.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnView.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
+            this.btnView.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
+            this.btnView.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnView_OnClick);
             // 
             // adxRibbonButton1
             // 
@@ -352,28 +380,6 @@ namespace dCubeXL
             this.adxRibbonButton3.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.adxRibbonButton3.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
             this.adxRibbonButton3.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
-            // 
-            // btnView
-            // 
-            this.btnView.Caption = "Columns";
-            this.btnView.Id = "adxRibbonButton_4738252f541f462daea013d0309a0eb1";
-            this.btnView.Image = 5;
-            this.btnView.ImageList = this.ilMain;
-            this.btnView.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.btnView.Ribbons = AddinExpress.MSO.ADXRibbons.msrExcelWorkbook;
-            this.btnView.Size = AddinExpress.MSO.ADXRibbonXControlSize.Large;
-            this.btnView.OnClick += new AddinExpress.MSO.ADXRibbonOnAction_EventHandler(this.btnView_OnClick);
-            // 
-            // btnViewCol
-            // 
-            this.btnViewCol.Caption = "Fields";
-            this.btnViewCol.ControlTag = "5a27efb9-c965-4baa-b0fb-fcb546fcf171";
-            this.btnViewCol.Image = 5;
-            this.btnViewCol.ImageList = this.ilMain;
-            this.btnViewCol.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.btnViewCol.Style = AddinExpress.MSO.ADXMsoButtonStyle.adxMsoButtonIconAndCaption;
-            this.btnViewCol.UpdateCounter = 8;
-            this.btnViewCol.Click += new AddinExpress.MSO.ADXClick_EventHandler(this.btnViewCol_Click);
             // 
             // AddinModule
             // 
@@ -451,7 +457,9 @@ namespace dCubeXL
                     Excel.Range rangeTableName = ExcelApp.get_Range("A" + _xlsCell.Row);
                     tablename = rangeTableName.Value.ToString();
                 }
-                catch { }
+                catch
+                {
+                }
                 string tmp = formular.Replace("USER TABLE(", "");
                 formular = tmp.Substring(0, tmp.Length - 1);
                 SQLBuilder _sqlBuilder = new SQLBuilder(processingMode.Details);
@@ -499,8 +507,6 @@ namespace dCubeXL
                     TVCDesigner.MainForm frm = new TVCDesigner.MainForm(dt_list, null, null);
                     frm.Show(new WindowWrapper((IntPtr)ExcelApp.DDEAppReturnCode));
                 }
-
-
             }
         }
         private void ShowDesign()
@@ -517,7 +523,7 @@ namespace dCubeXL
             string formular = _xlsCell.Formula.ToString();
             if (frm == null)
             {
-                frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                 frm.User = _user;
                 frm.Config = _config;
                 frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
@@ -535,7 +541,7 @@ namespace dCubeXL
             {
                 frm.Close();
 
-                frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                 frm.User = _user;
                 frm.Config = _config;
                 frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
@@ -562,7 +568,7 @@ namespace dCubeXL
                     string formular = _xlsCell.Comment.Text(Type.Missing, Type.Missing, Type.Missing);
                     if (frm == null)
                     {
-                        frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnect, _user);
+                        frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnect, _user);
                         //frm.User = _user;
                         frm.Config = _config;
                         frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
@@ -578,7 +584,7 @@ namespace dCubeXL
                     else
                     {
                         frm.Close();
-                        frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                        frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                         frm.User = _user;
                         frm.Config = _config;
                         frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
@@ -587,8 +593,10 @@ namespace dCubeXL
                         frm.Show(new WindowWrapper((IntPtr)ExcelApp.DDEAppReturnCode));//new WindowWrapper((IntPtr)ExcelApp.Hwnd)
                     }
                 }
-                else { MessageBox.Show("Cell selected is incorrect!"); }
-
+                else
+                {
+                    MessageBox.Show("Cell selected is incorrect!");
+                }
             }
             catch (Exception ex)
             {
@@ -605,7 +613,7 @@ namespace dCubeXL
                 string formular = _xlsCell.Comment.Text(Type.Missing, Type.Missing, Type.Missing);
                 if (frmdrill == null)
                 {
-                    frmdrill = new QDAddinDrillDown(_address, ExcelApp, formular, _strConnectDes, _user);
+                    frmdrill = new QDAddinDrillDown(_config, _address, ExcelApp, formular, _strConnectDes, _user);
                     frmdrill.User = _user;
                     frmdrill.Config = _config;
                     frmdrill.FormClosed += new FormClosedEventHandler(frmdrill_FormClosed);
@@ -621,7 +629,7 @@ namespace dCubeXL
                 else
                 {
                     frmdrill.Close();
-                    frmdrill = new QDAddinDrillDown(_address, ExcelApp, formular, _strConnectDes, _user);
+                    frmdrill = new QDAddinDrillDown(_config, _address, ExcelApp, formular, _strConnectDes, _user);
                     frmdrill.User = _user;
                     frmdrill.Config = _config;
                     frmdrill.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frmdrill_FormClosed);
@@ -630,7 +638,10 @@ namespace dCubeXL
                     frmdrill.Show(new WindowWrapper((IntPtr)ExcelApp.DDEAppReturnCode));//new WindowWrapper((IntPtr)ExcelApp.Hwnd)
                 }
             }
-            else { MessageBox.Show("Cell selected is incorrect!"); }
+            else
+            {
+                MessageBox.Show("Cell selected is incorrect!");
+            }
         }
 
         private void adxExcelEvents_SheetSelectionChange(object sender, object sheet, object range)
@@ -641,8 +652,13 @@ namespace dCubeXL
                 _address = Target.get_AddressLocal(Target.Row, Target.Column, Excel.XlReferenceStyle.xlA1, 0, 0);
                 string address = _address.Replace("$", "");
                 string value = "";
-                try { value = Target.Value.ToString(); }//(type)
-                catch { }
+                try
+                {
+                    value = Target.Value.ToString();
+                }//(type)
+                catch
+                {
+                }
                 frm.SetValueFocus(address, value);
             }
         }
@@ -674,7 +690,10 @@ namespace dCubeXL
 
             public IntPtr Handle
             {
-                get { return _hwnd; }
+                get
+                {
+                    return _hwnd;
+                }
             }
 
             private IntPtr _hwnd;
@@ -690,52 +709,61 @@ namespace dCubeXL
                     {
                         a.get_Range(frm.Pos, type).ClearComments();
                     }
-                    catch { }
+                    catch
+                    {
+                    }
                     a.get_Range(frm.Pos, type).AddComment(frm.TTFormular);
                 }
-                else if (frm.Status == "T")
-                {
-                    a.get_Range(frm.Pos, type).Value = String.Format("<#{0}>", frm.TTFormular);
-                }
-                else if (frm.Status == "L")
-                {
-                    try
+                else
+                    if (frm.Status == "T")
                     {
-                        //DataTable dt = frm.DataReturn;
-
-                        System.Data.DataTable dt = frm.DataReturn;
-                        //Excel.DataTable dtEx;
-                        //Excel.Workbook _wbook = (Excel.Workbook)Application.ActiveWorkbook;
-                        //_wbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing);
-                        Excel.Worksheet _wsheet = ExcelApp.ActiveSheet as Excel.Worksheet;
-                        Excel.Range currentRange = _wsheet.get_Range(_address, Type.Missing);
-
-                        for (int i = 0; i < dt.Columns.Count; i++)
-                        {
-                            Excel.Range _range = (Excel.Range)_wsheet.Cells[currentRange.Row, i + currentRange.Column];
-                            _range.Font.Bold = true;
-                            _range.Value = dt.Columns[i].ColumnName;
-                        }
-                        for (int i = 0; i < dt.Rows.Count; i++)
-                            for (int j = 0; j < dt.Columns.Count; j++)
-                            {
-                                Excel.Range _range = (Excel.Range)_wsheet.Cells[i + currentRange.Row + 1, j + currentRange.Column];
-                                _range.Value = dt.Rows[i][j];
-                            }
-                        //string add = _wsheet.Name + "!R1C1:R" + (dt.Rows.Count + 1) + "C" + dt.Columns.Count;
-
-                        //_wbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing);
-                        //Excel.Worksheet _wpivotsheet = (Excel.Worksheet)Application.ActiveWorkbook.ActiveSheet;
-                        //string des = _wpivotsheet.Name + "!R3C1";
-                        //_wbook.PivotCaches().Add(Excel.XlPivotTableSourceType.xlDatabase, add).CreatePivotTable(des, "PivotTable1", Type.Missing, Excel.XlPivotTableVersionList.xlPivotTableVersion10);
+                        a.get_Range(frm.Pos, type).Value = String.Format("<#{0}>", frm.TTFormular);
                     }
-                    catch (Exception ex) { BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "[Addin] [" + DateTime.Now.ToString() + "] : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace); }
-                    //a.get_Range(frm.Pos, type).AddComment(frm.TTFormular);
-                }
-                else if (frm.Status == "F")
-                    a.get_Range(frm.Pos, type).Value = "=" + frm.TTFormular;
-                else if (frm.Status == "U")
-                    a.get_Range(frm.Pos, type).Value = frm.TTFormular;
+                    else
+                        if (frm.Status == "L")
+                        {
+                            try
+                            {
+                                //DataTable dt = frm.DataReturn;
+
+                                System.Data.DataTable dt = frm.DataReturn;
+                                //Excel.DataTable dtEx;
+                                //Excel.Workbook _wbook = (Excel.Workbook)Application.ActiveWorkbook;
+                                //_wbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing);
+                                Excel.Worksheet _wsheet = ExcelApp.ActiveSheet as Excel.Worksheet;
+                                Excel.Range currentRange = _wsheet.get_Range(_address, Type.Missing);
+
+                                for (int i = 0; i < dt.Columns.Count; i++)
+                                {
+                                    Excel.Range _range = (Excel.Range)_wsheet.Cells[currentRange.Row, i + currentRange.Column];
+                                    _range.Font.Bold = true;
+                                    _range.Value = dt.Columns[i].ColumnName;
+                                }
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                    for (int j = 0; j < dt.Columns.Count; j++)
+                                    {
+                                        Excel.Range _range = (Excel.Range)_wsheet.Cells[i + currentRange.Row + 1, j + currentRange.Column];
+                                        _range.Value = dt.Rows[i][j];
+                                    }
+                                //string add = _wsheet.Name + "!R1C1:R" + (dt.Rows.Count + 1) + "C" + dt.Columns.Count;
+
+                                //_wbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing);
+                                //Excel.Worksheet _wpivotsheet = (Excel.Worksheet)Application.ActiveWorkbook.ActiveSheet;
+                                //string des = _wpivotsheet.Name + "!R3C1";
+                                //_wbook.PivotCaches().Add(Excel.XlPivotTableSourceType.xlDatabase, add).CreatePivotTable(des, "PivotTable1", Type.Missing, Excel.XlPivotTableVersionList.xlPivotTableVersion10);
+                            }
+                            catch (Exception ex)
+                            {
+                                BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "[Addin] [" + DateTime.Now.ToString() + "] : " + ex.Message + "\n\t" + ex.Source + "\n\t" + ex.StackTrace);
+                            }
+                            //a.get_Range(frm.Pos, type).AddComment(frm.TTFormular);
+                        }
+                        else
+                            if (frm.Status == "F")
+                                a.get_Range(frm.Pos, type).Value = "=" + frm.TTFormular;
+                            else
+                                if (frm.Status == "U")
+                                    a.get_Range(frm.Pos, type).Value = frm.TTFormular;
             }
         }
 
@@ -791,7 +819,7 @@ namespace dCubeXL
                     if (frm != null)
                     {
                         frm.Close();
-                        frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                        frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                         frm.Config = _config;
                         frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                         //frm.Pos = _address;
@@ -802,7 +830,7 @@ namespace dCubeXL
                     }
                     else
                     {
-                        frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                        frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                         frm.Config = _config;
                         frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                         //frm.Pos = _address;
@@ -814,7 +842,6 @@ namespace dCubeXL
                     }
                     frm.Focus();
                     e.Cancel = true;
-
                 }
             }
             else
@@ -831,7 +858,7 @@ namespace dCubeXL
                         if (frm != null)
                         {
                             frm.Close();
-                            frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                            frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                             frm.Config = _config;
                             frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                             //frm.Pos = _address;
@@ -842,7 +869,7 @@ namespace dCubeXL
                         }
                         else
                         {
-                            frm = new QDAddIn(_address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
+                            frm = new QDAddIn(_config, _address, ExcelApp, formular, _strConnect, _strConnectDes, _user);
                             frm.Config = _config;
                             frm.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frm_FormClosed);
                             //frm.Pos = _address;
@@ -855,7 +882,6 @@ namespace dCubeXL
                         }
                         frm.Focus();
                         e.Cancel = true;
-
                     }
                 }
             }
@@ -926,8 +952,15 @@ namespace dCubeXL
             ShowFields();
         }
 
+        private void btbR1Analysis_OnClick(object sender, IRibbonControl control, bool pressed)
+        {
+            ShowAnalysis();
+        }
 
-
+        private void btnAnalysis1_Click(object sender)
+        {
+            ShowAnalysis();
+        }
     }
 }
 

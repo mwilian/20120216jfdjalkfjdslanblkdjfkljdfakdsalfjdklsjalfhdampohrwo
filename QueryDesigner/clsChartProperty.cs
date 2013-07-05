@@ -12,12 +12,12 @@ namespace dCube
     // Customer class to be displayed in the property grid
     /// </summary>
     ///
-    [DefaultPropertyAttribute("Name")]
+    [DefaultPropertyAttribute("_Name")]
     public class clsChartProperty
     {
         #region Designer
         string _chartname;
-        [TypeConverter(typeof(ChartList)), CategoryAttribute("01 - Designer"), DescriptionAttribute("Chart Name")]
+        [TypeConverter(typeof(ChartList)), CategoryAttribute("01 - Designer"), DescriptionAttribute("Chart _Name")]
         public string ChartName
         {
             get { return _chartname; }
@@ -31,21 +31,21 @@ namespace dCube
             set { _sheetChart = value; }
         }
         string _dataRange = "";
-        [CategoryAttribute("01 - Designer"), DescriptionAttribute("Excel Name Range include data for chart")]
+        [CategoryAttribute("01 - Designer"), DescriptionAttribute("Excel _Name Range include data for chart")]
         public string DataRange
         {
             get { return _dataRange; }
             set { _dataRange = value; }
         }
         string _captionRange;
-        [CategoryAttribute("01 - Designer"), DescriptionAttribute("Excel Name Range include Caption for chart")]
+        [CategoryAttribute("01 - Designer"), DescriptionAttribute("Excel _Name Range include Caption for chart")]
         public string CaptionRange
         {
             get { return _captionRange; }
             set { _captionRange = value; }
         }
         string _subCaptionRange;
-        [CategoryAttribute("01 - Designer"), DescriptionAttribute("Excel Name Range include SubCaption for chart")]
+        [CategoryAttribute("01 - Designer"), DescriptionAttribute("Excel _Name Range include SubCaption for chart")]
         public string SubCaptionRange
         {
             get { return _subCaptionRange; }

@@ -198,7 +198,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Default Value";
+            this.label3.Text = "Default _Value";
             // 
             // statusStrip1
             // 

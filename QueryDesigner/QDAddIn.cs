@@ -85,7 +85,7 @@ namespace dCube
             get { return _sqlBuilder.Pos; }
             set { _sqlBuilder.Pos = value; }
         }
-        public QDAddIn(string connect, string connectDes)
+        public QDAddIn(QDConfig config, string connect, string connectDes)
         {
             InitializeComponent();
             ////ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
@@ -98,16 +98,19 @@ namespace dCube
             ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).DisplayMember = "Code";
             ((DataGridViewComboBoxColumn)dgvSelectNodes.Columns["colAgregate"]).ValueMember = "Code";
             //TopMost = true;
+            _config = config;
             _strConnect = connect;
             _strConnectDes = connectDes;
+            
         }
-        public QDAddIn(string Pos, Excel._Application xls, string formular, string connect, string connectDes, string user)
+        public QDAddIn(QDConfig confi, string Pos, Excel._Application xls, string formular, string connect, string connectDes, string user)
         {
             InitializeComponent();
             ////ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
             _user = user;
             _strConnect = connect;
             _strConnectDes = connectDes;
+            _config = confi;
             Init(Pos, xls, formular);
         }
 
@@ -125,6 +128,19 @@ namespace dCube
             _xlsApp = xls;
             //TopMost = true;
             GetQueryBuilderFromFomular(formular);
+            GetConnectString();
+        }
+
+        private void GetConnectString()
+        {
+            BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
+
+            DTO.LIST_QD_SCHEMAInfo schInf = schCtr.Get(_sqlBuilder.Database, _sqlBuilder.Table, ref _sErr);
+            string keyconn = schInf.DEFAULT_CONN;
+            string connectstring = _config.GetConnection(ref keyconn, "AP");
+            _sqlBuilder.ConnID = keyconn;
+            _sqlBuilder.StrConnectDes = connectstring;
+            _strConnectDes = connectstring;
         }
 
         public void GetQueryBuilderFromFomular(string formular)
@@ -179,7 +195,7 @@ namespace dCube
                                     {
                                     }
                                 }
-                                //vParameter[i - 1] = p.Value.ToString().Replace(",", string.Empty);
+                                //vParameter[i - 1] = p._Value.ToString().Replace(",", string.Empty);
                             }
 
                         }
@@ -224,7 +240,7 @@ namespace dCube
                 UpdateFilterFrom(true);
                 //if (dgvFilter.CurrentRow != null)
                 //{
-                //    QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                //    QueryBuilder._Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
                 //    filter.FilterFrom = address;
                 //    filter.ValueFrom = value;
                 //    filter.FilterFromP = "{P}";
@@ -237,7 +253,7 @@ namespace dCube
                 UpdateFilterTo(true);
                 //if (dgvFilter.CurrentRow != null)
                 //{
-                //    QueryBuilder.Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                //    QueryBuilder._Filter filter = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
                 //    filter.FilterTo = address;
                 //    filter.ValueTo = value;
                 //    filter.FilterToP = "{P}";
@@ -281,7 +297,7 @@ namespace dCube
                 if (dragNode.Nodes.Count == 0)
                 {
                     string[] arrNode = dragNode.Tag.ToString().Split(';');
-                    _arrNodes[i] = new Node(arrNode[0], dragNode.Name, dragNode.Text, arrNode[1], arrNode[2]);
+                    _arrNodes[i] = new Node(arrNode[0], dragNode._Name, dragNode.Text, arrNode[1], arrNode[2]);
                     i++;
                 }
             }
@@ -322,7 +338,7 @@ namespace dCube
                     for (int j = 0; j < arrNode.Length; j++)
                     {
                         Node a = arrNode[j];
-                        QueryBuilder.Filter tmp = new QueryBuilder.Filter(a);
+                        QueryBuilder._Filter tmp = new QueryBuilder._Filter(a);
 
                         _sqlBuilder.Filters.Add(tmp);
                     }
@@ -348,7 +364,7 @@ namespace dCube
             {
                 bool flag = true;
                 string[] arrNode = tmpNode.Tag.ToString().Split(';');
-                Node a = new Node(arrNode[0], tmpNode.Name, tmpNode.Text, arrNode[1], arrNode[2]);
+                Node a = new Node(arrNode[0], tmpNode._Name, tmpNode.Text, arrNode[1], arrNode[2]);
                 for (int i = 0; i < _sqlBuilder.SelectedNodes.Count; i++)
                     if (_sqlBuilder.SelectedNodes[i].Code == a.Code)
                     {
@@ -430,6 +446,8 @@ namespace dCube
 
 
                 twSchema1 = TreeViewLoader.LoadTree(ref twSchema1, list, _sqlBuilder.Table, "");
+
+                GetConnectString();
             }
         }
 
@@ -585,13 +603,13 @@ namespace dCube
         /*
          private void dgvFilter_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
-            QueryBuilder.Filter x = e.Row.DataBoundItem as QueryBuilder.Filter;
+            QueryBuilder._Filter x = e.Row.DataBoundItem as QueryBuilder._Filter;
             if (x != null)
             {
                 if (dgvFilter.Columns[e.ColumnIndex].FieldName == "FilterFrom")
-                    x.FilterFrom = x.ValueFrom = e.Value.ToString();
+                    x.FilterFrom = x.ValueFrom = e._Value.ToString();
                 else if (dgvFilter.Columns[e.ColumnIndex].FieldName == "FilterTo")
-                    x.FilterTo = x.ValueTo = e.Value.ToString();
+                    x.FilterTo = x.ValueTo = e._Value.ToString();
             }
         }
 
@@ -599,7 +617,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             //if (dgvFilter.CurrentRow != null)
             //{
-            //    QueryBuilder.Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+            //    QueryBuilder._Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
             //    txtFilterFrom.Text = x.FilterFrom;
             //    txtFilterTo.Text = x.FilterTo;
             //}
@@ -612,7 +630,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             //if (dgvFilter.CurrentRow != null)
             //{
-            //    QueryBuilder.Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+            //    QueryBuilder._Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
             //    txtFilterFrom.Text = x.FilterFrom;
             //    txtFilterTo.Text = x.FilterTo;
             //}
@@ -621,7 +639,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             //if (dgvFilter.CurrentRow != null)
             //{
-            //    QueryBuilder.Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+            //    QueryBuilder._Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
             //    txtFilterFrom.Text = x.FilterFrom;
             //    txtFilterTo.Text = x.FilterTo;
             //}
@@ -631,7 +649,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             if (dgvFilter.CurrentRow != null)
             {
-                QueryBuilder.Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+                QueryBuilder._Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
                 txtFilterFrom.Text = x.FilterFrom;
                 txtFilterTo.Text = x.FilterTo;
             }
@@ -689,14 +707,8 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
 
         private void btnAnalysis_Click(object sender, EventArgs e)
         {
-            BUS.LIST_QD_SCHEMAControl schCtr = new LIST_QD_SCHEMAControl();
-            //DTO.LIST_QD_SCHEMAInfo schInf 
-            string key = schCtr.GetDefaultDB(_sqlBuilder.Database, _sqlBuilder.Table, ref _sErr);
-
-            //string key = _sqlBuilder.ConnID;
-            _strConnectDes = _sqlBuilder.StrConnectDes = _config.GetConnection(ref key, "AP");
-            _sqlBuilder.ConnID = key;
-            QDAddinDrillDown frmD = new QDAddinDrillDown(_sqlBuilder.Pos, _xlsApp, _sqlBuilder, _strConnectDes);
+            GetConnectString();
+            QDAddinDrillDown frmD = new QDAddinDrillDown(_config, _sqlBuilder.Pos, _xlsApp, _sqlBuilder, _strConnectDes);
 
             //TopMost = false;
             frmD.FormClosed += new FormClosedEventHandler(frm_FormClosed);
@@ -927,10 +939,11 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             if (e.RowIndex >= 0)
             {
-                ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).FilterFrom =
-                    ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).ValueFrom;
-                ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).FilterFrom =
-                    ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).ValueTo;
+                
+                //((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).FilterFrom =
+                //    ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).ValueFrom;
+                //((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).FilterFrom =
+                //    ((QueryBuilder.Filter)dgvFilter.Rows[e.RowIndex].DataBoundItem).ValueTo;
             }
         }
 
@@ -946,7 +959,7 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
         {
             //if (dgvFilter.CurrentCell != null)
             //{
-            //    QueryBuilder.Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder.Filter;
+            //    QueryBuilder._Filter x = dgvFilter.CurrentRow.DataBoundItem as QueryBuilder._Filter;
             //    txtFilterFrom.Text = x.FilterFrom;
             //    txtFilterTo.Text = x.FilterTo;
             //}
@@ -1239,6 +1252,20 @@ private void dgvFilter_RowsChanged(object sender, GridViewCollectionChangedEvent
                 if (Regex.IsMatch(x.Code, @"^@"))
                     e.Cancel = true;
             }
+        }
+
+        private void dgvSelectNodes_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void btnMacro_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Status = "M";
+            _ttFormular = _sqlBuilder.BuildTVCformula(_sqlBuilder.Pos);
+
+            Close();
         }
 
     }
