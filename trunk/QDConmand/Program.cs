@@ -7,8 +7,8 @@ using System.IO;
 using System.Data;
 using BUS;
 using DTO;
-using QueryDesigner;
 using System.Diagnostics;
+using dCube;
 
 namespace QDCommand
 {
@@ -54,6 +54,7 @@ namespace QDCommand
                     string method = args[4];
                     _sqlBuilder.ConnID = conn;
                     LoadConfig(conn);
+                    ReportGenerator.Config = _config;
                     if (user == "TVC" && pass == "TVCSYS")
                     {
                         if (method == Command.OPEN.ToString())
@@ -110,18 +111,22 @@ namespace QDCommand
                 _sqlText = qdInfo.SQL_TEXT;
                 try
                 {
+                  //  ;General Timeout=100
                     LoadQD(qdInfo);
                     if (value != "")
                     {
                         _sqlBuilder.Filters[index].FilterFrom = _sqlBuilder.Filters[index].FilterTo = _sqlBuilder.Filters[index].ValueTo = _sqlBuilder.Filters[index].ValueFrom = value;
                     }
-                    ReportGenerator report = new ReportGenerator(_sqlBuilder, qdInfo.QD_ID, _sqlText, _strConnectDes, __templatePath, __reportPath);
+                    BUS.DBAControl dbaCtr = new DBAControl();
+                    DTO.DBAInfo dbaInf = dbaCtr.Get(dtb, ref sErr);
+                    __templatePath = dbaInf.REPORT_TEMPLATE_DRIVER;
+                    ReportGenerator report = new ReportGenerator(_sqlBuilder, qdInfo.QD_ID, _sqlText, _strConnectDes, __templatePath, __reportPath, __documentDirectory);
                     return report.ExportPDFToPath(__reportPath);
                 }
                 catch (Exception ex)
                 {
                     sErr = ex.Message;
-                    BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", "[QDCommand]\t[" + DateTime.Now.ToString() + "]:\t" + ex.Message + ", " + ex.Source + ", " + ex.StackTrace);
+                    BUS.CommonControl.AddLog("ErroLog", __documentDirectory + "\\Log", String.Format("[QDCommand]\t[{0}]:\t{1}, {2}, {3}", DateTime.Now, ex.Message, ex.Source, ex.StackTrace));
                     return "";
                 }
             }
@@ -156,7 +161,12 @@ namespace QDCommand
                     {
                         _sqlBuilder.Filters[index].FilterFrom = _sqlBuilder.Filters[index].FilterTo = _sqlBuilder.Filters[index].ValueTo = _sqlBuilder.Filters[index].ValueFrom = value;
                     }
-                    ReportGenerator report = new ReportGenerator(_sqlBuilder, qdInfo.QD_ID, _sqlText, _strConnectDes, __templatePath, __reportPath);
+                    BUS.DBAControl dbaCtr = new DBAControl();
+                    DTO.DBAInfo dbaInf = dbaCtr.Get(dtb, ref sErr);
+                    __templatePath = dbaInf.REPORT_TEMPLATE_DRIVER;
+
+                    ReportGenerator report = new ReportGenerator(_sqlBuilder, qdInfo.QD_ID, _sqlText, _strConnectDes, __templatePath, __reportPath, __documentDirectory);
+                   
                     if (path == "" && filename == "")
                         return report.ExportExcelToPath(__reportPath);
                     else if (path != "" && filename == "")
@@ -226,15 +236,15 @@ namespace QDCommand
                 _strConnectDes = _config.GetConnection(ref strAP, "AP");
                 _sqlBuilder.ConnID = strAP;
 
-               
-                if (_config.DIR.Rows.Count > 0)
-                {
-                    __templatePath = _config.DIR.Rows[0]["TMP"].ToString();
-                    __reportPath = _config.DIR.Rows[0]["RPT"].ToString();
-                }
-                if (_config.SYS.Rows.Count > 0)
 
-                    ReportGenerator.User2007 = (bool)_config.SYS.Rows[0][_config.SYS.USE2007Column];
+                if (_config.DIR.Count > 0)
+                {
+                    __templatePath = _config.DIR[0]["TMP"].ToString();
+                    __reportPath = _config.DIR[0]["RPT"].ToString();
+                }
+                if (_config.SYS.Count > 0)
+
+                    ReportGenerator.User2007 = (bool)_config.SYS[0][_config.SYS.USE2007Column];
             }
 
 

@@ -174,7 +174,7 @@ namespace dCube
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(84, 13);
             this.Label1.TabIndex = 17;
-            this.Label1.Text = "Available Fields:";
+            this.Label1.Text = "Available _Fields:";
             // 
             // lbAvail
             // 
@@ -195,7 +195,7 @@ namespace dCube
             this.MinimizeBox = false;
             this.Name = "frmShowFields";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Show Fields";
+            this.Text = "Show _Fields";
             //((System.ComponentModel.ISupportInitialize)(this.grbBackground)).EndInit();
             //this.grbBackground.ResumeLayout(false);
             this.grbBackground.PerformLayout();

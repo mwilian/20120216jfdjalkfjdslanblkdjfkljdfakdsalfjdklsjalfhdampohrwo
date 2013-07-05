@@ -46,7 +46,7 @@ namespace dCube
                         Field.FieldAlias = FieldParts[1];
                         break;
                     default:
-                        throw new Exception("Too many spaces in field definition: '" + Fields[i] + "'.");
+                        throw new Exception("Too many spaces in _TableName definition: '" + Fields[i] + "'.");
                 }
                 //parse FieldName and RelationName
                 FieldParts = FieldParts[0].Split('.');
@@ -57,12 +57,12 @@ namespace dCube
                         break;
                     case 2:
                         if (AllowRelation == false)
-                            throw new Exception("Relation specifiers not permitted in field list: '" + Fields[i] + "'.");
+                            throw new Exception("Relation specifiers not permitted in _TableName list: '" + Fields[i] + "'.");
                         Field.RelationName = FieldParts[0].Trim();
                         Field.FieldName = FieldParts[1].Trim();
                         break;
                     default:
-                        throw new Exception("Invalid field definition: " + Fields[i] + "'.");
+                        throw new Exception("Invalid _TableName definition: " + Fields[i] + "'.");
                 }
                 if (Field.FieldAlias == null)
                     Field.FieldAlias = Field.FieldName;
@@ -95,7 +95,7 @@ namespace dCube
                         Field.FieldAlias = FieldParts[1];
                         break;
                     default:
-                        throw new ArgumentException("Too many spaces in field definition: '" + Fields[i] + "'.");
+                        throw new ArgumentException("Too many spaces in _TableName definition: '" + Fields[i] + "'.");
                 }
                 //Parse FieldName and Aggregate
                 FieldParts = FieldParts[0].Split('(');
@@ -109,7 +109,7 @@ namespace dCube
                         Field.FieldName = FieldParts[1].Trim(' ', ')');
                         break;
                     default:
-                        throw new ArgumentException("Invalid field definition: '" + Fields[i] + "'.");
+                        throw new ArgumentException("Invalid _TableName definition: '" + Fields[i] + "'.");
                 }
                 if (Field.FieldAlias == null)
                 {
@@ -137,8 +137,8 @@ namespace dCube
             */
             if (FieldList == null)
             {
-                throw new ArgumentException("You must specify at least one field in the field list.");
-                //return CreateTable(TableName, SourceTable);
+                throw new ArgumentException("You must specify at least one _TableName in the _TableName list.");
+                //return CreateTable(_TableName, SourceTable);
             }
             else
             {
@@ -168,9 +168,9 @@ namespace dCube
              * FieldList has same format as CreateGroupByTable
             */
             if (FieldList == null)
-                throw new ArgumentException("You must specify at least one field in the field list.");
-            ParseGroupByFieldList(FieldList);	//parse field list
-            ParseFieldList(GroupBy, false);			//parse field names to Group By into an arraylist
+                throw new ArgumentException("You must specify at least one _TableName in the _TableName list.");
+            ParseGroupByFieldList(FieldList);	//parse _TableName list
+            ParseFieldList(GroupBy, false);			//parse _TableName names to Group By into an arraylist
             DataRow[] Rows = SourceTable.Select(RowFilter, GroupBy);
             DataRow LastSourceRow = null, DestRow = null; bool SameRow; int RowCount = 0;
             foreach (DataRow SourceRow in Rows)
@@ -247,7 +247,7 @@ namespace dCube
         private bool ColumnEqual(object a, object b)
         {
             /*
-             * Compares two values to see if they are equal. Also compares DBNULL.Value.
+             * Compares two values to see if they are equal. Also compares DBNULL._Value.
              * 
              * Note: If your DataTable contains object fields, you must extend this
              * function to handle them in a meaningful way if you intend to group on them.
@@ -311,8 +311,8 @@ namespace dCube
         private class FieldInfo
         {
             public string RelationName;
-            public string FieldName;	//source table field name
-            public string FieldAlias;	//destination table field name
+            public string FieldName;	//source table _TableName name
+            public string FieldAlias;	//destination table _TableName name
             public string Aggregate;
         }
     }

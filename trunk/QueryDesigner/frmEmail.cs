@@ -40,7 +40,7 @@ namespace dCube
                 string query = "";
                 foreach (DataRow row in dt.Rows)
                 {
-                    query += " insert into LIST_EMAIL(Mail, Name,Lookup) values('" + row["Mail"].ToString() + "','" + row["Name"].ToString() + "','" + row["Lookup"].ToString() + "')";
+                    query += " insert into LIST_EMAIL(Mail, _Name,Lookup) values('" + row["Mail"].ToString() + "','" + row["_Name"].ToString() + "','" + row["Lookup"].ToString() + "')";
                 }
                 ctr.executeNonQuery(query);
 

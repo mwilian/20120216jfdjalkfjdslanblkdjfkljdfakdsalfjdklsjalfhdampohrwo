@@ -203,7 +203,7 @@ namespace dCube
             int dem = 0;
             if (dgvSelect.CurrentRow != null && dgvSelect.CurrentRow.RowIndex >= 0 && e.Column.Index > -1 && dgvSelect.RootTable.Columns[e.Column.Index].Key == "SELECTED")
             {
-                //dgvSelect.CurrentRow.Cells["SELECTED"].Value = !(bool)dgvSelect.CurrentRow.Cells["SELECTED"].Value;
+                //dgvSelect.CurrentRow.Cells["SELECTED"]._Value = !(bool)dgvSelect.CurrentRow.Cells["SELECTED"]._Value;
                 for (int i = 0; i < dgvSelect.RowCount; i++)
                 {
                     if (dgvSelect.GetRow(i).Cells["SELECTED"].Value != null && (bool)dgvSelect.GetRow(i).Cells["SELECTED"].Value == true)

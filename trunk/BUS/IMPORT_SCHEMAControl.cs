@@ -279,6 +279,10 @@ namespace BUS
             string query = CreateInsertString(row);
             if (exist != "")
                 query = String.Format("IF NOT {0} BEGIN {1} SELECT 1 END ELSE SELECT 0", exist, query);
+            else
+            {
+                query = String.Format("{0} SELECT 1", query);
+            }
             return ExecQuery(query, ref sErr);
         }
 
@@ -290,7 +294,7 @@ namespace BUS
             string query = CreateUpdatetString(row);
             if (exist != "")
                 query = String.Format("IF {0} BEGIN {1} SELECT 1 END ELSE SELECT 0", exist, query);
-            else query = CreateInsertString(row);
+            else query = CreateInsertString(row) + " SELECT 1";
             return ExecQuery(query, ref sErr);
         }
         private int ImportInsertUpdate(DataRow row, ref string sErr)
@@ -300,6 +304,10 @@ namespace BUS
             string update = CreateUpdatetString(row);
             if (exist != "")
                 insert = String.Format("IF {0} BEGIN {1} SELECT 1 END ELSE BEGIN {2} SELECT 1 END", exist, update, insert);
+            else
+            {
+                insert = String.Format("{0} SELECT 1", insert);
+            }
             return ExecQuery(insert, ref sErr);
         }
         private string CreateInsertString(DataRow row)
@@ -312,7 +320,7 @@ namespace BUS
                 if (col.ExtendedProperties.ContainsKey("DataMember"))
                     fieldName = col.ExtendedProperties["DataMember"].ToString();
 
-                field += "," + fieldName;
+                field += ",[" + fieldName + "]";
                 if (row[col] == DBNull.Value)
                 {
                     values += ",NULL";
@@ -347,19 +355,19 @@ namespace BUS
                     fieldName = col.ExtendedProperties["DataMember"].ToString();
                 if (_lKey.Contains(fieldName))
                 {
-                    field += "," + fieldName;
+                    field += ",[" + fieldName + "]";
                     if (row[col] == DBNull.Value)
                     {
-                        values += ",NULL";
+                        values += "And [" + fieldName + "]= NULL";// values += ",NULL";
                     }
                     else
                     {
                         if (col.DataType == typeof(String))
-                            values += "And " + fieldName + "=N'" + row[col].ToString() + "'";
+                            values += "And [" + fieldName + "]=N'" + row[col].ToString() + "'";
                         else if (col.DataType == typeof(DateTime))
-                            values += "And " + fieldName + "=N'" + ((DateTime)row[col]).Year + "-" + ((DateTime)row[col]).Month + "-" + ((DateTime)row[col]).Day + " " + ((DateTime)row[col]).ToLongTimeString() + "'";
+                            values += "And [" + fieldName + "]=N'" + ((DateTime)row[col]).Year + "-" + ((DateTime)row[col]).Month + "-" + ((DateTime)row[col]).Day + " " + ((DateTime)row[col]).ToLongTimeString() + "'";
                         else
-                            values += "And " + fieldName + "=" + row[col].ToString();
+                            values += "And [" + fieldName + "]=" + row[col].ToString();
                     }
                 }
             }
@@ -391,11 +399,11 @@ namespace BUS
                     else
                     {
                         if (col.DataType == typeof(String))
-                            field += ", " + fieldName + "=N'" + row[col].ToString() + "'";
+                            field += ", [" + fieldName + "]=N'" + row[col].ToString() + "'";
                         else if (col.DataType == typeof(DateTime))
-                            field += ", " + fieldName + "=N'" + ((DateTime)row[col]).Year + "-" + ((DateTime)row[col]).Month + "-" + ((DateTime)row[col]).Day + " " + ((DateTime)row[col]).ToLongTimeString() + "'";
+                            field += ", [" + fieldName + "]=N'" + ((DateTime)row[col]).Year + "-" + ((DateTime)row[col]).Month + "-" + ((DateTime)row[col]).Day + " " + ((DateTime)row[col]).ToLongTimeString() + "'";
                         else
-                            field += ", " + fieldName + "=" + row[col].ToString();
+                            field += ", [" + fieldName + "]=" + row[col].ToString();
                     }
                 }
                 else
@@ -408,11 +416,11 @@ namespace BUS
                     {
 
                         if (col.DataType == typeof(String))
-                            where += "And " + fieldName + "=N'" + row[col].ToString() + "'";
+                            where += "And [" + fieldName + "]=N'" + row[col].ToString() + "'";
                         else if (col.DataType == typeof(DateTime))
-                            where += "And " + fieldName + "=N'" + ((DateTime)row[col]).Year + "-" + ((DateTime)row[col]).Month + "-" + ((DateTime)row[col]).Day + " " + ((DateTime)row[col]).ToLongTimeString() + "'";
+                            where += "And [" + fieldName + "]=N'" + ((DateTime)row[col]).Year + "-" + ((DateTime)row[col]).Month + "-" + ((DateTime)row[col]).Day + " " + ((DateTime)row[col]).ToLongTimeString() + "'";
                         else
-                            where += "And " + fieldName + "=" + row[col].ToString();
+                            where += "And [" + fieldName + "]=" + row[col].ToString();
                     }
 
                 }

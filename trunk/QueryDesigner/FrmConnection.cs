@@ -51,11 +51,16 @@ namespace dCube
         {
             //if (THEME != "")
             //ThemeResolutionService.ApplyThemeToControlTree(this, THEME);
-            
+
 
         }
         public void SetConnect(string connectstring)
         {
+            if (type == "QD")
+            {
+                txtGeneralTimeOut.Value = 0;
+                txtGeneralTimeOut.Enabled = false;
+            }
             string[] arr = connectstring.Split(';');
             for (int i = 0; i < arr.Length; i++)
             {
@@ -70,17 +75,22 @@ namespace dCube
                         User.Text = arrP[1];
                     else if (arrP[0] == "Password")
                         Pass.Text = arrP[1];
+                    else if (arrP[0] == "General Timeout" && type != "QD")
+                        txtGeneralTimeOut.Text = arrP[1];
                 }
             }
         }
         private void btnOKQD_Click(object sender, EventArgs e)
         {
-            string connect = "Persist Security Info=True;Database={1};Server={0};User Id={2};Password={3}";
-            Connection = string.Format(connect, Server.Text, Database.Text, User.Text, Pass.Text);
+            string timeout = "";
+            if (txtGeneralTimeOut.Value != 0)
+                timeout = ";General Timeout=" + txtGeneralTimeOut.Value;
+            string connect = "Persist Security Info=True;Database={1};Server={0};User Id={2};Password={3}{4}";
+            Connection = string.Format(connect, Server.Text, Database.Text, User.Text, Pass.Text, timeout);
             if (type != "QD")
                 Connection = "Provider=SQLOLEDB.1;" + Connection;
             DialogResult = DialogResult.OK;
-            
+
             Close();
         }
 
@@ -186,7 +196,7 @@ namespace dCube
             {
                 try
                 {
-                    string queryField = "SELECT  OBJECTPROPERTY(OBJECT_ID('" + tablename + "'),'TableHasIdentity')";
+                    string queryField = String.Format("SELECT  OBJECTPROPERTY(OBJECT_ID('{0}'),'TableHasIdentity')", tablename);
                     SqlDataAdapter adap = new SqlDataAdapter(queryField, conn);
                     DataSet dset = new DataSet();
                     adap.Fill(dset);
@@ -210,7 +220,7 @@ namespace dCube
                 try
                 {
                     //Server=.;Database=SiteCamera;uid=sa;pwd=qawsed;Connection Lifetime=100;Connect Timeout=500
-                    string connectString = "Server=" + Server + "; User Id=" + Username + ";pwd=" + Pass + "; Connection Lifetime=100;Connect Timeout=500";
+                    string connectString = String.Format("Server={0}; User Id={1};pwd={2}; Connection Lifetime=100;Connect Timeout=500", Server, Username, Pass);
                     conn = new SqlConnection(connectString);
                     conn.Open();
                     DataTable dt = conn.GetSchema("Databases");
@@ -263,12 +273,12 @@ namespace dCube
 
         private void Database_Enter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Server_Enter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Server_DropDown(object sender, EventArgs e)
@@ -288,6 +298,6 @@ namespace dCube
             Database.DisplayMember = "database_name";
         }
 
-        
+
     }
 }

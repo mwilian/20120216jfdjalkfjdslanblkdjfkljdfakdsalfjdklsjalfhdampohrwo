@@ -21,6 +21,21 @@ namespace TVCDesigner
     /// </summary>
     public partial class MainForm : System.Windows.Forms.Form
     {
+        dExcelConfig _xlsConfig = new dExcelConfig();
+        public MainForm()
+        {
+            InitializeComponent();
+            FillBasicListView(null);
+
+            try
+            {
+                LoadConfig();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         public MainForm(DataTable dtList, DataTable dtFilter, DataTable dtParam)
         {
@@ -187,6 +202,81 @@ namespace TVCDesigner
             #endregion
             #region My Tags
 
+            //DataSet
+            TreeNode root = tvFields.Nodes.Add("DataSet");
+            root.ImageIndex = imgDataset;
+            root.SelectedImageIndex = root.ImageIndex;
+
+            foreach (dData dt in _xlsConfig.Data)
+            {
+                TreeNode rdt = root.Nodes.Add(dt.TableName);
+                rdt.ImageIndex = imgTable;
+                rdt.SelectedImageIndex = rdt.ImageIndex;
+                foreach (dField f in dt.Fields)
+                {
+                    TreeNode temp = rdt.Nodes.Add(f.Name);
+                    temp.Text = f.Name;
+                    temp.ImageIndex = imgColumn;
+                    temp.SelectedImageIndex = temp.ImageIndex;
+                    string[] sc = { f.TableName, f.Name, temp.Text };
+                    temp.Tag = sc;
+                }
+                TreeNode tempcount = rdt.Nodes.Add("ROWCOUNT");
+                tempcount.Text = "ROWCOUNT";
+                tempcount.ImageIndex = imgColumn;
+                tempcount.SelectedImageIndex = tempcount.ImageIndex;
+                string[] scx = new string[] { dt.TableName, "#ROWCOUNT", "#ROWCOUNT" };
+                tempcount.Tag = scx;
+
+                TreeNode temppos = rdt.Nodes.Add("ROWPOS");
+                temppos.Text = "ROWPOS";
+                temppos.ImageIndex = imgColumn;
+                temppos.SelectedImageIndex = temppos.ImageIndex;
+                scx = new string[] { dt.TableName, "#ROWPOS", "#ROWPOS" };
+                temppos.Tag = scx;
+            }
+            //Expression
+            TreeNode rootExp = tvFields.Nodes.Add("Expressions");
+            rootExp.ImageIndex = imgReportExpList;
+            rootExp.SelectedImageIndex = rootExp.ImageIndex;
+
+            foreach (dExpressions dt in _xlsConfig.Expression)
+            {
+                TreeNode rdt = rootExp.Nodes.Add(dt.Name);
+                rdt.ImageIndex = imgReportExp;
+                rdt.SelectedImageIndex = rdt.ImageIndex;
+                string[] sc = { dt.Name };
+                rdt.Tag = sc;
+            }
+            //Variables
+            TreeNode rootVal = tvFields.Nodes.Add("Variables");
+            rootVal.ImageIndex = imgReportVarList;
+            rootVal.SelectedImageIndex = rootVal.ImageIndex;
+
+            foreach (dReportVariables dt in _xlsConfig.ReportVariable)
+            {
+                TreeNode rdt = rootVal.Nodes.Add(dt.Name);
+                rdt.ImageIndex = imgReportVar;
+                rdt.SelectedImageIndex = rdt.ImageIndex;
+                string[] sc = { dt.Name };
+                rdt.Tag = sc;
+            }
+
+            //Format
+            TreeNode rootFor = tvFields.Nodes.Add("Formats");
+            rootFor.ImageIndex = imgReportFormatList;
+            rootFor.SelectedImageIndex = rootFor.ImageIndex;
+
+            foreach (dFormat dt in _xlsConfig.Format)
+            {
+                TreeNode rdt = rootFor.Nodes.Add(dt.Name);
+                rdt.ImageIndex = imgReportFormat;
+                rdt.SelectedImageIndex = rdt.ImageIndex;
+                string[] sc = { dt.Value };
+                rdt.Tag = sc;
+            }
+
+            /*
             #region DataField
             TreeNode root = tvFields.Nodes.Add("DataField");
             root.ImageIndex = imgDataset;
@@ -203,20 +293,21 @@ namespace TVCDesigner
                     string[] sc = { dt_list.TableName, row["Code"].ToString(), temp.Text };
                     temp.Tag = sc;
                 }
-            }
-            TreeNode tmp = root.Nodes.Add("#ROWPOS");
-            tmp.Text = "#ROWPOS";
-            tmp.ImageIndex = imgColumn;
-            tmp.SelectedImageIndex = tmp.ImageIndex;
-            string[] src = new string[] { dt_list.TableName, tmp.Text, tmp.Text };
-            tmp.Tag = src;
+                TreeNode tmp = root.Nodes.Add("#ROWPOS");
+                tmp.Text = "#ROWPOS";
+                tmp.ImageIndex = imgColumn;
+                tmp.SelectedImageIndex = tmp.ImageIndex;
+                string[] src = new string[] { dt_list.TableName, tmp.Text, tmp.Text };
+                tmp.Tag = src;
 
-            tmp = root.Nodes.Add("#ROWCOUNT");
-            tmp.Text = "#ROWCOUNT";
-            tmp.ImageIndex = imgColumn;
-            tmp.SelectedImageIndex = tmp.ImageIndex;
-            src = new string[] { dt_list.TableName, tmp.Text, tmp.Text };
-            tmp.Tag = src;
+                tmp = root.Nodes.Add("#ROWCOUNT");
+                tmp.Text = "#ROWCOUNT";
+                tmp.ImageIndex = imgColumn;
+                tmp.SelectedImageIndex = tmp.ImageIndex;
+                src = new string[] { dt_list.TableName, tmp.Text, tmp.Text };
+                tmp.Tag = src;
+            }
+
 
             #endregion DataField
 
@@ -237,11 +328,11 @@ namespace TVCDesigner
                     temp.Tag = sc;
                 }
 
-                tmp = rootParams.Nodes.Add("#ROWPOS");
+                TreeNode tmp = rootParams.Nodes.Add("#ROWPOS");
                 tmp.Text = "#ROWPOS";
                 tmp.ImageIndex = imgColumn;
                 tmp.SelectedImageIndex = tmp.ImageIndex;
-                src = new string[] { dt_Params.TableName, tmp.Text, tmp.Text };
+                string[] src = new string[] { dt_Params.TableName, tmp.Text, tmp.Text };
                 tmp.Tag = src;
 
                 tmp = rootParams.Nodes.Add("#ROWCOUNT");
@@ -252,9 +343,10 @@ namespace TVCDesigner
                 tmp.Tag = src;
             }
             #endregion
+            */
             #region Function
 
-            TreeNode root1 = tvFields.Nodes.Add("Function");
+            TreeNode root1 = tvFields.Nodes.Add("Functions");
             root1.ImageIndex = imgUserDefined;
             root1.SelectedImageIndex = root1.ImageIndex;
             XmlDocument xmlDoc = new XmlDocument();
@@ -263,16 +355,16 @@ namespace TVCDesigner
             foreach (XmlElement node in element.ChildNodes)
             {
                 string code = node.GetAttribute("Code");
-                tmp = root1.Nodes.Add(code);
+                TreeNode tmp = root1.Nodes.Add(code);
                 tmp.ImageIndex = imgUserDefinedColumn;
                 tmp.SelectedImageIndex = tmp.ImageIndex;
                 tmp.Text = node.GetAttribute("Code");
-                src = new string[] { "", node.GetAttribute("Value"), tmp.Text };
+                string[] src = new string[] { "", node.GetAttribute("Value"), tmp.Text };
                 tmp.Tag = src;
             }
 
             #endregion Function
-
+            /*
             #region Parameter
             TreeNode rootfilter = tvFields.Nodes.Add("Parameter");
             rootfilter.ImageIndex = imgReportExpList;
@@ -281,17 +373,17 @@ namespace TVCDesigner
             {
                 foreach (DataRow row in dt_Filter.Rows)
                 {
-                    tmp = rootfilter.Nodes.Add(row["Code"].ToString());
+                    TreeNode tmp = rootfilter.Nodes.Add(row["Code"].ToString());
                     tmp.ImageIndex = imgReportExp;
                     tmp.SelectedImageIndex = tmp.ImageIndex;
                     tmp.Text = row["Name"].ToString();
-                    src = new string[] { row["Code"].ToString() };
+                    string[] src = new string[] { row["Code"].ToString() };
                     tmp.Tag = src;
                 }
             }
 
             #endregion Parameter
-
+            */
             #endregion My Tags
         }
 
@@ -679,5 +771,22 @@ namespace TVCDesigner
         }
 
 
+
+        public void AddUserTable(DataTable dt_list)
+        {
+        }
+
+        public void AddExpression(DataTable dt_list)
+        {
+
+        }
+
+
+
+        public void LoadExcelConfig(dExcelConfig xlsConfig)
+        {
+            _xlsConfig = xlsConfig;
+            FillBasicListView(null);
+        }
     }
 }

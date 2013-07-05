@@ -119,7 +119,7 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.Name = "frmImportDefView";
-            this.Text = "Name";
+            this.Text = "_Name";
             this.Load += new System.EventHandler(this.frmLookup_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQDADDView)).EndInit();

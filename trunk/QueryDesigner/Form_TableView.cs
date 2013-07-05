@@ -38,8 +38,8 @@ namespace dCube
             //if (temp is RadGridView && flag == false && temp.SelectedRows.Count > 0)
             //{
 
-            //    Code_DTB = temp.SelectedRows[0].Cells["Code"].Value.ToString();
-            //    Description_DTB = temp.SelectedRows[0].Cells["Description"].Value.ToString();
+            //    Code_DTB = temp.SelectedRows[0].Cells["Code"]._Value.ToString();
+            //    Description_DTB = temp.SelectedRows[0].Cells["Description"]._Value.ToString();
             //    Close();
             //}
 

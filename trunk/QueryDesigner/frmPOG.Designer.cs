@@ -181,7 +181,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Group Name";
+            this.label2.Text = "Group _Name";
             // 
             // txtLen
             // 

@@ -35,10 +35,10 @@ namespace dCube
             //MSDASC.DataLinks mydlg = new MSDASC.DataLinks();
             //object cn = new ADODB.Connection();
             frm.Type = type;
-            if (type == "QD" || type == null || type == "")
-                frm.SetConnect("Provider=SQLOLEDB.1;" + connect);//((ADODB.Connection)cn).ConnectionString =
-            else frm.SetConnect(connect);//((ADODB.Connection)cn).ConnectionString
-
+            //if (type == "QD" || type == null || type == "")
+            //    frm.SetConnect("Provider=SQLOLEDB.1;" + connect);//((ADODB.Connection)cn).ConnectionString =
+            //else frm.SetConnect(connect);//((ADODB.Connection)cn).ConnectionString
+            frm.SetConnect(connect);
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -369,8 +369,8 @@ namespace dCube
         {
             //for (int i = e.RowIndex; i < e.RowCount; i++)
             //{
-            //    dgvList.Rows[i].Cells["BUILD"].Value = "Build";
-            //    dgvList.Rows[i].Cells["TEST"].Value = "Unknown";
+            //    dgvList.Rows[i].Cells["BUILD"]._Value = "Build";
+            //    dgvList.Rows[i].Cells["TEST"]._Value = "Unknown";
             //}
         }
 

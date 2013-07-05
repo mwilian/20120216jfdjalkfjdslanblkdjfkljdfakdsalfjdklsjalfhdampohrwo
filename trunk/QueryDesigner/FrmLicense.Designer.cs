@@ -116,7 +116,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Company Name";
+            this.label1.Text = "Company _Name";
             // 
             // groupBox2
             // 

@@ -84,7 +84,7 @@
             this.Controls.Add(this.panelMain);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.Name = "frmChartPro";
-            this.Text = "Property";
+            this.Text = "Value";
             this.Load += new System.EventHandler(this.frmChartPro_Load);
             this.panelMain.ResumeLayout(false);
             this.ResumeLayout(false);

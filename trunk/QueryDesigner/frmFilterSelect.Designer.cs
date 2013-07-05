@@ -102,7 +102,7 @@ namespace dCube
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Filter To";
+            this.label2.Text = "_Filter To";
             // 
             // label1
             // 
@@ -112,7 +112,7 @@ namespace dCube
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Filter From";
+            this.label1.Text = "_Filter From";
             // 
             // dgvSelect
             // 
@@ -138,7 +138,7 @@ namespace dCube
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.Name = "frmFilterSelect";
-            this.Text = "Filter Selection";
+            this.Text = "_Filter Selection";
             this.Load += new System.EventHandler(this.frmFilterSelect_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

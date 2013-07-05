@@ -136,8 +136,8 @@ namespace dCube
             //if (temp is RadGridView && flag == false && temp.SelectedRows.Count > 0)
             //{
 
-            //    String qd_id = temp.SelectedRows[0].Cells["QD_ID"].Value.ToString();
-            //    String dtb = temp.SelectedRows[0].Cells["DTB"].Value.ToString();
+            //    String qd_id = temp.SelectedRows[0].Cells["QD_ID"]._Value.ToString();
+            //    String dtb = temp.SelectedRows[0].Cells["DTB"]._Value.ToString();
             //    LIST_QDControl ctr = new LIST_QDControl();
 
             //    qdinfo = ctr.Get_LIST_QD(dtb, qd_id, ref sErr);

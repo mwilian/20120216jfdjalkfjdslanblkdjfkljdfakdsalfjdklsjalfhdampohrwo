@@ -184,7 +184,7 @@ namespace dCube
             {
                 //e.Row.BeginEdit();
                 e.Row.Cells["Description"].Value = CalculateDetailValue(e.Row);
-                //e.Row.Cells["DAG_ID"].Value = txtCode.Text;
+                //e.Row.Cells["DAG_ID"]._Value = txtCode.Text;
                 //e.Row.EndEdit();
             }
         }

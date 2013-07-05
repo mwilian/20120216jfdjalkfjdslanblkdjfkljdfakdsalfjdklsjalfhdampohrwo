@@ -9,7 +9,6 @@ using FlexCel.XlsAdapter;
 using System.IO;
 using FlexCel.Core;
 using System.Collections;
-using Janus.Windows.GridEX;
 using System.Xml;
 using BUS;
 
@@ -17,7 +16,6 @@ namespace dCube
 {
     public partial class frmImport : Form
     {
-        BUS.IMPORT_SCHEMAControl _importCtr = new BUS.IMPORT_SCHEMAControl();
         string _dtb = "";
 
         public string DTB
@@ -39,162 +37,6 @@ namespace dCube
                 textBox1.Text = ofdImport.FileName;
             }
         }
-        public DataTable PreviewExcelFile(DataTable dt, string filename, string fontCode, string importCode)
-        {
-            //DataTable dt = new DataTable();
-            if (File.Exists(filename))
-            {
-                XlsFile xlsFile = new XlsFile(textBox1.Text, true);
-                List<TXlsNamedRange> arrRange = new List<TXlsNamedRange>();
-
-                int maxCol = 1;
-                int maxRow = 1;
-                for (int i = 0; i < xlsFile.SheetCount; i++)
-                {
-                    TXlsNamedRange range = xlsFile.GetNamedRange("importData", i);
-
-                    if (range != null)
-                    {
-                        xlsFile.ActiveSheet = range.SheetIndex;
-                        for (int r = 1; r < range.RowCount - 1; r++)
-                        {
-                            DataRow newRow = dt.NewRow();
-                            for (int c = 0; c < range.ColCount; c++)
-                            {
-                                if (xlsFile.GetCellValue(range.Top, range.Left + c) != null && dt.Columns.Contains(xlsFile.GetCellValue(range.Top, range.Left + c).ToString()))
-                                {
-                                    GetValue(ref newRow, xlsFile.GetCellValue(range.Top, range.Left + c).ToString(), xlsFile, range.Top + r, range.Left + c, fontCode);
-                                }
-                            }
-                            dt.Rows.Add(newRow);
-                        }
-                    }
-
-                }
-                if (dt.Rows.Count > 0)
-                    return dt;
-                InitAdvance(dt, xlsFile, arrRange, ref maxCol, ref maxRow);
-                if (arrRange.Count == 0)
-                    return dt;
-                GetAdvance(dt, fontCode, xlsFile, arrRange, maxCol, maxRow);
-            }
-            return dt;
-        }
-
-        private void GetAdvance(DataTable dt, string fontCode, XlsFile xlsFile, List<TXlsNamedRange> arrRange, int maxCol, int maxRow)
-        {
-            for (int i = 0; i < maxCol; i++)
-            {
-                for (int j = 0; j < maxRow; j++)
-                {
-                    DataRow newRow = dt.NewRow();
-                    bool flag = true;
-                    for (int index = 0; index < arrRange.Count; index++)
-                    {
-                        xlsFile.ActiveSheet = arrRange[index].SheetIndex;
-                        int top = Math.Min(j, arrRange[index].RowCount - 1) + arrRange[index].Top;
-                        int left = Math.Min(i, arrRange[index].ColCount - 1) + arrRange[index].Left;
-                        if (index == 0)
-                        {
-                            int atop = top;
-                            int aleft = left;
-                            if (!xlsFile.CellMergedBounds(top, left).IsOneCell)
-                            {
-                                atop = xlsFile.CellMergedBounds(top, left).Top;
-                                aleft = xlsFile.CellMergedBounds(top, left).Left;
-                            }
-                            object dObject = GetObject(xlsFile.GetCellValue(atop, aleft), fontCode);
-                            if (dObject == null || dObject.ToString() == "" || dObject == DBNull.Value)
-                            {
-                                flag = false;
-                                break;
-                            }
-                            else
-                            {
-                                GetValue(ref newRow, arrRange[index].Name.Substring(3), xlsFile, top, left, fontCode);
-                            }
-                        }
-                        else
-                        {
-                            GetValue(ref newRow, arrRange[index].Name.Substring(3), xlsFile, top, left, fontCode);
-                        }
-
-                    }
-                    if (flag)
-                        dt.Rows.Add(newRow);
-                }
-            }
-        }
-
-        private static void InitAdvance(DataTable dt, XlsFile xlsFile, List<TXlsNamedRange> arrRange, ref int maxCol, ref int maxRow)
-        {
-            for (int i = 0; i < xlsFile.NamedRangeCount; i++)
-            {
-                string name = xlsFile.GetNamedRange(i + 1).Name;
-                if (name.Length > 3 && (name.Substring(0, 3) == "d__" || name.Substring(0, 3) == "f__") && (dt.Columns.Contains(name.Substring(3))))
-                {
-                    TXlsNamedRange range = xlsFile.GetNamedRange(i + 1);
-                    if (maxCol < range.ColCount) maxCol = range.ColCount;
-                    if (maxRow < range.RowCount) maxRow = range.RowCount;
-                    if (name.Substring(0, 3) == "d__")
-                    {
-                        arrRange.Insert(0, range);
-                    }
-                    else
-                    {
-                        //if (maxCol < range.ColCount) maxCol = range.ColCount;
-                        arrRange.Add(range);
-                    }
-
-                    //if (name.Substring(3) == "TimesheetDate")
-                    //dt.Columns.Add(name.Substring(3), Type.GetType("System." + dgvList.RootTable.Columns[name.Substring(3)].DataTypeCode.ToString()));
-                    //else
-                    //    dt.Columns.Add(name.Substring(3));
-
-                }
-            }
-        }
-
-        private void GetValue(ref DataRow newRow, string fieldName, XlsFile xlsFile, int top, int left, string fontCode)
-        {
-            try
-            {
-                if (!xlsFile.CellMergedBounds(top, left).IsOneCell)
-                {
-                    top = xlsFile.CellMergedBounds(top, left).Top;
-                    left = xlsFile.CellMergedBounds(top, left).Left;
-                }
-                if (newRow.Table.Columns[fieldName].DataType == typeof(DateTime))
-                    newRow[fieldName] = GetDateTimeObj(xlsFile, top, left);
-                else
-                    newRow[fieldName] = GetObject(xlsFile.GetCellValue(top, left), fontCode);
-            }
-            catch { throw new Exception("Object(" + xlsFile.ActiveSheetByName + "," + top + "," + left + ") is not valided"); }
-        }
-
-        private static object GetDateTimeObj(XlsFile xlsFile, int top, int left)
-        {
-            if (xlsFile.GetCellVisibleFormatDef(top, left).Format != "")
-            {
-                if (xlsFile.GetCellValue(top, left) != null || xlsFile.GetCellValue(top, left).ToString() == "" || xlsFile.GetCellValue(top, left).ToString() == "NULL")
-                    return FlxDateTime.FromOADate((double)xlsFile.GetCellValue(top, left), false);
-                else return DBNull.Value;
-            }
-            else
-            {
-                Object obj = xlsFile.GetCellValue(top, left);
-                if (obj is double)
-                {
-                    int sunDate = Convert.ToInt32(obj);
-                    int year = sunDate / 10000;
-                    int month = (sunDate - year * 10000) / 100;
-                    int day = sunDate - year * 10000 - month * 100;
-                    return new DateTime(year, month, day);
-                }
-                else
-                    return DBNull.Value;
-            }
-        }
 
         /* public DataTable PreviewExcelFile(DataTable dt, string filename, string fontCode)
          {
@@ -208,7 +50,7 @@ namespace dCube
                  int maxRow = 1;
                  for (int i = 0; i < xlsFile.NamedRangeCount; i++)
                  {
-                     string name = xlsFile.GetNamedRange(i + 1).Name;
+                     string name = xlsFile.GetNamedRange(i + 1)._Name;
                      if (name.Length > 3 && (name.Substring(0, 3) == "d__" || name.Substring(0, 3) == "f__") && (dt.Columns.Contains(name.Substring(3))))
                      {
                          TXlsNamedRange range = xlsFile.GetNamedRange(i + 1);
@@ -255,15 +97,15 @@ namespace dCube
                              newRow = dt.NewRow();
                              for (int i = 0; i < arrRange.Count; i++)
                              {
-                                 if (dt.Columns.Contains(((TXlsNamedRange)arrRange[i]).Name.Substring(3)))
+                                 if (dt.Columns.Contains(((TXlsNamedRange)arrRange[i])._Name.Substring(3)))
                                  {
-                                     //newRow[((TXlsNamedRange)arrRange[0]).Name.Substring(3)] = dObject;
+                                     //newRow[((TXlsNamedRange)arrRange[0])._Name.Substring(3)] = dObject;
                                      if (((TXlsNamedRange)arrRange[i]).IsOneCell)
                                      {
-                                         if (dgvList.RootTable.Columns[((TXlsNamedRange)arrRange[i]).Name.Substring(3)].DataTypeCode == TypeCode.DateTime)
-                                             newRow[((TXlsNamedRange)arrRange[i]).Name.Substring(3)] = FlxDateTime.FromOADate((double)xlsFile.GetCellValue(((TXlsNamedRange)arrRange[i]).Top, ((TXlsNamedRange)arrRange[i]).Left), false);
+                                         if (dgvList.RootTable.Columns[((TXlsNamedRange)arrRange[i])._Name.Substring(3)].DataTypeCode == TypeCode.DateTime)
+                                             newRow[((TXlsNamedRange)arrRange[i])._Name.Substring(3)] = FlxDateTime.FromOADate((double)xlsFile.GetCellValue(((TXlsNamedRange)arrRange[i]).Top, ((TXlsNamedRange)arrRange[i]).Left), false);
                                          else
-                                             newRow[((TXlsNamedRange)arrRange[i]).Name.Substring(3)] = GetObject(xlsFile.GetCellValue(((TXlsNamedRange)arrRange[i]).Top, ((TXlsNamedRange)arrRange[i]).Left), fontCode);
+                                             newRow[((TXlsNamedRange)arrRange[i])._Name.Substring(3)] = GetObject(xlsFile.GetCellValue(((TXlsNamedRange)arrRange[i]).Top, ((TXlsNamedRange)arrRange[i]).Left), fontCode);
                                      }
                                      else
                                      {
@@ -275,14 +117,14 @@ namespace dCube
                                          {
                                              left = ((TXlsNamedRange)arrRange[i]).Left;
                                          }
-                                         if (dgvList.RootTable.Columns.Contains(((TXlsNamedRange)arrRange[i]).Name.Substring(3)))
+                                         if (dgvList.RootTable.Columns.Contains(((TXlsNamedRange)arrRange[i])._Name.Substring(3)))
                                          {
                                              try
                                              {
-                                                 if (dgvList.RootTable.Columns[((TXlsNamedRange)arrRange[i]).Name.Substring(3)].DataTypeCode == TypeCode.DateTime)
-                                                     newRow[((TXlsNamedRange)arrRange[i]).Name.Substring(3)] = FlxDateTime.FromOADate((double)xlsFile.GetCellValue(top, left), false);
+                                                 if (dgvList.RootTable.Columns[((TXlsNamedRange)arrRange[i])._Name.Substring(3)].DataTypeCode == TypeCode.DateTime)
+                                                     newRow[((TXlsNamedRange)arrRange[i])._Name.Substring(3)] = FlxDateTime.FromOADate((double)xlsFile.GetCellValue(top, left), false);
                                                  else
-                                                     newRow[((TXlsNamedRange)arrRange[i]).Name.Substring(3)] = GetObject(xlsFile.GetCellValue(top, left), fontCode);
+                                                     newRow[((TXlsNamedRange)arrRange[i])._Name.Substring(3)] = GetObject(xlsFile.GetCellValue(top, left), fontCode);
 
                                              }
                                              catch { }
@@ -310,34 +152,8 @@ namespace dCube
              return dt;
          }*/
 
-        private object GetObject(object p, string fontCode)
-        {
-            //object p = null;
-            if (p == null || p.ToString().Trim().TrimStart() == "")
-                return DBNull.Value;
-            if (fontCode == "None" || fontCode == "Unicode")
-            {
-                //if (p is string)
-                return p.ToString().Trim().TrimStart();
-                //return p;
-            }
-            else
-            {
-                if (p is String)
-                {
-                    if (fontCode == "TVCN3")
-                        return VNConvertor.ConvertTCVN3ToUnicode(p.ToString().Trim().TrimStart());
-                    else if (fontCode == "VNI")
-                        return VNConvertor.ConvertVNI2Unicode(p.ToString().Trim().TrimStart());
-                    //else 
-                    //    return 
-                }
 
-            }
-            return p;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnPreview_Click(object sender, EventArgs e)
         {
             _flagimport = true;
             //button2.Enabled = false;
@@ -347,17 +163,32 @@ namespace dCube
                 return;
             }
             string filename = textBox1.Text;
-            DataTable dtX = IMPORT_SCHEMAControl.GetDataTableStruct(_importCtr.DtStruct, _importCtr.Lookup);
-            try
+            string sErr = "";
+            for (int i = 0; i < tcMain.TabPages.Count; i++)
             {
-                DataTable dt = PreviewExcelFile(dtX, filename, cboConvertor.SelectedValue.ToString(), ddlImport.SelectedValue.ToString());
-                dgvList.DataSource = dt;
-                dgvList.AllowEdit = InheritableBoolean.False;
-                lbErr.Text = "You have " + dt.Rows.Count + " records from file";
-                btnImport.Enabled = false;
-                btnGroup.Enabled = dt.Rows.Count > 0;
+
+                TabPage page = tcMain.TabPages[i];
+                if (page.Controls.Count == 1 && page.Controls[0] is DataGridView)
+                {
+                    DataGridView dgv = page.Controls[0] as DataGridView;
+
+                    if (dgv.Tag is IMPORT_SCHEMAControl)
+                    {
+                        IMPORT_SCHEMAControl _importCtr = dgv.Tag as IMPORT_SCHEMAControl;
+                        DataTable dtX = IMPORT_SCHEMAControl.GetDataTableStruct(_importCtr.DtStruct, _importCtr.Lookup);
+                        try
+                        {
+                            DataTable dt = clsTransfer.PreviewExcelFile(dtX, filename, cboConvertor.Text, ddlImport.SelectedValue.ToString());
+                            dgv.DataSource = dt;
+                            lbErr.Text = "You have " + dt.Rows.Count + " records from file";
+                            btnImport.Enabled = false;
+                            btnGroup.Enabled = dt.Rows.Count > 0;
+                        }
+                        catch (Exception ex) { sErr += ex.Message; }
+                    }
+                }
+                lbErr.Text = sErr;
             }
-            catch (Exception ex) { lbErr.Text = ex.Message; }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -398,10 +229,11 @@ namespace dCube
             ddlImport.DataSource = dt;
             ddlImport.ValueMember = "SCHEMA_ID";
             ddlImport.DisplayMember = "DESCRIPTN";
-            _importCtr.StrConn = Form_QD._strConnectDes;
+            cboConvertor.SelectedIndex = 0;
+            //_importCtr.StrConn = Form_QD._strConnectDes;
         }
 
-        private void AddValidatedList(string db, string xml)
+        private BUS.IMPORT_SCHEMAControl AddValidatedList(BUS.IMPORT_SCHEMAControl _importCtr, string db, string xml)
         {
             _importCtr.ListV.Clear();
             _importCtr.LKey.Clear();
@@ -436,7 +268,7 @@ namespace dCube
                     else
                     {
                         ValueList validate = new ValueList();
-                        //if (row["IsNull"] == DBNull.Value || row["IsNull"].ToString() == "False")
+                        //if (row["IsNull"] == DBNull._Value || row["IsNull"].ToString() == "False")
                         validate.IsNull = false;
                         validate.Key = row["Key"].ToString();
                         _importCtr.ListV.Add(validate);
@@ -446,102 +278,85 @@ namespace dCube
                 if (row["PrimaryKey"].ToString() == "True")
                     _importCtr.LKey.Add(row["Key"].ToString());
             }
+            return _importCtr;
         }
-        private void dgvList_LoadingRow(object sender, Janus.Windows.GridEX.RowLoadEventArgs e)
-        {
-            if (e.Row.RowType == RowType.Record)
-                ValidatedRow(_importCtr, e.Row);
-        }
+        //private void dgv_LoadingRow(object sender, Janus.Windows.GridEX.RowLoadEventArgs e)
+        //{
+        //    if (e.Row.RowType == RowType.Record)
+        //        ValidatedRow(_importCtr, e.Row);
+        //}
         bool _flagimport = true;
-        private void ValidatedRow(IMPORT_SCHEMAControl _importCtr, GridEXRow gridEXRow)
+        private void ValidatedRow(IMPORT_SCHEMAControl _importCtr, DataGridViewRow gridEXRow)
         {
             bool flag = true;
-            foreach (GridEXCell cell in gridEXRow.Cells)
+            string sErr = "";
+            foreach (DataGridViewCell cell in gridEXRow.Cells)
             {
                 string message = "";
-
-                if (!_importCtr.ContrainList(cell.Column.Key, cell.Value, ref message))
+                cell.ErrorText = "";
+                if (!_importCtr.ContrainList(gridEXRow.DataGridView.Columns[cell.ColumnIndex].Name, cell.Value, ref message))
                 {
-                    cell.ImageIndex = 0;
-                    cell.Column.ColumnType = ColumnType.ImageAndText;
-                    cell.ToolTipText = message;
-                    gridEXRow.RowStyle = dgvList.RowWithErrorsFormatStyle;
+                    cell.ErrorText = message;
+                    sErr += message;
+                    //cell.ToolTipText = message;
                     flag = false;
                 }
             }
+            gridEXRow.ErrorText = sErr;
             _flagimport = _flagimport & flag;
         }
 
-        private void multiColumnCombo1_ValueChanged(object sender, EventArgs e)
+        private void dllImport_ValueChanged(object sender, EventArgs e)
         {
-            DataRow row = ((DataRowView)ddlImport.SelectedItem).Row;
-            DTO.IMPORT_SCHEMAInfo importInf = new DTO.IMPORT_SCHEMAInfo(row);
 
-            string key = importInf.DEFAULT_CONN;
-            _importCtr.StrConn = Form_QD.Config.GetConnection(ref key, "AP");
-
-            //StringReader sb = new StringReader(row["FIELD_TEXT"].ToString());
-            byte[] byteArray = Encoding.ASCII.GetBytes(row["FIELD_TEXT"].ToString());
-            MemoryStream stream = new MemoryStream(byteArray);
-
-            //MemoryStream stream = new MemoryStream(
-            ////FileStream file = new FileStream(Application.StartupPath + "\\pbs.BO.HR.TSHInfoList", FileMode.Open);
-            dgvList.LoadLayoutFile(stream);
-            foreach (GridEXColumn col in dgvList.RootTable.Columns)
-                col.DataMember = col.Key;
-            //sstreamb.Close();
-            stream.Close();
-            _importCtr.Lookup = row["LOOK_UP"].ToString();
-            AddValidatedList(row["DB"].ToString(), row["FIELD_TEXT"].ToString());
-            dgvList.TotalRow = InheritableBoolean.True;
-            dgvList.GroupTotals = GroupTotals.Always;
-            dgvList.DataSource = new DataTable();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnImport_Click(object sender, EventArgs e)
         {
-            int dem = 0;
-            //if (_flagimport)
-            //{
-            //    foreach (GridEXRow row in dgvList.GetRows())
-            //    {
-            //        if (row.RowType == RowType.Record && row.RowStyle != dgvList.RowWithErrorsFormatStyle)
-            //        {
-            //            string sErr = "";
-            //            int result = _importCtr.Import(((DataRowView)row.DataRow).Row, checkBox1.Checked, checkBox2.Checked, ref sErr);
-            //            if (result == 1)
-            //                dem++;
-            //        }
-
-            //    }
-            //    MessageBox.Show("Have " + dem + " update records");
-            //}
-            //else
-            //{
+            string sErr = "";
             if (MessageBox.Show("Do you want to import these correct records?", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                DataTable dt = dgvList.DataSource as DataTable;
-                for (int i = dgvList.RowCount - 1; i >= 0; i--)
+                int dem = 0;
+                for (int i = 0; i < tcMain.TabPages.Count; i++)
                 {
-                    GridEXRow row = dgvList.GetRow(i);
-                    if (row.RowType == RowType.Record && row.RowStyle != dgvList.RowWithErrorsFormatStyle)
-                    {
-                        DataRow dtrow = ((DataRowView)row.DataRow).Row;
-                        string sErr = "";
-                        int result = _importCtr.Import(dtrow, checkBox1.Checked, checkBox2.Checked, ref sErr);
 
-                        if (result == 1)
+                    TabPage page = tcMain.TabPages[i];
+                    if (page.Controls.Count == 1 && page.Controls[0] is DataGridView)
+                    {
+
+                        DataGridView dgv = page.Controls[0] as DataGridView;
+                        IMPORT_SCHEMAControl _importCtr = dgv.Tag as IMPORT_SCHEMAControl;
+
+                        DataTable dt = dgv.DataSource as DataTable;
+                        for (int j = dgv.RowCount - 1; j >= 0; j--)
                         {
-                            dt.Rows.Remove(dtrow);
-                            dem++;
+                            DataGridViewRow row = dgv.Rows[j];
+                            if (row.DataBoundItem is DataRowView)
+                            {
+                                DataRow dtrow = ((DataRowView)row.DataBoundItem).Row;
+                                string tmp = "";
+                                int result = _importCtr.Import(dtrow, checkBox1.Checked, checkBox2.Checked, ref tmp);
+                                if (!sErr.Contains(tmp))
+                                    sErr += tmp;
+
+                                if (result == 1)
+                                {
+                                    dt.Rows.Remove(dtrow);
+                                    dem++;
+                                }
+                            }
+
                         }
                     }
-
                 }
-
                 btnImport.Enabled = false;
                 btnGroup.Enabled = false;
-                lbErr.Text = "Have " + dem + " update records";
+                if (sErr == "")
+                    lbErr.Text = "Have " + dem + " update records";
+                else
+                {
+                    lbErr.Text = sErr;
+                }
             }
             //}
             //_importCtr.Import(dgvList.DataSource as DataTable, checkBox1.Checked, checkBox2.Checked);
@@ -554,40 +369,111 @@ namespace dCube
 
         private void btnGroup_Click(object sender, EventArgs e)
         {
-            if (dgvList.RowCount > 0)
+            for (int i = 0; i < tcMain.TabPages.Count; i++)
             {
-                DataSet dset = null;
-                DataTable dt = dgvList.DataSource as DataTable;
 
-                DataSetHelper dsHelper = new DataSetHelper(ref dset);
-                string strField = "";
-                string filter = "";
-                string groupField = "";
-                bool flag = false;
-                foreach (DataRow row in _importCtr.DtStruct.Rows)
+                TabPage page = tcMain.TabPages[i];
+                if (page.Controls.Count == 1 && page.Controls[0] is DataGridView)
                 {
-                    if (row["AggregateFunction"] != DBNull.Value && row["AggregateFunction"].ToString() != "")
+                    DataGridView dgv = page.Controls[0] as DataGridView;
+                    IMPORT_SCHEMAControl _importCtr = dgv.Tag as IMPORT_SCHEMAControl;
+                    if (dgv.RowCount > 0)
                     {
-                        strField += "," + row["AggregateFunction"].ToString().Trim().ToLower() + "(" + row["Key"].ToString() + ") " + row["Key"].ToString();
-                        flag = true;
-                    }
-                    else
-                    {
-                        strField += "," + row["Key"].ToString();
-                        groupField += "," + row["Key"].ToString();
+                        DataSet dset = null;
+                        DataTable dt = dgv.DataSource as DataTable;
+
+                        DataSetHelper dsHelper = new DataSetHelper(ref dset);
+                        string strField = "";
+                        string filter = "";
+                        string groupField = "";
+                        bool flag = false;
+                        foreach (DataRow row in _importCtr.DtStruct.Rows)
+                        {
+                            if (row["AggregateFunction"] != DBNull.Value && row["AggregateFunction"].ToString() != "")
+                            {
+                                strField += "," + row["AggregateFunction"].ToString().Trim().ToLower() + "(" + row["Key"].ToString() + ") " + row["Key"].ToString();
+                                flag = true;
+                            }
+                            else
+                            {
+                                strField += "," + row["Key"].ToString();
+                                groupField += "," + row["Key"].ToString();
+                            }
+                        }
+                        strField = strField.Substring(1);
+                        groupField = groupField.Substring(1);
+                        if (flag)
+                        {
+                            DataTable dtgroup = dsHelper.SelectGroupByInto("Group", dt, strField, filter, groupField);
+                            dgv.DataSource = dtgroup;
+                            lbErr.Text = "You have " + dtgroup.Rows.Count + " records by Group";
+                            btnImport.Enabled = dtgroup.Rows.Count > 0;
+                        }
+                        else btnImport.Enabled = dt.Rows.Count > 0;
+
                     }
                 }
-                strField = strField.Substring(1);
-                groupField = groupField.Substring(1);
-                if (flag)
-                {
-                    DataTable dtgroup = dsHelper.SelectGroupByInto("Group", dt, strField, filter, groupField);
-                    dgvList.DataSource = dtgroup;
-                    lbErr.Text = "You have " + dtgroup.Rows.Count + " records by Group";
-                    btnImport.Enabled = dtgroup.Rows.Count > 0;
-                }
-                else btnImport.Enabled = dt.Rows.Count > 0;
+            }
 
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tcMain.TabPages.Clear();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (ddlImport.Text == "")
+            {
+                MessageBox.Show("Please choose a Import Code");
+                return;
+            }
+
+            string code = ddlImport.SelectedValue.ToString();
+            string text = ddlImport.Text;
+            if (!tcMain.TabPages.ContainsKey(code))
+            {
+                DataRow row = ((DataRowView)ddlImport.SelectedItem).Row;
+                DTO.IMPORT_SCHEMAInfo importInf = new DTO.IMPORT_SCHEMAInfo(row);
+                IMPORT_SCHEMAControl ctr = new IMPORT_SCHEMAControl();
+
+                string key = importInf.DEFAULT_CONN;
+                ctr.StrConn = Form_QD.Config.GetConnection(ref key, "AP");
+                ctr.Lookup = row["LOOK_UP"].ToString();
+                ctr = AddValidatedList(ctr, row["DB"].ToString(), row["FIELD_TEXT"].ToString());
+                //StringReader sb = new StringReader(row["FIELD_TEXT"].ToString());
+                byte[] byteArray = Encoding.ASCII.GetBytes(row["FIELD_TEXT"].ToString());
+                MemoryStream stream = new MemoryStream(byteArray);
+                stream.Close();
+                DataGridView dgv = new DataGridView();
+                dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgv.Name = "dgv" + code;
+                dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+                dgv.Location = new System.Drawing.Point(3, 3);
+                dgv.Size = new System.Drawing.Size(1058, 325);
+                dgv.AllowUserToAddRows = false;
+                dgv.ReadOnly = true;
+                //tcMain.TabPages[tcMain.TabPages.Count - 1].Tag = row["LOOK_UP"].ToString();
+                dgv.Tag = ctr;
+                dgv.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgv_DataBindingComplete);
+
+                tcMain.TabPages.Add(code, text);
+                tcMain.TabPages[tcMain.TabPages.Count - 1].Controls.Add(dgv);
+            }
+
+        }
+
+        void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv.Tag is IMPORT_SCHEMAControl)
+            {
+                IMPORT_SCHEMAControl _importCtr = dgv.Tag as IMPORT_SCHEMAControl;
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    ValidatedRow(_importCtr, row);
+                }
             }
         }
     }

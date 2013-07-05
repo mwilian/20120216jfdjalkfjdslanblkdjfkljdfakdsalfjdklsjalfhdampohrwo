@@ -16,7 +16,7 @@ namespace dCube
     public partial class frmImportDefinition : Form
     {
         string _sErr = "";
-        DataTable _dtField = new DataTable("field");
+        DataTable _dtField = new DataTable("_TableName");
         string _processStatus = "";
         string _code = "";
         public QDConfig _config = null;
@@ -105,7 +105,7 @@ namespace dCube
 
 
 
-            _dtField = new DataTable("field");
+            _dtField = new DataTable("_TableName");
             DataColumn[] colfield = new DataColumn[] {  new DataColumn("PrimaryKey")
                 ,new DataColumn("Key")
                 , new DataColumn("DataTypeCode")

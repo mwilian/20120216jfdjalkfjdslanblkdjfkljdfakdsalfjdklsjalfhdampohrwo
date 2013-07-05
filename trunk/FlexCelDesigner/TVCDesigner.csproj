@@ -124,6 +124,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Config.resx</DependentUpon>
     </Compile>
+    <Compile Include="ExcelConfig\dParameter.cs" />
+    <Compile Include="ExcelConfig\dExcelConfig.cs" />
+    <Compile Include="ExcelConfig\dExpressions.cs" />
+    <Compile Include="ExcelConfig\dField.cs" />
+    <Compile Include="ExcelConfig\dFormat.cs" />
+    <Compile Include="ExcelConfig\dRelationship.cs" />
+    <Compile Include="ExcelConfig\dReportVariables.cs" />
+    <Compile Include="ExcelConfig\dData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ExcelConfig\ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -188,6 +197,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QueryBuilder\QueryBuilder.csproj">
+      <Project>{0758002C-AA25-4167-92AC-414037CAC5C6}</Project>
+      <Name>QueryBuilder</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
